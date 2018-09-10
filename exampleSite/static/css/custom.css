@@ -1,0 +1,14 @@
+:root{
+
+    /*
+      Override desired values for the following variables.
+    */
+
+    /* GENERAL */
+    --GENERAL-FONT: var(--GENERAL-FONT-1);
+    --TITLE-FONT: var(--GENERAL-FONT-2);
+
+    /* HOME */
+    --HOME-TEXT-COLOR: rgb(200, 200, 200);
+
+}
