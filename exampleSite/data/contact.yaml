@@ -1,0 +1,20 @@
+---
+title: "CONTACT"
+background_image: "contact.jpg"
+photo: "user-tie.png"
+description: "Very short text with a call to action."
+
+email:
+  address: "you.email@somewhere.com"
+  link: false
+  icon: "fa-envelope"
+  icon-pack: "fas"
+
+social:
+- icon: "fa-linkedin"
+  icon_pack: "fab"
+  link: "//linkedin.com/in/derekseverin"
+- icon: "fa-github"
+  icon_pack: "fab"
+  link: "//github.com/2-REC"
+---

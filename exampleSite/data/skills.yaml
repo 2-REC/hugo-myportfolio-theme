@@ -1,0 +1,15 @@
+---
+title: "SKILLS"
+tags_label: "TAGS"
+categories_label: "CATEGORIES"
+
+text: "This section lists all the tags and categories found in the different projects.
+A button to download a file - typically a resume - is also provided."
+
+download:
+  button_text: "RESUME"
+  # The file must be in "static/files"
+  filename: "<SOME_FILE>"
+  icon: "fa-download"
+  icon-pack: "fas"
+---

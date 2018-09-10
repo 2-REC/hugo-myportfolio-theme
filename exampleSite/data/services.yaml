@@ -1,0 +1,21 @@
+---
+title: "SERVICES"
+background_image: "services.jpg"
+
+# List of services.
+# Optional "text", "icon_pack" & "list"
+services:
+- name: "Service 1"
+  icon: "fa-chalkboard-teacher"
+  icon_pack: "fas"
+  list: [ "One thing", "Another thing", "And some more ..." ]
+- name: "Service 2"
+  icon: "fa-window-restore"
+  icon_pack: "fas"
+  text: "I am also able to do this."
+- name: "Service 3"
+  icon: "fa-concierge-bell"
+  icon_pack: "fas"
+  text: "And this:"
+  list: [ "Sub service 1", "Sub service 2" ]
+---

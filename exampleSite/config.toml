@@ -1,0 +1,94 @@
+# For more information take a look at the "README.md".
+
+baseurl = "https://example.org/"
+languageCode = "en-us"
+title = "HUGO MyPortfolio Theme"
+#theme = "myportfolio"
+
+#disableLiveReload = true
+
+[params]
+
+    # File(s) containing overriden CSS variables (OPTIONAL)
+    custom_css = [ "custom.css" ]
+
+    # ----------
+
+    # HTML HEAD METADATA
+    [params.meta]
+        # To provide some metadata for search engines (OPTIONAL)
+        author = "<AUTHOR>"
+        description = "<DESCRIPTION>"
+
+        # The path must be relative to the static folder (MANDATORY)
+        favicon = "favicon.ico"
+
+    # ----------
+
+    # HOMEPAGE
+    [params.homepage]
+        sections = [ "home", "about", "services", "skills", "projects", "contact" ]
+
+    # ----------
+
+    # NAVIGATION MENU (OPTIONAL)
+    [params.navigation]
+
+        # Brand (OPTIONAL - but required if want HOME button)
+        brand = "YOUR BRAND"
+
+        # NAVIGATION MENU ENTRIES (OPTIONAL)
+        # Add an entry for each section to add in the navigation menu.
+        # Syntax:
+        #    key = "<VALUE>"
+        #    => Where
+        #        - "key" is in:
+        #            - about
+        #            - services
+        #            - skills
+        #            - projects (! - SPECIAL CASE: DIFFERENT MANAGEMENT THAN OTHER SECTIONS!)
+        #            - contact
+        #
+        #        - "<VALUE>" is the string to display as menu item.
+        # If no entry is specified => No navigation menu is created.
+        #    (even if "params.navigation.links" is defined, but empty)
+        # => Can define a dummy variable in "links" to force the creation of the menu (e.g.: dummy = 1).
+        # To change order, need to change code in navigation menu creation.
+        # Special case: "projects".
+        #    projects = [ { section = "<SECTION_DIRECTORY>", label = "<VALUE>" }, ... ]
+        # ! - Values for "sections" in "projects" must be the same as used in "projects.params".
+        # (& must correspond to the section directories)
+		[params.navigation.links]
+            about    = "ABOUT"
+            services = "SERVICES"
+            skills   = "SKILLS"
+            projects = [
+                { section = "pro", label = "PROFESSIONAL" },
+                { section = "perso", label = "PERSONAL" }
+            ]
+            contact  = "CONTACT"
+
+    # ----------
+
+    # PROJECTS section
+    [params.projects]
+        # Values in "categories" must be the same as in navigation menu "projects".
+        # (& must correspond to the section directories)
+        categories = [ "pro", "perso" ]
+
+        # Required as default values.
+        sections_order = "title"
+        sections_order_reverse = false
+        posts_order = "date"
+        posts_order_reverse = true
+
+        # Format of the "period" field.
+        date_format = "Jan-2006"
+
+    # ----------
+
+    # PAGE 404
+    [params.page404]
+        text = "OOPS, PAGE NOT FOUND!"
+        background_image = "404.jpg"
+        button_text = "BACK HOME"
