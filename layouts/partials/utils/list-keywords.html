@@ -1,0 +1,16 @@
+{{/*
+    Parameters:
+    - type: "tags" or "categories"
+    - context: (.)
+    - scratch: (Scratch)
+    - removeDuplicates: BOOL
+*/}}
+
+{{ .scratch.Delete .type }}
+{{ partial "utils/get-keywords.html" (dict "type" .type "context" .context "scratch" .scratch "removeDuplicates" .removeDuplicates) }}
+{{ range (.scratch.Get .type) }}
+    <a href="{{ (print "/" $.type "/") | relLangURL }}{{ . | urlize }}" title="{{ . }}">
+        {{ . }}
+    </a>
+{{ end }}
+{{ .scratch.Delete .type }}

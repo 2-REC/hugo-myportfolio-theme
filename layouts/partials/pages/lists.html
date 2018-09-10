@@ -1,0 +1,45 @@
+{{/* List sections (default value is true) */}}
+{{ if (or (not (isset .Params "showsections")) (.Params.showsections)) }}
+    {{ if .Sections }}
+        <div>
+            {{ with .Params.sections_title }}
+                <h3>{{ . }}</h3>
+            {{ end }}
+
+            {{/* Sort the list */}}
+            {{ partial "utils/ordered-list.html" (dict "list" .Sections "params" .Params "scratch" .Scratch) }}
+            <br>
+            <div class="container-fluid">
+                <div class="row no-gutter">
+                    {{ range (.Scratch.Get "list") }}
+                        {{ .Render "limage" }}
+                    {{ end }}
+                </div>
+            </div>
+            {{ .Scratch.Delete "list" }}
+            <br>
+            <hr>
+        </div>
+    {{ end }}
+{{ end }}
+
+{{/* List posts (default value is true) */}}
+{{ if (or (not (isset .Params "showposts")) (.Params.showposts)) }}
+    {{ if .Pages }}
+        <div>
+            {{ with .Params.posts_title }}
+                <h3>{{ . }}</h3>
+            {{ end }}
+
+            {{/* Sort the list */}}
+            {{ partial "utils/ordered-list.html" (dict "list" .Pages "params" .Params "scratch" .Scratch) }}
+            <ul>
+                {{ range (.Scratch.Get "list") }}
+                    {{ .Render "li" }}
+                {{ end }}
+            </ul>
+            {{ .Scratch.Delete "list" }}
+            <hr>
+        </div>
+    {{ end }}
+{{ end }}

@@ -1,0 +1,34 @@
+<div class="col-lg-4 col-sm-6">
+    {{ $path := replace .Dir "\\" "/" }}
+    <a href="/{{ $path }}" class="project-box project-link">
+        {{ if .Params.small_image }}
+            {{ $image := .Resources.GetMatch .Params.small_image }}
+            {{ with $image }}
+                <img src="{{ .RelPermalink | relURL }}" class="img-responsive" alt="{{ .Name }}">
+            {{ end }}
+        {{ end }}
+
+        <div class="project-box-caption">
+            <div class="project-box-caption-content">
+                {{ with .Title }}
+                    <div class="project-name">
+                        {{ . }}
+                    </div>
+                {{ end }}
+                {{ with .Params.subtitle }}
+                    <div class="project-category">
+                        {{ . }}
+                    </div>
+                {{ end }}
+                {{ if .Params.startDate }}
+                    <div class="project-date">
+                        From {{ .Params.startDate }}
+                        {{ with .Params.endDate }}
+                            to {{ . }}
+                        {{ end }}
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </a>
+</div>

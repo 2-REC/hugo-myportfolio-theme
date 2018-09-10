@@ -1,0 +1,37 @@
+{{ "<!-- ABOUT -->" | safeHTML }}
+{{ with .Site.Data.about }}
+    <section class="section bg-primary" id="about">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-2">
+                    {{ with .title }}
+                        <h2 class="section-heading">{{ . }}</h2>
+                        <hr class="primary light">
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <div class="profile">
+                        {{ with .avatar }}
+                            <div class="portrait" title="avatar: {{ . }}" style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"></div>
+                        {{ end }}
+                        {{ with .short_text }}
+                            <div class="text-primary">
+                                <p>{{ . | markdownify }}</p>
+                            </div>
+                        {{ end }}
+                    </div>
+                </div>
+
+                {{ with .long_text }}
+                    <div class="col-xs-12 col-md-8 text-tertiary">
+                        <p>{{ . | markdownify }}</p>
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+{{ end }}

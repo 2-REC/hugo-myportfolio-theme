@@ -1,0 +1,21 @@
+{{ "<!-- HERO.HTML -->" | safeHTML }}
+{{ if .Params.image }}
+    {{ $image := .Resources.GetMatch .Params.image }}
+    {{ if $image }}
+        <div class="header-image"
+                style="background-image: url('{{ $image.RelPermalink | relURL }}');"
+            >
+            {{ with .Params.image_copyright }}
+                <p class="copyright">{{ . | markdownify }}</p>
+            {{ end }}
+        </div>
+    {{ end }}
+{{ else }}
+    {{/* Horrible hack to avoid gap when no header image & no small image in sidebar */}}
+    <style type="text/css">
+        :root {
+            --HERO-IMAGE-MARGIN-BOTTOM: 0px;
+            --HERO-IMAGE-MARGIN-BOTTOM-SMALL: 0px;
+        }
+    </style>
+{{ end }}

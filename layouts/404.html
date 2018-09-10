@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+    {{ "<!-- PAGE 404 -->" | safeHTML }}
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+
+    <body id="page-top">
+        {{ partial "nav.html" (dict "context" . "fixed" false) }}
+
+        <section class="section" id="p404">
+            {{ with .Site.Params.page404 }}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            {{ with .background_image }}
+                                <div class="page404-image" title="image: {{ . }}"
+                                        style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"
+                                    >
+                                </div>
+                            {{ end }}
+                            <div class="page404-title wow bounceIn">
+                                <h1>404</h1>
+                            </div>
+                            <div class="page404-content">
+                                <p>{{ .text | markdownify }}</p>
+                            </div>
+                            <hr class="primary">
+                            <a href="#" class="btn btn-primary">
+                                {{ with .button_text }}
+                                    {{ . }}
+                                {{ end }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {{ end }}
+        </section>
+
+        {{ partial "footer.html" . }}
+        {{ partial "tail.html" . }}
+    </body>
+</html>

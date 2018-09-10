@@ -1,0 +1,6 @@
+{{ define "content" }}
+    {{ with .Content}}
+        {{ . | markdownify }}
+        <hr>
+    {{ end }}
+{{ end }}

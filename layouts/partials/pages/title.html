@@ -1,0 +1,26 @@
+<hgroup>
+    {{/* Title */}}
+    <h1>{{ .Title }}</h1>
+
+    {{/* Subtitle */}}
+    {{ with .Params.subtitle }}
+        <h2>{{ . }}</h2>
+    {{ end }}
+
+    {{/* Period */}}
+    {{ if .Params.startDate }}
+        <h3>
+        From <i>{{ dateFormat .Site.Params.projects.date_format .Params.startDate }}</i>
+        {{ if .Params.endDate }}
+            {{ $end := (time .Params.endDate) }}
+            {{ $duration := $end.Sub (time .Params.startDate) }}
+            {{ $months := int (div (int (div $duration.Hours 24)) 30.4167) }}
+            {{ $years := int (div $months 12) }}
+            {{ $months := int (sub $months (mul $years 12)) }}
+
+            to <i>{{ dateFormat .Site.Params.projects.date_format .Params.endDate }}</i>
+            ({{ if gt $years 0 }}{{ $years }} years, {{ end }}{{ $months }} months)
+        {{ end }}
+    </h3>
+    {{ end }}
+</hgroup>

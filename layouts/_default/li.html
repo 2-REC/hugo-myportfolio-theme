@@ -1,0 +1,8 @@
+<li class="project-item">
+    <a href="{{.Permalink}}">{{ .Title }}</a>
+    {{ with .Params.subtitle }}
+        <p>
+        {{ . | markdownify }}
+    </p>
+    {{ end }}
+</li>

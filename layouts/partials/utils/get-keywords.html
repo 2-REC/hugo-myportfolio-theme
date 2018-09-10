@@ -1,0 +1,36 @@
+{{/*
+    Parameters:
+    - type: "tags" or "categories"
+    - context: (.)
+    - scratch: (Scratch)
+    - removeDuplicates: BOOL
+*/}}
+
+{{/* Get all the "tags" or "categories" from a page (and its descendents) */}}
+{{ if eq .context.Kind "section" }}
+    {{ range .context.Sections }}
+        {{ partial "utils/get-keywords.html" (dict "type" $.type "context" . "scratch" $.scratch) }}
+    {{ end }}
+    {{ range .context.Pages }}
+        {{ partial "utils/get-keywords.html" (dict "type" $.type "context" . "scratch" $.scratch) }}
+    {{ end }}
+{{ else }}
+    {{ if eq .type "tags" }}
+        {{ range .context.Params.tags }}
+            {{ if not (eq . "") }}
+                {{ $.scratch.Add $.type (slice .) }}
+            {{ end }}
+        {{ end }}
+    {{ else if eq .type "categories" }}
+        {{ range .context.Params.categories }}
+            {{ if not (eq . "") }}
+                {{ $.scratch.Add $.type (slice .) }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{/* Only available for first occurrence of method */}}
+{{ if .removeDuplicates }}
+    {{ .scratch.Set .type (uniq (.scratch.Get .type)) }}
+{{ end }}

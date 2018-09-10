@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+
+    <body id="page-top">
+        {{ block "header" . }}
+            <header>
+                {{ partial "nav.html" (dict "context" . "fixed" false) }}
+                {{ partial "pages/hero.html" . }}
+            </header>
+        {{ end }}
+
+        {{ block "body" . }}
+            <main id="list-content">
+                {{ block "sidebar" . }}
+                    {{ partial "pages/sidebar.html" . }}
+                {{ end }}
+                <div class="list-page">
+                    <div class="list-page-container">
+                        <article class="list-page-content">
+                            {{ block "title" . }}
+                                {{ partial "pages/title.html" . }}
+                            {{ end }}
+
+                            {{ block "content" . }}{{ end }}
+
+                            {{ block "lists" . }}
+                                {{ partial "pages/lists.html" . }}
+                            {{ end }}
+                        </article>
+                    </div>
+                </div>
+            </main>
+        {{ end }}
+
+        {{ block "footer" . }}
+            <footer>
+                {{ partial "footer.html" . }}
+            </footer>
+        {{ end }}
+        {{ block "tail" . }}
+            {{ partial "tail.html" . }}
+        {{ end }}
+    </body>
+</html>
