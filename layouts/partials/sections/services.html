@@ -1,0 +1,48 @@
+{{ "<!-- SERVICES -->" | safeHTML }}
+{{ with .Site.Data.services }}
+    <section class="section" id="services"
+            {{ with .background_image }}
+                style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"
+            {{ end }}
+        >
+        {{ with .title }}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="text-center">
+                        <h2 class="section-heading text-tertiary">{{ . }}</h2>
+                        <hr class="primary">
+                    </div>
+                </div>
+            </div>
+        {{ end }}
+
+        <div class="container services-container">
+            <div class="row">
+                {{ partial "utils/get-number-columns.html" (dict "length" (len .services) "scratch" $.Scratch) }}
+                {{ $col_layout := $.Scratch.Get "col_layout" }}
+                {{ range .services }}
+                    <div class="{{ $col_layout }} text-center">
+                        <div class="service-box">
+                            {{ $pack := or .icon_pack "fa" }}
+                            <i class="{{ $pack }} {{ .icon }} wow bounceIn icon-x6"></i>
+                            <h3>{{ .name }}</h3>
+                            {{ with .text }}
+                                <p>{{ . }}</p>
+                            {{ end }}
+                            {{ if .list }}
+                                <ul>
+                                    {{ range .list }}
+                                        <li>
+                                            {{ . }}
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ end }}
+                {{ $.Scratch.Delete "col_layout" }}
+            </div>
+        </div>
+    </section>
+{{ end }}

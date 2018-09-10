@@ -1,0 +1,34 @@
+:root{
+
+    --GENERAL-FONT-1: "Merriweather", "Helvetica Neue", Arial, sans-serif;
+    --GENERAL-FONT-2: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+
+    --GENERAL-COLOR-1: rgb(64, 95, 240);
+    --GENERAL-COLOR-2: white;
+    --GENERAL-FONT-COLOR-1: black;
+    --GENERAL-FONT-COLOR-2: var(--GENERAL-COLOR-1);
+    --GENERAL-FONT-COLOR-3: var(--GENERAL-COLOR-2);
+    --GENERAL-FONT-COLOR-4: rgba(255, 255, 255, .7);
+    --GENERAL-LINK-COLOR-1: var(--GENERAL-COLOR-1);
+    --GENERAL-LINK-ACTIVE-COLOR-1: rgb(18, 56, 235);
+    --GENERAL-LINK-COLOR-2: rgba(64, 64, 64, .75);
+    --GENERAL-LINK-ACTIVE-COLOR-2: rgb(18, 56, 235);
+
+    --GENERAL-IMAGE-BORDER-RADIUS: 50%;
+    --GENERAL-BOX-SHADOW: 0px 3px 9px rgba(0, 0, 0, .05);
+
+
+    --HR-WIDTH: 20%;
+
+    --COPYRIGHT-FONT: Arial, sans-serif;
+
+    /* ! - Must be in "px", else need to change "calc" formula for "empty-padding" */
+    --HERO-IMAGE-MARGIN-BOTTOM: -50px;
+    --HERO-IMAGE-MARGIN-BOTTOM-SMALL: -75px;
+
+    --PROJECTBOX-IMAGE-WIDTH: 650px;
+    --PROJECTBOX-CAPTION-BACKGROUND-COLOR: rgba(64, 95, 240, .9);
+
+    --NAVBAR-HEIGHT: 50px; /* ! - Must correspond to the real navbar height! (Horrible hack) */
+    --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+    <body id="page-top">
+        <header>
+            {{ partial "header.html" . }}
+        </header>
+        {{ partial "homepage.html" . }}
+        <footer>
+            {{ partial "footer.html" . }}
+        </footer>
+        {{ partial "tail.html" . }}
+    </body>
+</html>

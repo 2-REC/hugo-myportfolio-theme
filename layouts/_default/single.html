@@ -1,0 +1,46 @@
+{{ define "content" }}
+    {{ $logos := .Resources.Match "logos/*" }}
+    {{ if gt (len $logos) 0 }}
+        <ul class="logos-list" aria-hidden="true">
+            {{ range $logos }}
+                {{ if eq .ResourceType "image" }}
+                    {{ $image := .Fit "64x64"  }}
+                    <li>
+                        <figure>
+                            <img class="logo" src="{{ $image.RelPermalink }}" alt="" title="{{ $image.Title }}">
+                        </figure>
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    {{ end }}
+
+    {{ with .Content}}
+        <div>
+        {{ . | markdownify }}
+        <hr>
+        </div>
+    {{ end }}
+
+    {{ $images := .Resources.Match "images/*" }}
+    {{ if gt (len $images) 0 }}
+        <ul class="images-list" aria-hidden="true">
+            {{ range $images }}
+                {{ if eq .ResourceType "image" }}
+                    {{ $image := .Resize "512x"  }}
+                    <li>
+                        <figure>
+                            <img class="image" src="{{ $image.RelPermalink }}" alt="" title="{{ $image.Title }}">
+                            {{ with $image.Params.copyright }}
+                                <figcaption class="copyright">{{ . | markdownify }}</figcaption>
+                            {{ end }}
+                        </figure>
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    {{ end }}
+{{ end }}
+
+{{ define "lists" }}
+{{ end }}

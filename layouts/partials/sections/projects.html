@@ -1,0 +1,23 @@
+{{ "<!-- PROJECTS -->" | safeHTML }}
+<section class="section projects" id="projects_{{ trim .Dir "/\\" }}">
+    {{ with .Title }}
+    <div class="container-fluid padding-title">
+            <div class="row">
+                <div class="col-md-8 text-right">
+                    <h2 class="section-heading">{{ . }}</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+    {{ end }}
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            {{/* Sort the list */}}
+            {{ partial "utils/ordered-list.html" (dict "list" .Sections "params" .Params "scratch" .Scratch) }}
+            {{ range (.Scratch.Get "list") }}
+                {{ .Render "limage" }}
+            {{ end }}
+            {{ .Scratch.Delete "list" }}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+{{ "<!-- HOME -->" | safeHTML }}
+{{ with .Site.Data.home }}
+    <section id="home"
+            {{ with .background }}
+                style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"
+            {{ end }}
+        >
+        <div class="header-content">
+            <div class="header-content-inner">
+                {{ with .title }}
+                    <h1>{{ . | markdownify  }}</h1>
+                {{ end }}
+                {{ with .subtitle }}
+                    <h2>{{ . | markdownify }}</h2>
+                {{ end }}
+                {{ if .title }}
+                    <hr class="primary">
+                {{ end }}
+                {{ with .text }}
+                    <p>{{ . | markdownify }}</p>
+                {{ end }}
+                {{ with .button_text }}
+                    <a href="#about" class="btn btn-primary page-scroll">
+                        {{ . }}<br>
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+{{ end }}
