@@ -3,10 +3,8 @@
 baseurl = "https://example.org/"
 languageCode = "en-us"
 title = "HUGO MyPortfolio Theme"
-#theme = "myportfolio"
-favicon = "favicon.ico"
+theme = "hugo-myportfolio-theme"
 
-#disableLiveReload = true
 
 [params]
 
