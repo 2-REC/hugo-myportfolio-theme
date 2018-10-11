@@ -25,7 +25,7 @@ For more information read the official [setup guide](//gohugo.io/overview/instal
 
 ## Getting started
 
-After installing the Creative Theme successfully it requires just a few more steps to get the site running.
+After installing the "MyPortfolio" Theme successfully it requires just a few more steps to get the site running.
 
 
 ### The config file
