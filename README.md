@@ -39,6 +39,10 @@ Strings and values can be changed in order to customize the website.
 Details about each parameter and their role can be found in the file itself.
 
 
+Additionally to the configuration file, data files (located in the "data" folder) are required for the different sections of the homepage.
+The following paragraphs detail the required data for each of the sections.
+
+
 ### HOME: Set the homepage
 
 !!!! TODO !!!!
