@@ -45,35 +45,92 @@ The following paragraphs detail the required data for each of the sections.
 
 ### HOME: Set the homepage
 
-!!!! TODO !!!!
-(how to change background)
+The content of the top section of the homepage is fetch from the "home" data file.
+
+The different parameters that can be used are:
+- "title": The title for the website. Typically your name or company name.
+- "subtitle": A subtitle. Typically the kind of services or specialty you provide.
+- "background": The image used for the background.
+- "text": A short phrase to draw attention and make the visitor to see more.
+- "button_text": The text displayed on the scrolling button.
+
+All the parameters are optional - if not defined, it will not be added to the page content.
 
 
 ### ABOUT: Introduce yourself
 
-!!!! TODO !!!!
-...
+The content of the "about" section of the homepage is fetch from the "about" data file.
+
+The different parameters that can be used are:
+- "title": The title of the section. Typically "ABOUT" would be used.
+- "avatar": The image used for the avatar.
+- "short_text": A short text briefly describing the company or person.
+- "long_text": A longer text providing more detailled information, and potentially links to the other sections.
+
+All the parameters are optional - if not defined, it will not be added to the page content.
 
 
 ### SERVICES: Add your services
 
-!!!! TODO !!!!
-...
+The content of the "services" section of the homepage is fetch from the "services" data file.
+
+The different parameters that can be used are:
+- "title": The title of the section. Typically "SERVICES" would be used.
+- "background_image": The image used for the background.
+- "services": List of services. At least one must be provided.
+    Each service has a set of subfields:
+    - "name": The name of the service.
+    - "icon": The icon used for the service.
+    - "icon_pack": The icon package/family (look at icons documentation).
+    - "text": A text describing the service.
+    - "list": A list of sub-services displayed as bullet points.
+
+All the parameters except "services" are optional - if not defined, it will not be added to the page content.
+The "services" list parameter must exist and contain at least one element.
 
 
 ### SKILLS: Show your skills
 
-!!!! TODO !!!!
-...
+The content of the "skills" section of the homepage is fetch from the "skills" data file.
 
+The different parameters that can be used are:
+- "title": The title of the section. Typically "SKILLS" would be used.
+- "tags_label": Label used for the tags found in the content sections.
+- "categories_label": Label used for the categories found in the content sections.
+- "text": Text describing the content of the page.
+- "download":
+    - "button_text": Text used for the button.
+    - "filename": Name of the file to download. The file must be in "static/files".
+    - "icon": The icon used for the button.
+    - "icon_pack": The icon package/family (look at icons documentation).
 
-### PROJECTS: Create a portfolio (or more)
-
-!!!! TODO !!!!
-...
+All the parameters except "text" are optional - if not defined, it will not be added to the page content.
+(TODO: "text" should be optional)
 
 
 ### CONTACT: Add contact information
+
+The content of the "skills" section of the homepage is fetch from the "skills" data file.
+
+The different parameters that can be used are:
+- "title": The title of the section. Typically "CONTACT" would be used.
+- "background_image": The image used for the background.
+- "photo": The image used for the avatar.
+- "description": A short text typically with a call to action.
+- "email": Email information.
+    - "address: Email address.
+    - "link": Whereas the address can be used as a link.
+    - "icon": The icon used next to the address.
+    - "icon_pack": The icon package/family (look at icons documentation).
+- "social": List of social network icons/links.
+    - "icon": The icon used for the button.
+    - "icon_pack": The icon package/family (look at icons documentation).
+    - "link": The link to the social network profile page.
+
+All the parameters are optional - if not defined, it will not be added to the page content.
+
+
+### PROJECTS: Create a portfolio (or more)
 
 !!!! TODO !!!!
 ...
