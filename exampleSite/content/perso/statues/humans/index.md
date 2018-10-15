@@ -2,8 +2,8 @@
 title: "Human Statues"
 subtitle: "Some statues of humans."
 small_image: "small.jpg"
-categories: [ "statue", "vietnam" ]
-tags: [ "art", "human" ]
+categories: [ "art", "statue", "vietnam" ]
+tags: [ "asian", "human" ]
 resources:
 ##For each "image" image file:
 - src: "images/1.jpg"
