@@ -34,3 +34,5 @@
 {{ if .removeDuplicates }}
     {{ .scratch.Set .type (uniq (.scratch.Get .type)) }}
 {{ end }}
+
+{{ .scratch.Set .type (sort (.scratch.Get .type)) }}
