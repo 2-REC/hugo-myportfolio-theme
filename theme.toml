@@ -5,7 +5,7 @@ description = "A portfolio HUGO theme for developers and creatives."
 homepage = "//github.com/2-REC/hugo-myportfolio-theme"
 tags = ["portfolio"]
 features = ["responsive", "portfolio", "substitutable strings"]
-min_version = "0.41"
+min_version = 0.44
 
 [author]
   name = "2-REC"
