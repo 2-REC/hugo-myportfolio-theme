@@ -5,7 +5,7 @@ categories: [ "art" ]
 tags: [ "drawing", "asian" ]
 
 resources:
-- src: "images/flower_scene.jpg.jpg"
+- src: "images/flower_scene.jpg"
   title: "A flower seller in HCMC"
 ---
 
