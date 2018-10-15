@@ -40,12 +40,8 @@
                     {{ $label := or $data.tags_label "TAGS" }}
                     <h4>{{ $label }}</h4>
                     <div class="tags">
-                        {{ range $project_sections }}
-                            {{ with $.Site.GetPage "section" . }}
-                                {{ $params := (dict "type" "tags" "context" . "scratch" .Scratch "removeDuplicates" true) }}
-                                {{ partial "utils/list-keywords.html" $params }}
-                            {{ end }}
-                        {{ end }}
+                        {{ $params := (dict "type" "tags" "context" $project_sections "site" $.Site "scratch" .Scratch "removeDuplicates" true) }}
+                        {{ partial "utils/list-keywords-range.html" $params }}
                     </div>
                 </div>
             </div>
@@ -55,12 +51,8 @@
                     {{ $label := or $data.categories_label "CATEGORIES" }}
                     <h4>{{ $label }}</h4>
                     <div class="tags">
-                        {{ range $project_sections }}
-                            {{ with $.Site.GetPage "section" . }}
-                                {{ $params := (dict "type" "categories" "context" . "scratch" .Scratch "removeDuplicates" true) }}
-                                {{ partial "utils/list-keywords.html" $params }}
-                            {{ end }}
-                        {{ end }}
+                        {{ $params := (dict "type" "categories" "context" $project_sections "site" $.Site "scratch" .Scratch "removeDuplicates" true) }}
+                        {{ partial "utils/list-keywords-range.html" $params }}
                     </div>
                 </div>
             </div>

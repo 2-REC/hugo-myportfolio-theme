@@ -1,8 +1,9 @@
 <div class="col-lg-4 col-sm-6">
     {{ $path := replace .Dir "\\" "/" }}
     <a href="/{{ $path }}" class="project-box project-link">
-        {{ if .Params.small_image }}
-            {{ $image := .Resources.GetMatch .Params.small_image }}
+        {{ $image_file := or .Params.cover_image .Params.small_image }}
+        {{ if $image_file }}
+            {{ $image := .Resources.GetMatch $image_file }}
             {{ with $image }}
                 <img src="{{ .RelPermalink | relURL }}" class="img-responsive" alt="{{ .Name }}">
             {{ end }}
