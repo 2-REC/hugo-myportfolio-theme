@@ -36,6 +36,7 @@ In the [`exampleSite`](//github.com/2-REC/hugo-myportfolio-theme/tree/master/exa
 Copy this file in the root folder of the Hugo site.
 Strings and values can be changed in order to customize the website.
 
+Settings about the different sections in the homepage as well as the navigation menu can be defined in this file.
 Details about each parameter and their role can be found in the file itself.
 
 
