@@ -1,4 +1,7 @@
-# For more information take a look at the "README.md".
+# For more information look at "README.md".
+
+# GLOBAL SITE SETTINGS
+# Parameters used by HUGO to configure the site's global settings.
 
 baseurl = "https://example.org/"
 languageCode = "en-us"
@@ -8,12 +11,17 @@ theme = "hugo-myportfolio-theme"
 
 [params]
 
-    # File(s) containing overriden CSS variables (OPTIONAL)
+    # GENERAL SITE PARAMETERS
+    # Parameters used by the site at the global level.
+
+    # File(s) containing overriden CSS variables (can have more than 1) (OPTIONAL)
     custom_css = [ "custom.css" ]
 
     # ----------
 
-    # HTML HEAD METADATA
+    # SITE METADATA
+    # Parameters used to configure metadata in the HTML "head" section.
+
     [params.meta]
         # To provide some metadata for search engines (OPTIONAL)
         author = "<AUTHOR>"
@@ -25,12 +33,14 @@ theme = "hugo-myportfolio-theme"
     # ----------
 
     # HOMEPAGE
+    # Define the sections and the order in which they appear (MANDATORY)
     [params.homepage]
         sections = [ "home", "about", "services", "skills", "projects", "contact" ]
 
     # ----------
 
-    # NAVIGATION MENU (OPTIONAL)
+    # NAVIGATION MENU
+    # Define the navigation bar entries and the order in which they appear (OPTIONAL)
     [params.navigation]
 
         # Brand (OPTIONAL - but required if want HOME button)
@@ -57,7 +67,7 @@ theme = "hugo-myportfolio-theme"
         #    projects = [ { section = "<SECTION_DIRECTORY>", label = "<VALUE>" }, ... ]
         # ! - Values for "sections" in "projects" must be the same as used in "projects.params".
         # (& must correspond to the section directories)
-		[params.navigation.links]
+        [params.navigation.links]
             about    = "ABOUT"
             services = "SERVICES"
             skills   = "SKILLS"
