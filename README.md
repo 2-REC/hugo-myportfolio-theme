@@ -2,6 +2,7 @@
 
 "MyPortfolio Theme" is a portfolio for developers or creatives to showcase their projects.
 It is based on the [HUGO "Creative" Theme](//github.com/digitalcraftsman/hugo-creative-theme) by [digitalcraftsman](//github.com/digitalcraftsman), itself based on the [original Bootstrap theme](//github.com/IronSummitMedia/startbootstrap-creative) by [David Miller](//github.com/davidtmiller).
+Some modifications are based on other themes, which are described further.
 
 Noteworthy features of this Hugo theme are:
 - Responsive portfolio grid with hover effects.
@@ -11,6 +12,45 @@ Noteworthy features of this Hugo theme are:
 - ...
 
 ![Hugo MyPortfolio Theme Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/screenshot.png)
+
+
+## Theme structure and layout
+
+As in the "Creative" Theme, the theme's homepage holds the different sections. Its layout is a typical vertical single page.
+
+The structure and layout of the each section is described hereafter.
+
+
+### HOME
+
+The welcome section, at the top of the homepage.
+
+
+### ABOUT
+
+The introduction/presentation section.
+It is based on the "Biography" section of the ["Academic" theme](//github.com/gcushen/hugo-academic).
+
+
+### SERVICES
+
+Section presenting the services that can be provided, listed in categories and sub-categories.
+
+
+### SKILLS
+
+Section typically providing a link to a downloadable resume, as well as listing the different tags and categories that are found in the different projects sections.
+
+
+### PROJECTS
+
+Section serving as a portfolio, displaying a set of project categories (can be companies, technologies, etc.), linking to individual pages containing projects listing.
+It is based on the "Creative" theme "Portfolio" section, but with links to other pages instead of a pop-up window.
+
+
+### CONTACT
+
+Section providing the contact information.
 
 
 ## Installation
@@ -44,7 +84,7 @@ Additionally to the configuration file, data files (located in the "data" folder
 The following paragraphs detail the required data for each of the sections.
 
 
-### HOME: Set the homepage
+### HOME: Set the homepage header
 
 The content of the top section of the homepage is fetch from the "home" data file.
 
