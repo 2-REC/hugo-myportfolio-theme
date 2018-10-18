@@ -1,8 +1,7 @@
 # MyPortfolio Theme
 
 "MyPortfolio Theme" is a portfolio for developers or creatives to showcase their projects.
-It is based on the [HUGO "Creative" Theme](//github.com/digitalcraftsman/hugo-creative-theme) by [digitalcraftsman](//github.com/digitalcraftsman), itself based on the [original Bootstrap theme](//github.com/IronSummitMedia/startbootstrap-creative) by [David Miller](//github.com/davidtmiller).
-Some modifications are based on other themes, which are described further.
+It is based on the [HUGO "Creative" theme](//github.com/digitalcraftsman/hugo-creative-theme) by [digitalcraftsman](//github.com/digitalcraftsman), itself based on the [original Bootstrap theme](//github.com/IronSummitMedia/startbootstrap-creative) by [David Miller](//github.com/davidtmiller).
 
 Noteworthy features of this Hugo theme are:
 - Responsive portfolio grid with hover effects.
@@ -13,10 +12,9 @@ Noteworthy features of this Hugo theme are:
 
 ![Hugo MyPortfolio Theme Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/screenshot.png)
 
-
 ## Theme structure and layout
 
-As in the "Creative" Theme, the theme's homepage holds the different sections. Its layout is a typical vertical single page.
+As in the "Creative" theme, the theme's homepage holds the different sections. Its layout is a typical vertical single page.
 
 The structure and layout of the each section is described hereafter.
 
@@ -149,6 +147,12 @@ All the parameters except "text" are optional - if not defined, it will not be a
 (TODO: "text" should be optional)
 
 
+### PROJECTS: Create a portfolio (or more)
+
+!!!! TODO !!!!
+...
+
+
 ### CONTACT: Add contact information
 
 The content of the "skills" section of the homepage is fetch from the "skills" data file.
@@ -171,12 +175,6 @@ The different parameters that can be used are:
 All the parameters are optional - if not defined, it will not be added to the page content.
 
 
-### PROJECTS: Create a portfolio (or more)
-
-!!!! TODO !!!!
-...
-
-
 ### Run the website
 
 In order to see your site in action, run Hugo's built-in local server. 
@@ -189,8 +187,8 @@ In the browser, enter [`localhost:1313`](http://localhost:1313) in the address b
 ## Going further
 
 !!!! TODO !!!!
-(css override, ...?)
-...
+- describe css override
+- ...?
 
 
 ## Contributing
