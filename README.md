@@ -144,7 +144,6 @@ The different parameters that can be used are:
     - "icon_pack": The icon package/family (look at icons documentation).
 
 All the parameters except "text" are optional - if not defined, it will not be added to the page content.
-(TODO: "text" should be optional)
 
 
 ### PROJECTS: Create a portfolio (or more)
@@ -194,10 +193,8 @@ In the browser, enter [`localhost:1313`](http://localhost:1313) in the address b
 
 ## Contributing
 
-!!!! TODO !!!!
-Did you found a bug or got an idea for a new feature?
-Feel free to use the [issue tracker](//github.com/...theme.../issues) to let me know.
-Or make directly a [pull request](//github.com/...theme.../pulls).
+If you have found a bug, or have an idea for a new feature, please feel free to use the [issue tracker](//github.com/2-REC/hugo-myportfolio-theme/issues) to let me know.
+You can also make directly a [pull request](//github.com/2-REC/hugo-myportfolio-theme/pulls).
 
 Please create a separate branch for your pull request.
 
