@@ -14,7 +14,7 @@ Noteworthy features of this Hugo theme are:
 
 ## Theme structure and layout
 
-As in the "Creative" theme, the theme's homepage holds the different sections. Its layout is a typical vertical single page.
+As in the "Creative" theme, the theme's homepage holds the different sections. Its layout is a typical vertical single page, with a floating navigation bar on top.
 
 The structure and layout of the each section is described hereafter.
 
@@ -43,7 +43,7 @@ Section typically providing a link to a downloadable resume, as well as listing 
 ### PROJECTS
 
 Section serving as a portfolio, displaying a set of project categories (can be companies, technologies, etc.), linking to individual pages containing projects listing.
-It is based on the "Creative" theme "Portfolio" section, but with links to other pages instead of a pop-up window.
+It is based on the "Creative" theme "Portfolio" section, but with links to other pages instead of pop-up windows.
 
 
 ### CONTACT
@@ -74,7 +74,7 @@ In the [`exampleSite`](//github.com/2-REC/hugo-myportfolio-theme/tree/master/exa
 Copy this file in the root folder of the Hugo site.
 Strings and values can be changed in order to customize the website.
 
-Settings about the different sections in the homepage as well as the navigation menu can be defined in this file.
+Settings about the different sections in the homepage as well as the navigation menu are defined in this file.
 Details about each parameter and their role can be found in the file itself.
 
 
@@ -98,7 +98,7 @@ All the parameters are optional - if not defined, it will not be added to the pa
 
 ### ABOUT: Introduce yourself
 
-The content of the "about" section of the homepage is fetch from the "about" data file.
+The content of the "ABOUT" section of the homepage is fetch from the "about" data file.
 
 The different parameters that can be used are:
 - "title": The title of the section. Typically "ABOUT" would be used.
@@ -111,7 +111,7 @@ All the parameters are optional - if not defined, it will not be added to the pa
 
 ### SERVICES: Add your services
 
-The content of the "services" section of the homepage is fetch from the "services" data file.
+The content of the "SERVICES" section of the homepage is fetch from the "services" data file.
 
 The different parameters that can be used are:
 - "title": The title of the section. Typically "SERVICES" would be used.
@@ -130,7 +130,7 @@ The "services" list parameter must exist and contain at least one element.
 
 ### SKILLS: Show your skills
 
-The content of the "skills" section of the homepage is fetch from the "skills" data file.
+The content of the "SKILLS" section of the homepage is fetch from the "skills" data file.
 
 The different parameters that can be used are:
 - "title": The title of the section. Typically "SKILLS" would be used.
@@ -151,11 +151,12 @@ All the parameters except "text" are optional - if not defined, it will not be a
 
 !!!! TODO !!!!
 ...
+- Content: "config.toml" & corresponding "_index.md" file (from section name).
 
 
 ### CONTACT: Add contact information
 
-The content of the "skills" section of the homepage is fetch from the "skills" data file.
+The content of the "CONTACT" section of the homepage is fetch from the "contact" data file.
 
 The different parameters that can be used are:
 - "title": The title of the section. Typically "CONTACT" would be used.
