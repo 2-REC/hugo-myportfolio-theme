@@ -9,6 +9,9 @@ TODO:
         => Set size to minimum between width and height, keeping ratio (=> image cropped)
 ?        => OK or should fix problem?
 
+- [ ] "SKILLS" section:
+    - [ ] "text" paramter should be optional.
+
 - [ ] "PROJECTS" section:
     - [ ] Add a vertical scrolling text in the top right corner.
         => For scrolling text, look at:
