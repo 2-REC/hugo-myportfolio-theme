@@ -192,7 +192,8 @@ A set of CSS rules are used to define the appearance of the website.
 To make the website look more personal or to make it fit with the colour schemes of your company/brand, some CSS variables can be directly overriden using extra custom files (and thus not requiring to change anything in the code or main CSS file).
 
 In order to use custom files, simply add the files in the "static/css" directory, and specify their name (with extension) in the "custom_css" array variable in the "config.toml" file.
-The CSS variables that can be overriden are listed in the "default.css" file (in "static/css"), where they get their default value from. The provided "custom.css" file can also be used as template file.
+
+The CSS variables that can be overriden are listed in the "custom.css" file (in "static/css"). The file indicates for each variable the default value that will be used. These values are defined either in the "default.css" file, or directly hardcoded in the website's main CSS file ("theme.css") in case they're not defined elsewhere. The provided "custom.css" file can be used as template file, by uncommenting the desired variables.
 
 
 
