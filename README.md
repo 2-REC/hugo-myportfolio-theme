@@ -186,9 +186,14 @@ In the browser, enter [`localhost:1313`](http://localhost:1313) in the address b
 
 ## Going further
 
-!!!! TODO !!!!
-- describe css override
-- ...?
+### Customise the appearance - CSS Override
+
+A set of CSS rules are used to define the appearance of the website.
+To make the website look more personal or to make it fit with the colour schemes of your company/brand, some CSS variables can be directly overriden using extra custom files (and thus not requiring to change anything in the code or main CSS file).
+
+In order to use custom files, simply add the files in the "static/css" directory, and specify their name (with extension) in the "custom_css" array variable in the "config.toml" file.
+The CSS variables that can be overriden are listed in the "default.css" file (in "static/css"), where they get their default value from. The provided "custom.css" file can also be used as template file.
+
 
 
 ## Contributing
