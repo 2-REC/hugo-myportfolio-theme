@@ -1,4 +1,4 @@
-TODO:
+TODO - CODE:
 
 - [ ] Homepage:
     - [ ] Set order of sections from order in navigation bar.
@@ -22,3 +22,42 @@ TODO:
 
 - [ ] "ASIDE" section:
     => Could add optional section.
+
+
+========
+
+TODO - PUBLISH:
+
+Look at:
+gohugo.io/contribute/themes
+
+- [ ] check all URLs, & use RELATIVE everywhere (see "relURL")
+
+- [x] check if ".Hugo.Generator" is included somewhere
+
+- [ ] create new theme with: "hugo new theme <THEME_NAME>"
+  - [ ] check if we have .gitignore in "exampleSite" with "/public" & "/themes"
+  - [ ] copy all files in new directory => then see what needs to be committed additionally
+
+- [ ] test theme
+  => "hugoBasicExample"
+    https://github.com/gohugoio/hugoBasicExample
+  (or include "exampleSite")
+
+- [x] finish "theme.toml" with all required metadata (add tags!)
+  => check others on "gohugo.io/contribute/themes"
+
+- [ ] finish README.md
+  => look at "Hugo Artists Theme" for ideas
+  - [ ] find and finish "projects" stuff
+  - [ ] add examples?
+  - [ ] add more screenshots?
+  - [x] add features (404 page, custom css, ...)!
+
+- [ ] finish "config.toml"
+
+- [ ] check/clean code => could be done later ...
+
+- [x] add screenshot (1500x1000) & tn (900x600), PNG
+
+- [ ] add theme to "HugoThemes" github => open issue & add link
