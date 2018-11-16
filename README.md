@@ -4,10 +4,15 @@
 It is based on the [HUGO "Creative" theme](//github.com/digitalcraftsman/hugo-creative-theme) by [digitalcraftsman](//github.com/digitalcraftsman), itself based on the [original Bootstrap theme](//github.com/IronSummitMedia/startbootstrap-creative) by [David Miller](//github.com/davidtmiller).
 
 Noteworthy features of this Hugo theme are:
-- Responsive portfolio grid with hover effects.
-- Possibility to have more than one content sections.
+- Configurable home page (sections order and presence, as well as content).
+- Possibility to have arbitrary number of content sections.
+- Responsive portfolio grids with hover effects.
+- Can be used as a profesional showcase, a personal one, or both.
 - Dynamic generation of pages based on data content.
+- Easy site navigation via header navigation bar.
+- Easy content navigation via sidebars, and taxinomies (tags and categories).
 - Customisable CSS to override default values (such as main theme colours, fonts, etc.).
+- 404 page.
 - ...
 
 ![Hugo MyPortfolio Theme Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/screenshot.png)
