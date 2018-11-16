@@ -51,7 +51,7 @@ gohugo.io/contribute/themes
   => look at "Hugo Artists Theme" for ideas
   - [ ] find and finish "projects" stuff
   - [ ] add examples?
-  - [ ] add more screenshots?
+  - [x] add more screenshots
     => "list" (company/category) & "single" (project) examples.
   - [x] add features (404 page, custom css, ...)!
 
