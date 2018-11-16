@@ -155,6 +155,8 @@ All the parameters except "text" are optional - if not defined, it will not be a
 
 !!!! TODO !!!!
 ...
+=> List of companies/categories, linking to individual pages with projects listing.
+- Based on CREATIVE theme, "Portfolio", but with links to other pages.
 - Content: "config.toml" & corresponding "_index.md" file (from section name).
 
 
