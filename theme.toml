@@ -3,7 +3,7 @@ license = "Apache License 2.0"
 licenselink = "//github.com/2-REC/hugo-myportfolio-theme/blob/master/LICENSE"
 description = "A portfolio HUGO theme for developers and creatives."
 homepage = "//github.com/2-REC/hugo-myportfolio-theme"
-tags = ["portfolio"]
+tags = ["portfolio", "blog", "responsive", "personal", "business", "projects", "bootstrap" ]
 features = ["responsive", "portfolio", "substitutable strings"]
 min_version = 0.44
 
