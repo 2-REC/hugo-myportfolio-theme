@@ -10,7 +10,7 @@ TODO:
 ?        => OK or should fix problem?
 
 - [ ] "SKILLS" section:
-    - [ ] "text" paramter should be optional.
+    - [ ] "text" parameter should be optional.
 
 - [ ] "PROJECTS" section:
     - [ ] Add a vertical scrolling text in the top right corner.
