@@ -85,6 +85,21 @@ theme = "hugo-myportfolio-theme"
         # (& must correspond to the section directories)
         categories = [ "pro", "perso" ]
 
+        # Post orders:
+        # - list of posts:
+        #    - default: date.
+        #    - common to all, defined globally here.
+        #    - can be overriden at page level (in "_index.md").
+        # - list of brothers:
+        #    - default: from parent (if no parent => title).
+        #        - list: parent.sections_order
+        #        - single: parent.posts_order
+        # - list of sections:
+        #    - default: title.
+        #    - common to all, efined globally here.
+        #    - can be overriden at page level
+        #        - list: in "_index.md"
+        #        - single: in "index.md" (or "post.md" if post is not a bundle)
         # Required as default values.
         sections_order = "title"
         sections_order_reverse = false
