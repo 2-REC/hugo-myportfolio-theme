@@ -159,6 +159,10 @@ All the parameters except "text" are optional - if not defined, it will not be a
 - Based on CREATIVE theme, "Portfolio", but with links to other pages.
 - Content: "config.toml" & corresponding "_index.md" file (from section name).
 
+![Section Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/section.png)
+![List Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/list.png)
+![Project Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/project.png)
+
 
 ### CONTACT: Add contact information
 
