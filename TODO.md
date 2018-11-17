@@ -35,28 +35,25 @@ TODO - PUBLISH:
 Look at:
 gohugo.io/contribute/themes
 
-- [x] check all URLs, & use RELATIVE everywhere (see "relURL")
+- [x] Check all URLs, & use relative URLs everywhere (see "relURL").
 
-- [x] check if ".Hugo.Generator" is included somewhere
+- [x] Make sure ".Hugo.Generator" is included in "head.html".
 
-- [x] test theme
-  - [x] "hugoBasicExample" (https://github.com/gohugoio/hugoBasicExample)
+- [x] Test theme.
+  - [x] With "hugoBasicExample" (https://github.com/gohugoio/hugoBasicExample)
     => Doesn't work.
   - [x] Include "exampleSite".
 
-- [x] finish "theme.toml" with all required metadata (add tags!)
-  => check others on "gohugo.io/contribute/themes"
+- [x] Finish "theme.toml" with all required metadata (add tags!).
 
-- [ ] finish README.md
-  => look at "Hugo Artists Theme" for ideas
-  - [ ] find and finish "projects" stuff
-  - [ ] add examples?
-  - [x] add more screenshots
-    => "list" (company/category) & "single" (project) examples.
-  - [x] add features (404 page, custom css, ...)!
+- [x] Finish README.md.
+  => Look at "Hugo Artists Theme" for ideas.
+  - [x] Find and finish "projects" stuff.
+  - [x] Add more screenshots.
+  - [x] Add features (404 page, custom css, ...).
 
-- [x] finish "config.toml"
+- [x] Finish "config.toml".
 
-- [x] add screenshot (1500x1000) & tn (900x600), PNG
+- [x] Add screenshot (1500x1000) & tn (900x600), in PNG format.
 
-- [ ] add theme to "HugoThemes" github => open issue & add link
+- [ ] Add theme to "HugoThemes" github => open issue & add link.
