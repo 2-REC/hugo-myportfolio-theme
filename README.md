@@ -50,6 +50,8 @@ Section typically providing a link to a downloadable resume, as well as listing 
 Section serving as a portfolio, displaying a set of project categories (can be companies, technologies, etc.), linking to individual pages containing projects listing.
 It is based on the "Creative" theme "Portfolio" section, but with links to other pages instead of pop-up windows.
 
+The section can be present more than once if several portfolio are to be showcased. It could for example be used to display a "profesional" portfolio as well as a "personal" one.
+
 
 ### CONTACT
 
