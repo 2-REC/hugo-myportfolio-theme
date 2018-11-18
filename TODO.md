@@ -77,8 +77,8 @@ TODO - CODE:
 
 CODE CHECK/BUGS:
 
-[layouts]
-    [_default]
+- layouts
+    - _default
         - [ ] baseof.html
             - [ ] Check/adapt CSS for "list-content" & "list-page".
 
@@ -96,8 +96,8 @@ CODE CHECK/BUGS:
                 => And check if needed anywhere else.
             - [ ] Change size of images once have gallery style images (clickable to view)
 
-    [partials]
-        [pages]
+    - partials
+        - pages
             - [ ] lists.html
                 - [ ] For posts listing, descend recursively instead of only handling first level.
 
@@ -110,7 +110,7 @@ CODE CHECK/BUGS:
                 - [ ] Add a "path" element at beginning for easy navigation.
                     eg: "HOME > WORK_PRO > VRCONTEXT > post"
 
-        [sections]
+        - sections
             - [ ] about.html
                 - [ ] Add microdata
                     - [ ] For row containing the "profile":
@@ -164,7 +164,7 @@ CODE CHECK/BUGS:
                         With
                         {{ with $.Site.GetPage . }}
 
-        [utils]
+        - utils
             - [ ] get-keywords.html
                 - [ ] Add a parameter to specify order (based on wieght, title, occurrences, ...)
                 (now hardcoded on alphanumerical value - at end of file)
@@ -231,8 +231,8 @@ CODE CHECK/BUGS:
             - [ ] For external "libs" (Bootstrap, FontAwesome, JQuery?)
                 => Use CDN & fallback on local files. (see links)
 
-[static]
-    [css]
+- static
+    - css
         - [ ] custom.css
             - [ ] Check that all variables are listed.
             - [ ] File should be removed from theme (as it is optional, and name specified in "config.toml").
@@ -249,7 +249,7 @@ CODE CHECK/BUGS:
             - [ ] For "main" "min-height", need to consider header and footer heights as well.
                 => Write JS code to get the values.
 
-    [js]
+    - js
         - [ ] Check/adapt license etc.
 
 
