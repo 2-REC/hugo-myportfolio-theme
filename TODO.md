@@ -73,3 +73,189 @@ TODO - CODE:
 
 - [ ] "ASIDE" section:
     => Could add optional section.
+
+
+CODE CHECK/BUGS:
+
+[layouts]
+    [_default]
+        - [ ] baseof.html
+            - [ ] Check/adapt CSS for "list-content" & "list-page".
+
+        - [ ] li.html
+            - [ ] Change layout of links, and put everything in the "a" tag.
+                => Do something similar to "project-box".
+
+        - [ ] limage.html
+            - [ ] Determine number of columns and offsets based on content.
+                For <div class="col-lg-4 col-sm-6">
+                => Could use "get-number-columns.html".
+
+        - [ ] single.html
+            - [ ] Keep aria-hidden?
+                => And check if needed anywhere else.
+            - [ ] Change size of images once have gallery style images (clickable to view)
+
+    [partials]
+        [pages]
+            - [ ] lists.html
+                - [ ] For posts listing, descend recursively instead of only handling first level.
+
+            - [ ] sidebar.html
+                - [ ] Make "categories" & "tags" optional?
+                - [ ] Get texts from data instead of hardcoded ("HOME", "CATEGORIES", "TAGS")
+
+
+            - [ ] title.html
+                - [ ] Add a "path" element at beginning for easy navigation.
+                    eg: "HOME > WORK_PRO > VRCONTEXT > post"
+
+        [sections]
+            - [ ] about.html
+                - [ ] Add microdata
+                    - [ ] For row containing the "profile":
+                        - what itemtype? (person? organiation? ...?)
+                        <div class="row" itemprop="author" itemscope
+                                itemtype="http://schema.org/Person"
+                                itemref="{{ if $.Site.Params.email }}person-email{{ end }}{{ if $.Site.Params.phone }} person-telephone{{ end }}{{ if $.Site.Params.address}} person-address{{ end }}"
+
+                            >
+                    - [ ] Under "portrait"
+                        - See if want/need microdata
+                        - Is "meta" tag required? (or microdata can be in div?)
+                            <meta itemprop="image" content="{{ (printf "images/%s" .) | absURL }}">
+                        - For "short_text"
+                            <h2 itemprop="name">{{ . | markdownify }}</h2>
+
+                        - For "long_text"
+                            <div class="col-xs-12 col-md-8" itemprop="description">
+
+
+            -[ ]  contact.html
+                - [ ] Add microdata for portrait (and others?)
+                    itemprop="description"?
+                - [ ] Add form at end (& see how to handle with static site)
+                    <div class="col-md-4 col-md-offset-2 text-center">
+                        ... (form)
+                    </div>
+
+            - [ ] home.html
+                - [ ] LATER: BACKGROUND.
+                    => Set size to minimum between width and height, keeping ratio (=> image cropped)
+                        - Doesn't seem perfect in CREATIVE theme, image sometimes not covering entire screen.
+                        => OK or should fix problem?
+
+            - [ ] projects.html
+                - [ ] Add "all_projects" at end of list!
+                    => set front matter, etc.
+                    {{ .Render "limage" }}
+
+            - [ ] services.html
+                - [ ] For "services-container"
+                    => When updating to BOOTSTRAP 4, use "justify-content-around"
+
+            - [ ] skills.html
+                - [ ] For "$data.download"
+                    => When updating to BOOTSTRAP 4, use "float-{sm,md,lg,xl}-{left,right,none}" to allow the button to the right (with offset)
+
+                - [ ] For tags & categories:
+                    => When updating to HUGO 0.45, replace:
+                        {{ with $.Site.GetPage "section" . }}
+                        With
+                        {{ with $.Site.GetPage . }}
+
+        [utils]
+            - [ ] get-keywords.html
+                - [ ] Add a parameter to specify order (based on wieght, title, occurrences, ...)
+                (now hardcoded on alphanumerical value - at end of file)
+            - [ ] get-number-columns.html
+                - [ ] Enhance by adding "offsets" & "xl" (& "xs", "sm"?)
+                    => Output should be such as:
+                        .Scratch.Set "col-sizes" "col-md-6 col-lg-4 col-xl-5"
+                        .Scratch.Set "col-offsets" "col-xl-offset-1"
+                        & in loop: class="{{ .Scratch.Get "col-sizes" }} {{ .Scratch.Get "col-offsets" }} text-center"
+                        ! - delete Scratch variables after, & delete "offsets" after first iteration (end of first)!
+
+        - [ ] footer.html
+            - [ ] Fix problem that not at bottom of page.
+                => Need changes in CSS for main tags (html, body, sections, etc?)
+            - [ ] Set content...
+
+        - [ ] head.html
+            (Look at backuped file)
+            - [ ] Use some "blocks" to allow overriding parts..
+            - [ ] See about the custom fonts (if keep same, change, or remove)
+                => And see if "safe"/stable to use URLs...
+            - [ ] Check end of file (Shim & Respond.js stuff) 
+                => Needed? keep?
+            - [ ] Look at other header files (in other themes) 
+                => "header.html" in Osprey (lots of other stuff!)
+            - [ ] Add meta params in config:
+                In {{ "<!-- Meta data -->" | safeHTML }}
+                - meta
+!                    - favicon
+                         (& other favicon sutff...?)
+?                    - theme
+                        <meta name="theme" content="THEME_NAME">
+            - [ ] Check if need other meta params in config:
+                In {{ "<!-- Meta data -->" | safeHTML }}
+                - author
+                - description
+                - ...?
+            - [ ] Check about Google Analytics stuff (at end of file as well).
+            - [ ] Check for RSS stuff
+            - [ ] check Favicon stuff (what they are & if needed)
+                (From "minimal-academic" theme)
+                => Could have a "favicon.html"...
+            - [ ] For external "libs" (Bootstrap, FontAwesome, JQuery?)
+                => Use CDN & fallback on local files. (see links)
+                E.g.: for FontAwesome:
+                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+            - [ ] Fonts: see what fonts we use, & what's needed.
+                In {{ "<!-- Custom Fonts -->" | safeHTML }}
+                => Depends on custom CSS!
+            - [ ] Check publish meta stuff.
+            - [ ] Check about "shiv" & "respond" stuff.
+
+
+        - [ ] homepage.html
+            - [ ] When updating to HUGO version 0.45, replace:
+                {{ with $.Site.GetPage "section" . }}
+              with:
+                {{ with $.Site.GetPage . }}
+            - [ ] use google analytics? (or "google_analytics_async" in header?), or none?
+                {{ template "_internal/google_analytics.html" . }
+
+
+        - [ ] tail.html
+            - [ ] For external "libs" (Bootstrap, FontAwesome, JQuery?)
+                => Use CDN & fallback on local files. (see links)
+
+[static]
+    [css]
+        - [ ] custom.css
+            - [ ] Check that all variables are listed.
+            - [ ] File should be removed from theme (as it is optional, and name specified in "config.toml").
+
+        - [ ] theme.css
+            - [ ] Check/adapt everything.
+            - [ ] See licensing stuff at beginning.
+            - [ ] Should merge "icons-list" rules with "logos-list" & "images-list" rules.
+            - [ ] Change size of ".image" once have gallery style images (clickable to view).
+                (also for "@media(max-width: 448px)")
+            - [ ] Fix box height problem (cells of different height, aligning badly when medium screen).
+                => Update to BOOTSTRAP 4 should solve problem (then can remove "min-height: 300px;").
+
+            - [ ] For "main" "min-height", need to consider header and footer heights as well.
+                => Write JS code to get the values.
+
+    [js]
+        - [ ] Check/adapt license etc.
+
+
+
+
+
+
+
+
