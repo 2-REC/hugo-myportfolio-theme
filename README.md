@@ -3,6 +3,11 @@
 "MyPortfolio Theme" is a portfolio for developers or creatives to showcase their projects.
 It is based on the [HUGO "Creative" theme](//github.com/digitalcraftsman/hugo-creative-theme) by [digitalcraftsman](//github.com/digitalcraftsman), itself based on the [original Bootstrap theme](//github.com/IronSummitMedia/startbootstrap-creative) by [David Miller](//github.com/davidtmiller).
 
+The main feature of this theme is the possibility to have more than one portfolio section.
+It can be used to showcase several portfolios, typically convenient for polyvalent individuals or companies.
+One could for example have different portfolios depending on the type of work, such as "Technical", "Artistic", "Experimental", etc.
+Another could have different portfolios grouping his work into "Profesional", "Personal" and "Academic".
+
 Noteworthy features of this Hugo theme are:
 - Configurable home page (sections order and presence, as well as content).
 - Possibility to have arbitrary number of content sections.
