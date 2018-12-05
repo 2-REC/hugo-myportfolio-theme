@@ -2,7 +2,7 @@
 {{ with .Site.Data.services }}
     <section class="section" id="services"
             {{ with .background_image }}
-                style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"
+                style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
             {{ end }}
         >
         {{ with .title }}
