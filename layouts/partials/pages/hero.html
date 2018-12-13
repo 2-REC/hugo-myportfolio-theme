@@ -3,7 +3,7 @@
     {{ $image := .Resources.GetMatch .Params.image }}
     {{ if $image }}
         <div class="header-image"
-                style="background-image: url('{{ $image.RelPermalink | relURL }}');"
+                style="background-image: url('{{ $image.Permalink }}');"
             >
             {{ with .Params.image_copyright }}
                 <p class="copyright">{{ . | markdownify }}</p>

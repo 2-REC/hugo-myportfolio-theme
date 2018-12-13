@@ -2,7 +2,7 @@
 {{ with .Site.Data.home }}
     <section id="home"
             {{ with .background }}
-                style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"
+                style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
             {{ end }}
         >
         <div class="header-content">

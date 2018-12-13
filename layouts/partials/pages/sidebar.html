@@ -6,10 +6,10 @@
         {{ with $image }}
             <div class="sidebar-image">
                 {{ if $.Params.small_url }}
-                <a href="{{ $.Params.small_url | relURL }}" target="_blank" rel="noopener noreferrer">
+                <a href="{{ $.Params.small_url | absURL }}" target="_blank" rel="noopener noreferrer">
                 {{ end }}
                     {{ $alt := or $.Params.small_url "" }}
-                    <img src="{{ .RelPermalink | relURL }}" alt="{{ $alt }}">
+                    <img src="{{ .Permalink }}" alt="{{ $alt }}">
                 {{ if $.Params.small_url }}
                 </a>
                 {{ end }}
@@ -22,7 +22,7 @@
     {{ "<!-- Navigation Tree -->" | safeHTML }}
     <div class="sidebar-tree">
         {{ with .Parent }}
-            <a class="parent-link" href="{{ .Permalink | relURL }}">
+            <a class="parent-link" href="{{ .Permalink }}">
                 {{ if not .IsHome }}
                     <i class="fas fa-chevron-circle-left"></i>
                     {{ .Title }}

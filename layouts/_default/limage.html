@@ -5,7 +5,7 @@
         {{ if $image_file }}
             {{ $image := .Resources.GetMatch $image_file }}
             {{ with $image }}
-                <img src="{{ .RelPermalink | relURL }}" class="img-responsive" alt="{{ .Name }}">
+                <img src="{{ .Permalink }}" class="img-responsive" alt="{{ .Name }}">
             {{ end }}
         {{ end }}
 
