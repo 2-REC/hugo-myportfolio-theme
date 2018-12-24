@@ -2,7 +2,7 @@
 {{ with .Site.Data.contact }}
     <section class="section" id="contact"
             {{ with .background_image }}
-                style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"
+                style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
             {{ end }}
         >
         <div class="container-fluid">
@@ -19,7 +19,7 @@
                 <div class="col-md-4 col-md-offset-1 text-center">
                     <div class="profile bg-secondary">
                         {{ with .photo }}
-                            <div class="portrait" title="photo: {{ . }}" style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"></div>
+                            <div class="portrait" title="photo: {{ . }}" style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"></div>
                         {{ end }}
 
                         {{ with .description }}

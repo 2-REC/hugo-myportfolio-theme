@@ -15,7 +15,7 @@
                         <div class="col-xs-12 text-center">
                             {{ with .background_image }}
                                 <div class="page404-image" title="image: {{ . }}"
-                                        style="background-image: url('{{ (printf "images/%s" .) | relURL }}');"
+                                        style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
                                     >
                                 </div>
                             {{ end }}
