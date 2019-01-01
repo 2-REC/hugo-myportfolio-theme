@@ -1,6 +1,7 @@
 TODO - CODE:
 
 - [ ] General:
+    - [ ] Check for css urls (Have to hardcode absolute to work... check others)
     - [ ] Allow to not have the footer
     - [ ] Make better footer
     - [ ] Check/clean the entire code ...
