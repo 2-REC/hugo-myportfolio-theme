@@ -1,6 +1,8 @@
 TODO - CODE:
 
 - [ ] General:
+    - [ ] Allow to not have the footer
+    - [ ] Make better footer
     - [ ] Check/clean the entire code ...
     - [ ] Make sure page 404 is loaded when 404 error
     - [ ] Add attribute "rel=nofollow" for "a" elements pointing to companies?
