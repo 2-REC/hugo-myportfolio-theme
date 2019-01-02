@@ -12,12 +12,14 @@
     {{ end }}
     <div class="container-fluid">
         <div class="row no-gutter">
-            {{/* Sort the list */}}
-            {{ partial "utils/ordered-list.html" (dict "list" .Sections "params" .Params "scratch" .Scratch) }}
-            {{ range (.Scratch.Get "list") }}
-                {{ .Render "limage" }}
+            {{ if .Sections }}
+                {{/* Sort the list */}}
+                {{ partial "utils/ordered-list.html" (dict "list" .Sections "params" .Params "scratch" .Scratch) }}
+                {{ range (.Scratch.Get "list") }}
+                    {{ .Render "limage" }}
+                {{ end }}
+                {{ .Scratch.Delete "list" }}
             {{ end }}
-            {{ .Scratch.Delete "list" }}
         </div>
     </div>
 </section>
