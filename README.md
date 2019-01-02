@@ -90,7 +90,16 @@ Settings about the different sections in the homepage as well as the navigation 
 Details about each parameter and their role can be found in the file itself.
 
 
-Additionally to the configuration file, data files (located in the "data" folder) are required for the different sections of the homepage.
+Additionally to the configuration file, data files (located in the "data" folder) are required for the different sections of the homepage. The required data files are the folowing:
+- about.yaml
+- contact.yaml
+- home.yaml
+- services.yaml
+- skills.yaml
+The files can also be in JSON format, but need to have the same names.
+The "Projects" section(s) can be optional, but it is advised to have at least one (it is a "Portfolio" theme after all ...).
+However, if there are no projects sections, the "projects" entry of the "[params.navigation.links]" can be removed.
+
 The following paragraphs detail the required data for each of the sections.
 
 
@@ -166,6 +175,22 @@ It is composed of a grid representing a set of subsections, each grouping "Proje
 It is based on the "Portfolio" section of the CREATIVE theme, but with an additional level of categories above the projects level. Also, instead of opening a pop-up window when selecting an element in the grid, it opens a new page displaying the contained projects.
 
 A portfolio section "Projects" is defined in the Homepage via the "config.toml" configuration file. Additionaly to the entry specified in the file, a directory with the same name must exist at the top level of the website file structure, containing its associated "_index.md" file.
+
+As an example, to have two sections for a professional portfolio and a personal porfolio, the following entry could be added to the "[params.projects]" group in "config.toml" file:
+
+    categories = [ "pro", "perso" ]
+
+It will create 2 projects sections identified by "pro" and "perso" respectively.
+The values specified have to correspond to directories existing in the "content" directory of the website ("content/pro" and "content/perso").
+
+In order to have the two sections accessible via the main navigation bar (at the top of the screen), entries also need to be added to the "[params.navigation.links]" group in "config.toml" file:
+
+    projects = [
+        { section = "pro", label = "PROFESSIONAL" },
+        { section = "perso", label = "PERSONAL" }
+    ]
+
+It will create 2 projects sections links labelled "PROFESSIONAL" and "PERSONAL", pointing to the "pro" and "perso" sections respectively (the values specified for the "section" keys need to correspond to the sections identification values).
 
 ![Section Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/section.png)
 
