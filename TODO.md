@@ -44,6 +44,9 @@ TODO - CODE:
         => Set size to minimum between width and height, keeping ratio (=> image cropped)
 ?        => OK or should fix problem?
 
+- [ ] "SERVICES" section:
+    - [ ] "services" list parameter should be optional.
+
 - [ ] "SKILLS" section:
     - [ ] "text" parameter should be optional.
 

@@ -90,7 +90,16 @@ Settings about the different sections in the homepage as well as the navigation 
 Details about each parameter and their role can be found in the file itself.
 
 
-Additionally to the configuration file, data files (located in the "data" folder) are required for the different sections of the homepage.
+Additionally to the configuration file, data files (located in the "data" folder) are required for the different sections of the homepage. The required data files are the folowing:
+- about.yaml
+- contact.yaml
+- home.yaml
+- services.yaml
+- skills.yaml
+The files can also be in JSON format, but need to have the same names.
+The "Projects" section(s) can be optional, but it is advised to have at least one (it is a "Portfolio" theme after all ...).
+However, if there are no projects sections, the "projects" entry of the "[params.navigation.links]" can be removed.
+
 The following paragraphs detail the required data for each of the sections.
 
 
@@ -167,6 +176,22 @@ It is based on the "Portfolio" section of the CREATIVE theme, but with an additi
 
 A portfolio section "Projects" is defined in the Homepage via the "config.toml" configuration file. Additionaly to the entry specified in the file, a directory with the same name must exist at the top level of the website file structure, containing its associated "_index.md" file.
 
+As an example, to have two sections for a professional portfolio and a personal porfolio, the following entry could be added to the "[params.projects]" group in "config.toml" file:
+
+    categories = [ "pro", "perso" ]
+
+It will create 2 projects sections identified by "pro" and "perso" respectively.
+The values specified have to correspond to directories existing in the "content" directory of the website ("content/pro" and "content/perso").
+
+In order to have the two sections accessible via the main navigation bar (at the top of the screen), entries also need to be added to the "[params.navigation.links]" group in "config.toml" file:
+
+    projects = [
+        { section = "pro", label = "PROFESSIONAL" },
+        { section = "perso", label = "PERSONAL" }
+    ]
+
+It will create 2 projects sections links labelled "PROFESSIONAL" and "PERSONAL", pointing to the "pro" and "perso" sections respectively (the values specified for the "section" keys need to correspond to the sections identification values).
+
 ![Section Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/section.png)
 
 A section is composed of "subsections" (typically categories, companies, technologies, etc.) grouping projects together. A subsection is defined by a subdirectory in a section directory also containing its associated "_index.md" file. Each subsection will be automatically added in the section menu.
@@ -219,11 +244,11 @@ In the browser, enter [`localhost:1313`](http://localhost:1313) in the address b
 ### Customise the appearance - CSS Override
 
 A set of CSS rules are used to define the appearance of the website.
-To make the website look more personal or to make it fit with the colour schemes of your company/brand, some CSS variables can be directly overriden using extra custom files (and thus not requiring to change anything in the code or main CSS file).
+To make the website look more personal or to make it fit with the colour schemes of your company/brand, some CSS variables can be directly overridden using extra custom files (and thus not requiring to change anything in the code or main CSS file).
 
 In order to use custom files, simply add the files in the "static/css" directory, and specify their name (with extension) in the "custom_css" array variable in the "config.toml" file.
 
-The CSS variables that can be overriden are listed in the "custom.css" file (in "static/css"). The file indicates for each variable the default value that will be used. These values are defined either in the "default.css" file, or directly hardcoded in the website's main CSS file ("theme.css") in case they're not defined elsewhere. The provided "custom.css" file can be used as template file, by uncommenting the desired variables.
+The CSS variables that can be overridden are listed in the "custom.css" file (in "static/css"). The file indicates for each variable the default value that will be used. These values are defined either in the "default.css" file, or directly hardcoded in the website's main CSS file ("theme.css") in case they're not defined elsewhere. The provided "custom.css" file can be used as template file, by uncommenting the desired variables.
 
 
 
