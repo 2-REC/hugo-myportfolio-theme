@@ -6,7 +6,7 @@
         {{ with $image }}
             <div class="sidebar-image">
                 {{ if $.Params.small_url }}
-                <a href="{{ $.Params.small_url | absURL }}" target="_blank" rel="noopener noreferrer">
+                <a href="{{ $.Params.small_url | absURL }}" target="_blank">
                 {{ end }}
                     {{ $alt := or $.Params.small_url "" }}
                     <img src="{{ .Permalink }}" alt="{{ $alt }}">
