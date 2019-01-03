@@ -75,7 +75,31 @@ TODO - CODE:
     - [ ] Add microdata in HTML (as in sidebar of MINIMAL ACADEMIC theme).
     LATER:
     - [ ] Allow to have background on full screen or only right half side (look at homepage of "SPLIT" theme).
-    - [ ] Add Contact form (use NETLIFY or "French guy's method with ZAPIER").
+    - [ ] Add Contact form (use NETLIFY or "method with ZAPIER").
+      => Look at:
+        - Pierre Morsa Hugo Form
+            => Free, but need "Zapier" and "Slack" accounts (free?)
+            https://www.pierremorsa.com/post/2017-11-13-ajouter-formulaire-hugo
+        - Netlify (integrated in their services)
+            => 100 free submissions per month (19$ per month for 1000 submissions)
+            https://www.netlify.com
+        - Forma
+            => free & open-source (?)
+            https://hugs.octolab.net/
+            https://kamilsk.github.io/form-api/
+        - FormSpree
+        - TypeForm
+            => 100 free submissions per month
+            https://www.typeform.com
+        - FormFerret
+            => 6$ per form per month
+            http://www.formferret.com
+        - 99Inbound
+        - Formata (BETA)
+            => NOT FREE (0.09$ per submission)
+            https://www.formata.io/
+        - PageClick
+            => ?
 
 - [ ] "ASIDE" section:
     => Could add optional section.
@@ -110,7 +134,14 @@ CODE CHECK/BUGS:
             - [ ] sidebar.html
                 - [ ] Make "categories" & "tags" optional?
                 - [ ] Get texts from data instead of hardcoded ("HOME", "CATEGORIES", "TAGS")
-
+                - [ ] Determine if want "combobox"/collapsable in sidebar
+                    => Look at:
+                    - DOCBOOK theme
+                    - FAQ theme
+                        https://themes.gohugo.io/theme/hugo-faq-theme/
+                    - simple "more" shortcode
+                        https://github.com/jiridj/hugo-collapsible-code
+                        https://github.com/jiridj/hugo-collapsible-code-jquery/blob/master/static/js/more.js
 
             - [ ] title.html
                 - [ ] Add a "path" element at beginning for easy navigation.
