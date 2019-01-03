@@ -18,10 +18,10 @@ tags: [ "" ]
 #    copyright: "<TEXT>"
 ---
 
-<b>CLIENT:</b> ...
+<b>CLIENT:</b> ...<br>
 
 <b>DESCRIPTION:</b><br>
-...
+...<br>
 
 <b>ROLE:</b><br>
-...
+...<br>
