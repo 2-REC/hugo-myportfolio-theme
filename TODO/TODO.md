@@ -71,6 +71,23 @@ TODO - CODE:
     - [ ] Add image gallery component (look at "liwenyip gallery" (uses "PhotoSwipe"), or "Icarus").
     - [ ] Create and set icons for tags/technologies.
 
+- [ ] "PROJECTS" Additional pages (related to projects - for each project section):
+    - [ ] "PROJECTS":
+        => Projects page, containing 1+N sections (N = number of project sections:
+            - "TIMELINE": link to "TIMELINE" page.
+            - "<SUBSECTION_TYPE>": link to "PROJECTS_<SUBSECTION_TYPE>" - with no subsection selected.
+            - "ALL PROJECTS": link to "PROJECTS_<SECTIONS>_ALL" page.
+    - [ ] "TIMELINE":
+        => Page with vertical timeline (top = present), listing positions in chronological order.
+            - When clicking on a company icon, it opens a small pop-up with the position description.
+            - In the pop-up, there is a button ("Projects"?) to open the related category projects page ("PROJECTS_SUBSECTION").
+    - [ ] "PROJECTS_<SECTIONS>_ALL":
+        => Page listing all the projects, with possibility to filter on tags/categories.
+            - Similar to "PROJECTS_<SUBSECTION_TYPE>" page.
+            - Without position/role block.
+            - With a search possibility (could display all the tags).
+                => Display projects related to tags.
+
 - [ ] "CONTACT" section:
     - [ ] Add microdata in HTML (as in sidebar of MINIMAL ACADEMIC theme).
     LATER:
