@@ -4,7 +4,7 @@ startDate = "2010-06-01"
 endDate = "2012-02-01"
 #image = "hero.jpg"
 small_image = "comp1.png"
-small_url = "http://some_url.url"
+small_url = "https://some_url.url"
 posts_title = "PROJECTS:"
 +++
 
