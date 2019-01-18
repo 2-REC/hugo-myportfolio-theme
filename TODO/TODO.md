@@ -150,6 +150,7 @@ CODE CHECK/BUGS:
 
             - [ ] sidebar.html
                 - [ ] Make "categories" & "tags" optional?
+                    => Find way to remove them from taxonomy pages (or make them different)
                 - [ ] Get texts from data instead of hardcoded ("HOME", "CATEGORIES", "TAGS")
                 - [ ] Determine if want "combobox"/collapsable in sidebar
                     => Look at:
