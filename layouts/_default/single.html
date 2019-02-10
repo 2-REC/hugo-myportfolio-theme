@@ -6,7 +6,7 @@
                 {{ if eq .ResourceType "image" }}
                     {{ $image := .Fit "64x64"  }}
                     <li>
-                        <figure>
+                        <figure class="no-photoswipe">
                             <img class="logo" src="{{ $image.RelPermalink }}" alt="" title="{{ $image.Title }}">
                         </figure>
                     </li>
