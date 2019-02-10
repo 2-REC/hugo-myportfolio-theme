@@ -44,7 +44,9 @@
 */}}
     {{ $images_directory := .Params.images_directory | default "images" }}
     {{ $images_static := .Params.images_static | default "false" }}
-    {{ partial "gallery.html" (dict "page" . "dir" $images_directory "static" $images_static) }}
+    {{ $images_copyright := .Params.images_copyright }}
+    {{ $images_params := .Params.images }}
+    {{ partial "gallery.html" (dict "page" . "dir" $images_directory "static" $images_static "images_params" $images_params "images_copyright" $images_copyright) }}
     {{ partial "load-photoswipe.html" (dict "page" .) }}
 {{ end }}
 

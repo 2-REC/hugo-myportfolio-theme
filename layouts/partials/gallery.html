@@ -13,6 +13,17 @@ Input Parameters:
 	- "thumb": String (suffix)
 		- $.Get "thumb"		=> $.thumb (if defined, else "-thumb" by default)
 
+(TODO: detail/document...)
+- "images_copyright"
+("MULTITEL")
+- images:
+	- "src"
+("1.png")
+	- "title"
+("Plan")
+	- "copyright"
+(...)
+
 TODO:
 - .Get "caption-position"
   default "bottom"
@@ -47,7 +58,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 		{{- end -}}
 		{{- $dir := $.page.Scratch.Get "dirURL" }}
 		{{- $dirFiles := $.page.Scratch.Get "dirFiles" }}
-		{{ if (fileExists $dirFiles) -}}
+		{{- if (fileExists $dirFiles) -}}
 			{{- $files := readDir $dirFiles }}
 
 			{{- range $files -}}
@@ -56,7 +67,28 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 				{{- $isthumb := .Name | findRE ($thumbext | printf "%s\\.") }}<!-- is the current file a thumbnail image? -->
 				{{- $isimg := lower .Name | findRE "\\.(gif|jpg|jpeg|tiff|png|bmp)" }}<!-- is the current file an image? -->
 				{{- if and $isimg (not $isthumb) }}
-					{{- $caption :=  .Name | replaceRE "\\..*" "" | humanize }}<!-- humanized filename without extension -->
+					{{ $name := .Name }}
+					{{ with $.images_copyright }}
+						{{ $.page.Scratch.Set "copyright" (print " - &copy; " .) }}
+					{{ end }}
+
+					{{ range $.images_params }}
+						{{ if eq .src $name }}
+							{{ with .title }}
+								{{ $.page.Scratch.Set "title" . }}
+							{{ end }}
+							{{ with .copyright }}
+								{{ $.page.Scratch.Set "copyright" (print " - &copy; " .) }}
+							{{ end }}
+						{{ end }}
+					{{ end }}
+
+					{{- $title := ($.page.Scratch.Get "title") | default (.Name | replaceRE "\\..*" "") }}
+					{{- $copyright := ($.page.Scratch.Get "copyright") | default "" }}
+
+					{{- $captionthumb :=  $title }}
+					{{- $caption :=  (print $title $copyright) }}
+
 					{{- $linkURL := print $baseURL $dir "/" .Name | absURL }}<!-- absolute URL to hi-res image -->
 					{{- $thumb := .Name | replaceRE "(\\.)" ($thumbext | printf "%s.") }}<!-- filename of thumbnail image -->
 					{{- $thumbexists := where $files "Name" $thumb }}<!-- does a thumbnail image exist? --> 
@@ -67,17 +99,18 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 							<img itemprop="thumbnail" src="{{ if $thumbexists }}{{ $thumbURL }}{{ else }}{{ $linkURL }}{{ end }}" alt="{{ $caption }}" /><!-- <img> hidden if in .gallery -->
 						</div>
 					<figcaption>
-					<p>{{ $caption }}</p>
+					<p>{{ $captionthumb }}</p>
 					</figcaption>
 						<a href="{{ $linkURL }}" itemprop="contentUrl"></a><!-- put <a> last so it is stacked on top -->
 					</figure>
 					</div>
+					{{ $.page.Scratch.Delete "title" }}
+					{{ $.page.Scratch.Delete "copyright" }}
 				{{- end }}
 			{{- end }}
 		{{- end }}
 		{{ $.page.Scratch.Delete "dirURL" }}
 		{{ $.page.Scratch.Delete "dirFiles" }}
-
 	{{- else -}}
 {{/*
 TODO: Need to change the "figure" shortcode to a partial.
