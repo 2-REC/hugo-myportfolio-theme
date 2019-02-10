@@ -46,8 +46,9 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
             {{ $.page.Scratch.Set "dirFiles" (print "/content/" $tmpDir "/") }}
 		{{- end -}}
 		{{- $dir := $.page.Scratch.Get "dirURL" }}
-		{{ if (fileExists $dir) -}}
-			{{- $files := readDir ($.page.Scratch.Get "dirFiles" ) }}
+		{{- $dirFiles := $.page.Scratch.Get "dirFiles" }}
+		{{ if (fileExists $dirFiles) -}}
+			{{- $files := readDir ($dirFiles ) }}
 
 			{{- range $files -}}
 				<!-- skip files that aren't images, or that inlcude the thumb suffix in their name -->

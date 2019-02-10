@@ -42,17 +42,10 @@
         </ul>
     {{ end }}
 */}}
-{{/*
-- "dir" .Params.images_directory
-  => if not defined: "images"
-- "static" .Params.images_static
-  => if not defined: N/A
-- "thumb" .Params.images_thumb_suffix
-  => if not defined: N/A
-...
-*/}}
-{{ partial "gallery.html" (dict "page" . "dir" "images") }}
-{{ partial "load-photoswipe.html" (dict "page" .) }}
+    {{ $images_directory := .Params.images_directory | default "images" }}
+    {{ $images_static := .Params.images_static | default "false" }}
+    {{ partial "gallery.html" (dict "page" . "dir" $images_directory "static" $images_static) }}
+    {{ partial "load-photoswipe.html" (dict "page" .) }}
 {{ end }}
 
 {{ define "lists" }}
