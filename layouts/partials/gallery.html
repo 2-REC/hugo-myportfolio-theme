@@ -48,7 +48,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 		{{- $dir := $.page.Scratch.Get "dirURL" }}
 		{{- $dirFiles := $.page.Scratch.Get "dirFiles" }}
 		{{ if (fileExists $dirFiles) -}}
-			{{- $files := readDir ($dirFiles ) }}
+			{{- $files := readDir $dirFiles }}
 
 			{{- range $files -}}
 				<!-- skip files that aren't images, or that inlcude the thumb suffix in their name -->
@@ -79,7 +79,11 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 		{{ $.page.Scratch.Delete "dirFiles" }}
 
 	{{- else -}}
+{{/*
+TODO: Need to change the "figure" shortcode to a partial.
+Not required for now as not used.
 		<!-- If no directory was specified, include any figure shortcodes called within the gallery -->
 	  {{ .Inner }}
+*/}}
 	{{- end }}
 </div>
