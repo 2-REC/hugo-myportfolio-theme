@@ -1,4 +1,5 @@
 {{ define "content" }}
+
     {{ $logos := .Resources.Match "logos/*" }}
     {{ if gt (len $logos) 0 }}
         <ul class="logos-list" aria-hidden="true">
@@ -22,32 +23,13 @@
         </div>
     {{ end }}
 
-{{/*
-    {{ $images := .Resources.Match "images/*" }}
-    {{ if gt (len $images) 0 }}
-        <ul class="images-list" aria-hidden="true">
-            {{ range $images }}
-                {{ if eq .ResourceType "image" }}
-                    {{ $image := .Resize "512x"  }}
-                    <li>
-                        <figure>
-                            <img class="image" src="{{ $image.RelPermalink }}" alt="" title="{{ $image.Title }}">
-                            {{ with $image.Params.copyright }}
-                                <figcaption class="copyright">{{ . | markdownify }}</figcaption>
-                            {{ end }}
-                        </figure>
-                    </li>
-                {{ end }}
-            {{ end }}
-        </ul>
-    {{ end }}
-*/}}
     {{ $images_directory := .Params.images_directory | default "images" }}
     {{ $images_static := .Params.images_static | default "false" }}
     {{ $images_copyright := .Params.images_copyright }}
     {{ $images_params := .Params.images }}
     {{ partial "gallery.html" (dict "page" . "dir" $images_directory "static" $images_static "images_params" $images_params "images_copyright" $images_copyright) }}
     {{ partial "load-photoswipe.html" (dict "page" .) }}
+
 {{ end }}
 
 {{ define "lists" }}
