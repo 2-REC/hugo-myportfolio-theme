@@ -14,11 +14,15 @@ Noteworthy features of this Hugo theme are:
 - Responsive portfolio grids with hover effects.
 - Can be used as a profesional showcase, a personal one, or both.
 - Dynamic generation of pages based on data content.
+- Image gallery functionality*
 - Easy site navigation via header navigation bar.
 - Easy content navigation via sidebars, and taxinomies (tags and categories).
 - Customisable CSS to override default values (such as main theme colours, fonts, etc.).
 - 404 page.
 - ...
+
+* Thanks to [liwenyip](//github.com/liwenyip) for the [PhotoSwipe](https://photoswipe.com) gallery integration in Hugo: [hugo-easy-gallery](//github.com/liwenyip/hugo-easy-gallery)
+
 
 ![Hugo MyPortfolio Theme Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/screenshot.png)
 
@@ -267,8 +271,10 @@ This theme is released under the Apache License 2.0 For more information read th
 
 ## Acknowledgements
 
-Thanks to 
+Thanks to:
 
 - [digitalcraftsman](//github.com/digitalcraftsman) for creating the Creative theme
 - [Steve Francia](//github.com/spf13) for creating Hugo and the awesome community around the project
 - [David Miller](//github.com/davidtmiller) for creating the original theme
+- [liwenyip](//github.com/liwenyip) for the PhotoSwipe gallery integration in Hugo
+- [PhotoSwipe](https://photoswipe.com) for the gallery functionality
