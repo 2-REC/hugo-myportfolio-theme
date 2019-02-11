@@ -2,39 +2,36 @@
 Input Parameters:
 - Mandatory:
 	- "page": Page
-		- $.Page.Scratch	=> $.page.Scratch
-		- .Site.BaseURL		=> $.page.Site.BaseURL
-		- $.Page.Dir		=> $.page.Dir
+		- $.Page.Scratch		=> $.page.Scratch
+		- .Site.BaseURL			=> $.page.Site.BaseURL
+		- $.Page.Dir			=> $.page.Dir
 - Optional:
 	- "dir": String (directory)
-		- .Get "dir"		=> $.dir (if defined, else using ".Inner")
+		- .Get "dir"			=> $.dir (if defined, else using ".Inner")
 	- "static": Boolean
-		- $.Get "static"	=> $.static (if defined, else "false" by default)
+		- $.Get "static"		=> $.static (if defined, else "false" by default)
 	- "thumb": String (suffix)
-		- $.Get "thumb"		=> $.thumb (if defined, else "-thumb" by default)
+		- $.Get "thumb"			=> $.thumb (if defined, else "-thumb" by default)
+	- "caption_position": Enum (position: "bottom", "center", "none")
+		- .Get "caption-position"	=> $.caption_position (if defined, else "bottom" by default)
+	- "caption_effect": Enum (effect: "slide", "fade", "none")
+		- .Get "caption-effect"		=> $.caption_effect (if defined, else "slide" by default)
+	- "hover_effect": Enum (effect: "zoom", "grow", "shrink", "slideup", "slidedown", "none")
+		- .Get "hover-effect"		=> $.hover_effect (if defined, else "zoom" by default)
+	- "hover_transition": Enum (transition: "none" or not set)
+		- .Get "hover-transition"	=> $.hover_transition (if defined, else "none" by default)
 
-(TODO: detail/document...)
-- "images_copyright"
-("MULTITEL")
-- images:
-	- "src"
-("1.png")
-	- "title"
-("Plan")
-	- "copyright"
-(...)
-
-TODO:
-- .Get "caption-position"
-  default "bottom"
-- .Get "caption-effect"
-  default "slide"
-- .Get "hover-effect"
-  default "zoom"
-- .Get "hover-transition"
-
-+captions...
-(& copyrights, etc.)
+New Input Parameters:
+- Optional:
+	- "images_copyright": String (copyright)
+		=> General copyright for all images.
+	- "images": Array (images parameters)
+		- "src": String (filename) - MANDATORY
+			=> Must correspond to an image in "dir" directory.
+		- "title": String (legend)
+			=> Legend of the image.
+		- "copyright": String (copyright)
+			=> Specific copyright for the image.
 -->
 
 <!--
