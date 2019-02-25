@@ -1,0 +1,121 @@
+<!--
+Modified version of "gallery.html" from https://github.com/liwenyip/hugo-easy-gallery/
+Modifications mostly to allow using the gallery as a partial instead of a shortcode.
+
+Input Parameters:
+- Mandatory:
+	- "page": Page
+		- $.Page.Scratch		=> $.page.Scratch
+		- .Site.BaseURL			=> $.page.Site.BaseURL
+		- $.Page.Dir			=> $.page.Dir
+- Optional:
+	- "dir": String (directory)
+		- .Get "dir"			=> $.dir (if defined, else using ".Inner")
+	- "static": Boolean
+		- $.Get "static"		=> $.static (if defined, else "false" by default)
+	- "thumb": String (suffix)
+		- $.Get "thumb"			=> $.thumb (if defined, else "-thumb" by default)
+	- "caption_position": Enum (position: "bottom", "center", "none")
+		- .Get "caption-position"	=> $.caption_position (if defined, else "bottom" by default)
+	- "caption_effect": Enum (effect: "slide", "fade", "none")
+		- .Get "caption-effect"		=> $.caption_effect (if defined, else "slide" by default)
+	- "hover_effect": Enum (effect: "zoom", "grow", "shrink", "slideup", "slidedown", "none")
+		- .Get "hover-effect"		=> $.hover_effect (if defined, else "zoom" by default)
+	- "hover_transition": Enum (transition: "none" or not set)
+		- .Get "hover-transition"	=> $.hover_transition (if defined, else "none" by default)
+
+New Input Parameters:
+- Optional:
+	- "images_copyright": String (copyright)
+		=> General copyright for all images.
+	- "images": Array (images parameters)
+		- "src": String (filename) - MANDATORY
+			=> Must correspond to an image in "dir" directory.
+		- "title": String (legend)
+			=> Legend of the image.
+		- "copyright": String (copyright)
+			=> Specific copyright for the image.
+-->
+
+<!--
+Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
+-->
+<!-- count how many times we've called this shortcode; load the css if it's the first time -->
+{{- if not (.page.Scratch.Get "figurecount") }}<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />{{ end }}
+{{- .page.Scratch.Add "figurecount" 1 }}
+{{ $baseURL := .page.Site.BaseURL }}
+<div class="gallery caption-position-{{ with .caption_position | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .caption_effect | default "slide" }}{{.}}{{end}} hover-effect-{{ with .hover_effect | default "zoom" }}{{.}}{{end}} {{ if ne (.hover_transition) "none" }}hover-transition{{end}}" itemscope itemtype="http://schema.org/ImageGallery">
+	{{- with .dir -}}
+		<!-- If a directory was specified, generate figures for all of the images in the directory -->
+		{{- if eq $.static "true" -}}
+            {{ $.page.Scratch.Set "dirURL" (print .) }}
+            {{ $.page.Scratch.Set "dirFiles" (print "/static/" .) }}
+		{{- else -}}
+			{{- $tmpDir := print (replace $.page.Dir  "\\" "/") "/" . }}
+            {{ $.page.Scratch.Set "dirURL" $tmpDir }}
+            {{ $.page.Scratch.Set "dirFiles" (print "/content/" $tmpDir "/") }}
+		{{- end -}}
+		{{- $dir := $.page.Scratch.Get "dirURL" }}
+		{{- $dirFiles := $.page.Scratch.Get "dirFiles" }}
+		{{- if (fileExists $dirFiles) -}}
+			{{- $files := readDir $dirFiles }}
+
+			{{- range $files -}}
+				<!-- skip files that aren't images, or that inlcude the thumb suffix in their name -->
+				{{- $thumbext := $.thumb | default "-thumb" }}
+				{{- $isthumb := .Name | findRE ($thumbext | printf "%s\\.") }}<!-- is the current file a thumbnail image? -->
+				{{- $isimg := lower .Name | findRE "\\.(gif|jpg|jpeg|tiff|png|bmp)" }}<!-- is the current file an image? -->
+				{{- if and $isimg (not $isthumb) }}
+					{{ $name := .Name }}
+					{{ with $.images_copyright }}
+						{{ $.page.Scratch.Set "copyright" (print " - &copy; " .) }}
+					{{ end }}
+
+					{{ range $.images_params }}
+						{{ if eq .src $name }}
+							{{ with .title }}
+								{{ $.page.Scratch.Set "title" . }}
+							{{ end }}
+							{{ with .copyright }}
+								{{ $.page.Scratch.Set "copyright" (print " - &copy; " .) }}
+							{{ end }}
+						{{ end }}
+					{{ end }}
+
+					{{- $title := ($.page.Scratch.Get "title") | default (.Name | replaceRE "\\..*" "") }}
+					{{- $copyright := ($.page.Scratch.Get "copyright") | default "" }}
+
+					{{- $captionthumb :=  $title }}
+					{{- $caption :=  (print $title $copyright) }}
+
+					{{- $linkURL := print $baseURL $dir "/" .Name | absURL }}<!-- absolute URL to hi-res image -->
+					{{- $thumb := .Name | replaceRE "(\\.)" ($thumbext | printf "%s.") }}<!-- filename of thumbnail image -->
+					{{- $thumbexists := where $files "Name" $thumb }}<!-- does a thumbnail image exist? --> 
+					{{- $thumbURL := print $baseURL $dir "/" $thumb | absURL }}<!-- absolute URL to thumbnail image -->
+					<div class="box">
+					<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+						<div class="img" style="background-image: url('{{ if $thumbexists }}{{ $thumbURL }}{{ else }}{{ $linkURL }}{{ end }}');" >
+							<img itemprop="thumbnail" src="{{ if $thumbexists }}{{ $thumbURL }}{{ else }}{{ $linkURL }}{{ end }}" alt="{{ $caption }}" /><!-- <img> hidden if in .gallery -->
+						</div>
+					<figcaption>
+					<p>{{ $captionthumb }}</p>
+					</figcaption>
+						<a href="{{ $linkURL }}" itemprop="contentUrl"></a><!-- put <a> last so it is stacked on top -->
+					</figure>
+					</div>
+					{{ $.page.Scratch.Delete "title" }}
+					{{ $.page.Scratch.Delete "copyright" }}
+				{{- end }}
+			{{- end }}
+		{{- end }}
+		{{ $.page.Scratch.Delete "dirURL" }}
+		{{ $.page.Scratch.Delete "dirFiles" }}
+	{{- else -}}
+{{/*
+TODO: Need to change the "figure" shortcode to a partial.
+Not required for now as not used.
+		<!-- If no directory was specified, include any figure shortcodes called within the gallery -->
+	  {{ .Inner }}
+*/}}
+	{{- end }}
+</div>

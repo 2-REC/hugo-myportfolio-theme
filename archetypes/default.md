@@ -5,17 +5,21 @@ subtitle: "<CATCH_PHRASE>"
 #image: "<IMAGE_FILE>"
 #small_image: "<IMAGE_FILE>"
 #small_url: "<URL>"
-categories: [ "" ]
-tags: [ "" ]
+categories: [ "<CATEGORY>" ]
+tags: [ "<TAG>" ]
+#images_directory; "images"
+#images_static: "false"
+#images_copyright: "<COPYRIGHT>"
+##For "image" image files:
+# (Only required for caption and specific copyrights)
+#images:
+#- src: "<IMAGE_FILE>"
+#  title: "<LEGEND>"
+#  copyright: "<COPYRIGHT>"
+##For "logo" image files:
 #resources:
-##For each "logo" image file:
 #- src: "logos/<IMAGE_FILE>"
 #  title: "<TOOLTIP>"
-##For each "image" image file:
-#- src: "images/<IMAGE_FILE>"
-#  title: "<TOOLTIP>"
-#  params:
-#    copyright: "<TEXT>"
 ---
 
 <b>CLIENT:</b> ...<br>

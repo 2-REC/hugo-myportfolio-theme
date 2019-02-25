@@ -236,6 +236,14 @@ CODE CHECK/BUGS:
                 => Need changes in CSS for main tags (html, body, sections, etc?)
             - [ ] Set content...
 
+        - [ ] gallery.html
+            - [ ] Check JQUERY loading.
+                => OK to load both files in tail.html? (should only load one)
+            - LATER:
+                - [ ] Fix ".Inner" stuff (with "figure")
+                - [ ] Add "figure.html" file & make changes.
+                    => Do the same as for gallery (paths, change to partial instead of shortcode, etc).
+
         - [ ] head.html
             (Look at backuped file)
             - [ ] Use some "blocks" to allow overriding parts..
