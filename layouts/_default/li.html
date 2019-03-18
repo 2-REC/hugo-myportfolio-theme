@@ -1,8 +1,30 @@
 <li class="project-item">
-    <a href="{{.Permalink}}">{{ .Title }}</a>
-    {{ with .Params.subtitle }}
-        <p>
-        {{ . | markdownify }}
-    </p>
-    {{ end }}
+
+    <a href="{{.Permalink}}" class="project-item-box">
+        {{ $logos := .Resources.Match "logos/*" }}
+        {{ if gt (len $logos) 0 }}
+            {{ $image := index $logos 0 }}
+            <figure class="no-photoswipe">
+                <img class="project-item-logo" src="{{ $image.RelPermalink }}" alt="" title="{{ $image.Title }}">
+            </figure>
+        {{ end }}
+
+        <div>
+            {{ with .Title }}
+                <div class="project-title">
+                    {{ . }}
+                </div>
+            {{ end }}
+
+            {{ with .Params.subtitle }}
+                <div class="project-subtitle">
+                    {{ . }}
+                </div>
+            {{ end }}
+        </div>
+
+        <div class="project-item-box-highlight">
+        </div>
+    </a>
+
 </li>

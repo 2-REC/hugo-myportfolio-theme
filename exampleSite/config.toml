@@ -2,6 +2,7 @@
 
 # GLOBAL SITE SETTINGS
 # Parameters used by HUGO to configure the site's global settings.
+preserveTaxonomyNames = "true"
 
 baseurl = "https://example.org/"
 languageCode = "en-us"

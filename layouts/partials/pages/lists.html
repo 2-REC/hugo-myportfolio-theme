@@ -33,7 +33,7 @@
 
             {{/* Sort the list */}}
             {{ partial "utils/ordered-list.html" (dict "list" .Pages "params" .Params "scratch" .Scratch) }}
-            <ul>
+            <ul class="project-item-list">
                 {{ range (.Scratch.Get "list") }}
                     {{ .Render "li" }}
                 {{ end }}
