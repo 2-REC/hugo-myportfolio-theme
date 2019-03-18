@@ -6,6 +6,7 @@
     {{ $.Scratch.Set "col_lg" (print "col-lg-" $nb_cols) }}
 {{ end }}
 {{ $col_lg := $.Scratch.Get "col_lg" }}
+{{ $.Scratch.Delete "col_lg" }}
 
 {{ $.Scratch.Set "col_sm" "col-sm-6" }}
 {{ with $.Site.Params.projects.nb_columns_small }}
@@ -13,6 +14,8 @@
     {{ $.Scratch.Set "col_sm" (print "col-sm-" $nb_cols) }}
 {{ end }}
 {{ $col_sm := $.Scratch.Get "col_sm" }}
+{{ $.Scratch.Delete "col_sm" }}
+
 {{ $class := print $col_lg " " $col_sm }}
 
 <div class="{{ $class }}">
