@@ -1,4 +1,21 @@
-<div class="col-lg-4 col-sm-6">
+
+{{/* Get the number of columns from config */}}
+{{ $.Scratch.Set "col_lg" "col-lg-4" }}
+{{ with $.Site.Params.projects.nb_columns }}
+    {{ $nb_cols := div 12 (int .) }}
+    {{ $.Scratch.Set "col_lg" (print "col-lg-" $nb_cols) }}
+{{ end }}
+{{ $col_lg := $.Scratch.Get "col_lg" }}
+
+{{ $.Scratch.Set "col_sm" "col-sm-6" }}
+{{ with $.Site.Params.projects.nb_columns_small }}
+    {{ $nb_cols := div 12 (int .) }}
+    {{ $.Scratch.Set "col_sm" (print "col-sm-" $nb_cols) }}
+{{ end }}
+{{ $col_sm := $.Scratch.Get "col_sm" }}
+{{ $class := print $col_lg " " $col_sm }}
+
+<div class="{{ $class }}">
     {{ $path := replace .Dir "\\" "/" }}
     <a href="/{{ $path }}" class="project-box project-link">
         {{ $image_file := or .Params.cover_image .Params.small_image }}
