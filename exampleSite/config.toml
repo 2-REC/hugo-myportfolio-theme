@@ -113,7 +113,7 @@ theme = "hugo-myportfolio-theme"
         #nb_columns = "3"
         #nb_columns_small = "2"
 
-   # ----------
+    # ----------
 
     # PAGE 404
     [params.page404]
