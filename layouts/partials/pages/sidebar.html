@@ -21,15 +21,23 @@
 
     {{ "<!-- Navigation Tree -->" | safeHTML }}
     <div class="sidebar-tree">
-        {{ with .Parent }}
-            <a class="parent-link" href="{{ .Permalink }}">
-                {{ if not .IsHome }}
-                    <i class="fas fa-chevron-circle-left"></i>
-                    {{ .Title }}
-                {{ else }}
-                    <i class="fas fa-home"></i>
-                    HOME
-                {{ end }}
+        {{ if .Parent }}
+            {{ with .Parent }}
+                <a class="parent-link" href="{{ .Permalink }}">
+                    {{ if not .IsHome }}
+                        <i class="fas fa-chevron-circle-left"></i>
+                        {{ .Title }}
+                    {{ else }}
+                        <i class="fas fa-home"></i>
+                        HOME
+                    {{ end }}
+                </a>
+            {{ end }}
+        {{ else }}
+            {{/* JavaScript should be moved to common/external JS file */}}
+            <a href="javascript:void(0)" class="parent-link" onclick="javascript:window.history.back()">
+                <i class="fas fa-chevron-circle-left"></i>
+                BACK
             </a>
         {{ end }}
 
@@ -59,22 +67,24 @@
         {{ end }}
     </div>
 
-    <br>
-    {{ "<!-- Categories -->" | safeHTML }}
-    <div>
-        <div class="tag-title">CATEGORIES</div>
-        <div class="tags">
-            {{/* List categories without duplicates */}}
-            {{ partial "utils/list-keywords.html" (dict "type" "categories" "context" . "scratch" .Scratch "removeDuplicates" true) }}
+    {{ if .Parent }}
+        <br>
+        {{ "<!-- Categories -->" | safeHTML }}
+        <div>
+            <div class="tag-title">CATEGORIES</div>
+            <div class="tags">
+                {{/* List categories without duplicates */}}
+                {{ partial "utils/list-keywords.html" (dict "type" "categories" "context" . "scratch" .Scratch "removeDuplicates" true) }}
+            </div>
         </div>
-    </div>
-    <br>
-    {{ "<!-- Tags -->" | safeHTML }}
-    <div>
-        <div class="tag-title">TAGS</div>
-        <div class="tags">
-            {{/* List tags without duplicates */}}
-            {{ partial "utils/list-keywords.html" (dict "type" "tags" "context" . "scratch" .Scratch "removeDuplicates" true) }}
+        <br>
+        {{ "<!-- Tags -->" | safeHTML }}
+        <div>
+            <div class="tag-title">TAGS</div>
+            <div class="tags">
+                {{/* List tags without duplicates */}}
+                {{ partial "utils/list-keywords.html" (dict "type" "tags" "context" . "scratch" .Scratch "removeDuplicates" true) }}
+            </div>
         </div>
-    </div>
+    {{ end }}
 </div>
