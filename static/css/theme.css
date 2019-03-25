@@ -1074,6 +1074,10 @@ min-height: 300px;
 
 /* LISTS & POSTS */
 
+.title-block {
+    padding-bottom: 1em;
+}
+
 #list-content {
     clear: both;
     max-width: 100%;

@@ -1,4 +1,4 @@
-<hgroup>
+<hgroup class="title-block">
     {{/* Title */}}
     <h1>{{ .Title }}</h1>
 
@@ -10,7 +10,7 @@
     {{/* Period */}}
     {{ if .Params.startDate }}
         <h3>
-        From <i>{{ dateFormat .Site.Params.projects.date_format .Params.startDate }}</i>
+        From {{ dateFormat .Site.Params.projects.date_format .Params.startDate }}
         {{ if .Params.endDate }}
             {{ $end := (time .Params.endDate) }}
             {{ $duration := $end.Sub (time .Params.startDate) }}
@@ -18,8 +18,8 @@
             {{ $years := int (div $months 12) }}
             {{ $months := int (sub $months (mul $years 12)) }}
 
-            to <i>{{ dateFormat .Site.Params.projects.date_format .Params.endDate }}</i>
-            ({{ if gt $years 0 }}{{ $years }} year{{ if gt $years 1 }}s{{ end }}{{ end }}{{ if and (gt $years 0) (gt $months 0) }}, {{ end }}{{ if gt $months 0 }}{{ $months }} month{{ if gt $months 1 }}s{{ end }}{{ end }})
+            to {{ dateFormat .Site.Params.projects.date_format .Params.endDate }}
+            | {{ if gt $years 0 }}{{ $years }} year{{ if gt $years 1 }}s{{ end }}{{ end }}{{ if and (gt $years 0) (gt $months 0) }}, {{ end }}{{ if gt $months 0 }}{{ $months }} month{{ if gt $months 1 }}s{{ end }}{{ end }}
         {{ end }}
     </h3>
     {{ end }}
