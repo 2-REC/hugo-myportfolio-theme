@@ -1,14 +1,15 @@
 {{ "<!-- PROJECTS -->" | safeHTML }}
 <section class="section projects" id="projects_{{ trim .Dir "/\\" }}">
+    {{ $path := replace .Dir "\\" "/" }}
     {{ with .Title }}
-    <div class="container-fluid padding-title">
+        <a href="/{{ $path }}" class="container-fluid padding-title">
             <div class="row">
                 <div class="col-md-8 text-right">
                     <h2 class="section-heading">{{ . }}</h2>
                     <hr class="primary">
                 </div>
             </div>
-        </div>
+        </a>
     {{ end }}
     <div class="container-fluid">
         <div class="row no-gutter">
