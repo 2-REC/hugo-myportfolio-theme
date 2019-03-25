@@ -394,6 +394,10 @@ ul.images-list {
 
 /* TAGS */
 
+.tag-title {
+    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-3));
+}
+
 .tags a {
     display: inline-block;
     border-radius: 999em;
@@ -1042,7 +1046,7 @@ min-height: 300px;
 }
 
 .sidebar-tree .parent-link {
-    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-1));
+    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-3));
 }
 
 .sidebar-tree li {

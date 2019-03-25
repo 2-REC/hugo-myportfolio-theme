@@ -59,18 +59,19 @@
         {{ end }}
     </div>
 
+    <br>
     {{ "<!-- Categories -->" | safeHTML }}
     <div>
-        <h5>CATEGORIES</h5>
+        <div class="tag-title">CATEGORIES</div>
         <div class="tags">
             {{/* List categories without duplicates */}}
             {{ partial "utils/list-keywords.html" (dict "type" "categories" "context" . "scratch" .Scratch "removeDuplicates" true) }}
         </div>
     </div>
-
+    <br>
     {{ "<!-- Tags -->" | safeHTML }}
     <div>
-        <h5>TAGS</h5>
+        <div class="tag-title">TAGS</div>
         <div class="tags">
             {{/* List tags without duplicates */}}
             {{ partial "utils/list-keywords.html" (dict "type" "tags" "context" . "scratch" .Scratch "removeDuplicates" true) }}

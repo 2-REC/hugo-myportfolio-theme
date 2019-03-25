@@ -1,7 +1,8 @@
 :root{
 
     --GENERAL-FONT-1: "Merriweather", "Helvetica Neue", Arial, sans-serif;
-    --GENERAL-FONT-2: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    --GENERAL-FONT-2: "Fjalla One", "Helvetica Neue", Arial, sans-serif;
+    --GENERAL-FONT-3: "Anton", "Helvetica Neue", Arial, sans-serif;
 
     --GENERAL-COLOR-1: rgb(64, 95, 240);
     --GENERAL-COLOR-2: white;
