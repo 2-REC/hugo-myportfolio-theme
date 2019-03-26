@@ -17,7 +17,8 @@
 {{ .scratch.Set .type (uniq (.scratch.Get .type)) }}
 
 {{ range (.scratch.Get .type) }}
-    <a href="{{ (print "/" $.type "/") | relLangURL }}{{ . | urlize }}" title="{{ . }}">
+    {{/* HACK: (replace . "#" "%23/") is a special case for "#" character */}}
+    <a href="{{ (print "/" $.type "/") | relLangURL }}{{ replace . "#" "%23/" | urlize }}" title="{{ . }}">
         {{ . }}
     </a>
 {{ end }}
