@@ -5,9 +5,6 @@ TODO - CODE:
     - [ ] Allow to not have the footer
     - [ ] Make better footer
     - [ ] Check/clean the entire code ...
-    - [ ] Make sure page 404 is loaded when 404 error
-    - [ ] Add attribute "rel=nofollow" for "a" elements pointing to companies?
-        (Might actually be better to keep ref)
     - [ ] CDN: use font awesome (& jquery, Bootstrap,  etc) from online resource AND from local files (fallback).
         => BOTH (look at: https://forum.freecodecamp.org/t/using-a-fallback-code-in-case-bootstraps-cdn-is-down/160753/11 and https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server )
     - [ ] Solve bug of NAVBAR offset when getting back from project page
@@ -52,7 +49,6 @@ TODO - CODE:
 
 - [ ] "PROJECTS" section:
     LATER:
-    - [ ] Set heading in top left corner as a link to the section.
     - [ ] Add a vertical scrolling text in the top right corner.
         => For scrolling text, look at:
             https://www.quackit.com/css/codes/marquees/
@@ -68,8 +64,6 @@ TODO - CODE:
     LATER:
     - [ ] Add a "path" on top, to show where we are, and easy navigate (or in sidebar?!).
     - [ ] Add "content table" on right side (EVEN theme, in a post page).
-    - [ ] Add image gallery component (look at "liwenyip gallery" (uses "PhotoSwipe"), or "Icarus").
-    - [ ] Create and set icons for tags/technologies.
 
 - [ ] "PROJECTS" Additional pages (related to projects - for each project section):
     - [ ] "PROJECTS":
