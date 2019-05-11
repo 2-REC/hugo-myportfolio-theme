@@ -9,17 +9,18 @@ One could for example have different portfolios depending on the type of work, s
 Another could have different portfolios grouping his work into "Profesional", "Personal" and "Academic".
 
 Noteworthy features of this Hugo theme are:
-- Configurable home page (sections order and presence, as well as content).
-- Possibility to have arbitrary number of content sections.
-- Responsive portfolio grids with hover effects.
-- Can be used as a profesional showcase, a personal one, or both.
-- Dynamic generation of pages based on data content.
-- Image gallery functionality*
-- Easy site navigation via header navigation bar.
-- Easy content navigation via sidebars, and taxinomies (tags and categories).
-- Customisable CSS to override default values (such as main theme colours, fonts, etc.).
-- 404 page.
-- ...
+- Configurable home page (sections order and presence, and their content)
+- Possibility to have arbitrary number of content/projects sections
+- Responsive portfolio grids with hover effect
+- Can be used as a professional showcase, a personal one, or both
+- Image gallery with easy and intuitive navigation controls*
+- Dynamic generation of pages based on data content
+- Easy site navigation via header navigation bar
+- Possibility to display siblings, children posts and children lists independently for each page, with associated orders
+- Easy content navigation via sidebar: hierarchy (siblings and parents), and taxinomies (tags and categories)
+- Customisable CSS to override default values (such as main theme colours, fonts, etc.)
+- Easy copyright image labelling per image or per project
+- 404 page
 
 * Thanks to [liwenyip](//github.com/liwenyip) for the [PhotoSwipe](https://photoswipe.com) gallery integration in Hugo: [hugo-easy-gallery](//github.com/liwenyip/hugo-easy-gallery)
 
