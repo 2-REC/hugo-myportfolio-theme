@@ -17,7 +17,7 @@ Noteworthy features of this Hugo theme are:
 - Dynamic generation of pages based on data content
 - Easy site navigation via header navigation bar
 - Possibility to display siblings, children posts and children lists independently for each page, with associated orders
-- Easy content navigation via sidebar: hierarchy (siblings and parents), and taxinomies (tags and categories)
+- Easy content navigation via sidebar: hierarchy (siblings and parents), and taxonomies (tags and categories)
 - Customisable CSS to override default values (such as main theme colours, fonts, etc.)
 - Easy copyright image labelling per image or per project
 - 404 page
