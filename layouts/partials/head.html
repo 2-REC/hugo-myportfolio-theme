@@ -15,7 +15,7 @@
 
 <base href="{{ .Site.BaseURL }}">
 
-{{ .Hugo.Generator }}
+{{ hugo.Generator }}
 
 {{ "<!-- Favicon -->" | safeHTML }}
 <link rel="shortcut icon" href="{{ .Site.Params.meta.favicon | absURL }}" type="image/x-icon" />

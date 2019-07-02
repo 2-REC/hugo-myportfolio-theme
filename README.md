@@ -17,7 +17,7 @@ Noteworthy features of this Hugo theme are:
 - Dynamic generation of pages based on data content
 - Easy site navigation via header navigation bar
 - Possibility to display siblings, children posts and children lists independently for each page, with associated orders
-- Easy content navigation via sidebar: hierarchy (siblings and parents), and taxinomies (tags and categories)
+- Easy content navigation via sidebar: hierarchy (siblings and parents), and taxonomies (tags and categories)
 - Customisable CSS to override default values (such as main theme colours, fonts, etc.)
 - Easy copyright image labelling per image or per project
 - 404 page
@@ -110,7 +110,7 @@ The following paragraphs detail the required data for each of the sections.
 
 ### HOME: Set the homepage header
 
-The content of the top section of the homepage is fetch from the "home" data file.
+The content of the top section of the homepage is fetched from the "home" data file.
 
 The different parameters that can be used are:
 - "title": The title for the website. Typically your name or company name.
@@ -124,7 +124,7 @@ All the parameters are optional - if not defined, it will not be added to the pa
 
 ### ABOUT: Introduce yourself
 
-The content of the "ABOUT" section of the homepage is fetch from the "about" data file.
+The content of the "ABOUT" section of the homepage is fetched from the "about" data file.
 
 The different parameters that can be used are:
 - "title": The title of the section. Typically "ABOUT" would be used.
@@ -137,7 +137,7 @@ All the parameters are optional - if not defined, it will not be added to the pa
 
 ### SERVICES: Add your services
 
-The content of the "SERVICES" section of the homepage is fetch from the "services" data file.
+The content of the "SERVICES" section of the homepage is fetched from the "services" data file.
 
 The different parameters that can be used are:
 - "title": The title of the section. Typically "SERVICES" would be used.
@@ -156,7 +156,7 @@ The "services" list parameter must exist and contain at least one element.
 
 ### SKILLS: Show your skills
 
-The content of the "SKILLS" section of the homepage is fetch from the "skills" data file.
+The content of the "SKILLS" section of the homepage is fetched from the "skills" data file.
 
 The different parameters that can be used are:
 - "title": The title of the section. Typically "SKILLS" would be used.
@@ -215,7 +215,7 @@ There can be more than one main projects sections. Different categories could fo
 
 ### CONTACT: Add contact information
 
-The content of the "CONTACT" section of the homepage is fetch from the "contact" data file.
+The content of the "CONTACT" section of the homepage is fetched from the "contact" data file.
 
 The different parameters that can be used are:
 - "title": The title of the section. Typically "CONTACT" would be used.
