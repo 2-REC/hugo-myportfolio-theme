@@ -1,6 +1,6 @@
 {{ "<!-- PROJECTS -->" | safeHTML }}
-<section class="section projects" id="projects_{{ trim .Dir "/\\" }}">
-    {{ $path := replace .Dir "\\" "/" }}
+<section class="section projects" id="projects_{{ trim .File.Dir "/\\" }}">
+    {{ $path := replace .File.Dir "\\" "/" }}
     {{ with .Title }}
         <a href="/{{ $path }}" class="container-fluid padding-title">
             <div class="row">

@@ -19,7 +19,7 @@
 {{ $class := print $col_lg " " $col_sm }}
 
 <div class="{{ $class }}">
-    {{ $path := replace .Dir "\\" "/" }}
+    {{ $path := replace .File.Dir "\\" "/" }}
     <a href="/{{ $path }}" class="project-box project-link">
         {{ $image_file := or .Params.cover_image .Params.small_image }}
         {{ if $image_file }}
