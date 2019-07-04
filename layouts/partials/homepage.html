@@ -20,7 +20,7 @@
 
 {{ if in $sections "projects" }}
     {{ range .Site.Params.projects.categories }}
-        {{ with $.Site.GetPage "section" . }}
+        {{ with $.Site.GetPage . }}
             {{ partial "sections/projects.html" . }}
         {{ end }}
     {{ end }}

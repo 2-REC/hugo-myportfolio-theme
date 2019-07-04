@@ -97,7 +97,7 @@ theme = "hugo-myportfolio-theme"
         #        - single: parent.posts_order
         # - list of sections:
         #    - default: title.
-        #    - common to all, efined globally here.
+        #    - common to all, defined globally here.
         #    - can be overriden at page level
         #        - list: in "_index.md"
         #        - single: in "index.md" (or "post.md" if post is not a bundle)
