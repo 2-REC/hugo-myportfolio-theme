@@ -45,13 +45,13 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- .page.Scratch.Add "figurecount" 1 }}
 {{ $baseURL := .page.Site.BaseURL }}
 <div class="gallery caption-position-{{ with .caption_position | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .caption_effect | default "slide" }}{{.}}{{end}} hover-effect-{{ with .hover_effect | default "zoom" }}{{.}}{{end}} {{ if ne (.hover_transition) "none" }}hover-transition{{end}}" itemscope itemtype="http://schema.org/ImageGallery">
-	{{- with .File.dir -}}
+	{{- with .dir -}}
 		<!-- If a directory was specified, generate figures for all of the images in the directory -->
 		{{- if eq $.static "true" -}}
             {{ $.page.Scratch.Set "dirURL" (print .) }}
             {{ $.page.Scratch.Set "dirFiles" (print "/static/" .) }}
 		{{- else -}}
-			{{- $tmpDir := print (replace $.page.Dir  "\\" "/") "/" . }}
+			{{- $tmpDir := print (replace $.page.File.Dir  "\\" "/") "/" . }}
             {{ $.page.Scratch.Set "dirURL" $tmpDir }}
             {{ $.page.Scratch.Set "dirFiles" (print "/content/" $tmpDir "/") }}
 		{{- end -}}
