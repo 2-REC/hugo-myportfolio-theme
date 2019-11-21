@@ -1,5 +1,11 @@
 # TODO
 
+- [ ] Complete README.md file
+    => What to add?
+    - [ ] Reference "Minimal Academic" theme for the sidebar stuff? (if not done)
+    - [ ] Mention use of "cover_image" and "small_image" for sections ("cover_image" can override "small_image")
+
+
 ## BUG FIXES
 
 ### GENERAL
@@ -39,6 +45,16 @@
 - [ ] Look at "figure" opcode and do same thing as for gallery
 - [ ] Update to latest HUGO.
 - [ ] Update to BOOTSTRAP 4+.
+
+- [ ] Use responsove images?
+    LOOK AT:
+    ```html
+    <picture class="photo-wide orientation-landscape loaded">
+        <source media="(min-width: 1024px)" srcset="image_large.jpg, image_large_retina.jpg 2x">
+        <source media="(min-width: 640px) and (max-width: 1024px)" srcset="image_medium.jpg, image_medium_retina.jpg 2x">
+        ...
+    </picture>
+    ```
 
 
 - LATER:
@@ -99,9 +115,12 @@
 
 
 - LATER:
-    - [ ] Add the 2 HTML tables
-    - [ ] Set tags and categories in tables (with links to taxonomy pages)
-    - [ ] Generate tables dynamically from data files (instead of static html tables)
+    - [ ] Replace the tags and categories blocks by the 2 skills table, with each keyword being a link to a taxonomy page.
+        - [ ] Add the 2 HTML tables
+        - [ ] Set tags and categories in tables (with links for taxonomies)
+        - [ ] Generate tables dynamically from data files (instead of static html tables)
+            - skills.json => Should have all skills data defined here, and used to fill tables (so that can have dynamic number of tables)
+            (! - and it should be matched with tags and categories from each project!)
 
 
 ### PROJECTS
@@ -110,7 +129,7 @@
         => For scrolling text, look at:
         https://www.quackit.com/css/codes/marquees/
         <br>=> Need to adapt the layout as in AIRSPACE theme, "Contact" form.
-    - [ ] Add a link to "TIMELINE" page (once page ceated).<br>
+    - [ ] Add a link to "TIMELINE" page (once page created).<br>
         => Look at "NEWSPRINT" theme, "The Library" section for timeline example.
     - [ ] "PROJECTS" list page:
         - [ ] Add a "path" on top, to show where we are, and easy navigate (or in sidebar?!).
@@ -122,7 +141,7 @@
             => Projects page, containing 1+N sections (N = number of project sections:
             - "TIMELINE": link to "TIMELINE" page.
             - "<SUBSECTION_TYPE>": link to "PROJECTS_<SUBSECTION_TYPE>" - with no subsection selected.
-            - "ALL PROJECTS": link to "PROJECTS_<SECTIONS>_ALL" page.
+            - "ALL PROJECTS": link to "PROJECTS_<SECTIONS>\_ALL" page.
         - [ ] "TIMELINE":
             => Page with vertical timeline (top = present), listing positions in chronological order.
             - When clicking on a company icon, it opens a small pop-up with the position description.
