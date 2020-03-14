@@ -13,7 +13,7 @@ Noteworthy features of this Hugo theme are:
 - Possibility to have arbitrary number of content/projects sections
 - Responsive portfolio grids with hover effect
 - Can be used as a professional showcase, a personal one, or both
-- Image gallery with easy and intuitive navigation controls*
+- Image gallery with easy and intuitive navigation controls (*)
 - Dynamic generation of pages based on data content
 - Easy site navigation via header navigation bar
 - Possibility to display siblings, children posts and children lists independently for each page, with associated orders
@@ -22,7 +22,7 @@ Noteworthy features of this Hugo theme are:
 - Easy copyright image labelling per image or per project
 - 404 page
 
-* Thanks to [liwenyip](//github.com/liwenyip) for the [PhotoSwipe](https://photoswipe.com) gallery integration in Hugo: [hugo-easy-gallery](//github.com/liwenyip/hugo-easy-gallery)
+(*) Thanks to [liwenyip](//github.com/liwenyip) for the [PhotoSwipe](https://photoswipe.com) gallery integration in Hugo: [hugo-easy-gallery](//github.com/liwenyip/hugo-easy-gallery)
 
 
 ![Hugo MyPortfolio Theme Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/screenshot.png)
@@ -237,7 +237,7 @@ All the parameters are optional - if not defined, it will not be added to the pa
 
 ### Run the website
 
-In order to see your site in action, run Hugo's built-in local server. 
+In order to see your site in action, run Hugo's built-in local server.
 
     $ hugo server
 

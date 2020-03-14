@@ -5,7 +5,7 @@ photo: "user-tie.png"
 description: "Very short text with a call to action."
 
 email:
-  address: "you.email@somewhere.com"
+  address: "your.email@somewhere.com"
   link: false
   icon: "fa-envelope"
   icon-pack: "fas"

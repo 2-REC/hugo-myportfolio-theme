@@ -111,8 +111,8 @@ theme = "hugo-myportfolio-theme"
         date_format = "Jan-2006"
 
         # Number of columns in projects grid (OPTIONAL)
-        #nb_columns = "3"
-        #nb_columns_small = "2"
+        nb_columns = "3"
+        nb_columns_small = "2"
 
     # ----------
 
