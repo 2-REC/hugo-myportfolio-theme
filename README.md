@@ -9,18 +9,18 @@ One could for example have different portfolios depending on the type of work, s
 Another could have different portfolios grouping his work into "Profesional", "Personal" and "Academic".
 
 Noteworthy features of this Hugo theme are:
-- Configurable home page (sections order and presence, and their content)
-- Possibility to have arbitrary number of content/projects sections
-- Responsive portfolio grids with hover effect
-- Can be used as a professional showcase, a personal one, or both
-- Image gallery with easy and intuitive navigation controls (*)
-- Dynamic generation of pages based on data content
-- Easy site navigation via header navigation bar
-- Possibility to display siblings, children posts and children lists independently for each page, with associated orders
-- Easy content navigation via sidebar: hierarchy (siblings and parents), and taxonomies (tags and categories)
-- Customisable CSS to override default values (such as main theme colours, fonts, etc.)
-- Easy copyright image labelling per image or per project
-- 404 page
+* Configurable home page (sections order and presence, and their content)
+* Possibility to have arbitrary number of content/projects sections
+* Responsive portfolio grids with hover effect
+* Can be used as a professional showcase, a personal one, or both
+* Image gallery with easy and intuitive navigation controls (*)
+* Dynamic generation of pages based on data content
+* Easy site navigation via header navigation bar
+* Possibility to display siblings, children posts and children lists independently for each page, with associated orders
+* Easy content navigation via sidebar: hierarchy (siblings and parents), and taxonomies (tags and categories)
+* Customisable CSS to override default values (such as main theme colours, fonts, etc.)
+* Easy copyright image labelling per image or per project
+* 404 page
 
 (*) Thanks to [liwenyip](//github.com/liwenyip) for the [PhotoSwipe](https://photoswipe.com) gallery integration in Hugo: [hugo-easy-gallery](//github.com/liwenyip/hugo-easy-gallery)
 
@@ -96,11 +96,11 @@ Details about each parameter and their role can be found in the file itself.
 
 
 Additionally to the configuration file, data files (located in the "data" folder) are required for the different sections of the homepage. The required data files are the folowing:
-- about.yaml
-- contact.yaml
-- home.yaml
-- services.yaml
-- skills.yaml
+* about.yaml
+* contact.yaml
+* home.yaml
+* services.yaml
+* skills.yaml
 The files can also be in JSON format, but need to have the same names.
 The "Projects" section(s) can be optional, but it is advised to have at least one (it is a "Portfolio" theme after all ...).
 However, if there are no projects sections, the "projects" entry of the "[params.navigation.links]" can be removed.
@@ -113,11 +113,11 @@ The following paragraphs detail the required data for each of the sections.
 The content of the top section of the homepage is fetched from the "home" data file.
 
 The different parameters that can be used are:
-- "title": The title for the website. Typically your name or company name.
-- "subtitle": A subtitle. Typically the kind of services or specialty you provide.
-- "background": The image used for the background.
-- "text": A short phrase to draw attention and make the visitor to see more.
-- "button_text": The text displayed on the scrolling button.
+* "title": The title for the website. Typically your name or company name.
+* "subtitle": A subtitle. Typically the kind of services or specialty you provide.
+* "background": The image used for the background.
+* "text": A short phrase to draw attention and make the visitor to see more.
+* "button_text": The text displayed on the scrolling button.
 
 All the parameters are optional - if not defined, it will not be added to the page content.
 
@@ -127,10 +127,10 @@ All the parameters are optional - if not defined, it will not be added to the pa
 The content of the "ABOUT" section of the homepage is fetched from the "about" data file.
 
 The different parameters that can be used are:
-- "title": The title of the section. Typically "ABOUT" would be used.
-- "avatar": The image used for the avatar.
-- "short_text": A short text briefly describing the company or person.
-- "long_text": A longer text providing more detailled information, and potentially links to the other sections.
+* "title": The title of the section. Typically "ABOUT" would be used.
+* "avatar": The image used for the avatar.
+* "short_text": A short text briefly describing the company or person.
+* "long_text": A longer text providing more detailled information, and potentially links to the other sections.
 
 All the parameters are optional - if not defined, it will not be added to the page content.
 
@@ -140,9 +140,9 @@ All the parameters are optional - if not defined, it will not be added to the pa
 The content of the "SERVICES" section of the homepage is fetched from the "services" data file.
 
 The different parameters that can be used are:
-- "title": The title of the section. Typically "SERVICES" would be used.
-- "background_image": The image used for the background.
-- "services": List of services. At least one must be provided.
+* "title": The title of the section. Typically "SERVICES" would be used.
+* "background_image": The image used for the background.
+* "services": List of services. At least one must be provided.
     Each service has a set of subfields:
     - "name": The name of the service.
     - "icon": The icon used for the service.
@@ -159,15 +159,15 @@ The "services" list parameter must exist and contain at least one element.
 The content of the "SKILLS" section of the homepage is fetched from the "skills" data file.
 
 The different parameters that can be used are:
-- "title": The title of the section. Typically "SKILLS" would be used.
-- "tags_label": Label used for the tags found in the content sections.
-- "categories_label": Label used for the categories found in the content sections.
-- "text": Text describing the content of the page.
-- "download":
-    - "button_text": Text used for the button.
-    - "filename": Name of the file to download. The file must be in "static/files".
-    - "icon": The icon used for the button.
-    - "icon_pack": The icon package/family (look at icons documentation).
+* "title": The title of the section. Typically "SKILLS" would be used.
+* "tags_label": Label used for the tags found in the content sections.
+* "categories_label": Label used for the categories found in the content sections.
+* "text": Text describing the content of the page.
+* "download":
+    * "button_text": Text used for the button.
+    * "filename": Name of the file to download. The file must be in "static/files".
+    * "icon": The icon used for the button.
+    * "icon_pack": The icon package/family (look at icons documentation).
 
 All the parameters except "text" are optional - if not defined, it will not be added to the page content.
 
@@ -218,19 +218,19 @@ There can be more than one main projects sections. Different categories could fo
 The content of the "CONTACT" section of the homepage is fetched from the "contact" data file.
 
 The different parameters that can be used are:
-- "title": The title of the section. Typically "CONTACT" would be used.
-- "background_image": The image used for the background.
-- "photo": The image used for the avatar.
-- "description": A short text typically with a call to action.
-- "email": Email information.
-    - "address: Email address.
-    - "link": Whereas the address can be used as a link.
-    - "icon": The icon used next to the address.
-    - "icon_pack": The icon package/family (look at icons documentation).
-- "social": List of social network icons/links.
-    - "icon": The icon used for the button.
-    - "icon_pack": The icon package/family (look at icons documentation).
-    - "link": The link to the social network profile page.
+* "title": The title of the section. Typically "CONTACT" would be used.
+* "background_image": The image used for the background.
+* "photo": The image used for the avatar.
+* "description": A short text typically with a call to action.
+* "email": Email information.
+    * "address: Email address.
+    * "link": Whereas the address can be used as a link.
+    * "icon": The icon used next to the address.
+    * "icon_pack": The icon package/family (look at icons documentation).
+* "social": List of social network icons/links.
+    * "icon": The icon used for the button.
+    * "icon_pack": The icon package/family (look at icons documentation).
+    * "link": The link to the social network profile page.
 
 All the parameters are optional - if not defined, it will not be added to the page content.
 
@@ -274,8 +274,8 @@ This theme is released under the Apache License 2.0 For more information read th
 
 Thanks to:
 
-- [digitalcraftsman](//github.com/digitalcraftsman) for creating the Creative theme
-- [Steve Francia](//github.com/spf13) for creating Hugo and the awesome community around the project
-- [David Miller](//github.com/davidtmiller) for creating the original theme
-- [liwenyip](//github.com/liwenyip) for the PhotoSwipe gallery integration in Hugo
-- [PhotoSwipe](https://photoswipe.com) for the gallery functionality
+* [digitalcraftsman](//github.com/digitalcraftsman) for creating the Creative theme
+* [Steve Francia](//github.com/spf13) for creating Hugo and the awesome community around the project
+* [David Miller](//github.com/davidtmiller) for creating the original theme
+* [liwenyip](//github.com/liwenyip) for the PhotoSwipe gallery integration in Hugo
+* [PhotoSwipe](https://photoswipe.com) for the gallery functionality
