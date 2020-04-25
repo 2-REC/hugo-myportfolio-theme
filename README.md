@@ -1,5 +1,10 @@
 # MyPortfolio Theme
 
+NOTICE: Due to the theme different structure (allowing more than 1 section for the posts), the "exampleSite" doesn't respect the "classic" Hugo structure, and is thus not working correctly. The "Professional" and "Personal" links and sections are not available and don't allow to see the demo site properly.
+To visualise a working example of the theme, you are invited to take a look at the site pointed by "Home" link, showcasing my own (unfinished) protfolio website.
+
+
+
 "MyPortfolio Theme" is a portfolio for developers or creatives to showcase their projects.
 It is based on the [HUGO "Creative" theme](//github.com/digitalcraftsman/hugo-creative-theme) by [digitalcraftsman](//github.com/digitalcraftsman), itself based on the [original Bootstrap theme](//github.com/IronSummitMedia/startbootstrap-creative) by [David Miller](//github.com/davidtmiller).
 
@@ -9,6 +14,7 @@ One could for example have different portfolios depending on the type of work, s
 Another could have different portfolios grouping his work into "Profesional", "Personal" and "Academic".
 
 Noteworthy features of this Hugo theme are:
+
 * Configurable home page (sections order and presence, and their content)
 * Possibility to have arbitrary number of content/projects sections
 * Responsive portfolio grids with hover effect
@@ -21,6 +27,7 @@ Noteworthy features of this Hugo theme are:
 * Customisable CSS to override default values (such as main theme colours, fonts, etc.)
 * Easy copyright image labelling per image or per project
 * 404 page
+
 
 (*) Thanks to [liwenyip](//github.com/liwenyip) for the [PhotoSwipe](https://photoswipe.com) gallery integration in Hugo: [hugo-easy-gallery](//github.com/liwenyip/hugo-easy-gallery)
 
@@ -96,11 +103,13 @@ Details about each parameter and their role can be found in the file itself.
 
 
 Additionally to the configuration file, data files (located in the "data" folder) are required for the different sections of the homepage. The required data files are the folowing:
+
 * about.yaml
 * contact.yaml
 * home.yaml
 * services.yaml
 * skills.yaml
+
 The files can also be in JSON format, but need to have the same names.
 The "Projects" section(s) can be optional, but it is advised to have at least one (it is a "Portfolio" theme after all ...).
 However, if there are no projects sections, the "projects" entry of the "[params.navigation.links]" can be removed.
@@ -113,11 +122,13 @@ The following paragraphs detail the required data for each of the sections.
 The content of the top section of the homepage is fetched from the "home" data file.
 
 The different parameters that can be used are:
+
 * "title": The title for the website. Typically your name or company name.
 * "subtitle": A subtitle. Typically the kind of services or specialty you provide.
 * "background": The image used for the background.
 * "text": A short phrase to draw attention and make the visitor to see more.
 * "button_text": The text displayed on the scrolling button.
+
 
 All the parameters are optional - if not defined, it will not be added to the page content.
 
@@ -127,10 +138,12 @@ All the parameters are optional - if not defined, it will not be added to the pa
 The content of the "ABOUT" section of the homepage is fetched from the "about" data file.
 
 The different parameters that can be used are:
+
 * "title": The title of the section. Typically "ABOUT" would be used.
 * "avatar": The image used for the avatar.
 * "short_text": A short text briefly describing the company or person.
 * "long_text": A longer text providing more detailled information, and potentially links to the other sections.
+
 
 All the parameters are optional - if not defined, it will not be added to the page content.
 
@@ -140,6 +153,7 @@ All the parameters are optional - if not defined, it will not be added to the pa
 The content of the "SERVICES" section of the homepage is fetched from the "services" data file.
 
 The different parameters that can be used are:
+
 * "title": The title of the section. Typically "SERVICES" would be used.
 * "background_image": The image used for the background.
 * "services": List of services. At least one must be provided.
@@ -150,6 +164,7 @@ The different parameters that can be used are:
     - "text": A text describing the service.
     - "list": A list of sub-services displayed as bullet points.
 
+
 All the parameters except "services" are optional - if not defined, it will not be added to the page content.
 The "services" list parameter must exist and contain at least one element.
 
@@ -159,6 +174,7 @@ The "services" list parameter must exist and contain at least one element.
 The content of the "SKILLS" section of the homepage is fetched from the "skills" data file.
 
 The different parameters that can be used are:
+
 * "title": The title of the section. Typically "SKILLS" would be used.
 * "tags_label": Label used for the tags found in the content sections.
 * "categories_label": Label used for the categories found in the content sections.
@@ -168,6 +184,7 @@ The different parameters that can be used are:
     * "filename": Name of the file to download. The file must be in "static/files".
     * "icon": The icon used for the button.
     * "icon_pack": The icon package/family (look at icons documentation).
+
 
 All the parameters except "text" are optional - if not defined, it will not be added to the page content.
 
@@ -218,6 +235,7 @@ There can be more than one main projects sections. Different categories could fo
 The content of the "CONTACT" section of the homepage is fetched from the "contact" data file.
 
 The different parameters that can be used are:
+
 * "title": The title of the section. Typically "CONTACT" would be used.
 * "background_image": The image used for the background.
 * "photo": The image used for the avatar.
@@ -231,6 +249,7 @@ The different parameters that can be used are:
     * "icon": The icon used for the button.
     * "icon_pack": The icon package/family (look at icons documentation).
     * "link": The link to the social network profile page.
+
 
 All the parameters are optional - if not defined, it will not be added to the page content.
 
