@@ -9,6 +9,8 @@ languageCode = "en-us"
 title = "HUGO MyPortfolio Theme"
 theme = "hugo-myportfolio-theme"
 
+[markup.goldmark.renderer]
+unsafe= true
 
 [params]
 
