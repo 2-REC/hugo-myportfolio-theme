@@ -1,4 +1,7 @@
 :root{
+    /* Default values for most CSS fields.
+        Can be modified, but DO NOT DELETE ANY FIELD!
+    */
 
     --GENERAL-FONT-1: "Merriweather", "Helvetica Neue", Arial, sans-serif;
     --GENERAL-FONT-2: "Fjalla One", "Helvetica Neue", Arial, sans-serif;
@@ -32,4 +35,24 @@
 
     --NAVBAR-HEIGHT: 50px; /* ! - Must correspond to the real navbar height! (Horrible hack) */
     --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
+
+}
+
+
+/* ABOUT */
+#about {
+    --about-bkg-color: var(--GENERAL-COLOR-1);
+    --about-bkg-opacity: 1.0;
+    --about-bkg-position: center center;
+    --about-bkg-size: cover;
+
+    --about-image-border-radius: var(--GENERAL-IMAGE-BORDER-RADIUS);
+
+    --about-link-color: var(--GENERAL-LINK-COLOR-2);
+    --about-link-color-active: var(--GENERAL-FONT-COLOR-3);
+
+    /* The following variables should not be changed (managed by code) */
+    --about-bkg-width: 100%;
+    --about-bkg-margin-left: 0;
+    --about-bkg-margin-right: 0;
 }

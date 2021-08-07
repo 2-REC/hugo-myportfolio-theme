@@ -82,6 +82,24 @@ unsafe= true
 
     # ----------
 
+    # ABOUT section
+    [params.about]
+        # Settings related to the CSS can be set in 'static\css\custom.css', 'about' section
+        #title_align = "right"              # left|right (default: right)
+        #title_length = 10                  # 1-12 (default: 10)
+        #layout = "right"                   # classic|left|right (default: "classic")
+        #big_side = 6                       # 2-10/12 (4-8 advised if 'classic') (default: 8)
+        #background = "full"                # "full" (default: none, depends on "layout")
+        ####
+        #TODO: keep this in 'config'? (should be enough with only in CSS)
+        # => should remove, not really worth it
+        #background_opacity = 1.0           # [0; 1.0] (default: 1.0)
+        #background_size = "contain"        # contain|cover (default: contain)
+        #background_position = "left top"   # left|center|right top|center|bottom (detault: center center)
+        ####
+
+    # ----------
+
     # PROJECTS section
     [params.projects]
         # Values in "categories" must be the same as in navigation menu "projects".

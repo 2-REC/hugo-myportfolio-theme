@@ -1,37 +1,95 @@
 {{ "<!-- ABOUT -->" | safeHTML }}
+{{ $params := .Site.Params.about }}
 {{ with .Site.Data.about }}
-    <section class="section bg-primary" id="about">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-2">
-                    {{ with .title }}
-                        <h2 class="section-heading">{{ . }}</h2>
-                        <hr class="primary light">
-                    {{ end }}
-                </div>
-            </div>
+  {{ $big_side := 8 }}
+  {{ with $params.big_side -}}
+    {{ $big_side = . }}
+  {{ end }}
+  {{ $small_side := sub 12 $big_side }}
+  <section class="section" id="about"
+    style="
+      {{- with .background_image -}}
+        --about-bkg-image: url('{{ (printf "images/%s" .) | absURL }}');
+      {{- end -}}
+      {{- if ne $params.background "full" -}}
+        {{- if eq $params.layout "left" -}}
+          --about-bkg-width: {{ mul (div $small_side 12.0) 100 }}%;
+          --about-bkg-margin-left: {{ mul (div $big_side 12.0) 100 }}%;
+          --about-bkg-margin-right: 0;
+        {{- else if eq $params.layout "right" -}}
+          --about-bkg-width: {{ mul (div $small_side 12.0) 100 }}%;
+          --about-bkg-margin-left: 0;
+          --about-bkg-margin-right: {{ mul (div $big_side 12.0) 100 }}%;
+        {{- end -}}
+      {{- end -}}
+      {{/* TODO: keep this in 'config'? (should be enough with only in CSS) */}}
+      {{- with $params.background_opacity -}}
+        --about-bkg-opacity: {{ . }};
+      {{- end -}}
+      {{- with $params.background_position -}}
+        --about-bkg-position: {{ . }};
+      {{- end -}}
+      {{- with $params.background_size -}}
+        --about-bkg-size: {{ . }};
+      {{- end -}}
+  ">
+    <div class="container-fluid">
+      <div class="row no-gutter">
+        {{ $title_length := 10 }}
+        {{ with $params.title_length }}
+          {{ $title_length = . }}
+        {{ end }}
+        {{ if eq $params.title_align "left" }}
+          <div class="col-md-{{ $title_length }} text-right">
+        {{ else }}
+          <div class="col-md-{{ $title_length }} col-md-offset-{{ sub 12 $title_length }}">
+        {{ end }}
+          {{ with .title }}
+            <h2 class="section-heading">{{ . }}</h2>
+            <hr class="primary light">
+          {{ end }}
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-4">
-                    <div class="profile">
-                        {{ with .avatar }}
-                            <div class="portrait" title="avatar: {{ . }}" style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"></div>
-                        {{ end }}
-                        {{ with .short_text }}
-                            <div class="text-primary">
-                                <p>{{ . | markdownify }}</p>
-                            </div>
-                        {{ end }}
-                    </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        {{ if eq $params.layout "right" }}
+          <div class="col-xs-12 col-md-{{ $small_side }}"></div>
+        {{ end }}
+        {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
+          {{/* ~Hack to add space outside (offset left) */}}
+          <div class="col-xs-12 col-md-offset-1 col-md-{{ sub $small_side 1 }}">
+        {{ else }}
+          <div class="col-xs-12 col-md-{{ $big_side }}">
+        {{ end }}
+            <div class="profile">
+              {{ with .avatar }}
+                <img class="portrait" title="avatar: {{ . }}" src="{{ printf "/images/%s" .}}">
+              {{ end }}
+              {{ with .short_text }}
+                <div class="text-primary short-text">
+                  <p>{{ . | markdownify }}</p>
                 </div>
-
-                {{ with .long_text }}
-                    <div class="col-xs-12 col-md-8 text-tertiary">
-                        <p>{{ . | markdownify }}</p>
-                    </div>
-                {{ end }}
+              {{ end }}
             </div>
-        </div>
-    </section>
+        {{ if .long_text }}
+          {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
+          </div>
+          {{/* ~Hack to add space outside (shorter right) */}}
+          <div class="col-xs-12 col-md-{{ sub $big_side 1 }} text-tertiary long-text">
+            <p>{{ .long_text | markdownify }}</p>
+          </div>
+          {{ else }}
+            <div class="text-tertiary long-text">
+              <p>{{ .long_text | markdownify }}</p>
+            </div>
+          </div>
+          {{ end }}
+        {{ end }}
+        {{ if eq $params.layout "left" }}
+          <div class="col-xs-12 col-md-{{ $small_side }}"></div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
 {{ end }}
