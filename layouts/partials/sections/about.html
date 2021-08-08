@@ -34,15 +34,15 @@
       {{- end -}}
   ">
     <div class="container-fluid">
-      <div class="row no-gutter">
+      <div class="row">
         {{ $title_length := 10 }}
         {{ with $params.title_length }}
           {{ $title_length = . }}
         {{ end }}
         {{ if eq $params.title_align "left" }}
-          <div class="col-md-{{ $title_length }} text-right">
+          <div class="col-md-{{ $title_length }} section-title-left">
         {{ else }}
-          <div class="col-md-{{ $title_length }} col-md-offset-{{ sub 12 $title_length }}">
+          <div class="col-md-{{ $title_length }} col-md-offset-{{ sub 12 $title_length }} section-title-right">
         {{ end }}
           {{ with .title }}
             <h2 class="section-heading">{{ . }}</h2>
@@ -76,10 +76,18 @@
           {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
           </div>
           {{/* ~Hack to add space outside (shorter right) */}}
+{{/*
           <div class="col-xs-12 col-md-{{ sub $big_side 1 }} text-tertiary long-text">
+*/}}
+          <div class="col-xs-12 col-md-{{ sub $big_side 1 }}">
+            <div class="text-tertiary long-text">
             <p>{{ .long_text | markdownify }}</p>
+            </div>
           </div>
           {{ else }}
+            <div>
+              <p></p>
+            </div>
             <div class="text-tertiary long-text">
               <p>{{ .long_text | markdownify }}</p>
             </div>

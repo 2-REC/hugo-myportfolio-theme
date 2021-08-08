@@ -2,9 +2,9 @@
 <section class="section projects" id="projects_{{ trim .File.Dir "/\\" }}">
     {{ $path := replace .File.Dir "\\" "/" }}
     {{ with .Title }}
-        <a href="/{{ $path }}" class="container-fluid padding-title">
+        <a href="/{{ $path }}" class="container-fluid projects-link">
             <div class="row">
-                <div class="col-md-8 text-right">
+                <div class="col-md-8 section-title-left">
                     <h2 class="section-heading">{{ . }}</h2>
                     <hr class="primary">
                 </div>

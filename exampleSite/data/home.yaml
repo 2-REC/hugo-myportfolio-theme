@@ -3,5 +3,9 @@ title: "YOUR NAME"
 subtitle: "A subtitle"
 background: "home.jpg"
 text: "A short catchy phrase ..."
-button_text: "SEE MORE"
+xbutton_text: "SEE MORE"
+button_image: "images/arrow_down.png"
+xbutton_icon:
+  icon: "fa-arrow-alt-circle-down"
+  pack: "fas"
 ---

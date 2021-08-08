@@ -255,11 +255,56 @@ fieldset[disabled] .btn-primary.active {
 
 .btn {
     border: 0;
-    border-radius: 300px;
-    font-weight: 700;
+    border-radius: 0;
+    font-weight: 500;
 
     font-family: var(--BUTTON-FONT, var(--GENERAL-FONT-2));
+
+    padding: .5em;
 }
+
+.btn-icon {
+    border: 0;
+    border-radius: 300px;
+    font-weight: 500;
+
+    padding: 0;
+}
+.btn-icon:hover {
+    text-decoration: none;
+
+    -webkit-transition: .1s ease-in-out;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+
+    transform: scale(1.1);
+}
+.btn-icon:active {
+    text-decoration: none;
+    transform: scale(0.9);
+}
+.btn-icon:focus {
+    text-decoration: none;
+}
+
+.btn-image img {
+    /* TODO: size as param (?) */
+    width:64px;
+    height:64px;
+}
+.btn-image img:hover {
+    -webkit-transition: .1s ease-in-out;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+
+    transform: scale(1.1);
+}
+.btn-image img:active {
+    transform: scale(0.9);
+}
+
 
 .btn-xl {
     padding: 15px 30px;
@@ -587,6 +632,17 @@ main {
     margin-top: 0;
 }
 
+/* TODO: here? */
+.section-title-left {
+    padding-left: 0;
+    text-align:right;
+}
+.section-title-right {
+    padding-right: 0;
+    text-align:left;
+}
+
+
 /******************************************************************************/
 
 /* HOME */
@@ -704,23 +760,61 @@ TODO: check!
 }
 
 
-/* TODO: could move paddings out of 'media' for all sizes (but seems ok as is */
+/* TODO: add (optional) background-color for 'boxes' (short+long) */
+/* TODO: fix problem of short+long boxes touching each other in normal layout, mobile size */
 /*@media (min-width: 64em) {*/
-@media (min-width: 992px) {
+    #about .long-text {
+//        padding-left: 5%;
+//        padding-right: 5%;
+//padding: 5%;
+padding-bottom: 1px;
+padding-top: 1px;
+padding-left: 15px;
+padding-right: 15px;
+//margin: 5px;
+//margin-top: 5%;
+background-color: var(--about-bkg-color);
+//background-color: grey;
+    }
     #about .profile {
-        padding-left: 5%;
-        padding-right: 5%;
+//        padding-left: 5%;
+//        padding-right: 5%;
+padding: 5%;
+//margin: 5px;
+background-color: var(--about-bkg-color);
+//background-color: grey;
 
 //text-align: right;
     }
+@media (min-width: 992px) {
+/*
+    #about .profile {
+//        padding-left: 5%;
+//        padding-right: 5%;
+padding: 5%;
+//margin: 5px;
+background-color: grey;
+
+//text-align: right;
+    }
+*/
     #about .short-text {
         text-align: left;
     }
-
+/*
     #about .long-text {
-        padding-left: 5%;
-        padding-right: 5%;
+//        padding-left: 5%;
+//        padding-right: 5%;
+//padding: 5%;
+padding-bottom: 1px;
+padding-top: 1px;
+padding-left: 15px;
+padding-right: 15px;
+//margin: 5px;
+//margin-top: 5%;
+//background-color: grey;
     }
+*/
 }
 /*@media (min-width: 80em) {*/
 /*
@@ -903,6 +997,10 @@ min-height: 300px;
 
 .projects hr {
     width: 100%;
+}
+
+.projects-link .row {
+    margin: 0px;
 }
 
 .project-box {
