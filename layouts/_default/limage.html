@@ -1,23 +1,20 @@
-
 {{/* Get the number of columns from config */}}
-{{ $.Scratch.Set "col_lg" "col-lg-4" }}
+{{ $col_lg := "col-lg-2" }}
 {{ with $.Site.Params.projects.nb_columns }}
     {{ $nb_cols := div 12 (int .) }}
-    {{ $.Scratch.Set "col_lg" (print "col-lg-" $nb_cols) }}
+    {{ $col_lg = print "col-lg-" $nb_cols }}
 {{ end }}
-{{ $col_lg := $.Scratch.Get "col_lg" }}
-{{ $.Scratch.Delete "col_lg" }}
-
-{{ $.Scratch.Set "col_sm" "col-sm-6" }}
+{{ $col_sm := "col-sm-3" }}
 {{ with $.Site.Params.projects.nb_columns_small }}
     {{ $nb_cols := div 12 (int .) }}
-    {{ $.Scratch.Set "col_sm" (print "col-sm-" $nb_cols) }}
+    {{ $col_sm = print "col-sm-" $nb_cols }}
 {{ end }}
-{{ $col_sm := $.Scratch.Get "col_sm" }}
-{{ $.Scratch.Delete "col_sm" }}
-
-{{ $class := print $col_lg " " $col_sm }}
-
+{{ $col_xs := "col-xs-6" }}
+{{ with $.Site.Params.projects.nb_columns_xsmall }}
+    {{ $nb_cols := div 12 (int .) }}
+    {{ $col_xs = print "col-xs-" $nb_cols }}
+{{ end }}
+{{ $class := print $col_lg " " $col_sm " " $col_xs }}
 <div class="{{ $class }}">
     {{ $path := replace .File.Dir "\\" "/" }}
     <a href="/{{ $path }}" class="project-box project-link">
