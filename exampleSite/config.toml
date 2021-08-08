@@ -131,8 +131,10 @@ unsafe= true
         date_format = "Jan-2006"
 
         # Number of columns in projects grid (OPTIONAL)
-        nb_columns = "3"
-        nb_columns_small = "2"
+        # (accepted values: 1, 2, 3, 4, 6, 12 - must be a multiple of 12)
+        #nb_columns = 6         # (default: 6)
+        #nb_columns_small = 4   # (default: 4)
+        #nb_columns_xsmall = 2  # (default: 2)
 
     # ----------
 
