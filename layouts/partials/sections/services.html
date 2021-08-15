@@ -1,4 +1,4 @@
-{{ "<!-- SERVICES -->" | safeHTML }}
+{{ $params := .Site.Params.services }}
 {{ with .Site.Data.services }}
     <section class="section" id="services"
             {{ with .background_image }}
@@ -6,16 +6,8 @@
             {{ end }}
         >
         {{ with .title }}
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="text-center">
-                        <h2 class="section-heading text-tertiary">{{ . }}</h2>
-                        <hr class="primary">
-                    </div>
-                </div>
-            </div>
+            {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
         {{ end }}
-
         <div class="container services-container">
             <div class="row">
                 {{ partial "utils/get-number-columns.html" (dict "length" (len .services) "scratch" $.Scratch) }}

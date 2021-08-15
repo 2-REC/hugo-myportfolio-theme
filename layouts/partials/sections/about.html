@@ -1,4 +1,3 @@
-{{ "<!-- ABOUT -->" | safeHTML }}
 {{ $params := .Site.Params.about }}
 {{ with .Site.Data.about }}
   {{ $big_side := 8 }}
@@ -33,24 +32,9 @@
         --about-bkg-size: {{ . }};
       {{- end -}}
   ">
-    <div class="container-fluid">
-      <div class="row">
-        {{ $title_length := 10 }}
-        {{ with $params.title_length }}
-          {{ $title_length = . }}
-        {{ end }}
-        {{ if eq $params.title_align "left" }}
-          <div class="col-md-{{ $title_length }} section-title-left">
-        {{ else }}
-          <div class="col-md-{{ $title_length }} col-md-offset-{{ sub 12 $title_length }} section-title-right">
-        {{ end }}
-          {{ with .title }}
-            <h2 class="section-heading">{{ . }}</h2>
-            <hr class="primary light">
-          {{ end }}
-        </div>
-      </div>
-    </div>
+    {{ with .title }}
+      {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
+    {{ end }}
     <div class="container-fluid">
       <div class="row">
         {{ if eq $params.layout "right" }}

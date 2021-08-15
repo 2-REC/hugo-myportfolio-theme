@@ -44,10 +44,11 @@ p {
 hr {
     border-width: 3px;
 
-    width: var(--HR-WIDTH);
+//    width: var(--HR-WIDTH);
     border-color: var(--HR-BORDER-COLOR, var(--GENERAL-COLOR-1));
 }
 
+/* TODO: can be removed*/
 hr.light {
     border-color: var(--HR-BORDER-LIGHT-COLOR, var(--GENERAL-COLOR-2));
 }
@@ -631,6 +632,10 @@ main {
 .section-heading {
     margin-top: 0;
 }
+/*
+.section-hr {
+}
+*/
 
 /* TODO: here? */
 .section-title-left {
@@ -639,7 +644,11 @@ main {
 }
 .section-title-right {
     padding-right: 0;
-    text-align:left;
+    text-align: left;
+}
+.section-title-center {
+    //padding-right: 0;
+    text-align: center;
 }
 
 
@@ -756,8 +765,19 @@ TODO: check!
     position: relative;
 
     z-index: -2;
+
+    /* TODO: add a 'about' specific color variable */
+    color: var(--GENERAL-FONT-COLOR-1);
     background-color: var(--about-bkg-color);
 }
+
+#about .section-hr {
+    border-color: var(--about-title-bar-color);
+}
+#about .section-heading {
+    color: var(--about-title-color);
+}
+
 
 
 /* TODO: add (optional) background-color for 'boxes' (short+long) */
@@ -883,10 +903,6 @@ background-size: cover;
 
 }
 
-#about hr {
-    width: 100%;
-}
-
 #about a {
     color: var(--about-link-color);
 }
@@ -921,7 +937,16 @@ background-size: cover;
     background-size: cover;
     -o-background-size: cover;
 
+    /* TODO: add a 'services' specific color variable */
     color: var(--GENERAL-FONT-COLOR-1);
+    //background-color: var(--services-bkg-color);
+}
+
+#services .section-hr {
+    border-color: var(--services-title-bar-color);
+}
+#services .section-heading {
+    color: var(--services-title-color);
 }
 
 .services-container {
@@ -975,8 +1000,16 @@ min-height: 300px;
     background-size: cover;
     -o-background-size: cover;
 
+    /* TODO: add a 'services' specific color variable */
     color: var(--GENERAL-FONT-COLOR-1);
     background-color: var(--GENERAL-COLOR-2);
+}
+
+#skills .section-hr {
+    border-color: var(--skills-title-bar-color);
+}
+#skills .section-heading {
+    color: var(--skills-title-color);
 }
 
 #skills .text-tertiary p {
@@ -1084,10 +1117,17 @@ min-height: 300px;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
+    /* TODO: add a 'contact' specific color variable */
+    color: var(--GENERAL-FONT-COLOR-1);
+    //background-color: var(--contact-bkg-color);
 }
 
-#contact hr {
-    width: 100%;
+#contact .section-hr {
+    border-color: var(--contact-title-bar-color);
+}
+#contact .section-heading {
+    color: var(--contact-title-color);
 }
 
 #contact .profile {
@@ -1101,6 +1141,7 @@ min-height: 300px;
 #contact .portrait {
     border-radius: var(--CONTACT-IMAGE-BORDER-RADIUS, var(--GENERAL-IMAGE-BORDER-RADIUS));
 }
+
 #contact .text-primary {
     text-align: left;
 }

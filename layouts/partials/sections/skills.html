@@ -1,17 +1,9 @@
-{{ "<!-- SKILLS -->" | safeHTML }}
+{{ $params := .Site.Params.skills }}
 {{ $data := .Site.Data.skills }}
 <section class="section" id="skills">
     {{ with $data.title }}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="text-center">
-                    <h2 class="section-heading">{{ . }}</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
+        {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
     {{ end }}
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-1 text-primary">
@@ -31,7 +23,6 @@
             </div>
             {{ end }}
         </div>
-
         {{/* Tags & Categories */}}
         {{ $project_sections := .Site.Params.projects.categories }}
         <div class="row">
@@ -45,7 +36,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-5">
                 <div class="skills-container">
                     {{ $label := or $data.categories_label "CATEGORIES" }}
