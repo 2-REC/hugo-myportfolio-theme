@@ -40,31 +40,7 @@
                 {{ end }}
                 {{ if .Params.startDate }}
                     <div class="project-date">
-                        {{/* TODO: rewrite shorter/cleaner */}}
-                        {{ $start := dateFormat .Site.Params.projects.date_format .Params.startDate }}
-                        {{ $period := "" }}
-                        {{ if .Site.Params.projects.period_format }}
-                            {{ if .Params.endDate }}
-                                {{ $end := dateFormat .Site.Params.projects.date_format .Params.endDate }}
-                                {{ $period = replace .Site.Params.projects.period_format "{start}" $start }}
-                                {{ $period = replace $period "{end}" $end }}
-                            {{ else }}
-                                {{ if .Site.Params.projects.period_format_startonly }}
-                                    {{ $period = replace .Site.Params.projects.period_format_startonly "{start}" $start }}
-                                {{ else }}
-                                    {{ $period = replace .Site.Params.projects.period_format "{start}" $start }}
-                                    {{ $period = replace $period "{end}" "..." }}
-                                {{ end }}
-                            {{ end }}
-                        {{ else }}
-                            {{ if .Params.endDate }}
-                                {{ $end := dateFormat .Site.Params.projects.date_format .Params.endDate }}
-                                {{ $period = print "From " $start " to " $end }}
-                            {{ else }}
-                                {{ $period = print "From " $start }}
-                            {{ end }}
-                        {{ end }}
-                        {{ $period }}
+                        {{ partial "time-period.html" (dict "startDate" .Params.startDate "endDate" .Params.endDate) }}
                     </div>
                 {{ end }}
             </div>

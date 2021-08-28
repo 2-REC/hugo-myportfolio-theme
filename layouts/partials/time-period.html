@@ -1,0 +1,30 @@
+{{/*
+    Parameters:
+    - startDate: Start date of period
+    - endDate: End date of period
+*/}}
+{{/* TODO: rewrite shorter/cleaner */}}
+{{ $start := dateFormat site.Params.projects.date_format .startDate }}
+{{ $period := "" }}
+{{ if site.Params.projects.period_format }}
+    {{ if .endDate }}
+        {{ $end := dateFormat site.Params.projects.date_format .endDate }}
+        {{ $period = replace site.Params.projects.period_format "{start}" $start }}
+        {{ $period = replace $period "{end}" $end }}
+    {{ else }}
+        {{ if site.Params.projects.period_format_startonly }}
+            {{ $period = replace site.Params.projects.period_format_startonly "{start}" $start }}
+        {{ else }}
+            {{ $period = replace site.Params.projects.period_format "{start}" $start }}
+            {{ $period = replace $period "{end}" "..." }}
+        {{ end }}
+    {{ end }}
+{{ else }}
+    {{ if .endDate }}
+        {{ $end := dateFormat site.Params.projects.date_format .endDate }}
+        {{ $period = print "From " $start " to " $end }}
+    {{ else }}
+        {{ $period = print "From " $start }}
+    {{ end }}
+{{ end }}
+{{ $period }}
