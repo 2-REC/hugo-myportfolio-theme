@@ -1,15 +1,10 @@
-{{ "<!-- PROJECTS -->" | safeHTML }}
+{{ $params := .Site.Params.projects }}
 <section class="section projects" id="projects_{{ trim .File.Dir "/\\" }}">
     {{ $path := replace .File.Dir "\\" "/" }}
     {{ with .Title }}
-        <a href="/{{ $path }}" class="container-fluid projects-link">
-            <div class="row">
-                <div class="col-md-8 section-title-left">
-                    <h2 class="section-heading">{{ . }}</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </a>
+    <a href="/{{ $path }}" class="container-fluid projects-link">
+        {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
+    </a>
     {{ end }}
     <div class="container-fluid">
         <div class="row no-gutter">

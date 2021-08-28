@@ -9,18 +9,44 @@
 
     {{/* Period */}}
     {{ if .Params.startDate }}
-        <h3>
-        From {{ dateFormat .Site.Params.projects.date_format .Params.startDate }}
-        {{ if .Params.endDate }}
-            {{ $end := (time .Params.endDate) }}
-            {{ $duration := $end.Sub (time .Params.startDate) }}
-            {{ $months := int (div (int (div $duration.Hours 24)) 30.4167) }}
-            {{ $years := int (div $months 12) }}
-            {{ $months := int (sub $months (mul $years 12)) }}
-
-            to {{ dateFormat .Site.Params.projects.date_format .Params.endDate }}
-            | {{ if gt $years 0 }}{{ $years }} year{{ if gt $years 1 }}s{{ end }}{{ end }}{{ if and (gt $years 0) (gt $months 0) }}, {{ end }}{{ if gt $months 0 }}{{ $months }} month{{ if gt $months 1 }}s{{ end }}{{ end }}
+    <h3>
+        {{/* TODO: make partial + rewrite shorter/cleaner */}}
+        {{ $start := dateFormat .Site.Params.projects.date_format .Params.startDate }}
+        {{ $period := "" }}
+        {{ if .Site.Params.projects.period_format }}
+            {{ if .Params.endDate }}
+                {{ $end := dateFormat .Site.Params.projects.date_format .Params.endDate }}
+                {{ $period = replace .Site.Params.projects.period_format "{start}" $start }}
+                {{ $period = replace $period "{end}" $end }}
+            {{ else }}
+                {{ if .Site.Params.projects.period_format_startonly }}
+                    {{ $period = replace .Site.Params.projects.period_format_startonly "{start}" $start }}
+                {{ else }}
+                    {{ $period = replace .Site.Params.projects.period_format "{start}" $start }}
+                    {{ $period = replace $period "{end}" "..." }}
+                {{ end }}
+            {{ end }}
+        {{ else }}
+            {{ if .Params.endDate }}
+                {{ $end := dateFormat .Site.Params.projects.date_format .Params.endDate }}
+                {{ $period = print "From " $start " to " $end }}
+            {{ else }}
+                {{ $period = print "From " $start }}
+            {{ end }}
         {{ end }}
+        {{ $period }}
+
+        {{/* Duration */}}
+        {{ $end := now }}
+        {{ if .Params.endDate }}
+            {{ $end = (time .Params.endDate) }}
+        {{ end }}
+        {{ $duration := $end.Sub (time .Params.startDate) }}
+        {{ $months := int (div (int (div $duration.Hours 24)) 30.4167) }}
+        {{ $years := int (div $months 12) }}
+        {{ $months := int (sub $months (mul $years 12)) }}
+        {{/* TODO: REWRITE! */}}
+        | {{ if gt $years 0 }}{{ $years }} year{{ if gt $years 1 }}s{{ end }}{{ end }}{{ if and (gt $years 0) (gt $months 0) }}, {{ end }}{{ if gt $months 0 }}{{ $months }} month{{ if gt $months 1 }}s{{ end }}{{ end }}
     </h3>
     {{ end }}
 </hgroup>

@@ -33,7 +33,9 @@
       {{- end -}}
   ">
     {{ with .title }}
+    <div class="container-fluid">
       {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
+    </div>
     {{ end }}
     <div class="container-fluid">
       <div class="row">
