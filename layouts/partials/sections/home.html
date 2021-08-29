@@ -1,14 +1,17 @@
-{{ "<!-- HOME -->" | safeHTML }}
 {{ with .Site.Data.home }}
     <section id="home"
-            {{ with .background }}
-                style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
-            {{ end }}
+        {{ with .background }}
+            style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
+        {{ end }}
         >
         <div class="header-content">
             <div class="header-content-inner">
                 {{ with .title }}
+{{/* HOME_LAYOUT
                     <h1 class="wow bounceIn">{{ . | markdownify  }}</h1>
+*/}}
+{{/* TODO: use specific class for title? */}}
+                    <h1>{{ . | markdownify  }}</h1>
                 {{ end }}
                 {{ with .subtitle }}
                     <h2>{{ . | markdownify }}</h2>

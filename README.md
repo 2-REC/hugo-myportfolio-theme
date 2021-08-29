@@ -127,10 +127,16 @@ The different parameters that can be used are:
 * "subtitle": A subtitle. Typically the kind of services or specialty you provide.
 * "background": The image used for the background.
 * "text": A short phrase to draw attention and make the visitor to see more.
-* "button_text": The text displayed on the scrolling button.
+
+Additionally, the following parameters can be used to customize the scrolling button.
+* "button_image": The image used as the button.
+* "button_text": The text on the button.
+* "button_icon": The icon used as the button.
+These parameters are mutually exclusive, so only one can be used (the others will be ignored).
+They are presented in their order of priority.
 
 
-All the parameters are optional - if not defined, it will not be added to the page content.
+All the parameters are optional: if not defined, their corresponding element will not be added to the page content.
 
 
 ### ABOUT: Introduce yourself
@@ -196,7 +202,7 @@ It is composed of a grid representing a set of subsections, each grouping "Proje
 
 It is based on the "Portfolio" section of the CREATIVE theme, but with an additional level of categories above the projects level. Also, instead of opening a pop-up window when selecting an element in the grid, it opens a new page displaying the contained projects.
 
-A portfolio section "Projects" is defined in the Homepage via the "config.toml" configuration file. Additionaly to the entry specified in the file, a directory with the same name must exist at the top level of the website file structure, containing its associated "_index.md" file.
+A portfolio section "Projects" is defined in the Homepage via the "config.toml" configuration file. Additionally to the entry specified in the file, a directory with the same name must exist at the top level of the website file structure, containing its associated "_index.md" file.
 
 As an example, to have two sections for a professional portfolio and a personal porfolio, the following entry could be added to the "[params.projects]" group in "config.toml" file:
 

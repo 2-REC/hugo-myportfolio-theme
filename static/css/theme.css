@@ -656,6 +656,9 @@ main {
 
 /* HOME */
 
+/* TODO: rewrite+check all subcases (inner, etc) */
+/* TODO: check required/desired variables and add to "default css" */
+
 #home {
     position: relative;
     min-height: 100%;
@@ -665,15 +668,24 @@ main {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    text-align: center;
-    color: var(--HOME-TITLE-COLOR, var(--GENERAL-FONT-COLOR-3));
+
+/* HOME_LAYOUT - BEGIN */
+    //text-align: center;
+/* HOME_LAYOUT - MID */
 }
 
 #home .header-content {
     position: relative;
     width: 100%;
     padding: 100px 15px;
-    text-align: center;
+/* HOME_LAYOUT - BEGIN */
+//    text-align: center;
+/* HOME_LAYOUT - MID */
+/* TODO: use variables for 'top' and 'left' (0-100%) */
+text-align: center;
+/* HOME_LAYOUT - END */
+
+    color: var(--HOME-TITLE-COLOR, var(--GENERAL-FONT-COLOR-3));
 }
 
 #home .header-content .header-content-inner h1 {
@@ -688,6 +700,10 @@ main {
 
 #home .header-content .header-content-inner hr {
     margin: 30px auto;
+/* HOME_LAYOUT - MID */
+/* TODO: use variables for 'bar-width' (0-100%) (find better name) */
+width: 100%;
+/* HOME_LAYOUT - END */
 }
 
 #home .header-content .header-content-inner p {
@@ -697,14 +713,30 @@ main {
     color: var(--HOME-TEXT-COLOR, var(--GENERAL-FONT-COLOR-3));
 }
 
+/* TODO: move this to "default" case, and use "@media(max-width: 768px)" instead */
 @media(min-width: 768px) {
     #home .header-content {
         position: absolute;
+
+/* HOME_LAYOUT - BEGIN */
+/*
         top: 50%;
         padding: 0 50px;
+
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
+*/
+/* HOME_LAYOUT - MID */
+padding: 0;
+/* TODO: use variables for 'top' and 'left' (0-100%) */
+width: 50%;
+left: 50%;
+top: 50%;
+-webkit-transform: translate(-50%,-50%);
+-ms-transform: translate(-50%,-50%);
+transform: translate(-50%,-50%);
+/* HOME_LAYOUT - END */
     }
 
     #home .header-content .header-content-inner {
