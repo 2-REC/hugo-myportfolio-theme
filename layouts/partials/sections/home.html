@@ -1,10 +1,23 @@
+{{ $params := .Site.Params.home }}
 {{ with .Site.Data.home }}
     <section id="home"
         {{ with .background }}
             style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
         {{ end }}
         >
-        <div class="header-content">
+        <div class="header-content"
+            style="
+            {{- with $params.width -}}
+                --home-width: {{ . }}%;
+            {{- end -}}
+            {{- with $params.offset_h -}}
+                --home-offset-h: {{ . }}%;
+            {{- end -}}
+            {{- with $params.offset_v -}}
+                --home-offset-v: {{ . }}%;
+            {{- end -}}
+            "
+        >
             <div class="header-content-inner">
                 {{ with .title }}
 {{/* HOME_LAYOUT

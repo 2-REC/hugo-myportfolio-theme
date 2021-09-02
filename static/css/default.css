@@ -39,6 +39,14 @@
 }
 
 
+/* HOME */
+#home {
+    /* The following variables should not be changed (managed by code) */
+    --home-width: 50%;
+    --home-offset-h: 50%;
+    --home-offset-v: 50%;
+}
+
 /* ABOUT */
 #about {
     --about-bkg-color: var(--GENERAL-COLOR-1);

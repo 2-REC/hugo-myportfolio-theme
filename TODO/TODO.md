@@ -1,5 +1,10 @@
 # TODO
 
+
+!!!!
+- add CSS+layout variables changes in README + exampleSite config.toml!
+!!!!
+
 - [ ] Complete README.md file
     => What to add?
     - [ ] Reference "Minimal Academic" theme for the sidebar stuff? (if not done)

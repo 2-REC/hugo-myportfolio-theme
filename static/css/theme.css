@@ -656,7 +656,7 @@ main {
 
 /* HOME */
 
-/* TODO: rewrite+check all subcases (inner, etc) */
+/* TODO: rewrite+check all subcases (inner, etc) + ADD VARIABLES! (align, sizes?) */
 /* TODO: check required/desired variables and add to "default css" */
 
 #home {
@@ -729,13 +729,22 @@ width: 100%;
 */
 /* HOME_LAYOUT - MID */
 padding: 0;
-/* TODO: use variables for 'top' and 'left' (0-100%) */
-width: 50%;
-left: 50%;
-top: 50%;
--webkit-transform: translate(-50%,-50%);
--ms-transform: translate(-50%,-50%);
-transform: translate(-50%,-50%);
+width: var(--home-width);
+left: var(--home-offset-h);
+top: var(--home-offset-v);
+
+-webkit-transform: translate(
+    calc(-1 * var(--home-offset-h)),
+    calc(-1 * var(--home-offset-v))
+);
+-ms-transform: translate(
+    calc(-1 * var(--home-offset-h)),
+    calc(-1 * var(--home-offset-v))
+);
+transform: translate(
+    calc(-1 * var(--home-offset-h, 0%)),
+    calc(-1 * var(--home-offset-v, 0%))
+);
 /* HOME_LAYOUT - END */
     }
 
