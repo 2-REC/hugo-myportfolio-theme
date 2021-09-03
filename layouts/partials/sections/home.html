@@ -10,20 +10,20 @@
             {{- with $params.width -}}
                 --home-width: {{ . }}%;
             {{- end -}}
-            {{- with $params.offset_h -}}
-                --home-offset-h: {{ . }}%;
+            {{- if isset $params "offset_h" -}}
+                --home-offset-h: {{ $params.offset_h }}%;
             {{- end -}}
-            {{- with $params.offset_v -}}
-                --home-offset-v: {{ . }}%;
+            {{- if isset $params "offset_v" -}}
+                --home-offset-v: {{ $params.offset_v }}%;
+            {{- end -}}
+            {{- with $params.text_align -}}
+                --home-text-align: {{ . }};
             {{- end -}}
             "
         >
             <div class="header-content-inner">
                 {{ with .title }}
-{{/* HOME_LAYOUT
-                    <h1 class="wow bounceIn">{{ . | markdownify  }}</h1>
-*/}}
-{{/* TODO: use specific class for title? */}}
+                    {{/* TODO: use specific class for title? */}}
                     <h1>{{ . | markdownify  }}</h1>
                 {{ end }}
                 {{ with .subtitle }}

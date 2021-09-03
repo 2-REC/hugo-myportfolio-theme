@@ -6,6 +6,9 @@
     {{ with .Params.subtitle }}
         <h2>{{ . }}</h2>
     {{ end }}
+    {{ with .Params.subtitle2 }}
+        <h3>{{ . }}</h3>
+    {{ end }}
 
     {{/* Period */}}
     {{ if .Params.startDate }}

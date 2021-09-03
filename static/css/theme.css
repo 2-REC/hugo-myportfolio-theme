@@ -656,9 +656,6 @@ main {
 
 /* HOME */
 
-/* TODO: rewrite+check all subcases (inner, etc) + ADD VARIABLES! (align, sizes?) */
-/* TODO: check required/desired variables and add to "default css" */
-
 #home {
     position: relative;
     min-height: 100%;
@@ -668,22 +665,14 @@ main {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-
-/* HOME_LAYOUT - BEGIN */
-    //text-align: center;
-/* HOME_LAYOUT - MID */
 }
 
 #home .header-content {
     position: relative;
     width: 100%;
     padding: 100px 15px;
-/* HOME_LAYOUT - BEGIN */
-//    text-align: center;
-/* HOME_LAYOUT - MID */
-/* TODO: use variables for 'top' and 'left' (0-100%) */
-text-align: center;
-/* HOME_LAYOUT - END */
+
+    text-align: var(--home-text-align);
 
     color: var(--HOME-TITLE-COLOR, var(--GENERAL-FONT-COLOR-3));
 }
@@ -700,64 +689,51 @@ text-align: center;
 
 #home .header-content .header-content-inner hr {
     margin: 30px auto;
-/* HOME_LAYOUT - MID */
-/* TODO: use variables for 'bar-width' (0-100%) (find better name) */
-width: 100%;
-/* HOME_LAYOUT - END */
+
+    /* TODO: use variables for 'bar-width' (0-100%) (find better name) (?) */
+    width: 100%;
 }
 
 #home .header-content .header-content-inner p {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     font-size: 16px;
     font-weight: 300;
     color: var(--HOME-TEXT-COLOR, var(--GENERAL-FONT-COLOR-3));
 }
 
-/* TODO: move this to "default" case, and use "@media(max-width: 768px)" instead */
 @media(min-width: 768px) {
     #home .header-content {
         position: absolute;
 
-/* HOME_LAYOUT - BEGIN */
-/*
-        top: 50%;
-        padding: 0 50px;
+        padding: 0;
+        width: var(--home-width);
+        left: var(--home-offset-h);
+        top: var(--home-offset-v);
 
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-*/
-/* HOME_LAYOUT - MID */
-padding: 0;
-width: var(--home-width);
-left: var(--home-offset-h);
-top: var(--home-offset-v);
-
--webkit-transform: translate(
-    calc(-1 * var(--home-offset-h)),
-    calc(-1 * var(--home-offset-v))
-);
--ms-transform: translate(
-    calc(-1 * var(--home-offset-h)),
-    calc(-1 * var(--home-offset-v))
-);
-transform: translate(
-    calc(-1 * var(--home-offset-h, 0%)),
-    calc(-1 * var(--home-offset-v, 0%))
-);
-/* HOME_LAYOUT - END */
+        -webkit-transform: translate(
+            calc(-1 * var(--home-offset-h)),
+            calc(-1 * var(--home-offset-v))
+        );
+        -ms-transform: translate(
+            calc(-1 * var(--home-offset-h)),
+            calc(-1 * var(--home-offset-v))
+        );
+        transform: translate(
+            calc(-1 * var(--home-offset-h)),
+            calc(-1 * var(--home-offset-v))
+        );
     }
 
     #home .header-content .header-content-inner {
         margin-right: auto;
         margin-left: auto;
-        max-width: 1000px;
+//        max-width: 1000px;
     }
 
     #home .header-content .header-content-inner p {
-        margin-right: auto;
-        margin-left: auto;
-        max-width: 80%;
+//        margin-right: auto;
+//        margin-left: auto;
+//        max-width: 80%;
         font-size: 18px;
     }
 }
@@ -1121,11 +1097,21 @@ min-height: 300px;
 }
 
 .project-box .project-box-caption .project-box-caption-content .project-category {
-    padding: 10px;
+    /*padding: 10px;*/
+    padding: 0 10px;
     font-size: 16px;
 
     font-family: var(--PROJECTBOX-CATEGORY-FONT, var(--GENERAL-FONT-2));
 }
+
+.project-box .project-box-caption .project-box-caption-content .project-category2 {
+    /*padding: 10px;*/
+    padding: 0 10px;
+    font-size: 12px;
+
+    font-family: var(--PROJECTBOX-CATEGORY-FONT, var(--GENERAL-FONT-2));
+}
+
 
 .project-box .project-box-caption .project-box-caption-content .project-date {
     padding: 10px;
@@ -1141,6 +1127,10 @@ min-height: 300px;
 
     .project-box .project-box-caption .project-box-caption-content .project-category {
         font-size: 18px;
+    }
+
+    .project-box .project-box-caption .project-box-caption-content .project-category2 {
+        font-size: 14px;
     }
 
     .project-box .project-box-caption .project-box-caption-content .project-date {

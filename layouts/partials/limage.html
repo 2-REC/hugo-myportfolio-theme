@@ -39,6 +39,11 @@
                         {{ . }}
                     </div>
                 {{ end }}
+                {{ with .context.Params.subtitle2 }}
+                    <div class="project-category2">
+                        {{ . }}
+                    </div>
+                {{ end }}
                 {{ if .context.Params.startDate }}
                     <div class="project-date">
                         {{ partial "time-period.html" (dict "startDate" .context.Params.startDate "endDate" .context.Params.endDate) }}
