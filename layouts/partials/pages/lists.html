@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row no-gutter">
                     {{ range (.Scratch.Get "list") }}
-                        {{ .Render "limage" }}
+                        {{ partial "limage.html" (dict "context" . "data" $.Site.Params.projects.list) }}
                     {{ end }}
                 </div>
             </div>
@@ -22,7 +22,6 @@
         </div>
     {{ end }}
 {{ end }}
-
 {{/* List posts (default value is true) */}}
 {{ if (or (not (isset .Params "showposts")) (.Params.showposts)) }}
     {{ if .Pages }}

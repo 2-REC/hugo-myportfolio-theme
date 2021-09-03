@@ -12,7 +12,7 @@
                 {{/* Sort the list */}}
                 {{ partial "utils/ordered-list.html" (dict "list" .Sections "params" .Params "scratch" .Scratch) }}
                 {{ range (.Scratch.Get "list") }}
-                    {{ .Render "limage" }}
+                    {{ partial "limage.html" (dict "context" . "data" $.Site.Params.projects.home) }}
                 {{ end }}
                 {{ .Scratch.Delete "list" }}
             {{ end }}

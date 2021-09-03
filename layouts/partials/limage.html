@@ -1,46 +1,47 @@
 {{/* Get the number of columns from config */}}
 {{ $col_lg := "col-lg-2" }}
-{{ with $.Site.Params.projects.nb_columns }}
-    {{ $nb_cols := div 12 (int .) }}
-    {{ $col_lg = print "col-lg-" $nb_cols }}
-{{ end }}
 {{ $col_sm := "col-sm-3" }}
-{{ with $.Site.Params.projects.nb_columns_small }}
-    {{ $nb_cols := div 12 (int .) }}
-    {{ $col_sm = print "col-sm-" $nb_cols }}
-{{ end }}
 {{ $col_xs := "col-xs-6" }}
-{{ with $.Site.Params.projects.nb_columns_xsmall }}
-    {{ $nb_cols := div 12 (int .) }}
-    {{ $col_xs = print "col-xs-" $nb_cols }}
+{{ with .data }}
+    {{ with .nb_columns }}
+        {{ $nb_cols := div 12 (int .) }}
+        {{ $col_lg = print "col-lg-" $nb_cols }}
+    {{ end }}
+    {{ with .nb_columns_small }}
+        {{ $nb_cols := div 12 (int .) }}
+        {{ $col_sm = print "col-sm-" $nb_cols }}
+    {{ end }}
+    {{ with .nb_columns_xsmall }}
+        {{ $nb_cols := div 12 (int .) }}
+        {{ $col_xs = print "col-xs-" $nb_cols }}
+    {{ end }}
 {{ end }}
 {{ $class := print $col_lg " " $col_sm " " $col_xs }}
 <div class="{{ $class }}">
-    {{ $path := replace .File.Dir "\\" "/" }}
+    {{ $path := replace .context.File.Dir "\\" "/" }}
     <a href="/{{ $path }}" class="project-box project-link">
-        {{ $image_file := or .Params.cover_image .Params.small_image }}
+        {{ $image_file := or .context.Params.cover_image .context.Params.small_image }}
         {{ if $image_file }}
-            {{ $image := .Resources.GetMatch $image_file }}
+            {{ $image := .context.Resources.GetMatch $image_file }}
             {{ with $image }}
                 <img src="{{ .Permalink }}" class="img-responsive" alt="{{ .Name }}">
             {{ end }}
         {{ end }}
-
         <div class="project-box-caption">
             <div class="project-box-caption-content">
-                {{ with .Title }}
+                {{ with .context.Title }}
                     <div class="project-name">
                         {{ . }}
                     </div>
                 {{ end }}
-                {{ with .Params.subtitle }}
+                {{ with .context.Params.subtitle }}
                     <div class="project-category">
                         {{ . }}
                     </div>
                 {{ end }}
-                {{ if .Params.startDate }}
+                {{ if .context.Params.startDate }}
                     <div class="project-date">
-                        {{ partial "time-period.html" (dict "startDate" .Params.startDate "endDate" .Params.endDate) }}
+                        {{ partial "time-period.html" (dict "startDate" .context.Params.startDate "endDate" .context.Params.endDate) }}
                     </div>
                 {{ end }}
             </div>

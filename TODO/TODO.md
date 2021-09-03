@@ -5,6 +5,7 @@
 - add CSS+layout variables changes in README + exampleSite config.toml!
 !!!!
 
+- [ ] Remove all external dependencies (eg photoswipe cdn), or at least make fallback alternatives
 - [ ] Complete README.md file
     => What to add?
     - [ ] Reference "Minimal Academic" theme for the sidebar stuff? (if not done)
@@ -205,13 +206,6 @@
     - [ ] li.html
         - [ ] Change layout of links, and put everything in the "a" tag.
             => Do something similar to "project-box".
-    - [ ] limage.html
-        - [ ] Determine number of columns and offsets based on content.<br>
-            For
-            ```html
-            <div class="col-lg-4 col-sm-6">
-            ```
-            => Could use "get-number-columns.html".
     - [ ] single.html
         - [ ] Keep aria-hidden?<br>
             => And check if needed anywhere else.
