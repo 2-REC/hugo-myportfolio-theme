@@ -1,3 +1,4 @@
+/* TODO: check all caps lock variables (reorganise + check use) */
 :root{
     /* Default values for most CSS fields.
         Can be modified, but DO NOT DELETE ANY FIELD!
@@ -36,6 +37,7 @@
     --NAVBAR-HEIGHT: 50px; /* ! - Must correspond to the real navbar height! (Horrible hack) */
     --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
 
+    --homepage-section-padding-v: 100px;
 }
 
 
@@ -72,8 +74,21 @@
 
 /* SERVICES */
 #services {
+    --services-bkg-color: var(--GENERAL-COLOR-2);
+
     --services-title-color: var(--GENERAL-FONT-COLOR-1);
     --services-title-bar-color: var(--GENERAL-COLOR-1);
+
+    --services-container-color: transparent;
+    --services-container-border-radius: 0;
+    --services-container-shadow: 0;
+
+    --services-box-color: var(--GENERAL-COLOR-2);
+    --services-box-border-radius: 0;
+    --services-box-shadow: 0;
+
+    --services-icon-color: var(--GENERAL-COLOR-1);
+    /* TODO: add other variables? */
 }
 
 

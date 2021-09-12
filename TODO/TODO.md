@@ -298,15 +298,6 @@
         - [ ] get-keywords.html
             - [ ] Add a parameter to specify order (based on wieght, title, occurrences, ...)
             (now hardcoded on alphanumerical value - at end of file)
-        - [ ] get-number-columns.html
-            - [ ] Enhance by adding "offsets" & "xl" (& "xs", "sm"?)<br>
-                => Output should be such as:
-                ```html
-                .Scratch.Set "col-sizes" "col-md-6 col-lg-4 col-xl-5"
-                .Scratch.Set "col-offsets" "col-xl-offset-1"
-                & in loop: class="{{ .Scratch.Get "col-sizes" }} {{ .Scratch.Get "col-offsets" }} text-center"
-                ! - delete Scratch variables after, & delete "offsets" after first iteration (end of first)!
-                ```
     - [ ] footer.html
         - [ ] Fix problem that not at bottom of page.<br>
             => Need changes in CSS for main tags (html, body, sections, etc?)

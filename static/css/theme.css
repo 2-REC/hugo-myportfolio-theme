@@ -625,7 +625,7 @@ main {
 }
 
 .section {
-    padding: 100px 0;
+    padding: var(--homepage-section-padding-v) 0;
     min-height: calc(100% - var(--NAVBAR-HEIGHT));
 }
 
@@ -948,6 +948,8 @@ background-size: cover;
 
 #services {
     position: relative;
+ 
+    background-image: var(--services-bkg-image);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -956,7 +958,7 @@ background-size: cover;
 
     /* TODO: add a 'services' specific color variable */
     color: var(--GENERAL-FONT-COLOR-1);
-    //background-color: var(--services-bkg-color);
+    background-color: var(--services-bkg-color);
 }
 
 #services .section-hr {
@@ -967,9 +969,9 @@ background-size: cover;
 }
 
 .services-container {
-    background-color: var(--SERVICES-CONTAINER-COLOR, transparent);
-    border-radius: var(--SERVICES-CONTAINER-BORDER-RADIUS, 0);
-    box-shadow: var(--SERVICES-CONTAINER-BOX-SHADOW, 0);
+    background-color: var(--services-container-color);
+    border-radius: var(--services-container-border-radius);
+    box-shadow: var(--services-container-shadow);
 }
 
 .service-box {
@@ -977,16 +979,16 @@ background-size: cover;
     padding: 10px;
     max-width: 400px;
 
-    background-color: var(--SERVICES-BOX-COLOR, var(--GENERAL-COLOR-2));
-    border-radius: var(--SERVICES-BOX-BORDER-RADIUS, 0);
-    box-shadow: var(--SERVICES-BOX-BOX-SHADOW, 0);
+    background-color: var(--services-box-color);
+    border-radius: var(--services-box-border-radius);
+    box-shadow: var(--services-box-shadow);
 
 /* Hack to avoid misalignment of boxes - TO BE REMOVED! */
 min-height: 300px;
 }
 
 .service-box i {
-    color: var(--SERVICES-ICON-COLOR, var(--GENERAL-COLOR-1));
+    color: var(--services-icon-color);
 }
 
 .service-box ul {
