@@ -48,6 +48,50 @@ hr {
     border-color: var(--HR-BORDER-COLOR, var(--GENERAL-COLOR-1));
 }
 
+@keyframes zoom-in {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes slide-right {
+    0% {
+        width: 0;
+        margin-left: 100%;
+    }
+    100% {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+@keyframes slide-left {
+    0% {
+        width: 0;
+        margin-right: 100%;
+    }
+    100% {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .anim-in {
+        animation: zoom-in .5s 1;
+    }
+
+    .anim-left {
+        animation: slide-right .5s 1;
+    }
+
+    .anim-right {
+        animation: slide-left .5s 1;
+    }
+}
+
+
 /* TODO: can be removed*/
 hr.light {
     border-color: var(--HR-BORDER-LIGHT-COLOR, var(--GENERAL-COLOR-2));

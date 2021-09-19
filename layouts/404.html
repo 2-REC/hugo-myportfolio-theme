@@ -12,14 +12,14 @@
             {{ with .Site.Params.page404 }}
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 text-center">
+                        <div class="col-xs-12 text-center anim-wrapper">
                             {{ with .background_image }}
                                 <div class="page404-image" title="image: {{ . }}"
                                         style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
                                     >
                                 </div>
                             {{ end }}
-                            <div class="page404-title wow bounceIn">
+                            <div class="page404-title anim zoomIn">
                                 <h1>404</h1>
                             </div>
                             <div class="page404-content">

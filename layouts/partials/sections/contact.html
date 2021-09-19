@@ -24,8 +24,9 @@
                             </div>
                         {{ end }}
 
-                        <div class="email-link" itemprop="email">
+                        <div class="email-link anim-wrapper" itemprop="email">
                             {{ with .email }}
+                            <div class="anim zoomIn">
                                 {{ if .link }}
                                 <a href="mailto:{{ .address }}">
                                 {{ end }}
@@ -38,15 +39,16 @@
                                 {{ if .link }}
                                 </a>
                                 {{ end }}
+                            </div>
                             {{ end }}
                         </div>
 
-                        <ul class="icons-list" aria-hidden="true">
+                        <ul class="icons-list anim-wrapper" aria-hidden="true">
                             {{ range .social }}
                                 {{ $pack := or .icon_pack "fa" }}
                                 <li>
                                     <a itemprop="sameAs" href="{{ .link | safeURL }}" target="_blank" rel="noopener">
-                                        <i class="{{ $pack }} {{ .icon }} icon-x2 wow bounceIn"></i>
+                                        <i class="{{ $pack }} {{ .icon }} icon-x2 anim zoomIn"></i>
                                     </a>
                                 </li>
                             {{ end }}

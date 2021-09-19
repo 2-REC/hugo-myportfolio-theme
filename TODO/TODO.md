@@ -2,8 +2,17 @@
 
 
 !!!!
+- ADAPT EXAMPLE SITE! +config.toml!!
 - add CSS+layout variables changes in README + exampleSite config.toml!
+- make animations "one shot"? (or keep repeat as-is now?)
+- too much animation on home section?
+- skills: keep "resume" button animation?
 !!!!
+
+- [x] Remove use of "wow" (animate stuff) and use own js/css definitions (as in "anim.js")
+- [ ] Fix error when clicking "home" button
+    "Uncaught TypeError: Cannot read properties of undefined (reading 'top')"
+
 
 - [ ] Remove all external dependencies (eg photoswipe cdn), or at least make fallback alternatives
 - [ ] Complete README.md file

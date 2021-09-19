@@ -75,9 +75,9 @@
                     {{ $nb_left = sub $nb_left 1 }}
 
                     <div class="{{ $col_layout }} text-center">
-                        <div class="service-box">
+                        <div class="service-box anim-wrapper">
                             {{ $pack := or .icon_pack "fa" }}
-                            <i class="{{ $pack }} {{ .icon }} wow bounceIn icon-x6"></i>
+                            <i class="{{ $pack }} {{ .icon }} anim zoomIn icon-x6"></i>
                             <h3>{{ .name }}</h3>
                             {{ with .text }}
                                 <p>{{ . }}</p>

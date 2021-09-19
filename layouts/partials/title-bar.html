@@ -5,20 +5,26 @@
     - title: the title text
 */}}
 <div class="row">
-    {{ $title_length := 10 }}
-    {{ with .length }}
-        {{ $title_length = . }}
-    {{ end }}
-    {{ if eq .align "left" }}
-    <div class="col-md-{{ $title_length }} section-title-left">
-    {{ else if eq .align "right" }}
-    <div class="col-md-{{ $title_length }} col-md-offset-{{ sub 12 $title_length }} section-title-right">
-    {{ else }}
-    <div class="col-md-{{ $title_length }} col-md-offset-{{ div (sub 12 $title_length) 2 }} section-title-center">
-    {{ end }}
-        {{ with .title }}
-        <h2 class="section-heading">{{ . }}</h2>
-        <hr class="section-hr">
+    {{ if .title }}
+        {{ $title_length := 10 }}
+        {{ with .length }}
+            {{ $title_length = . }}
         {{ end }}
-    </div>
+        {{ if eq .align "left" }}
+        <div class="anim-wrapper col-md-{{ $title_length }} section-title-left">
+            <h2 class="section-heading anim zoomIn">{{ .title }}</h2>
+            <hr class="section-hr anim slideRight">
+        </div>
+        {{ else if eq .align "right" }}
+        <div class="anim-wrapper col-md-{{ $title_length }} col-md-offset-{{ sub 12 $title_length }} section-title-right">
+            <h2 class="section-heading anim zoomIn">{{ .title }}</h2>
+            <hr class="section-hr anim slideLeft">
+        </div>
+        {{ else }}
+        <div class="anim-wrapper col-md-{{ $title_length }} col-md-offset-{{ div (sub 12 $title_length) 2 }} section-title-center">
+            <h2 class="section-heading anim zoomIn">{{ .title }}</h2>
+            <hr class="section-hr anim zoomIn">
+        </div>
+        {{ end }}
+    {{ end }}
 </div>
