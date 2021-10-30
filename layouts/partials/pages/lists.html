@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row no-gutter">
                     {{ range (.Scratch.Get "list") }}
-                        {{ partial "limage.html" (dict "context" . "data" $.Site.Params.projects.list) }}
+                        {{ partial "project-image.html" (dict "context" . "data" $.Site.Params.projects.list) }}
                     {{ end }}
                 </div>
             </div>

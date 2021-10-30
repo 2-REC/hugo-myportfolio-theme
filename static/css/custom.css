@@ -1,5 +1,5 @@
 :root{
-
+/* TODO: replace with content of my website's custom (th all variables commented) */
     /*
       Override desired values for the following variables.
     */
@@ -51,6 +51,8 @@
 /*
     --HERO-IMAGE-HEIGHT: 500px;
     --HERO-IMAGE-HEIGHT-SMALL: 250px;
+    --HERO-IMAGE-MARGIN-BOTTOM: 0px;
+    --HERO-IMAGE-MARGIN-BOTTOM-SMALL: 0px;
 */
 
 

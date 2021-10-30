@@ -48,6 +48,7 @@ hr {
     border-color: var(--HR-BORDER-COLOR, var(--GENERAL-COLOR-1));
 }
 
+/* TODO: move elsewhere in file... */
 @keyframes zoom-in {
     0% {
         transform: scale(0);
@@ -1104,7 +1105,12 @@ min-height: 300px;
     position: relative;
     margin: 0 auto;
 
-    max-width: var(--PROJECTBOX-IMAGE-WIDTH);
+/* TODO: useless? */
+/*    max-width: var(--projectbox-image-width);*/
+}
+
+.project-box img {
+    padding: var(--projectbox-image-padding);
 }
 
 .project-box .project-box-caption {
@@ -1119,7 +1125,7 @@ min-height: 300px;
     transition: all .35s;
     opacity: 0;
 
-    background: var(--PROJECTBOX-CAPTION-BACKGROUND-COLOR);
+    background: var(--projectbox-caption-background-color);
     color: var(--GENERAL-FONT-COLOR-3);
 }
 
@@ -1238,8 +1244,8 @@ min-height: 300px;
     background-size: cover;
     -o-background-size: cover;
 
-    margin-bottom: var(--HERO-IMAGE-MARGIN-BOTTOM-SMALL);
-    height: var(--HERO-IMAGE-HEIGHT-SMALL, 250px);
+    margin-bottom: var(--hero-image-margin-bottom-small);
+    height: var(--hero-image-height-small, 250px);
 }
 
 .header-image p {
@@ -1256,23 +1262,23 @@ min-height: 300px;
 
 @media(min-width: 768px) {
     .header-image {
-        height: var(--HERO-IMAGE-HEIGHT, 500px);
+        height: var(--hero-image-height, 500px);
     }
 }
 
 /* Hack to avoid navigation tree to go in header image when no small image in sidebar */
 .empty-padding {
-    margin-top: calc(0px - var(--HERO-IMAGE-MARGIN-BOTTOM-SMALL));
+    margin-top: calc(0px - var(--hero-image-margin-bottom-small));
 }
 
 /*@media (min-width: 64em) {*/
 @media (min-width: 992px) {
     .header-image {
-        margin-bottom: var(--HERO-IMAGE-MARGIN-BOTTOM);
+        margin-bottom: var(--hero-image-margin-bottom);
     }
 
     .empty-padding {
-        margin-top: calc(0px - var(--HERO-IMAGE-MARGIN-BOTTOM));
+        margin-top: calc(0px - var(--hero-image-margin-bottom));
     }
 }
 

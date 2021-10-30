@@ -285,7 +285,7 @@
             - [ ] Add "all_projects" at end of list!
                 => set front matter, etc.
                 ```html
-                {{ .Render "limage" }}
+                {{ .Render "project-image" }}
                 ```
         - [ ] services.html
             - [ ] For "services-container"<br>
