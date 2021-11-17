@@ -1,10 +1,28 @@
 {{ $params := .Site.Params.about }}
+{{/* 2-REC - TODO: should rewrite all this mess (esp left/right layouts), and use better variable names */}}
 {{ with .Site.Data.about }}
-  {{ $big_side := 8 }}
+  {{ $big_side := 7 }}
   {{ with $params.big_side -}}
     {{ $big_side = . }}
   {{ end }}
+  {{ $small_side := 3 }}
+  {{ with $params.small_side -}}
+    {{ $small_side = . }}
+  {{ end }}
+  {{ $offset_left := 0 }}
+  {{ with $params.offset_left -}}
+    {{ $offset_left = . }}
+  {{ end }}
+  {{ $offset_right := 0 }}
+  {{ with $params.offset_right -}}
+    {{ $offset_right = . }}
+  {{ end }}
+{{/*
   {{ $small_side := sub 12 $big_side }}
+*/}}
+  {{ $offset_center := sub (sub (sub (sub 12 $big_side) $small_side) $offset_left) $offset_right }}
+
+{{/* TODO: ERROR if < 1! */}}
   <section class="section" id="about"
     style="
       {{- with .background_image -}}
@@ -41,16 +59,30 @@
       <div class="row">
         {{ if eq $params.layout "right" }}
           <div class="col-xs-12 col-md-{{ $small_side }}"></div>
+        {{ else if eq $params.layout "left" }}
+          {{ $offset_left := sub (sub 12 $small_side) $big_side }}
+          <div class="col-xs-12 col-md-{{ $offset_left }}"></div>
         {{ end }}
         {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
           {{/* ~Hack to add space outside (offset left) */}}
+{{/*
           <div class="col-xs-12 col-md-offset-1 col-md-{{ sub $small_side 1 }}">
+*/}} 
+          <div class="col-xs-12 col-md-offset-{{ $offset_left }} col-md-{{ $small_side }}">
         {{ else }}
           <div class="col-xs-12 col-md-{{ $big_side }}">
         {{ end }}
             <div class="profile">
-              {{ with .avatar }}
-                <img class="portrait" title="avatar: {{ . }}" src="{{ printf "/images/%s" .}}">
+              {{ if .avatar }}
+                {{/* 2-REC: Special "hover easter egg hack" */}}
+                {{ if .avatar2 }}
+                  <div class="portrait" style="position:relative; overflow: hidden;">
+                    <img id="avatar1" src="{{ printf "images/%s" .avatar }}">
+                    <img id="avatar2" src="{{ printf "images/%s" .avatar2 }}">
+                  </div>
+                {{ else }}
+                  <img class="portrait" src="{{ printf "/images/%s" .avatar}}">
+                {{ end }}
               {{ end }}
               {{ with .short_text }}
                 <div class="text-primary short-text">
@@ -65,7 +97,7 @@
 {{/*
           <div class="col-xs-12 col-md-{{ sub $big_side 1 }} text-tertiary long-text">
 */}}
-          <div class="col-xs-12 col-md-{{ sub $big_side 1 }}">
+          <div class="col-xs-12 col-md-offset-{{ $offset_center }} col-md-{{ $big_side }}">
             <div class="text-tertiary long-text">
             <p>{{ .long_text | markdownify }}</p>
             </div>

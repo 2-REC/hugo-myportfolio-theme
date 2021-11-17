@@ -19,7 +19,7 @@
     --GENERAL-LINK-COLOR-2: rgba(64, 64, 64, .75);
     --GENERAL-LINK-ACTIVE-COLOR-2: rgb(18, 56, 235);
 
-    --GENERAL-IMAGE-BORDER-RADIUS: 50%;
+    --GENERAL-IMAGE-BORDER-RADIUS: 0;
     --GENERAL-BOX-SHADOW: 0px 3px 9px rgba(0, 0, 0, .05);
 
 
@@ -30,7 +30,7 @@
     --NAVBAR-HEIGHT: 50px; /* ! - Must correspond to the real navbar height! (Horrible hack) */
     --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
 
-    --homepage-section-padding-v: 100px;
+    --homepage-section-padding: 100px 0 25px 0;
 
 
     /* HERO IMAGE */
@@ -61,6 +61,8 @@
     --about-bkg-size: cover;
 
     --about-image-border-radius: var(--GENERAL-IMAGE-BORDER-RADIUS);
+    --about-image-border: 0;
+    --about-image-width: 100%;
 
     --about-title-color: var(--GENERAL-FONT-COLOR-1);
     --about-title-bar-color: var(--GENERAL-COLOR-2);
