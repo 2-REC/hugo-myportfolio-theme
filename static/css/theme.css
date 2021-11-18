@@ -666,12 +666,12 @@ padding: 2em 2em 2em 2em;
 
 main {
     /* Need to consider header & footer heights as well... */
-    min-height: calc(100% - var(--NAVBAR-HEIGHT));
+    min-height: calc(100vh - var(--NAVBAR-HEIGHT));
 }
 
 .section {
     padding: var(--homepage-section-padding);
-    min-height: calc(100% - var(--NAVBAR-HEIGHT));
+    min-height: calc(100vh - var(--NAVBAR-HEIGHT));
 }
 
 .section-heading {
@@ -703,13 +703,14 @@ main {
 
 #home {
     position: relative;
-    min-height: 100%;
+    min-height: 100vh;
 
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+background-color: transparent;
 }
 
 #home .header-content {
