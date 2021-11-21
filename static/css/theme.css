@@ -11,13 +11,13 @@
 /* GENERAL - HTML TAGS */
 
 html {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 
     font-family: var(--GENERAL-FONT, var(--GENERAL-FONT-1));
 }
@@ -980,7 +980,6 @@ background-size: cover;
 #about .portrait {
     border-radius: var(--about-image-border-radius);
     border: var(--about-image-border);
-//border: 1px solid;
 //background-color: rgb(64,64,64);
 
     position: relative;
@@ -1005,7 +1004,7 @@ background-size: cover;
 
 #avatar1 {
     /* 2-REC: setting position here causes problems with height */
-    //position: absolute;
+    /*position: absolute;*/
     top:0;
     left:0;
 

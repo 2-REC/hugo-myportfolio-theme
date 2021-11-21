@@ -78,11 +78,11 @@
         {{ end }}
             <div class="profile">
               {{ if .avatar }}
-                {{/* 2-REC: Special "hover easter egg hack" */}}
+                {{/* 2-REC: Special "hover easter egg" */}}
                 {{ if .avatar2 }}
                   <div class="portrait" style="position:relative; overflow: hidden;">
                     <img id="avatar1" src="{{ printf "images/%s" .avatar }}">
-                    <img id="avatar2" src="{{ printf "images/%s" .avatar2 }}">
+                    <img id="avatar2" src="{{ printf "images/%s" .avatar2 }}" oncontextmenu="return false;">
                   </div>
                 {{ else }}
                   <img class="portrait" src="{{ printf "/images/%s" .avatar}}">

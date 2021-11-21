@@ -18,6 +18,17 @@
             event.preventDefault();
         }
     });
+    /* 2-REC - TODO: don't use 'animate' */
+    $('a.page-jump').bind('click', function(event) {
+        var $anchor = $(this);
+        var $offset = $($anchor.attr('href')).offset();
+        if ($offset) {
+            $('html, body').stop().animate({
+                scrollTop: $offset.top - $('.navbar-header').height()
+            }, 0, 'easeInOutExpo');
+            event.preventDefault();
+        }
+    });
 
     // Highlight the top nav as scrolling occurs
     $('body').scrollspy({
