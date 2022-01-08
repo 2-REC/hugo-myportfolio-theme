@@ -11,12 +11,12 @@
 /* GENERAL - HTML TAGS */
 
 html {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 }
 
 body {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 
     font-family: var(--GENERAL-FONT, var(--GENERAL-FONT-1));
@@ -479,7 +479,8 @@ padding: 2em 2em 2em 2em;
 }
 
 .profile .text-primary p {
-    font-size: 1.5em;
+    /* 2-REC TODO: set as custom param */
+    font-size: 1.25em;
     font-weight: 300;
 }
 
@@ -865,6 +866,7 @@ background-color: var(--about-bkg-color);
 padding: 5%;
 //margin: 5px;
 background-color: var(--about-bkg-color);
+background-color: white;
 //background-color: grey;
 
 //text-align: right;
@@ -986,11 +988,13 @@ background-size: cover;
 
     width: var(--about-image-width);
     height: auto;
+    /* 2-REC TODO: set as custom param */
+    max-width: 300px;
 }
 /*@media (min-width: 64em) {*/
 @media (max-width: 992px) {
     #about .portrait {
-        /* 2-REC TODO: set as custom param */
+        /* 2-REC TODO: set as custom param (different from other) */
         max-width: 300px;
     }
 }

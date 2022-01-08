@@ -2,6 +2,7 @@
 
 
 !!!!
+- FIX bug with offset when going from page to homepage using navbar
 - ADAPT EXAMPLE SITE! +config.toml!!
 - add CSS+layout variables changes in README + exampleSite config.toml!
 - make animations "one shot"? (or keep repeat as-is now?)
