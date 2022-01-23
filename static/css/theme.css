@@ -711,7 +711,17 @@ main {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-background-color: transparent;
+    background-color: var(--HOME-BACKGROUND-COLOR, transparent);
+}
+
+#home_video {
+    position: absolute;
+    z-index:-1;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit: cover;
 }
 
 #home .header-content {

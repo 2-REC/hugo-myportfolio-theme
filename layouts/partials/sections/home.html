@@ -20,7 +20,7 @@
                 --home-text-align: {{ . }};
             {{- end -}}
             "
-        >
+            >
             <div class="header-content-inner anim-wrapper">
                 {{ with .title }}
                     {{/* TODO: use specific class for title? */}}
@@ -53,5 +53,11 @@
                 </div>
             </div>
         </div>
+        {{/* Background video (if no image) */}}
+        {{- if and .background_video (not .background)  -}}
+        <video autoplay muted loop id="home_video">
+            <source src="{{ printf "images/%s" .background_video }}" type="video/mp4">
+        </video>
+        {{- end -}}
     </section>
 {{ end }}
