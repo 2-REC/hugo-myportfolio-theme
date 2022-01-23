@@ -22,6 +22,9 @@
             "
             >
             <div class="header-content-inner anim-wrapper">
+                {{ with .title_logo }}
+                    <img id="home_logo" src="{{ . }}" class="img-responsive">
+                {{ end }}
                 {{ with .title }}
                     {{/* TODO: use specific class for title? */}}
                     <h1 class="anim zoomIn">{{ . | markdownify  }}</h1>
@@ -29,7 +32,7 @@
                 {{ with .subtitle }}
                     <h2>{{ . | markdownify }}</h2>
                 {{ end }}
-                {{ if .title }}
+                {{ if or .title .subtitle }}
                     <hr class="primary anim zoomIn">
                 {{ end }}
                 {{ with .text }}
@@ -53,7 +56,7 @@
                 </div>
             </div>
         </div>
-        {{/* Background video (if no image) */}}
+        {{/* Background video (if no 'background' image) */}}
         {{- if and .background_video (not .background)  -}}
         <video autoplay muted loop id="home_video">
             <source src="{{ printf "images/%s" .background_video }}" type="video/mp4">

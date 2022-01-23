@@ -16,8 +16,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    {{ with .Site.Params.navigation.brand }}
-                        <a class="navbar-brand page-scroll" href="#">{{ . | markdownify }}</a>
+                    {{ if .Site.Params.navigation.brand_logo }}
+                        <a class="navbar-brand page-scroll" href="#">
+                            <img id="brand_logo" src="{{ .Site.Params.navigation.brand_logo }}" class="img-responsive">
+                        </a>
+                    {{ else if .Site.Params.navigation.brand }}
+                        <a class="navbar-brand page-scroll" href="#">{{ .Site.Params.navigation.brand | markdownify }}</a>
                     {{ end }}
                 </div>
                 {{ "<!-- Get the navigation menu entries and create the links -->" | safeHTML }}
