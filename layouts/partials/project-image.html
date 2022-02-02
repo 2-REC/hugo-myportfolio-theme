@@ -1,22 +1,37 @@
 {{/* Get the number of columns from config */}}
-{{ $col_lg := "col-lg-2" }}
-{{ $col_sm := "col-sm-3" }}
-{{ $col_xs := "col-xs-6" }}
+{{ $nb_col_lg := 6 }}
+{{ $nb_col_sm := 4 }}
+{{ $nb_col_xs := 2 }}
 {{ with .data }}
     {{ with .nb_columns }}
-        {{ $nb_cols := div 12 (int .) }}
-        {{ $col_lg = print "col-lg-" $nb_cols }}
+        {{ $nb_col_lg = int . }}
     {{ end }}
     {{ with .nb_columns_small }}
-        {{ $nb_cols := div 12 (int .) }}
-        {{ $col_sm = print "col-sm-" $nb_cols }}
+        {{ $nb_col_sm = int . }}
     {{ end }}
     {{ with .nb_columns_xsmall }}
-        {{ $nb_cols := div 12 (int .) }}
-        {{ $col_xs = print "col-xs-" $nb_cols }}
+        {{ $nb_col_xs = int . }}
     {{ end }}
 {{ end }}
-{{ $class := print $col_lg " " $col_sm " " $col_xs }}
+{{ $col_lg := print "col-lg-" (div 12 (int $nb_col_lg)) }}
+{{ $col_sm := print "col-sm-" (div 12 (int $nb_col_sm)) }}
+{{ $col_xs := print "col-xs-" (div 12 (int $nb_col_xs)) }}
+{{ $class_hide := "" }}
+{{ if .fit }}
+    {{ $nb_rows := int (div .nb $nb_col_lg) }}
+    {{ if and (ge .nb $nb_col_lg) (gt .index (mul $nb_rows $nb_col_lg)) }}
+        {{ $class_hide = print $class_hide " hide_lg" }}
+    {{ end }}
+    {{ $nb_rows = int (div .nb $nb_col_sm) }}
+    {{ if and (ge .nb $nb_col_sm) (gt .index (mul $nb_rows $nb_col_sm)) }}
+        {{ $class_hide = print $class_hide " hide_sm" }}
+    {{ end }}
+    {{ $nb_rows = int (div .nb $nb_col_xs) }}
+    {{ if and (ge .nb $nb_col_xs) (gt .index (mul $nb_rows $nb_col_xs)) }}
+        {{ $class_hide = print $class_hide " hide_xs" }}
+    {{ end }}
+{{ end }}
+{{ $class := print $col_lg " " $col_sm " " $col_xs $class_hide }}
 <div class="{{ $class }}">
     {{ $path := replace .context.File.Dir "\\" "/" }}
     <a href="/{{ $path }}" class="project-box project-link">
