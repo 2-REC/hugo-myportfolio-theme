@@ -44,6 +44,18 @@
         {{ end }}
         <div class="project-box-caption">
             <div class="project-box-caption-content">
+{{/* TODO: handle title image + add CSS */}}
+{{/*
+                {{ if .context.Params.title_image }}
+                    {{ $image_file := or .context.Params.cover_image .context.Params.title_image }}
+                    {{ if $image_file }}
+                        {{ $image := .context.Resources.GetMatch $image_file }}
+                        {{ with $image }}
+                            <img src="{{ .Permalink }}" class="img-responsive" alt="{{ .Name }}" style="padding-bottom:1em;">
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+*/}}
                 {{ with .context.Title }}
                     <div class="project-name">
                         {{ . }}
