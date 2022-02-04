@@ -2,6 +2,17 @@
 # Template for projects.
 title: "<PROJECT_NAME>"
 subtitle: "<CATCH_PHRASE>"
+##
+# Only if direct from home (no subsection)
+#cover_image: "<IMAGE_FILE>"
+#subtitle2: "<SMALL_CATCH_PHRASE>"
+#startDate: "2016-12-01"
+#endDate: "2017-09-01"
+#show_title: false
+#show_subtitle: false
+#show_subtitle2: false
+#show_date: false
+##
 #image: "<IMAGE_FILE>"
 #small_image: "<IMAGE_FILE>"
 #small_url: "<URL>"

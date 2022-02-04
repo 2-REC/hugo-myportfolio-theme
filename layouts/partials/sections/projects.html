@@ -8,9 +8,9 @@
     {{ end }}
     <div class="container-fluid">
         <div class="row no-gutter">
-            {{ if .Sections }}
-                {{/* Sort the list */}}
-                {{ partial "utils/ordered-list.html" (dict "list" .Sections "params" .Params "scratch" .Scratch) }}
+{{/* TODO: Could add param "sections_only" and get ".Sections" instead of ".Pages" */}}
+            {{ if .Pages }}
+                {{ partial "utils/ordered-list.html" (dict "list" .Pages "params" .Params "scratch" .Scratch) }}
                 {{ $projects := .Scratch.Get "list" }}
                 {{ $max := len $projects }}
                 {{ if and $params.max_projects (lt $params.max_projects $max) }}

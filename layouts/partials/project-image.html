@@ -44,21 +44,38 @@
         {{ end }}
         <div class="project-box-caption">
             <div class="project-box-caption-content">
+{{/* TODO: Adapt size of fonts of each element depending on number of elements */}}
+                {{ $show_title := false }}
+                {{ if and .context.Title (ne .context.Params.show_title false) }}
+                    {{ $show_title = true }}
+                {{ end }}
+                {{ $show_subtitle := false }}
+                {{ if and .context.Params.subtitle (ne .context.Params.show_subtitle false) }}
+                    {{ $show_subtitle = true }}
+                {{ end }}
+                {{ $show_subtitle2 := false }}
+                {{ if and .context.Params.subtitle2 (ne .context.Params.show_subtitle2 false) }}
+                    {{ $show_subtitle2 = true }}
+                {{ end }}
+                {{ $show_date := false }}
+                {{ if and (isset .context.Params "startdate") (ne .context.Params.show_date false) }}
+                    {{ $show_date = true }}
+                {{ end }}
                 {{ if .context.Params.title_image }}
                     {{ $image_file := or .context.Params.cover_image .context.Params.title_image }}
                     {{ if $image_file }}
                         {{/* Determine size of image depending on number of elements */}}
                         {{ $nb_elements := 0 }}
-                        {{ if .context.Title }}
+                        {{ if $show_title }}
                             {{ $nb_elements = add $nb_elements 1 }}
                         {{ end }}
-                        {{ if .context.Params.subtitle }}
+                        {{ if $show_subtitle }}
                             {{ $nb_elements = add $nb_elements 1 }}
                         {{ end }}
-                        {{ if .context.Params.subtitle2 }}
+                        {{ if $show_subtitle2 }}
                             {{ $nb_elements = add $nb_elements 1 }}
                         {{ end }}
-                        {{ if .context.Params.startDate }}
+                        {{ if $show_date }}
                             {{ $nb_elements = add $nb_elements 1 }}
                         {{ end }}
                         {{ $size := "full" }}
@@ -75,22 +92,22 @@
                         {{ end }}
                     {{ end }}
                 {{ end }}
-                {{ with .context.Title }}
+                {{ if $show_title }}
                     <div class="project-name">
-                        {{ . }}
+                        {{ .context.Title }}
                     </div>
                 {{ end }}
-                {{ with .context.Params.subtitle }}
+                {{ if $show_subtitle }}
                     <div class="project-category">
-                        {{ . }}
+                        {{ .context.Params.subtitle }}
                     </div>
                 {{ end }}
-                {{ with .context.Params.subtitle2 }}
+                {{ if $show_subtitle2 }}
                     <div class="project-category2">
-                        {{ . }}
+                        {{ .context.Params.subtitle2 }}
                     </div>
                 {{ end }}
-                {{ if .context.Params.startDate }}
+                {{ if $show_date }}
                     <div class="project-date">
                         {{ partial "time-period.html" (dict "startDate" .context.Params.startDate "endDate" .context.Params.endDate) }}
                     </div>
