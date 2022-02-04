@@ -39,23 +39,42 @@
         {{ if $image_file }}
             {{ $image := .context.Resources.GetMatch $image_file }}
             {{ with $image }}
-                <img src="{{ .Permalink }}" class="img-responsive" alt="{{ .Name }}">
+                <img src="{{ .Permalink }}" class="project-image img-responsive" alt="{{ .Name }}">
             {{ end }}
         {{ end }}
         <div class="project-box-caption">
             <div class="project-box-caption-content">
-{{/* TODO: handle title image + add CSS */}}
-{{/*
                 {{ if .context.Params.title_image }}
                     {{ $image_file := or .context.Params.cover_image .context.Params.title_image }}
                     {{ if $image_file }}
+                        {{/* Determine size of image depending on number of elements */}}
+                        {{ $nb_elements := 0 }}
+                        {{ if .context.Title }}
+                            {{ $nb_elements = add $nb_elements 1 }}
+                        {{ end }}
+                        {{ if .context.Params.subtitle }}
+                            {{ $nb_elements = add $nb_elements 1 }}
+                        {{ end }}
+                        {{ if .context.Params.subtitle2 }}
+                            {{ $nb_elements = add $nb_elements 1 }}
+                        {{ end }}
+                        {{ if .context.Params.startDate }}
+                            {{ $nb_elements = add $nb_elements 1 }}
+                        {{ end }}
+                        {{ $size := "full" }}
+                        {{ if eq $nb_elements 1 }}
+                            {{ $size = "big" }}
+                        {{ else if eq $nb_elements 2 }}
+                            {{ $size = "medium" }}
+                        {{ else if ge $nb_elements 3 }}
+                            {{ $size = "small" }}
+                        {{ end }}
                         {{ $image := .context.Resources.GetMatch $image_file }}
                         {{ with $image }}
-                            <img src="{{ .Permalink }}" class="img-responsive" alt="{{ .Name }}" style="padding-bottom:1em;">
+                            <img src="{{ .Permalink }}" class="project-thumbnail {{ $size }} img-responsive" alt="{{ .Name }}">
                         {{ end }}
                     {{ end }}
                 {{ end }}
-*/}}
                 {{ with .context.Title }}
                     <div class="project-name">
                         {{ . }}

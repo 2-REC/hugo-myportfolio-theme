@@ -48,6 +48,7 @@ unsafe= true
 
         # Brand (OPTIONAL - but required if want HOME button)
         brand = "YOUR BRAND"
+        #brand_logo = "images/brand_logo.png"
 
         # NAVIGATION MENU ENTRIES (OPTIONAL)
         # Add an entry for each section to add in the navigation menu.
@@ -82,13 +83,49 @@ unsafe= true
 
     # ----------
 
+    # HOME section
+    [params.home]
+        # Settings related to the CSS can be set in 'static\css\custom.css', 'home' section
+        #width = 50                        # 0-100 (percentage) (default: 50)
+        #offset_h = 50                     # 0-100 (percentage) (default: 50)
+        #offset_v = 50                     # 0-100 (percentage) (default: 50)
+        #text_align = "center"             # left|center|right (default: center)
+
+    # ----------
+
     # ABOUT section
     [params.about]
         # Settings related to the CSS can be set in 'static\css\custom.css', 'about' section
-        #title_align = "right"              # left|right (default: right)
+        title_align = "right"               # left|center|right (default: center)
         #title_length = 10                  # 1-12 (default: 10)
+        # Layout:
+        # 2-REC - TODO: explain in more details
+        # - classic (default):
+        #  Inputs:
+        #    extra_side: Left part, containing "small" text (default: 3)
+        #    main_side: Right part, containing "big" text (default: 7)
+        #    offset_left: Offset on left of table (default: half (int) of the remaining space)
+        #    offset_right: Offset on right of table (default: other half of remaining space)
+        #    => The sum of the 4 must be smaller or equal to 12.
+        #  Computed:
+        #    offset_center: Offset between the 2 parts => Remainder of the 12 columns (default: 0, or remaining space of offsets are specified)
+        # - left:
+        #  Inputs:
+        #    extra_side: Offset on right of table (default: 3)
+        #    main_side: Left part, containing both "small" and "big" texts (default: 7)
+        #    => The sum of the 2 must be smaller or equal to 12.
+        #  Computed:
+        #    offset_left: Offset on left of table => Remainder of the 12 columns.
+        # - right:
+        #  Inputs:
+        #    extra_side: Offset on left of table (default: 3)
+        #    main_side: Right part, containing both "small" and "big" texts (default: 7)
+        #    => The sum of the 2 must be smaller or equal to 12.
         #layout = "right"                   # classic|left|right (default: "classic")
-        #big_side = 6                       # 2-10/12 (4-8 advised if 'classic') (default: 8)
+        #main_side = 7
+        #extra_side = 3
+        #offset_left = 1
+        #offset_right = 1
         #background = "full"                # "full" (default: none, depends on "layout")
         ####
         #TODO: keep this in 'config'? (should be enough with only in CSS)
@@ -100,11 +137,56 @@ unsafe= true
 
     # ----------
 
+    # SERVICES section
+    [params.services]
+        # Settings related to the CSS can be set in 'static\css\custom.css', 'services' section
+        #title_align = "right"            # left|center|right (default: center)
+        title_length = 4                  # 1-12 (default: 10)
+        # Number of "skill boxes" per row.
+        # The used grid system is based on 12 columns, so all values will not provide good results.
+        # Only values that are divisors of 12 should be used, and others avoided.
+        # - "Good" values are 1, 2, 3, 4, 6, 12
+        # - "Bad" values are 5, 7, 8, 9, 10 and 11
+        # If the last row isn't full, the boxes will be centered if possible.
+        # Again, for good results, the number of boxes on the last row should also be a divisor of 12.
+        # Additionally, if the number of columns is too high (and thus boxes are tight),
+        #  the content might not fit and cause layout issues.
+        #nb_columns = 4         # (default: 4)
+        #nb_columns_small = 2   # (default: 2)
+        #nb_columns_xsmall = 1  # (default: 1)
+
+    # ----------
+
+    # SKILLS section
+    [params.skills]
+        # Settings related to the CSS can be set in 'static\css\custom.css', 'skills' section
+        #title_align = "right"            # left|center|right (default: center)
+        title_length = 4                  # 1-12 (default: 10)
+
+    # ----------
+
+    # CONTACT section
+    [params.contact]
+        # Settings related to the CSS can be set in 'static\css\custom.css', 'contact' section
+        title_align = "right"             # left|center|right (default: center)
+        title_length = 4                  # 1-12 (default: 10)
+
+    # ----------
+
     # PROJECTS section
     [params.projects]
         # Values in "categories" must be the same as in navigation menu "projects".
         # (& must correspond to the section directories)
         categories = [ "pro", "perso" ]
+
+        title_align = "left"             # left|center|right (default: center)
+        title_length = 8                  # 1-12 (default: 10)
+
+        # Grid align / max number of projects
+        #TODO: keep here or move to 'params.projects.home'?
+        #TODO: would be better specific to each category
+        #max_projects = 12
+        #fit_rows = true
 
         # Post orders:
         # - list of posts:
@@ -128,13 +210,21 @@ unsafe= true
         posts_order_reverse = true
 
         # Format of the "period" field.
-        date_format = "Jan-2006"
+        date_format = "01 2006"
+        period_format = "{start} -> {end}"
+        period_format_startonly = "{start} -> Present"
 
-        # Number of columns in projects grid (OPTIONAL)
+        # Number of columns in projects grid,
+        # respectively on 'home' page and in projects 'list' page (OPTIONAL)
         # (accepted values: 1, 2, 3, 4, 6, 12 - must be a multiple of 12)
-        #nb_columns = 6         # (default: 6)
-        #nb_columns_small = 4   # (default: 4)
-        #nb_columns_xsmall = 2  # (default: 2)
+        [params.projects.home]
+            #nb_columns = 6         # (default: 6)
+            #nb_columns_small = 4   # (default: 4)
+            #nb_columns_xsmall = 2  # (default: 2)
+        [params.projects.list]
+            nb_columns = 4         # (default: 6)
+            nb_columns_small = 3   # (default: 4)
+            nb_columns_xsmall = 2  # (default: 2)
 
     # ----------
 
