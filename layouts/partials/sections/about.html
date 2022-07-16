@@ -26,6 +26,10 @@
     {{ $offset_left = add $offset_left $remaining }}
     {{ $remaining = 0 }}
   {{ end }}
+{{- $sum := add (add (add $main_side $extra_side) $offset_left) $offset_right -}}
+{{- if gt $sum 12 -}}
+ERROR: Sum of columns width bigger than 12! - Check "params.about" in "config.toml"
+{{- end -}}
   {{ $offset_center := $remaining }}
   <section class="section" id="about"
     style="
@@ -35,12 +39,12 @@
       {{- if ne $params.background "full" -}}
         {{- if eq $params.layout "left" -}}
           --about-bkg-width: {{ mul (div $extra_side 12.0) 100 }}%;
-          --about-bkg-margin-left: {{ mul (div $main_side 12.0) 100 }}%;
-          --about-bkg-margin-right: 0;
+          --about-bkg-margin-left: {{ mul (div (add $main_side $offset_left) 12.0) 100 }}%;
+          --about-bkg-margin-right: {{ mul (div $offset_right 12.0) 100 }}%;
         {{- else if eq $params.layout "right" -}}
           --about-bkg-width: {{ mul (div $extra_side 12.0) 100 }}%;
-          --about-bkg-margin-left: 0;
-          --about-bkg-margin-right: {{ mul (div $main_side 12.0) 100 }}%;
+          --about-bkg-margin-left: {{ mul (div $offset_left 12.0) 100 }}%;
+          --about-bkg-margin-right: {{ mul (div (add $main_side $offset_right) 12.0) 100 }}%;
         {{- end -}}
       {{- end -}}
       {{/* TODO: keep this in 'config'? (should be enough with only in CSS) */}}
@@ -61,12 +65,13 @@
     {{ end }}
     <div class="container-fluid">
       <div class="row">
-        {{ if eq $params.layout "right" }}
-          <div class="col-xs-12 col-md-{{ $extra_side }}"></div>
-        {{ else if eq $params.layout "left" }}
-          {{ $offset_left := sub (sub 12 $extra_side) $main_side }}
+        {{- if eq $params.layout "right" -}}
+          <div class="col-xs-12 col-md-{{ add $extra_side $offset_left }}"></div>
+        {{- else if eq $params.layout "left" -}}
+          {{- if gt $offset_left 0 -}}
           <div class="col-xs-12 col-md-{{ $offset_left }}"></div>
-        {{ end }}
+          {{- end -}}
+        {{- end -}}
         {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
           {{/* ~Hack to add space outside (offset left) */}}
 {{/*
@@ -76,23 +81,35 @@
         {{ else }}
           <div class="col-xs-12 col-md-{{ $main_side }}">
         {{ end }}
-            <div class="profile">
-              {{ if .avatar }}
-                {{/* 2-REC: Special "hover easter egg" */}}
-                {{ if .avatar2 }}
-                  <div class="portrait" style="position:relative; overflow: hidden;">
-                    <img id="avatar1" src="{{ printf "images/%s" .avatar }}">
-                    <img id="avatar2" src="{{ printf "images/%s" .avatar2 }}" oncontextmenu="return false;">
+            <div class="container-fluid profile">
+              <div class="row">
+                {{- $width_portrait := 12 -}}
+                {{- $width_text := 12 -}}
+                {{- if or (eq $params.layout "left") (eq $params.layout "right") -}}
+                  {{- $width_portrait = $params.portrait_width -}}
+                  {{- $width_text = sub 12 $width_portrait -}}
+                {{- end -}}
+                {{- if .avatar -}}
+                  <div class="col-xs-12 col-md-{{ $width_portrait }}">
+                  {{/* 2-REC: Special "hover easter egg" */}}
+                  {{- if .avatar2 -}}
+                    <div class="portrait">
+                      <img id="avatar1" src="{{ printf "images/%s" .avatar }}">
+                      <img id="avatar2" src="{{ printf "images/%s" .avatar2 }}" oncontextmenu="return false;">
+                    </div>
+                  {{- else -}}
+                    <img class="portrait" src="{{ printf "/images/%s" .avatar}}">
+                  {{- end -}}
                   </div>
-                {{ else }}
-                  <img class="portrait" src="{{ printf "/images/%s" .avatar}}">
-                {{ end }}
-              {{ end }}
-              {{ with .short_text }}
-                <div class="text-primary short-text">
-                  <p>{{ . | markdownify }}</p>
-                </div>
-              {{ end }}
+                {{- end -}}
+                {{- with .short_text -}}
+                  <div class="col-xs-12 col-md-{{ $width_text }}">
+                    <div class="text-primary short-text">
+                      {{ . | markdownify }}
+                    </div>
+                  </div>
+                {{- end -}}
+              </div>
             </div>
         {{ if .long_text }}
           {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
