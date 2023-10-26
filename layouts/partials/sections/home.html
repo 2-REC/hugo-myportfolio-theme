@@ -1,15 +1,23 @@
 {{ $params := .Site.Params.home }}
 {{ with .Site.Data.home }}
     <section id="home"
-{{/*
-        {{ with .background }}
-            style="background-image: url('{{ (printf "images/%s" .) | absURL }}'); opacity: 50%;"
-        {{ end }}
-*/}}
-{{- with .background -}}
-    style="--home-bkg-image: url('{{ (printf "images/%s" .) | absURL }}');"
-{{- end -}}
+        {{- with .background -}}
+        {{/* TODO: set 'opacity' variable */}}
+        style="--home-bkg-image: url('{{ (printf "images/%s" .) | absURL }}');"
+        {{- end -}}
         >
+        {{- if .background_hidden -}}
+        <div id="background_hidden"
+             style="--home-bkg-image-hidden: url('{{ (printf "images/%s" .background_hidden) | absURL }}');
+                    {{- if .background_hidden_speed -}}
+                    --home-bkg-image-hidden-speed: {{ .background_hidden_speed }};
+                    {{- else -}}
+                    --home-bkg-image-hidden-speed: 1;
+                    {{- end -}}
+                    "
+            >
+        </div>
+        {{- end -}}
         <div class="header-content"
             style="
             {{- with $params.width -}}

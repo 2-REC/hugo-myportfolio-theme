@@ -15,3 +15,9 @@
 <script src="{{ "plugins/jquery/jquery.fittext.js" | absURL }}"></script>
 <script src="{{ "js/theme.js" | absURL }}"></script>
 <script src="{{ "js/anim.js" | absURL }}"></script>
+{{/* TODO: should not be here... */}}
+{{- with .Site.Data.home -}}
+{{- with .background_hidden -}}
+<script src="{{ "js/hidden-background.js" | absURL }}"></script>
+{{- end -}}
+{{- end -}}

@@ -126,6 +126,8 @@ The different parameters that can be used are:
 * "title": The title for the website. Typically your name or company name.
 * "subtitle": A subtitle. Typically the kind of services or specialty you provide.
 * "background": The image used for the background.
+* "background_hidden": The image used for the second background, shown when scrolling down.
+* "background_hidden_speed": Speed qt zhich the hidden background appears (1: after full scroll, 2: after 1/2 (50%) scroll, etc.).
 * "text": A short phrase to draw attention and make the visitor to see more.
 
 Additionally, the following parameters can be used to customize the scrolling button.

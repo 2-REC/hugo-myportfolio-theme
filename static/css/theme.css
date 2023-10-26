@@ -738,6 +738,24 @@ z-index: 0;
 background-color: black;
 }
 
+#background_hidden {
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+
+    width:100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
+    opacity: 0;
+    background-image: var(--home-bkg-image-hidden);
+}
+
 #home::after {
     position: absolute;
     z-index: -1;
