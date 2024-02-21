@@ -28,20 +28,22 @@
         {{/* Tags & Categories */}}
         {{ $project_sections := .Site.Params.projects.categories }}
         <div class="row">
-            <div class="col-lg-5 col-lg-offset-1">
+            <div class="col-sm-6 col-lg-5 col-lg-offset-1">
                 <div class="skills-container">
                     {{ $label := or $data.tags_label "TAGS" }}
                     <h4>{{ $label }}</h4>
+                    <br>
                     <div class="tags">
                         {{ $params := (dict "type" "tags" "context" $project_sections "site" $.Site "scratch" .Scratch "removeDuplicates" true) }}
                         {{ partial "utils/list-keywords-range.html" $params }}
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-sm-6 col-lg-5">
                 <div class="skills-container">
                     {{ $label := or $data.categories_label "CATEGORIES" }}
                     <h4>{{ $label }}</h4>
+                    <br>
                     <div class="tags">
                         {{ $params := (dict "type" "categories" "context" $project_sections "site" $.Site "scratch" .Scratch "removeDuplicates" true) }}
                         {{ partial "utils/list-keywords-range.html" $params }}
