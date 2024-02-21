@@ -1060,16 +1060,18 @@ TODO: move as much as possible to common (for all background images)
 }
 
 .service-box {
-    margin: 50px auto 50px;
-    padding: 10px;
+    margin: 20px auto 20px;
+/*    padding: 10px;*/
+padding: 20px 10px;
     max-width: 400px;
 
     background-color: var(--services-box-color);
     border-radius: var(--services-box-border-radius);
     box-shadow: var(--services-box-shadow);
 
-/* Hack to avoid misalignment of boxes - TO BE REMOVED! */
-min-height: 300px;
+/* TODO: Horrible hack to avoid misalignment of boxes - IMPLEMENT BETTER WAY! */
+/*height: 300px;*/
+height: var(--services-box-height);
 }
 
 .service-box i {
@@ -1085,11 +1087,14 @@ min-height: 300px;
     margin-left: 20px;
 }
 
-@media(min-width: 992px) {
+/* TODO: keep? */
+/*
+@media(max-width: 992px) {
     .service-box {
-        margin: 20px auto 20px;
+        margin: 50px auto 50px;
     }
 }
+*/
 
 /******************************************************************************/
 

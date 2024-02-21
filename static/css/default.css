@@ -105,6 +105,7 @@
     --services-box-color: var(--GENERAL-COLOR-2);
     --services-box-border-radius: 0;
     --services-box-shadow: 0;
+    --services-box-height: 18em;
 
     --services-icon-color: var(--GENERAL-COLOR-1);
     /* TODO: add other variables? */
