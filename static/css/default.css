@@ -23,6 +23,9 @@
     --GENERAL-BOX-SHADOW: 0px 3px 9px rgba(0, 0, 0, .05);
 
 
+/* TODO: make more generic? (not only profile) */
+    --GENERAL-PROFILE-FONT-SIZE: 1em;
+
     --HR-WIDTH: 20%;
 
     --COPYRIGHT-FONT: Arial, sans-serif;
@@ -60,15 +63,26 @@
     --about-bkg-position: center center;
     --about-bkg-size: cover;
 
-    --about-image-border-radius: var(--GENERAL-IMAGE-BORDER-RADIUS);
-    --about-image-border: 0;
-    --about-image-width: 100%;
-
     --about-title-color: var(--GENERAL-FONT-COLOR-1);
     --about-title-bar-color: var(--GENERAL-COLOR-2);
 
     --about-link-color: var(--GENERAL-LINK-COLOR-2);
-    --about-link-color-active: var(--GENERAL-FONT-COLOR-3);
+    --about-link-color-active: var(--GENERAL-FONT-COLOR-2);
+
+    --about-profile-bkg-color: var(--about-bkg-color);
+    --about-profile-margin: 1rem;
+    --about-profile-border: 0;
+
+    --about-profile-image-border-radius: var(--GENERAL-IMAGE-BORDER-RADIUS);
+    --about-profile-image-border: 0;
+    --about-profile-text-padding-h: 1rem;
+    --about-profile-text-padding-v: 1rem;
+
+    --about-main-bkg-color: var(--about-bkg-color);
+    --about-main-border: 0;
+    --about-main-text-color: var(--GENERAL-FONT-COLOR-1);
+    --about-main-text-padding-h: 1rem;
+    --about-main-text-padding-v: 0;
 
     /* The following variables should not be changed (managed by code) */
     --about-bkg-width: 100%;

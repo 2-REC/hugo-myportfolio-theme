@@ -96,7 +96,7 @@ unsafe= true
     # ABOUT section
     [params.about]
         # Settings related to the CSS can be set in 'static\css\custom.css', 'about' section
-        title_align = "right"               # left|center|right (default: center)
+        #title_align = "center"               # left|center|right (default: center)
         #title_length = 10                  # 1-12 (default: 10)
         # Layout:
         # 2-REC - TODO: explain in more details
@@ -126,14 +126,11 @@ unsafe= true
         #extra_side = 3
         #offset_left = 1
         #offset_right = 1
-        #background = "full"                # "full" (default: none, depends on "layout")
-        ####
-        #TODO: keep this in 'config'? (should be enough with only in CSS)
-        # => should remove, not really worth it
-        #background_opacity = 1.0           # [0; 1.0] (default: 1.0)
-        #background_size = "contain"        # contain|cover (default: contain)
-        #background_position = "left top"   # left|center|right top|center|bottom (detault: center center)
-        ####
+        #portrait_percentage = 100
+        #portrait_cancel_bottom_margin = 0
+        # only if layout "left"|"right":
+        #portrait_width = 4
+        #background = ""
 
     # ----------
 

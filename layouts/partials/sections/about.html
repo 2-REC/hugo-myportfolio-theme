@@ -1,6 +1,6 @@
 {{ $params := .Site.Params.about }}
 {{ with .Site.Data.about }}
-  {{/* 2-REC - TODO: CHECK IF VALUES ARE VALID! (sum of all = 12) */}}
+  {{/* TODO: CHECK IF VALUES ARE VALID! (sum of all = 12) */}}
   {{ $main_side := 7 }}
   {{ with $params.main_side -}}
     {{ $main_side = . }}
@@ -47,17 +47,8 @@ ERROR: Sum of columns width bigger than 12! - Check "params.about" in "config.to
           --about-bkg-margin-right: {{ mul (div (add $main_side $offset_right) 12.0) 100 }}%;
         {{- end -}}
       {{- end -}}
-      {{/* TODO: keep this in 'config'? (should be enough with only in CSS) */}}
-      {{- with $params.background_opacity -}}
-        --about-bkg-opacity: {{ . }};
-      {{- end -}}
-      {{- with $params.background_position -}}
-        --about-bkg-position: {{ . }};
-      {{- end -}}
-      {{- with $params.background_size -}}
-        --about-bkg-size: {{ . }};
-      {{- end -}}
-  ">
+    "
+  >
     {{ with .title }}
     <div class="container-fluid">
       {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
@@ -74,24 +65,27 @@ ERROR: Sum of columns width bigger than 12! - Check "params.about" in "config.to
         {{- end -}}
         {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
           {{/* ~Hack to add space outside (offset left) */}}
-{{/*
-          <div class="col-xs-12 col-md-offset-1 col-md-{{ sub $extra_side 1 }}">
-*/}} 
-          <div class="col-xs-12 col-md-offset-{{ $offset_left }} col-md-{{ $extra_side }}">
+          <div class="col-xs-12 col-md-offset-{{ $offset_left }} col-md-{{ $extra_side }} no-padding">
         {{ else }}
-          <div class="col-xs-12 col-md-{{ $main_side }}">
+          <div class="col-xs-12 col-md-{{ $main_side }} no-padding">
         {{ end }}
-            <div class="container-fluid profile">
-              <div class="row">
-                {{- $width_portrait := 12 -}}
-                {{- $width_text := 12 -}}
-                {{- if or (eq $params.layout "left") (eq $params.layout "right") -}}
-                  {{- $width_portrait = $params.portrait_width -}}
-                  {{- $width_text = sub 12 $width_portrait -}}
+        <div class="profile"
+          style="--about-profile-image-width: {{ $params.portrait_percentage }}%;"
+          >
+          <div class="container-fluid">
+            <div class="row">
+              {{- $width_portrait := 12 -}}
+              {{- $width_text := 12 -}}
+              {{- if or (eq $params.layout "left") (eq $params.layout "right") -}}
+                {{- $width_portrait = 4 -}}
+                {{- with $params.portrait_width -}}
+                  {{- $width_portrait = . -}}
                 {{- end -}}
-                {{- if .avatar -}}
-                  <div class="col-xs-12 col-md-{{ $width_portrait }}">
-                  {{/* 2-REC: Special "hover easter egg" */}}
+                {{- $width_text = sub 12 $width_portrait -}}
+              {{- end -}}
+              {{- if .avatar -}}
+                <div class="col-xs-12 col-md-{{ $width_portrait }} no-padding">
+                  {{/* Special "hover easter egg" */}}
                   {{- if .avatar2 -}}
                     <div class="portrait">
                       <img id="avatar1" src="{{ printf "images/%s" .avatar }}">
@@ -100,35 +94,38 @@ ERROR: Sum of columns width bigger than 12! - Check "params.about" in "config.to
                   {{- else -}}
                     <img class="portrait" src="{{ printf "/images/%s" .avatar}}">
                   {{- end -}}
+                </div>
+              {{- end -}}
+              {{- with .profile_text -}}
+                <div class="col-xs-12 col-md-{{ $width_text }} no-padding">
+                  {{/* optional hack to remove margin below profile image */}}
+                  {{ if eq $params.portrait_cancel_bottom_margin 1 }}
+                    {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
+                      <div id="about-separator-classic"></div>
+                    {{ else }}
+                      <div id="about-separator"></div>
+                    {{ end }}
+                  {{ end }}
+                  <div class="text-primary profile-text">
+                    {{ . | markdownify }}
                   </div>
-                {{- end -}}
-                {{- with .short_text -}}
-                  <div class="col-xs-12 col-md-{{ $width_text }}">
-                    <div class="text-primary short-text">
-                      {{ . | markdownify }}
-                    </div>
-                  </div>
-                {{- end -}}
-              </div>
+                </div>
+              {{- end -}}
             </div>
-        {{ if .long_text }}
+          </div>
+        </div>
+        {{ if .main_text }}
           {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
           </div>
           {{/* ~Hack to add space outside (shorter right) */}}
-{{/*
-          <div class="col-xs-12 col-md-{{ sub $main_side 1 }} text-tertiary long-text">
-*/}}
-          <div class="col-xs-12 col-md-offset-{{ $offset_center }} col-md-{{ $main_side }}">
-            <div class="text-tertiary long-text">
-            <p>{{ .long_text | markdownify }}</p>
+          <div class="col-xs-12 col-md-offset-{{ $offset_center }} col-md-{{ $main_side }} no-padding">
+            <div class="text-tertiary main-text">
+              {{ .main_text | markdownify }}
             </div>
           </div>
           {{ else }}
-            <div>
-              <p></p>
-            </div>
-            <div class="text-tertiary long-text">
-              <p>{{ .long_text | markdownify }}</p>
+            <div class="text-tertiary main-text">
+              {{ .main_text | markdownify }}
             </div>
           </div>
           {{ end }}

@@ -258,11 +258,11 @@
                     ```html
                     <meta itemprop="image" content="{{ (printf "images/%s" .) | absURL }}">
                     ```
-                    - For "short_text"
+                    - For "profile_text"
                     ```html
                     <h2 itemprop="name">{{ . | markdownify }}</h2>
                     ```
-                    - For "long_text"
+                    - For "main_text"
                     ```html
                     <div class="col-xs-12 col-md-8" itemprop="description">
                     ```

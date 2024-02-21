@@ -149,8 +149,10 @@ The different parameters that can be used are:
 
 * "title": The title of the section. Typically "ABOUT" would be used.
 * "avatar": The image used for the avatar.
-* "short_text": A short text briefly describing the company or person.
-* "long_text": A longer text providing more detailled information, and potentially links to the other sections.
+    * "avatar2": Special second image displayed when hovering the profile image.
+* "profile_text": A short text briefly describing the company or person.
+* "main_text": A longer text providing more detailled information, and potentially links to the other sections.
+* "background_image": Background image.
 
 
 All the parameters are optional - if not defined, it will not be added to the page content.

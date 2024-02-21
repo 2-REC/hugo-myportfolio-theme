@@ -457,11 +457,14 @@ ul.images-list {
 /******************************************************************************/
 
 /* PROFILE BOX */
+/* TODO: make fully separate for 'about' and 'contact'? */
 
 .profile {
     text-align: center;
-//    padding: 30px 10px;
-padding: 2rem;
+/*    padding: 30px 10px;*/
+/* TODO: set as variables! */
+margin: 30px 10px;
+//padding: 2rem;
     position: relative;
 }
 
@@ -479,8 +482,8 @@ padding: 2rem;
 }
 
 .profile .text-primary p {
-    /* 2-REC TODO: set as custom param */
-    font-size: 1.25em;
+/* TODO: different size on mobile? */
+    font-size: var(--GENERAL-PROFILE-FONT-SIZE);
     font-weight: 300;
 }
 
@@ -871,39 +874,8 @@ right:0;
 /* ABOUT */
 
 /*
-TODO: move to common (for all background images)
+TODO: move as much as possible to common (for all background images)
 + adapt each section code (as in "about")
-
-(TODO: move to README)
-In data/yaml:
-layout: classic|left|right
-main_side_size: 2-10/12 (default: 8)
-background_image: "avatar.png" (file in "static/images") (default : no image)
-background_opacity: [0;1.0] (default: 1.0)
-background_size: contain|cover (default: contain)
-background_position: left|center|right top|center|bottom (detault: center center)
-
-
-+ add layout stuff:
-=> "big_side": 2-10/12 (default: 8)
-- default classic: 33+67% & 4+8 columns
-- default left: 67+33% & 8+4 columns
-- default left: 33+67% & 4+8 columns
-
-
-TODO: to add (?):
-- if background image => add background color to text (same as for image, use "::after" element)
-v- allow to override background image size to "width:100%" for right/left layouts
-
-- background color
-  - primary|secondary (one is default depending on section)
-  - color (rgb)
-
-
-TODO: check!
-- hide background in "small" screen
-  => add option for that? (only if right or left layout!)
-
 */
 #about {
     display: block;
@@ -911,82 +883,10 @@ TODO: check!
 
     z-index: -2;
 
-    /* TODO: add a 'about' specific color variable */
+    /* TODO: add a 'about' specific color variable? */
     color: var(--GENERAL-FONT-COLOR-1);
     background-color: var(--about-bkg-color);
 }
-
-#about .section-hr {
-    border-color: var(--about-title-bar-color);
-}
-#about .section-heading {
-    color: var(--about-title-color);
-}
-
-
-
-/* TODO: add (optional) background-color for 'boxes' (short+long) */
-/* TODO: fix problem of short+long boxes touching each other in normal layout, mobile size */
-/*@media (min-width: 64em) {*/
-    #about .long-text {
-//        padding-left: 5%;
-//        padding-right: 5%;
-//padding: 5%;
-padding-bottom: 1px;
-padding-top: 1px;
-padding-left: 15px;
-padding-right: 15px;
-//margin: 5px;
-//margin-top: 5%;
-background-color: var(--about-bkg-color);
-//background-color: grey;
-    }
-    #about .profile {
-//        padding-left: 5%;
-//        padding-right: 5%;
-//margin: 5px;
-background-color: var(--about-bkg-color);
-background-color: white;
-//background-color: grey;
-
-//text-align: right;
-    }
-@media (min-width: 992px) {
-/*
-    #about .profile {
-//        padding-left: 5%;
-//        padding-right: 5%;
-padding: 5%;
-//margin: 5px;
-background-color: grey;
-
-//text-align: right;
-    }
-*/
-    #about .short-text {
-        text-align: left;
-    }
-/*
-    #about .long-text {
-//        padding-left: 5%;
-//        padding-right: 5%;
-//padding: 5%;
-padding-bottom: 1px;
-padding-top: 1px;
-padding-left: 15px;
-padding-right: 15px;
-//margin: 5px;
-//margin-top: 5%;
-//background-color: grey;
-    }
-*/
-}
-/*@media (min-width: 80em) {*/
-/*
-@media (min-width: 1200px) {
-}
-*/
-
 #about::after {
     position: absolute;
     z-index: -1;
@@ -1008,50 +908,82 @@ padding-right: 15px;
     -moz-background-size: var(--about-bkg-size);
     background-size: var(--about-bkg-size);
     -o-background-size: var(--about-bkg-size);
-
-
-/*
-position: relative;
-height: 100vh;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-*/
-/*
-height: 100vh;
-width: 100%;
-*/
-
-    /* TODO: set params as customizable */
-/*
-    background-position: center;
-    //background-position: left;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    background-size: contain;
-    -o-background-size: contain;
-*/
-
 }
 
-/*@media (min-width: 64em) {*/
-@media (max-width: 992px) {
-    #about::after {
-//background-color: green;
-            left: 0;
-            right: 0;
-            width: 100%;
-background-position: top;
-background-size: cover;
-    }
-
+#about .section-hr {
+    border-color: var(--about-title-bar-color);
 }
+#about .section-heading {
+    color: var(--about-title-color);
+}
+
+
+#about .profile {
+    margin: var(--about-profile-margin);
+
+    background-color: var(--about-profile-bkg-color);
+    border: var(--about-profile-border);
+}
+
+#about .profile-text {
+    text-align: left;
+	padding: var(--about-profile-text-padding-v) var(--about-profile-text-padding-h);
+}
+#about .profile-text p:last-of-type {
+    margin: 0;
+}
+
+#about .portrait {
+    position: relative;
+
+    width: var(--about-profile-image-width);
+    height: auto;
+
+    border-radius: var(--about-profile-image-border-radius);
+    border: var(--about-profile-image-border);
+
+    /* TODO: rewrite? (compute in HTML?) */
+    margin-top: calc((100% - var(--about-profile-image-width)) / 2);
+    margin-bottom: calc((100% - var(--about-profile-image-width)) / 2);
+}
+
+#avatar1 {
+    /* NOTE: setting 'position' here causes problems with height */
+    /*position: absolute;*/
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+#avatar2 {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+}
+#avatar2:hover {
+    opacity: 100%;
+}
+
+#about .main-text {
+    text-align: justify;
+    text-justify: inter-word;
+
+    padding: var(--about-main-text-padding-v) var(--about-main-text-padding-h);
+
+    color: var(--about-main-text-color);
+    background-color: var(--about-main-bkg-color);
+    border: var(--about-main-border);
+}
+
 
 #about a {
     color: var(--about-link-color);
 }
-
 #about a:hover,
 #about a:focus {
     /* TODO: move this globally (for all links) */
@@ -1059,60 +991,41 @@ background-size: cover;
     color: var(--about-link-color-active);
 }
 
-#about .portrait {
-    border-radius: var(--about-image-border-radius);
-    border: var(--about-image-border);
-//background-color: rgb(64,64,64);
-
-    position: relative;
-
-    width: var(--about-image-width);
-    height: auto;
-    /* 2-REC TODO: set as custom param */
-/*    max-width: 300px;*/
+/* hack to remove margin below profile image */
+#about-separator-classic {
+    margin: calc((var(--about-profile-image-width) - 100%) / 2) 0;
+    padding: 0;
 }
-/*@media (min-width: 64em) {*/
+#about-separator {
+    margin: 0;
+    padding: 0;
+}
+
+/* TODO: move to each selector (BUT, use PostCSS when building to fix performance issues) */
 @media (max-width: 992px) {
+    #about::after {
+        left: 0;
+        right: 0;
+        /* TODO: add option to hide background in "small" screen? */
+        width: 100%;
+        background-size: cover;
+    }
+
+    #about .profile-text {
+        text-align: center;
+    }
+
     #about .portrait {
-        /* 2-REC TODO: set as custom param (different from other) */
+        /* TODO: set as custom param */
         max-width: 300px;
+    }
+
+    #about-separator {
+        /* remove margin below profile image (only on small screen, vertical layout) */
+        margin: calc((var(--about-profile-image-width) - 100%) / 2) 0;
     }
 }
 
-#about .text-tertiary {
-    text-align: justify;
-}
-#about .text-tertiary p {
-    text-justify: inter-word;
-}
-#about .short-text p:last-of-type {
-    margin: 0;
-}
-
-#avatar1 {
-    /* 2-REC: setting position here causes problems with height */
-    /*position: absolute;*/
-    top:0;
-    left:0;
-
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-#avatar2 {
-    opacity: 0;
-    position: absolute;
-    top:0;
-    left:0;
-
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-#avatar2:hover {
-    opacity: 100%;
-}
 
 /******************************************************************************/
 
