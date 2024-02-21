@@ -1157,8 +1157,8 @@ height: var(--services-box-height);
     }
 }
 
-.projects-link .row {
-    margin: 0px;
+.projects-link {
+    display: block;
 }
 
 .project-box {

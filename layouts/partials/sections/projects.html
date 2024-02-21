@@ -23,9 +23,10 @@
                 {{ .Scratch.Delete "list" }}
             {{ end }}
         </div>
-        <div class="row no-gutter" style="text-align: center;">
+        {{/* TODO: move style to CSS */}}
+        <div class="row no-gutter" style="text-align: center; padding-top: 1em;">
             <a href="/{{ $path }}" >
-                More ...
+                Expand ...
             </a>
         </div>
     </div>
