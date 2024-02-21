@@ -4,7 +4,7 @@
 # Parameters used by HUGO to configure the site's global settings.
 preserveTaxonomyNames = "true"
 
-baseurl = "https://example.org/"
+baseURL = "https://example.org/"
 languageCode = "en-us"
 title = "HUGO MyPortfolio Theme"
 theme = "hugo-myportfolio-theme"
@@ -96,32 +96,38 @@ unsafe= true
     # ABOUT section
     [params.about]
         # Settings related to the CSS can be set in 'static\css\custom.css', 'about' section
-        #title_align = "center"               # left|center|right (default: center)
-        #title_length = 10                  # 1-12 (default: 10)
-        # Layout:
-        # 2-REC - TODO: explain in more details
-        # - classic (default):
-        #  Inputs:
-        #    extra_side: Left part, containing "small" text (default: 3)
-        #    main_side: Right part, containing "big" text (default: 7)
-        #    offset_left: Offset on left of table (default: half (int) of the remaining space)
-        #    offset_right: Offset on right of table (default: other half of remaining space)
-        #    => The sum of the 4 must be smaller or equal to 12.
-        #  Computed:
-        #    offset_center: Offset between the 2 parts => Remainder of the 12 columns (default: 0, or remaining space of offsets are specified)
-        # - left:
-        #  Inputs:
-        #    extra_side: Offset on right of table (default: 3)
-        #    main_side: Left part, containing both "small" and "big" texts (default: 7)
-        #    => The sum of the 2 must be smaller or equal to 12.
-        #  Computed:
-        #    offset_left: Offset on left of table => Remainder of the 12 columns.
-        # - right:
-        #  Inputs:
-        #    extra_side: Offset on left of table (default: 3)
-        #    main_side: Right part, containing both "small" and "big" texts (default: 7)
-        #    => The sum of the 2 must be smaller or equal to 12.
-        #layout = "right"                   # classic|left|right (default: "classic")
+        # * title_align: Alignment of title ("left"|"center"|"right", default: "center")
+        # * title_length: Number of column taken by title (1-12, default: 10)
+        # * layout: Style of page layout ("classic"|"left"|"right", default: "classic")
+        #   * "classic":
+        #     Inputs:
+        #       * main_side: Right part, containing "main" text (1-12, default: 7)
+        #       * extra_side: Left part, containing "profile" text (1-12, default: 3)
+        #       * offset_left: Offset on left of table (0-10, default: half (int) of the remaining space)
+        #       * offset_right: Offset on right of table (0-10, default: other half of remaining space)
+        #       => The sum of the 4 must be smaller or equal to 12.
+        #     Computed:
+        #       * offset_center: Offset between the 2 parts => Remainder of the 12 columns (default: 0, or remaining space of offsets are specified)
+        #   * "left":
+        #     Inputs:
+        #       * main_side: Left part, containing both "profile" and "main" texts (default: 7)
+        #       * extra_side: Offset on right of table (default: 3)
+        #       => The sum of the 2 must be smaller or equal to 12.
+        #     Computed:
+        #       * offset_left: Offset on left of table => Remainder of the 12 columns.
+        #   * "right":
+        #     Inputs:
+        #       * main_side: Right part, containing both "profile" and "main" texts (default: 7)
+        #       * extra_side: Offset on left of table (default: 3)
+        #       => The sum of the 2 must be smaller or equal to 12.
+        # * portrait_percentage: Percentage taken by image inside its allocated space (1-100, default: 100)
+        # * portrait_cancel_bottom_margin: If 1, remove the margin below the portrait image (0|1, default: 0)
+        # Additional settings only if layout "left"|"right":
+        # * portrait_width: Number of columns taken by the portrait image (1-12, default: 4)
+        # * background: If "full", takes whole screen instead of only "extra" side ("full", default: none)
+        #title_align = "center"
+        #title_length = 10
+        #layout = "classic"
         #main_side = 7
         #extra_side = 3
         #offset_left = 1
