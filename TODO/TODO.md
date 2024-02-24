@@ -15,7 +15,6 @@
     "Uncaught TypeError: Cannot read properties of undefined (reading 'top')"
 
 
-- [ ] Remove all external dependencies (eg photoswipe cdn), or at least make fallback alternatives
 - [ ] Complete README.md file
     => What to add?
     - [ ] Reference "Minimal Academic" theme for the sidebar stuff? (if not done)
@@ -90,23 +89,18 @@
     - [ ] Add a page view counter?
     - [ ] Add Google Analytics<br>
         => googleAnalytics = "..."
-
-
-### HEADER
-- [ ] CDN: use font awesome (& jquery, Bootstrap,  etc) from online resource AND from local files (fallback).<br>
-    => BOTH - look at:<br>
-    https://forum.freecodecamp.org/t/using-a-fallback-code-in-case-bootstraps-cdn-is-down/160753/11
-    https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server
+    - [ ] See about donation stuff (Patreon?) - in "contact" section?
+    - [ ] For external "libs" (Bootstrap, FontAwesome, jQuery, Photoswipe)<br>
+        => Use CDN & fallback on local files. Links:<br>
+            https://forum.freecodecamp.org/t/using-a-fallback-code-in-case-bootstraps-cdn-is-down/160753/11
+            https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server
+            <br>BUT: not really usefull, as small site+traffic, and heavy data is local anyway... (images, etc.)
 
 
 ### FOOTER
 - [ ] Add copyright stuff (for my stuff, but also images, themes, etc I "took")
 - [ ] Allow to not have the footer
 - [ ] Make better footer
-
-
-- LATER:
-    - [ ] See about donation stuff (Patreon?) - in "contact" section?
 
 
 ### HOMEPAGE
@@ -313,8 +307,6 @@
             => Need changes in CSS for main tags (html, body, sections, etc?)
         - [ ] Set content...
     - [ ] gallery.html
-        - [ ] Check JQUERY loading.<br>
-            => OK to load both files in tail.html? (should only load one)
         - LATER:
             - [ ] Fix ".Inner" stuff (with "figure")
             - [ ] Add "figure.html" file & make changes.<br>
@@ -381,8 +373,8 @@
         {{ template "_internal/google_analytics.html" . }
         ```
     - [ ] tail.html
-        - [ ] For external "libs" (Bootstrap, FontAwesome, JQuery?)<br>
-            => Use CDN & fallback on local files. (see links)
+        - [x] Check if OK to load 2 jQuery versions in "tail.html" (should only load one)
+            - OK: Loading only 1, more recent (v1.12.4 instead of v1.11.1).
 
 
 ### STATIC

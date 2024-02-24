@@ -1,24 +1,18 @@
 {{ "<!-- TAIL.HTML -->" | safeHTML }}
-<!--
-<script src="{{ "plugins/jquery/jquery.js" | absURL }}"></script>
--->
-<script src="{{ "plugins/jquery/jquery.js" | absURL }}"></script>
-<!-- Load PhotoSwipe js if the load-photoswipe shortcode has been used -->
-{{- if ($.Scratch.Get "photoswipeloaded") -}}
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="/js/load-photoswipe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
-{{- end -}}
-<script src="{{ "plugins/bootstrap/js/bootstrap.min.js" | absURL }}"></script>
-<script src="{{ "plugins/jquery/jquery.easing.min.js" | absURL }}"></script>
-<script src="{{ "plugins/jquery/jquery.fittext.js" | absURL }}"></script>
-<script src="{{ "js/theme.js" | absURL }}"></script>
-<script src="{{ "js/anim.js" | absURL }}"></script>
-{{- if .IsHome -}}
-    {{- with .Site.Data.home -}}
-        {{- with .background_hidden -}}
-            <script src="{{ "js/hidden-background.js" | absURL }}"></script>
-        {{- end -}}
+<script src="{{ "plugins/jquery/jquery.min.js" | relURL }}"></script>
+{{- if ($.Scratch.Get "photoswipeloaded") }}
+    {{ "<!-- Load PhotoSwipe js if the load-photoswipe shortcode has been used -->" | safeHTML }}
+    <script src="{{ "js/load-photoswipe.js" | relURL }}"></script>
+    <script src="{{ "plugins/photoswipe/js/photoswipe.min.js" | relURL }}"></script>
+    <script src="{{ "plugins/photoswipe/js/photoswipe-ui-default.min.js" | relURL }}"></script>
+{{- end }}
+<script src="{{ "plugins/bootstrap/js/bootstrap.min.js" | relURL }}"></script>
+<script src="{{ "plugins/jquery/jquery.easing.min.js" | relURL }}"></script>
+<script src="{{ "plugins/jquery/jquery.fittext.js" | relURL }}"></script>
+<script src="{{ "js/theme.js" | relURL }}"></script>
+<script src="{{ "js/anim.js" | relURL }}"></script>
+{{- if .IsHome }}
+    {{ with .Site.Data.home.background_hidden -}}
+        <script src="{{ "js/hidden-background.js" | relURL }}"></script>
     {{- end -}}
-{{- end -}}
+{{- end }}
