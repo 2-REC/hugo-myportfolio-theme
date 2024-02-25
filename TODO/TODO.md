@@ -16,11 +16,12 @@
 
 - [ ] DOC
     - [ ] make example site as complete as possible, showcasing everything + explaining/detailing how it works (in page content itself, or comments in md files...).
+    - [ ] Mention use of "cover_image" and "small_image" for sections ("cover_image" can override "small_image")
+    - [ ] GALLERY PARTIAL + SHORTCODE!
 
 - [ ] Complete README.md file
     => What to add?
     - [ ] Reference "Minimal Academic" theme for the sidebar stuff? (if not done)
-    - [ ] Mention use of "cover_image" and "small_image" for sections ("cover_image" can override "small_image")
 
 
 ## BUG FIXES
