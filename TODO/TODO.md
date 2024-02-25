@@ -14,6 +14,8 @@
 - [ ] Fix error when clicking "home" button
     "Uncaught TypeError: Cannot read properties of undefined (reading 'top')"
 
+- [ ] DOC
+    - [ ] make example site as complete as possible, showcasing everything + explaining/detailing how it works (in page content itself, or comments in md files...).
 
 - [ ] Complete README.md file
     => What to add?
@@ -57,7 +59,6 @@
 
 
 ### GENERAL
-- [ ] Look at "figure" opcode and do same thing as for gallery
 - [ ] Update to latest HUGO.
 - [ ] Update to BOOTSTRAP 4+.
 
@@ -306,11 +307,6 @@
         - [ ] Fix problem that not at bottom of page.<br>
             => Need changes in CSS for main tags (html, body, sections, etc?)
         - [ ] Set content...
-    - [ ] gallery.html
-        - LATER:
-            - [ ] Fix ".Inner" stuff (with "figure")
-            - [ ] Add "figure.html" file & make changes.<br>
-                => Do the same as for gallery (paths, change to partial instead of shortcode, etc).
     - [ ] head.html<br>
         (Look at backuped file)
         - [ ] Use some "blocks" to allow overriding parts..
@@ -375,6 +371,12 @@
     - [ ] tail.html
         - [x] Check if OK to load 2 jQuery versions in "tail.html" (should only load one)
             - OK: Loading only 1, more recent (v1.12.4 instead of v1.11.1).
+
+- [ ] shortcodes
+    - [ ] gallery.html
+        - [ ] handle parameters in "figure" case (global for all figures).
+    - [ ] figure.html
+        - [ ] add new parameters (make ~same changes as in "gallery" shortcode).
 
 
 ### STATIC

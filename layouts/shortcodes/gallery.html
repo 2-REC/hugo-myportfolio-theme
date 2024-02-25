@@ -2,22 +2,20 @@
 Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 -->
 <!--
-Modified version of "gallery.html" from https://github.com/liwenyip/hugo-easy-gallery/
-* Partial version of shortcode.
-  * NOTE: Due to this the parameter names had to be changed (replacing "-" by "_").
+@-REC: Modified version (see README for details):
 * Added input parameters: "static".
 * Handles page parameters: "images_copyright" and "images".
 -->
-{{- $page := .page -}}
+{{- $page := $.Page -}}
 <!-- count how many times we've called this shortcode; load the css if it's the first time -->
 {{- if not ($page.Scratch.Get "figurecount") }}<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />{{ end }}
 {{- $page.Scratch.Add "figurecount" 1 }}
 {{ $baseURL := $page.Site.BaseURL }}
 {{- $images_copyright := $page.Params.images_copyright -}}
 {{- $images_params := $page.Params.images -}}
-{{- $static := $.static -}}
-<div class="gallery caption-position-{{ with .caption_position | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .caption_effect | default "slide" }}{{.}}{{end}} hover-effect-{{ with .hover_effect | default "zoom" }}{{.}}{{end}} {{ if ne (.hover_transition) "none" }}hover-transition{{end}}" itemscope itemtype="http://schema.org/ImageGallery">
-	{{- with .dir -}}
+{{- $static := .Get "static" | default "false" -}}
+<div class="gallery caption-position-{{ with .Get "caption-position" | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}} hover-effect-{{ with .Get "hover-effect" | default "zoom" }}{{.}}{{end}} {{ if ne (.Get "hover-transition") "none" }}hover-transition{{end}}" itemscope itemtype="http://schema.org/ImageGallery">
+	{{- with .Get "dir" -}}
 		<!-- If a directory was specified, generate figures for all of the images in the directory -->
 		{{- if eq $static "true" -}}
             {{- $page.Scratch.Set "dirURL" (print .) -}}
@@ -33,7 +31,7 @@ Modified version of "gallery.html" from https://github.com/liwenyip/hugo-easy-ga
 			{{- $files := readDir $dirFiles -}}
 			{{- range $files -}}
 				<!-- skip files that aren't images, or that inlcude the thumb suffix in their name -->
-				{{- $thumbext := $.thumb | default "-thumb" }}
+				{{- $thumbext := $.Get "thumb" | default "-thumb" }}
 				{{- $isthumb := .Name | findRE ($thumbext | printf "%s\\.") }}<!-- is the current file a thumbnail image? -->
 				{{- $isimg := lower .Name | findRE "\\.(gif|jpg|jpeg|tiff|png|bmp)" }}<!-- is the current file an image? -->
 				{{- if and $isimg (not $isthumb) }}
@@ -80,5 +78,9 @@ Modified version of "gallery.html" from https://github.com/liwenyip/hugo-easy-ga
 		{{- end -}}
 		{{- $page.Scratch.Delete "dirURL" -}}
 		{{- $page.Scratch.Delete "dirFiles" -}}
+	{{- else -}}
+		<!-- If no directory was specified, include any figure shortcodes called within the gallery -->
+{{/* TODO: handle "static", "copyright", etc. (additionally to figure level) */}}
+	  {{ .Inner }}
 	{{- end }}
 </div>
