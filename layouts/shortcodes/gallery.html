@@ -17,16 +17,15 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 <div class="gallery caption-position-{{ with .Get "caption-position" | default "bottom" }}{{.}}{{end}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}} hover-effect-{{ with .Get "hover-effect" | default "zoom" }}{{.}}{{end}} {{ if ne (.Get "hover-transition") "none" }}hover-transition{{end}}" itemscope itemtype="http://schema.org/ImageGallery">
 	{{- with .Get "dir" -}}
 		<!-- If a directory was specified, generate figures for all of the images in the directory -->
+		{{- $dir := "" -}}
+		{{- $dirFiles := "" -}}
 		{{- if eq $static "true" -}}
-            {{- $page.Scratch.Set "dirURL" (print .) -}}
-            {{- $page.Scratch.Set "dirFiles" (print "/static/" .) -}}
+			{{- $dir = (print .) -}}
+			{{- $dirFiles = (print "/static/" .) -}}
 		{{- else -}}
-			{{- $tmpDir := print (replace $page.File.Dir  "\\" "/") "/" . -}}
-            {{- $page.Scratch.Set "dirURL" $tmpDir -}}
-            {{- $page.Scratch.Set "dirFiles" (print "/content/" $tmpDir "/") -}}
+			{{- $dir = print (replace $page.File.Dir  "\\" "/") "/" . -}}
+			{{- $dirFiles = (print "/content/" $dir "/") -}}
 		{{- end -}}
-		{{- $dir := $page.Scratch.Get "dirURL" -}}
-		{{- $dirFiles := $page.Scratch.Get "dirFiles" -}}
 		{{- if (fileExists $dirFiles) -}}
 			{{- $files := readDir $dirFiles -}}
 			{{- range $files -}}
@@ -36,26 +35,23 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 				{{- $isimg := lower .Name | findRE "\\.(gif|jpg|jpeg|tiff|png|bmp)" }}<!-- is the current file an image? -->
 				{{- if and $isimg (not $isthumb) }}
 					{{- $name := .Name -}}
+					{{- $copyright := "" -}}
 					{{- with $images_copyright -}}
-						{{- $page.Scratch.Set "copyright" (print " - &copy; " .) -}}
+						{{- $copyright = (print " - &copy; " .) -}}
 					{{- end -}}
+					{{- $title := (.Name | replaceRE "\\..*" "") }}
 					{{- range $images_params -}}
 						{{- if eq .src $name -}}
 							{{- with .title -}}
-								{{- $page.Scratch.Set "title" . -}}
+								{{- $title = . -}}
 							{{- end -}}
 							{{- with .copyright -}}
-								{{- $page.Scratch.Set "copyright" (print " - &copy; " .) -}}
+								{{- $copyright = (print " - &copy; " .) -}}
 							{{- end -}}
 						{{- end -}}
 					{{- end -}}
-
-					{{- $title := ($page.Scratch.Get "title") | default (.Name | replaceRE "\\..*" "") }}
-					{{- $copyright := ($page.Scratch.Get "copyright") | default "" }}
-
 					{{- $captionthumb :=  $title }}
 					{{- $caption :=  (print $title $copyright) }}
-
 					{{- $linkURL := print $baseURL $dir "/" .Name | absURL }}<!-- absolute URL to hi-res image -->
 					{{- $thumb := .Name | replaceRE "(\\.)" ($thumbext | printf "%s.") }}<!-- filename of thumbnail image -->
 					{{- $thumbexists := where $files "Name" $thumb }}<!-- does a thumbnail image exist? --> 
@@ -71,13 +67,9 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 						<a href="{{ $linkURL }}" itemprop="contentUrl"></a><!-- put <a> last so it is stacked on top -->
 					</figure>
 					</div>
-					{{- $page.Scratch.Delete "title" -}}
-					{{- $page.Scratch.Delete "copyright" -}}
 				{{- end }}
 			{{- end }}
 		{{- end -}}
-		{{- $page.Scratch.Delete "dirURL" -}}
-		{{- $page.Scratch.Delete "dirFiles" -}}
 	{{- else -}}
 		<!-- If no directory was specified, include any figure shortcodes called within the gallery -->
 {{/* TODO: handle "static", "copyright", etc. (additionally to figure level) */}}
