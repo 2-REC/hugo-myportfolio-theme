@@ -10,6 +10,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- /* get input parameters */ -}}
 {{- $static := .Get "static" | default "false" -}}
 {{- $src := .Get "src" -}}
+{{- $thumbSuffix := .Get "thumb" | default "-thumb" -}}
 
 {{- /* check in post's directory first, unless forced to 'static' */ -}}
 {{- $srcPath := (print "/static/" $src) -}}
@@ -22,9 +23,19 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
     {{- $src = $tmpPath -}}
   {{- end -}}
 {{- end -}}
-<!-- use either src or link-thumb for thumbnail image -->
-{{- /* 2-REC: BUG? "thumb" or "link" are never used (as "src" is mandatory) */ -}}
-{{- $thumb := $src | default (printf "%s." (.Get "thumb") | replace (.Get "link") ".") }}
+
+{{- /* TODO: handle 'link' */ -}}
+{{- /* get the thumbnail if exists */ -}}
+{{- $srcFile := path.Base $src }}
+{{- $srcDir := path.Dir $srcPath -}}
+{{- $srcURLDir := path.Dir $src }}
+{{- $thumbFile := $srcFile | replaceRE "(\\.)" ($thumbSuffix | printf "%s.") -}}
+{{- $thumbURL := print $srcURLDir "/" $thumbFile -}}
+{{- $thumbPath := print $srcDir "/" $thumbFile -}}
+{{- $thumb := $src -}}
+{{- if fileExists $thumbPath -}}
+  {{- $thumb = $thumbURL -}}
+{{- end -}}
 
 {{- /* TODO: do as in gallery! */ -}}
 <div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
