@@ -6,22 +6,21 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 <!-- count how many times we've called this shortcode; load the css if it's the first time -->
 {{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href={{ "css/hugo-easy-gallery.css" | relURL }} />{{ end }}
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
-{{- /* 2-REC: handle "incomplete" path (similarly to "gallery") */ -}}
+
+{{- /* get input parameters */ -}}
 {{- $static := .Get "static" | default "false" -}}
-{{- /* TODO: check if path is absolute! */ -}}
 {{- $src := .Get "src" -}}
-{{- if not (fileExists $src) -}}
-    {{- $srcPath := "" -}}
-    {{- if eq $static "true" -}}
-        {{- $srcPath = (print "/static/" $src) -}}
-    {{- else -}}
-        {{- $tmpDir := print (replace $.Page.File.Dir  "\\" "/") "/" $src -}}
-        {{- $srcPath = (print "/" $tmpDir) -}}
-    {{- end -}}
-    {{- /* only update the path if the file exists */ -}}
-    {{- if (fileExists $srcPath) -}}
-        {{- $src = $srcPath -}}
-    {{- end -}}
+
+{{- /* check in post's directory first, unless forced to 'static' */ -}}
+{{- $srcPath := (print "/static/" $src) -}}
+{{- if ne $static "true" -}}
+  {{- /* TODO: check if path is absolute! */ -}}
+  {{- $tmpPath := print (replace $.Page.File.Dir  "\\" "/") "/" $src -}}
+  {{- /* if file exists, update the path */ -}}
+  {{- if fileExists $tmpPath -}}
+    {{- $srcPath = $tmpPath -}}
+    {{- $src = $tmpPath -}}
+  {{- end -}}
 {{- end -}}
 <!-- use either src or link-thumb for thumbnail image -->
 {{- /* 2-REC: BUG? "thumb" or "link" are never used (as "src" is mandatory) */ -}}
