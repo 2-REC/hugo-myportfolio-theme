@@ -3,6 +3,10 @@ Put this file in /layouts/shortcodes/figure.html
 NB this overrides Hugo's built-in "figure" shortcode but is backwards compatible
 Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 -->
+<!--
+2-REC: Heavily modified version (see README for details).
+-->
+{{- /* TODO: handle 'copyright' at both global and local levels */ -}}
 {{- /* count how many times we've called this shortcode; load the css if it's the first time */ -}}
 {{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href={{ "css/hugo-easy-gallery.css" | relURL }} />{{ end -}}
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
@@ -11,6 +15,10 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- $static := .Get "static" | default "false" -}}
 {{- $src := .Get "src" -}}
 {{- $thumbSuffix := .Get "thumb" | default "-thumb" -}}
+{{- $caption := .Get "caption" -}}
+{{- $caption_position := .Get "caption-position" | default "bottom" -}}
+{{- $title := .Get "title" -}}
+{{- $attr := .Get "attr" -}}
 {{- /* hack to check if inside a gallery */ -}}
 {{- $inGallery := false -}}
 {{- with .Parent -}}
@@ -44,23 +52,22 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
   {{- $thumb = $thumbURL -}}
 {{- end -}}
 
-{{- $caption_position := .Get "caption-position" | default "bottom" -}}
 <div class="box
     {{- if ne $caption_position "none" }} fancy-figure caption-position-{{$caption_position}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}}{{ end -}}"
     {{ if not $inGallery }}style="width:{{ with .Get "width" }}{{.}}{{else}}fit-content{{end}};"{{ end }}>
   <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb | relURL }}');"{{ end }}{{ with .Get "size" }} data-size="{{.}}"{{ end }}>
-      <img itemprop="thumbnail" src="{{ $thumb | relURL }}" {{ with .Get "alt" | default (.Get "caption") }}alt="{{.}}"{{ end }} style="width: 100%;"/><!-- <img> hidden if in .gallery -->
+      <img itemprop="thumbnail" src="{{ $thumb | relURL }}" {{ with .Get "alt" | default $caption }}alt="{{.}}"{{ end }} style="width: 100%;"/><!-- <img> hidden if in .gallery -->
     </div>
     {{ with .Get "link" | default $src }}<a href="{{ . | relURL }}" itemprop="contentUrl"></a>{{ end }}
-    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
+    {{- if or (or $title $caption) $attr}}
       <figcaption>
         {{- /* TODO: change title style... */ -}}
-        {{- with .Get "title" }}<h4>{{.}}</h4>{{ end }}
-        {{- if or (.Get "caption") (.Get "attr")}}
+        {{- with $title }}<h4>{{.}}</h4>{{ end }}
+        {{- if or $caption $attr}}
           <p>
-            {{- .Get "caption" -}}
-            {{- with .Get "attrlink"}}<a href="{{.}}">{{ $.Get "attr" }}</a>{{ else }}{{ .Get "attr"}}{{ end -}}
+            {{- $caption -}}
+            {{- with .Get "attrlink"}}<a href="{{.}}">{{ $attr }}</a>{{ else }}{{ $attr }}{{ end -}}
           </p>
         {{- end }}
       </figcaption>
