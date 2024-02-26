@@ -30,6 +30,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 			{{- $files := readDir $dirFiles -}}
 			{{- range $files -}}
 				<!-- skip files that aren't images, or that inlcude the thumb suffix in their name -->
+				{{- /* TODO: default should be a config parameter */ -}}
 				{{- $thumbext := $.Get "thumb" | default "-thumb" }}
 				{{- $isthumb := .Name | findRE ($thumbext | printf "%s\\.") }}<!-- is the current file a thumbnail image? -->
 				{{- $isimg := lower .Name | findRE "\\.(gif|jpg|jpeg|tiff|png|bmp)" }}<!-- is the current file an image? -->
@@ -72,7 +73,6 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 		{{- end -}}
 	{{- else -}}
 		<!-- If no directory was specified, include any figure shortcodes called within the gallery -->
-{{/* TODO: handle "thumb" (additionally to figure level) */}}
 	  {{ .Inner }}
 	{{- end }}
 </div>

@@ -373,11 +373,11 @@
         - [x] Check if OK to load 2 jQuery versions in "tail.html" (should only load one)
             - OK: Loading only 1, more recent (v1.12.4 instead of v1.11.1).
 
-- [ ] shortcodes
-    - [ ] gallery.html
-        - [ ] handle parameters in "figure" case (global for all figures).
-    - [ ] figure.html
-        - [ ] add new parameters (make ~same changes as in "gallery" shortcode).
+- [x] shortcodes
+    - [x] gallery.html
+        - [x] handle parameters in "figure" case (global for all figures).
+    - [x] figure.html
+        - [x] add new parameters (make ~same changes as in "gallery" shortcode).
 
 
 ### STATIC
