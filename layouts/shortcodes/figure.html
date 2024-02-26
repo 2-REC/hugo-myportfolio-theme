@@ -11,7 +11,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
 
 {{- /* get input parameters */ -}}
-{{- $static := .Get "static" | default "false" -}}
+{{- $static := .Get "static" -}}
 {{- $src := .Get "src" -}}
 {{- $thumbSuffix := .Get "thumb" | default "-thumb" -}}
 {{- $caption := .Get "caption" -}}
@@ -25,6 +25,13 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- with .Parent -}}
   {{- if eq .Name "gallery" -}}
     {{- $inGallery = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* if static not specified, check in parent */ -}}
+{{- if not $static -}}
+  {{- if and $inGallery (.Parent.Get "static") -}}
+    {{- $static = .Parent.Get "static" -}}
   {{- end -}}
 {{- end -}}
 
@@ -53,7 +60,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
   {{- $thumb = $thumbURL -}}
 {{- end -}}
 
-{{/* if no copyright, get parent one, or global one */}}
+{{- /* if no copyright, get parent one, or global one */ -}}
 {{- if not $copyright -}}
   {{- if and $inGallery (.Parent.Get "copyright") -}}
     {{- $copyright = .Parent.Get "copyright" -}}
