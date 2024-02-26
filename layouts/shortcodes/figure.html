@@ -73,7 +73,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 
 {{- $captionThumb := $caption -}}
 {{- with $copyright -}}
-  {{- with $caption -}}
+  {{- if $caption -}}
     {{- $caption = print $caption " - &copy; " . -}}
   {{- else -}}
     {{- $caption = print "&copy; " . -}}
