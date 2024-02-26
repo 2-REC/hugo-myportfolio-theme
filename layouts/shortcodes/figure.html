@@ -6,7 +6,6 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 <!--
 2-REC: Heavily modified version (see README for details).
 -->
-{{- /* TODO: handle 'copyright' at both global and local levels */ -}}
 {{- /* count how many times we've called this shortcode; load the css if it's the first time */ -}}
 {{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href={{ "css/hugo-easy-gallery.css" | relURL }} />{{ end -}}
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
@@ -19,6 +18,8 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- $caption_position := .Get "caption-position" | default "bottom" -}}
 {{- $title := .Get "title" -}}
 {{- $attr := .Get "attr" -}}
+{{- $copyright := .Get "copyright" -}}
+
 {{- /* hack to check if inside a gallery */ -}}
 {{- $inGallery := false -}}
 {{- with .Parent -}}
@@ -52,6 +53,26 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
   {{- $thumb = $thumbURL -}}
 {{- end -}}
 
+{{/* if no copyright, get parent one, or global one */}}
+{{- if not $copyright -}}
+  {{- if and $inGallery (.Parent.Get "copyright") -}}
+    {{- $copyright = .Parent.Get "copyright" -}}
+  {{- else -}}
+    {{- with $.Page.Params.images_copyright -}}
+      {{- $copyright = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $captionThumb := $caption -}}
+{{- with $copyright -}}
+  {{- with $caption -}}
+    {{- $caption = print $caption " - &copy; " . -}}
+  {{- else -}}
+    {{- $caption = print "&copy; " . -}}
+  {{- end -}}
+{{- end -}}
+
 <div class="box
     {{- if ne $caption_position "none" }} fancy-figure caption-position-{{$caption_position}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}}{{ end -}}"
     {{ if not $inGallery }}style="width:{{ with .Get "width" }}{{.}}{{else}}fit-content{{end}};"{{ end }}>
@@ -60,13 +81,13 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
       <img itemprop="thumbnail" src="{{ $thumb | relURL }}" {{ with .Get "alt" | default $caption }}alt="{{.}}"{{ end }} style="width: 100%;"/><!-- <img> hidden if in .gallery -->
     </div>
     {{ with .Get "link" | default $src }}<a href="{{ . | relURL }}" itemprop="contentUrl"></a>{{ end }}
-    {{- if or (or $title $caption) $attr}}
+    {{- if or (or $title $captionThumb) $attr}}
       <figcaption>
         {{- /* TODO: change title style... */ -}}
         {{- with $title }}<h4>{{.}}</h4>{{ end }}
-        {{- if or $caption $attr}}
+        {{- if or $captionThumb $attr}}
           <p>
-            {{- $caption -}}
+            {{- $captionThumb -}}
             {{- with .Get "attrlink"}}<a href="{{.}}">{{ $attr }}</a>{{ else }}{{ $attr }}{{ end -}}
           </p>
         {{- end }}
