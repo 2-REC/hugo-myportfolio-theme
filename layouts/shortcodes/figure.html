@@ -11,6 +11,13 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- $static := .Get "static" | default "false" -}}
 {{- $src := .Get "src" -}}
 {{- $thumbSuffix := .Get "thumb" | default "-thumb" -}}
+{{- /* hack to check if inside a gallery */ -}}
+{{- $inGallery := false -}}
+{{- with .Parent -}}
+  {{- if eq .Name "gallery" -}}
+    {{- $inGallery = true -}}
+  {{- end -}}
+{{- end -}}
 
 {{- /* check in post's directory first, unless forced to 'static' */ -}}
 {{- $srcPath := (print "/static/" $src) -}}
@@ -40,7 +47,7 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 {{- $caption_position := .Get "caption-position" | default "bottom" -}}
 <div class="box
     {{- if ne $caption_position "none" }} fancy-figure caption-position-{{$caption_position}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}}{{ end -}}"
-    style="width:{{ with .Get "width" }}{{.}}{{else}}fit-content{{end}};">
+    {{ if not $inGallery }}style="width:{{ with .Get "width" }}{{.}}{{else}}fit-content{{end}};"{{ end }}>
   <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb | relURL }}');"{{ end }}{{ with .Get "size" }} data-size="{{.}}"{{ end }}>
       <img itemprop="thumbnail" src="{{ $thumb | relURL }}" {{ with .Get "alt" | default (.Get "caption") }}alt="{{.}}"{{ end }} style="width: 100%;"/><!-- <img> hidden if in .gallery -->
