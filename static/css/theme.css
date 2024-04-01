@@ -757,6 +757,8 @@ background-color: black;
 
     opacity: 0;
     background-image: var(--home-bkg-image-hidden);
+
+    pointer-events:none;
 }
 
 #home::after {
@@ -806,6 +808,8 @@ right:0;
     text-align: var(--home-text-align);
 
     color: var(--HOME-TITLE-COLOR, var(--GENERAL-FONT-COLOR-3));
+
+    z-index: 99;
 }
 
 #home .header-content .header-content-inner h1 {

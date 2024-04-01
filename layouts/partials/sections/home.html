@@ -3,7 +3,7 @@
     <section id="home"
         {{- with .background -}}
         {{/* TODO: set 'opacity' variable */}}
-        style="--home-bkg-image: url('{{ (printf "images/%s" .) | absURL }}');"
+        style="overflow: hidden; --home-bkg-image: url('{{ (printf "images/%s" .) | absURL }}');"
         {{- end -}}
         >
         {{- if .background_hidden -}}
@@ -75,5 +75,6 @@
             <source src="{{ printf "images/%s" .background_video }}" type="video/mp4">
         </video>
         {{- end -}}
+        {{- partial "home-custom" . -}}
     </section>
 {{ end }}
