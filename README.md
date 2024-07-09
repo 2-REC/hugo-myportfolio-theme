@@ -75,6 +75,65 @@ The section can be present more than once if several portfolio are to be showcas
 Section providing the contact information.
 
 
+### CUSTOM SECTION
+
+(TODO: rewrite/clean)
+Additionally, custom sections can be added to the homepage.
+
+Steps to add a new custom section:
+* Create HTML file in site's "layouts/partials/sections" (not in "themes").
+    e.g.: `layouts/partials/sections/custom_section.html`
+    Can be based on an existing section file, or created from scratch.
+    The file must define a "section" element with the "id" matching the file name.
+    Data specific to the page can be defined in a "data" file (see below).
+    Parameters specific to the page can be defined in the "config" file (see below).
+    ```
+    {{ $params := .Site.Params.custom_section }}
+    {{ $data := .Site.Data.custom_section }}
+    <section class="section" id="custom_section">
+        ...
+    </section>
+    ```
+
+* Create data file in site's "data" (not in "themes"). (optional)
+    e.g.: `data/custom_section.yaml`
+    This file can be referred to in the HTML file by:
+    ```
+    {{ $data := .Site.Data.custom_section }}
+    ```
+
+* Add in config file ("config.toml"):
+    * Add entry in sections list:
+        e.g.:
+            ```
+            [params.homepage]
+                sections = [ "home", "about", "custom_section", "services", "skills", "projects", "contact" ]
+            ```
+    * Add entry in navigation links:
+        e.g.:
+            ```
+            [params.navigation.links]
+                custom_section = "CUSTOM"
+            ```
+
+    * Add section's parameters entry (optional)
+        e.g.:
+            ```
+            [params.custom_section]
+            ```
+        This paramater entry can be referred to in the HTML file by:
+        ```
+        {{ $params := .Site.Params.custom_section }}
+        ```
+
+* Define CSS
+    * Create CSS file in "static/css" and import it in the HTML file.
+        e.g.:
+        ```
+        <link rel="stylesheet" href="css/custom_section.css">
+        ```
+
+
 ## Installation
 
 Inside the folder of your Hugo site run:
