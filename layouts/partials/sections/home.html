@@ -12,9 +12,9 @@
 {{- end -}}
 {{- with .Site.Data.home -}}
     <section id="home"
-        {{- with .background -}}
-        {{/* TODO: set 'opacity' variable */}}
-        style="overflow: hidden; --home-bkg-image: url('{{ (printf "images/%s" .) | absURL }}');"
+        {{- if .background -}}
+        style="overflow: hidden; --home-bkg-image: url('{{ (printf "images/%s" .background) | absURL }}');
+               {{ with .background_opacity }}--home-bkg-image-opacity: {{ . }}{{ end }}"
         {{- end -}}
         >
         {{- if .background_hidden -}}

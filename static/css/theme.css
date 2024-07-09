@@ -778,9 +778,8 @@ top:0;
 left:0;
 bottom:0;
 right:0;
-    background-image: var(--home-bkg-image);
-/* TODO: from variable! */
-    opacity: 50%;
+    background-image: var(--home-bkg-image,);
+    opacity: var(--home-bkg-image-opacity, 100%);
 }
 
 #home_video {
