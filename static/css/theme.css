@@ -731,14 +731,12 @@ main {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    background-color: var(--HOME-BACKGROUND-COLOR, transparent);
 */
+    background-color: var(--HOME-BACKGROUND-COLOR, transparent);
+
 /* TODO: why was '-2'? => bug (can't select text + button) */
 /*z-index: -2;*/
 z-index: 0;
-/* TODO: from param */
-/*background-color: transparent;*/
-background-color: black;
 }
 
 #background_hidden {
@@ -756,7 +754,7 @@ background-color: black;
     -o-background-size: cover;
 
     opacity: 0;
-    background-image: var(--home-bkg-image-hidden);
+    background-image: var(--home-bkg-image-hidden,);
 
     pointer-events:none;
 }
@@ -807,7 +805,7 @@ right:0;
     text-align: var(--home-text-align);
 
     color: var(--HOME-TITLE-COLOR, var(--GENERAL-FONT-COLOR-3));
-
+    font-family: var(--HOME-TEXT-FONT, var(--GENERAL-FONT-1));
     z-index: 99;
 }
 
@@ -815,10 +813,12 @@ right:0;
     margin-top: 0;
     margin-bottom: 0;
     font-weight: 700;
+    font-family: var(--HOME-TITLE-FONT, var(--TITLE-FONT));
 }
 
 #home .header-content .header-content-inner h2 {
     font-weight: 600;
+    font-family: var(--HOME-TITLE-FONT, var(--TITLE-FONT));
 }
 
 #home .header-content .header-content-inner hr {
