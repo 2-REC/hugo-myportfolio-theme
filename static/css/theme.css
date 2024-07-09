@@ -1106,13 +1106,14 @@ height: var(--services-box-height);
 #skills {
     position: relative;
     text-align: justify;
+    background-image: var(--skills-bkg-image,);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
 
-    /* TODO: add a 'services' specific color variable */
+    /* TODO: add a 'skills' specific color variable */
     color: var(--GENERAL-FONT-COLOR-1);
     background-color: var(--GENERAL-COLOR-2);
 }
