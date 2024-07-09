@@ -1,7 +1,8 @@
 :root{
 /* TODO: replace with content of my website's custom (th all variables commented) */
     /*
-      Override desired values for the following variables.
+        Override desired values for the following variables.
+        This file must be copied to the "static/css" directory.
     */
 
     /* GENERAL */
@@ -21,20 +22,20 @@
 
     /* NAVBAR */
 /*
+    --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
     --NAVBAR-FONT: var(--GENERAL-FONT-2);
-    --NAVBAR-BRAND-FONT: var(--GENERAL-FONT-2);
+    --NAVBAR-BRAND-FONT: var(--GENERAL-FONT-4);
+    --NAVBAR-BRAND-COLOR: var(--GENERAL-FONT-COLOR-1);
+    --NAVBAR-BRAND-HOVER-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-COLOR: var(--GENERAL-FONT-COLOR-1);
+    --NAVBAR-BUTTON-HOVER-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-ACTIVE-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-ACTIVE-BACKGROUND-COLOR: transparent;
     --NAVBAR-FIXED-BACKGROUND-COLOR: var(--GENERAL-COLOR-2);
     --NAVBAR-FIXED-BRAND-COLOR: var(--GENERAL-FONT-COLOR-2);
     --NAVBAR-FIXED-BRAND-HOVER-COLOR: var(--GENERAL-LINK-ACTIVE-COLOR-1);
     --NAVBAR-FIXED-BUTTON-COLOR: var(--GENERAL-LINK-COLOR-2);
     --NAVBAR-FIXED-BUTTON-HOVER-COLOR: var(--GENERAL-LINK-ACTIVE-COLOR-2);
-    --NAVBAR-BUTTON-ACTIVE-COLOR: var(--GENERAL-FONT-COLOR-2);
-    --NAVBAR-BUTTON-ACTIVE-BACKGROUND-COLOR: transparent;
-    --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
-    --NAVBAR-BRAND-COLOR: var(--GENERAL-FONT-COLOR-4);
-    --NAVBAR-BRAND-HOVER-COLOR: var(--GENERAL-FONT-COLOR-3);
-    --NAVBAR-BUTTON-COLOR: var(--GENERAL-FONT-COLOR-4);
-    --NAVBAR-BUTTON-HOVER-COLOR: var(--GENERAL-FONT-COLOR-3);
 */
 
     /* HOME */

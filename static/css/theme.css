@@ -902,7 +902,7 @@ TODO: move as much as possible to common (for all background images)
 
     width: var(--about-bkg-width);
 
-    background-image: var(--about-bkg-image);
+    background-image: var(--about-bkg-image,);
     opacity: var(--about-bkg-opacity);
 
     background-position: var(--about-bkg-position);
@@ -1037,7 +1037,7 @@ TODO: move as much as possible to common (for all background images)
 #services {
     position: relative;
  
-    background-image: var(--services-bkg-image);
+    background-image: var(--services-bkg-image,);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;

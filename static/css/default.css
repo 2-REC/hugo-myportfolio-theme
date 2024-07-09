@@ -15,9 +15,29 @@
     --GENERAL-FONT-COLOR-3: var(--GENERAL-COLOR-2);
     --GENERAL-FONT-COLOR-4: rgba(255, 255, 255, .7);
     --GENERAL-LINK-COLOR-1: var(--GENERAL-COLOR-1);
-    --GENERAL-LINK-ACTIVE-COLOR-1: rgb(18, 56, 235);
+    --GENERAL-LINK-ACTIVE-COLOR-1: rgb(21, 56, 214);
     --GENERAL-LINK-COLOR-2: rgba(64, 64, 64, .75);
-    --GENERAL-LINK-ACTIVE-COLOR-2: rgb(18, 56, 235);
+/* TODO: change! */
+    --GENERAL-LINK-ACTIVE-COLOR-2: var(--GENERAL-LINK-ACTIVE-COLOR-1);
+
+    /* NAVBAR */
+    --NAVBAR-HEIGHT: 50px; /* ! - Must correspond to the real navbar height! (Horrible hack) */
+
+    --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
+    --NAVBAR-FONT: var(--GENERAL-FONT-2);
+    --NAVBAR-BRAND-FONT: var(--GENERAL-FONT-4);
+    --NAVBAR-BRAND-COLOR: var(--GENERAL-FONT-COLOR-1);
+    --NAVBAR-BRAND-HOVER-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-COLOR: var(--GENERAL-FONT-COLOR-1);
+    --NAVBAR-BUTTON-HOVER-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-ACTIVE-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-ACTIVE-BACKGROUND-COLOR: transparent;
+    --NAVBAR-FIXED-BACKGROUND-COLOR: var(--GENERAL-COLOR-2);
+    --NAVBAR-FIXED-BRAND-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-FIXED-BRAND-HOVER-COLOR: var(--GENERAL-LINK-ACTIVE-COLOR-1);
+    --NAVBAR-FIXED-BUTTON-COLOR: var(--GENERAL-LINK-COLOR-2);
+    --NAVBAR-FIXED-BUTTON-HOVER-COLOR: var(--GENERAL-LINK-ACTIVE-COLOR-2);
+
 
     --GENERAL-IMAGE-BORDER-RADIUS: 0;
     --GENERAL-BOX-SHADOW: 0px 3px 9px rgba(0, 0, 0, .05);
@@ -29,9 +49,6 @@
     --HR-WIDTH: 20%;
 
     --COPYRIGHT-FONT: Arial, sans-serif;
-
-    --NAVBAR-HEIGHT: 50px; /* ! - Must correspond to the real navbar height! (Horrible hack) */
-    --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
 
 /*TODO: check best padding - 100px is too much */
     --homepage-section-padding: 50px 0 25px 0;
