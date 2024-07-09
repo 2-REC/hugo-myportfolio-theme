@@ -37,6 +37,7 @@ unsafe= true
 
     # HOMEPAGE
     # Define the sections and the order in which they appear (MANDATORY)
+    # "home" will always be first, regardless of its position (if in the list).
     [params.homepage]
         sections = [ "home", "about", "services", "skills", "projects", "contact" ]
 
@@ -65,7 +66,7 @@ unsafe= true
         #        - "<VALUE>" is the string to display as menu item.
         # If no entry is specified => No navigation menu is created.
         #    (even if "params.navigation.links" is defined, but empty)
-        # => Can define a dummy variable in "links" to force the creation of the menu (e.g.: dummy = 1).
+        # => Can define a dummy variable in "links" to force the creation of the menu (e.g.: dummy = 1). (TODO: ?)
         # To change order, need to change code in navigation menu creation.
         # Special case: "projects".
         #    projects = [ { section = "<SECTION_DIRECTORY>", label = "<VALUE>" }, ... ]
@@ -75,6 +76,7 @@ unsafe= true
             about    = "ABOUT"
             services = "SERVICES"
             skills   = "SKILLS"
+            # Order is not defined here, but in "categories" of the "projects" section
             projects = [
                 { section = "pro", label = "PROFESSIONAL" },
                 { section = "perso", label = "PERSONAL" }
