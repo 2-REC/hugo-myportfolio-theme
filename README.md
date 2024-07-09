@@ -134,6 +134,58 @@ Steps to add a new custom section:
         ```
 
 
+### CUSTOM HOMEPAGE
+
+Additionally, a custom component can be added to the homepage.
+
+An example will be provided here, of a fixed overlay image (not scrolling).
+NOTE: An image named "overlay_image.png" must be present in "static/images".
+
+* HTML
+    * Create a new HTML file "homepage-custom.html" in "layouts/partials".
+    * Content:
+        ```
+        <div id="home_overlay"
+             style="--home-bkg-image: url('{{ "images/overlay_image.png" | absURL }}');"
+            >
+            <link rel="stylesheet" href="css/homepage-custom.css">
+            <script src="{{ "js/homepage-custom.js" | relURL }}"></script>
+        </div>
+        ```
+* CSS
+    * Create a new CSS file "homepage-custom.css" in "static/css".
+    * Content:
+        ```
+        #home_overlay {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            width: 100%;
+
+            background-image: var(--home-bkg-image,);
+            background-attachment: fixed;
+            background-position: center bottom;
+
+            background-size: 100% 100%;
+        }
+        ```
+* JS
+    * Create a new JS file "homepage-custom.js" in "static/js".
+    * Content:
+        ```
+        var body = document.body;
+        var home_overlay = document.getElementById("home_overlay");
+        window.onload = function () {
+            var height = Math.max(body.scrollHeight, body.offsetHeight);
+            home_overlay.style.height = height + "px";
+        };
+        window.onresize = function () {
+            var height = Math.max(body.scrollHeight, body.offsetHeight);
+            home_overlay.style.height = height + "px";
+        };
+        ```
+
+
 ## Installation
 
 Inside the folder of your Hugo site run:
