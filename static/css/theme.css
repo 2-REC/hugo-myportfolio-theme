@@ -1133,6 +1133,7 @@ height: var(--services-box-height);
 .skills-container {
     margin: 50px auto;
     padding: 5px 25px 25px 25px;
+    text-align: center;
 
     box-shadow: var(--GENERAL-BOX-SHADOW);
     background-color: var(--SKILLS-CONTAINER-COLOR, var(--GENERAL-COLOR-2));
