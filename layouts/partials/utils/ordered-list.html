@@ -30,7 +30,7 @@
     {{ end }}
 {{ end }}
 
-{{/* Sort the list depneding on order */}}
+{{/* Sort the list depending on order */}}
 {{ $order := .scratch.Get "order" }}
 {{ if .scratch.Get "reverse" }}
     {{ .scratch.Set "list" (.list.ByParam $order).Reverse }}

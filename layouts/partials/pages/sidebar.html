@@ -21,8 +21,13 @@
 
     {{ "<!-- Navigation Tree -->" | safeHTML }}
     <div class="sidebar-tree">
-        {{ if .Parent }}
-            {{ with .Parent }}
+        {{ $parent := .Parent }}
+        {{ if eq .Kind "term" }}
+            {{/* TODO: check if ok on published site! */}}
+            {{ $parent = site.GetPage "/" }}
+        {{ end }}
+        {{ if $parent }}
+            {{ with $parent }}
                 <a class="parent-link" href="{{ .Permalink }}">
                     {{ if not .IsHome }}
                         <i class="fas fa-chevron-circle-left"></i>
@@ -42,11 +47,11 @@
         {{ end }}
 
         {{ if (or (not (isset .Params "showbrothers")) (.Params.showbrothers)) }}
-            {{ if .Parent }}
+            {{ if $parent }}
                 {{ if eq .Kind "section" }}
-                    {{ partial "utils/ordered-list.html" (dict "list" .Parent.Sections "params" .Parent.Params "scratch" .Scratch) }}
+                    {{ partial "utils/ordered-list.html" (dict "list" $parent.Sections "params" $parent.Params "scratch" .Scratch) }}
                 {{ else }}
-                    {{ partial "utils/ordered-list.html" (dict "list" .Parent.Pages "params" .Parent.Params "scratch" .Scratch) }}
+                    {{ partial "utils/ordered-list.html" (dict "list" $parent.Pages "params" $parent.Params "scratch" .Scratch) }}
                 {{ end }}
 
                 {{ $current := . }}
@@ -68,7 +73,9 @@
     </div>
 
     {{ if .Parent }}
-        <br>
+        {{/* not displaying 'categories' in 'tags' page */}}
+        {{ if not (and (eq .Kind "taxonomy") (eq .Name "Categories")) }}
+         <br>
         {{ "<!-- Categories -->" | safeHTML }}
         <div>
             <div class="tag-title">CATEGORIES</div>
@@ -77,6 +84,9 @@
                 {{ partial "utils/list-keywords.html" (dict "type" "categories" "context" . "scratch" .Scratch "removeDuplicates" true) }}
             </div>
         </div>
+        {{end}}
+        {{/* not displaying 'tags' in 'categories' page */}}
+        {{ if not (and (eq .Kind "taxonomy") (eq .Name "Tags")) }}
         <br>
         {{ "<!-- Tags -->" | safeHTML }}
         <div>
@@ -86,5 +96,6 @@
                 {{ partial "utils/list-keywords.html" (dict "type" "tags" "context" . "scratch" .Scratch "removeDuplicates" true) }}
             </div>
         </div>
+        {{end}}
     {{ end }}
 </div>

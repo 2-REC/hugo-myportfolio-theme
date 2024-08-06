@@ -1,0 +1,14 @@
+{{ define "content" }}
+{{ if eq .Kind "taxonomy" }}
+    <div>
+        <div class="tags">
+            {{ partial "utils/list-keywords.html" (dict "type" (strings.ToLower .Name) "context" . "scratch" .Scratch "removeDuplicates" true) }}
+        </div>
+    </div>
+{{ else }}
+    {{ with .Content}}
+        {{ . | markdownify }}
+        <hr>
+    {{ end }}
+{{ end }}
+{{ end }}

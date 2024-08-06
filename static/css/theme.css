@@ -493,6 +493,7 @@ margin: 30px 10px;
 
 .tag-title {
     font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-3));
+    padding-bottom: 0.5rem;
 }
 
 .tags a {
