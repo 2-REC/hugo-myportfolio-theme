@@ -43,7 +43,7 @@
                                 {{ end }}
                             {{ else if isset $links . }}
                                 <li>
-                                    <a class="page-scroll" href={{ printf "#%s" . }}>{{ $links.Get . }}</a>
+                                    <a class="page-scroll" id={{ printf "nav_%s" . }} href={{ printf "#%s" . }}>{{ $links.Get . }}</a>
                                 </li>
                             {{ end }}
                         {{ end }}
