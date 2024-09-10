@@ -64,16 +64,16 @@
                 {{ end }}
                 <div class="anim zoomIn">
                     {{ if .button_image }}
-                        <a href={{ printf "#%s" $first_section }} class="btn-image page-scroll">
+                        <a id="home_button" href={{ printf "#%s" $first_section }} class="btn-image page-scroll">
                             <img src={{ .button_image }} />
                         </a>
                     {{ else if .button_text }}
-                        <a href={{ printf "#%s" $first_section }} class="btn btn-primary page-scroll">
+                        <a id="home_button" href={{ printf "#%s" $first_section }} class="btn btn-primary page-scroll">
                             {{ .button_text }}<br>
                         </a>
                     {{ else if .button_icon }}
                         {{ with .button_icon }}
-                            <a href={{ printf "#%s" $first_section }} class="btn-icon btn-primary page-scroll {{ .pack }} {{ .icon }} icon-x6">
+                            <a id="home_button" href={{ printf "#%s" $first_section }} class="btn-icon btn-primary page-scroll {{ .pack }} {{ .icon }} icon-x6">
                             </a>
                         {{ end }}
                     {{ end }}
