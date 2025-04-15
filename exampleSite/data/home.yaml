@@ -5,9 +5,9 @@ background: "home.jpg"
 background_hidden: "home_hidden.jpg"
 background_hidden_speed: 2
 text: "A short catchy phrase ..."
-xbutton_text: "SEE MORE"
+#button_text: "SEE MORE"
 button_image: "images/arrow_down.png"
-xbutton_icon:
-  icon: "fa-arrow-alt-circle-down"
-  pack: "fas"
+#button_icon:
+#  icon: "fa-arrow-alt-circle-down"
+#  pack: "fas"
 ---

@@ -1145,6 +1145,15 @@ height: var(--services-box-height);
     background-color: var(--SKILLS-LINKS, var(--SKILLS-CONTAINER-COLOR, var(--GENERAL-COLOR-2)));
 }
 
+#download-button {
+    border-radius: 999em;
+    border: 3px solid rgb(255,255,255);
+}
+#download-button:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
 /******************************************************************************/
 
 /* PROJECTS */
