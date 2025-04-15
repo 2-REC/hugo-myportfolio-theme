@@ -35,10 +35,13 @@
 
 {{ "<!-- Custom CSS -->" | safeHTML }}
 <link rel="stylesheet" href="{{ "css/default.css" | absURL }}" type="text/css">
-{{ range .Site.Params.custom_css }}
+{{ range .Site.Params.custom_css_vars }}
     <link rel="stylesheet" href="{{ (printf "%s%s" "css/" .) | absURL }}" type="text/css">
 {{ end }}
 <link rel="stylesheet" href="{{ "css/theme.css" | absURL }}" type="text/css">
+{{ range .Site.Params.custom_css }}
+    <link rel="stylesheet" href="{{ (printf "%s%s" "css/" .) | absURL }}" type="text/css">
+{{ end }}
 
 {{ "<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->" | safeHTML }}
 {{ "<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->" | safeHTML }}

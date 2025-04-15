@@ -43,9 +43,7 @@
     --GENERAL-IMAGE-BORDER-RADIUS: 0;
     --GENERAL-BOX-SHADOW: 0px 3px 9px rgba(0, 0, 0, .05);
 
-
-/* TODO: make more generic? (not only profile) */
-    --GENERAL-PROFILE-FONT-SIZE: 1em;
+    --GENERAL-PROFILE-FONT-SIZE: 0.75em;
 
     --HR-WIDTH: 20%;
 
@@ -160,6 +158,9 @@ TODO: REMOVE? keep/adapt?
     --CONTACT-PROFILE-BOX-SHADOW: var(--GENERAL-BOX-SHADOW);
     --CONTACT-IMAGE-BORDER-RADIUS: var(--GENERAL-IMAGE-BORDER-RADIUS);
 */
-    --contact-title-color: var(--GENERAL-FONT-COLOR-3);
+    --contact-title-color: var(--GENERAL-FONT-COLOR-1);
     --contact-title-bar-color: var(--GENERAL-COLOR-1);
+
+    --contact-color: var(--GENERAL-FONT-COLOR-1);
+    --contact-bkg-color: white;
 }

@@ -18,6 +18,9 @@ unsafe= true
     # Parameters used by the site at the global level.
 
     # File(s) containing overriden CSS variables (can have more than 1) (OPTIONAL)
+    custom_css_vars = [ "custom_vars.css" ]
+
+    # File(s) containing overriden CSS - NOT variables (can have more than 1) (OPTIONAL)
     custom_css = [ "custom.css" ]
 
     # ----------

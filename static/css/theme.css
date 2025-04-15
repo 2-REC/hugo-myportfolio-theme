@@ -36,7 +36,7 @@ hgroup {
 }
 
 p {
-    font-size: 16px;
+    font-size: 1em;
     margin-bottom: 20px;
     line-height: 1.5;
 }
@@ -748,7 +748,7 @@ z-index: 0;
     right:0;
 
     width:100%;
-    background-position: center;
+    background-position: center bottom;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -766,7 +766,7 @@ z-index: 0;
     content: "";
 width:100%;
 
-    background-position: center;
+    background-position: center bottom;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -799,9 +799,14 @@ right:0;
 }
 
 #home .header-content {
-    position: relative;
+    position: absolute;
     width: 100%;
-    padding: 100px 15px;
+    top: 50%;
+    padding: 0;
+
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
 
     text-align: var(--home-text-align);
 
@@ -838,9 +843,6 @@ right:0;
 
 @media(min-width: 768px) {
     #home .header-content {
-        position: absolute;
-
-        padding: 0;
         width: var(--home-width);
         left: var(--home-offset-h);
         top: var(--home-offset-v);
@@ -1139,6 +1141,10 @@ height: var(--services-box-height);
     background-color: var(--SKILLS-CONTAINER-COLOR, var(--GENERAL-COLOR-2));
 }
 
+.skills-container a {
+    background-color: var(--SKILLS-LINKS, var(--SKILLS-CONTAINER-COLOR, var(--GENERAL-COLOR-2)));
+}
+
 /******************************************************************************/
 
 /* PROJECTS */
@@ -1286,9 +1292,8 @@ height: var(--services-box-height);
     background-size: cover;
     -o-background-size: cover;
 
-    /* TODO: add a 'contact' specific color variable */
-    color: var(--GENERAL-FONT-COLOR-1);
-    //background-color: var(--contact-bkg-color);
+    color: var(--contact-color, var(--GENERAL-FONT-COLOR-1));
+    background-color: var(--contact-bkg-color);
 }
 
 #contact .section-hr {
@@ -1296,6 +1301,20 @@ height: var(--services-box-height);
 }
 #contact .section-heading {
     color: var(--contact-title-color);
+}
+
+.contact-container {
+    position: relative;
+    height: 50vh;
+}
+.contact-container .row {
+    margin: 10vh auto;
+}
+.centered-element {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #contact .profile {
@@ -1311,6 +1330,13 @@ margin-bottom: 2em;
 
 #contact .text-primary {
     text-align: left;
+	color: var(--contact-color);
+}
+#contact a {
+    color: var(--contact-color);
+}
+#contact a:hover {
+	color: var(--GENERAL-LINK-ACTIVE-COLOR-1);
 }
 
 /******************************************************************************/
@@ -1459,6 +1485,8 @@ margin-bottom: 2em;
     width: 100%;
     max-width: 150px;
     border: 1px solid rgba(0, 0, 0, .25);
+
+    background-color: white;
 
     border-radius: var(--SIDEBAR-IMAGE-BORDER-RADIUS, var(--GENERAL-IMAGE-BORDER-RADIUS));
 }
