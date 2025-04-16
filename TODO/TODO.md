@@ -311,10 +311,6 @@
     - [ ] head.html<br>
         (Look at backuped file)
         - [ ] Use some "blocks" to allow overriding parts..
-        - [ ] See about the custom fonts (if keep same, change, or remove)<br>
-            => And see if "safe"/stable to use URLs...
-        - [ ] Check end of file (Shim & Respond.js stuff)<br>
-            => Needed? keep?
         - [ ] Look at other header files (in other themes)<br>
             => "header.html" in Osprey (lots of other stuff!)
         - [ ] Add meta params in config:<br>
@@ -348,14 +344,7 @@
             ```html
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             ```
-        - [ ] Fonts: see what fonts we use, & what's needed.<br>
-            In
-            ```html
-            {{ "<!-- Custom Fonts -->" | safeHTML }}
-            ```
-            => Depends on custom CSS!
         - [ ] Check publish meta stuff.
-        - [ ] Check about "shiv" & "respond" stuff.
     - [ ] homepage.html
         - [ ] When updating to HUGO version 0.45, replace:
           ```html
