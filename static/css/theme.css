@@ -1468,6 +1468,25 @@ margin-bottom: 2em;
 }
 
 
+/* Sidebar */
+
+.sidebar-links {
+    display: none;
+}
+@media (min-width: 992px) {
+    .sidebar-links {
+        display: inherit;
+    }
+}
+.sidebar-bottom {
+    display: inherit;
+}
+@media (min-width: 992px) {
+    .sidebar-bottom {
+        display: none;
+    }
+}
+
 /* Sidebar Image */
 
 .sidebar-image {
@@ -1504,10 +1523,6 @@ margin-bottom: 2em;
 /* Sidebar Navigation Tree */
 
 .sidebar-tree {
-/*
-=> If want "tree" to go right of image:
-    display: table-cell;
-*/
     display: block;
     line-height: 1.5;
     padding: 1em 0 0 0;
@@ -1614,7 +1629,12 @@ margin-bottom: 2em;
     width: 100%;
     margin-right: 0;
     margin-left: 0;
-    padding-top: 3em;
+    padding-top: 0;
+}
+@media (min-width: 992px) {
+    .list-page .list-page-container .list-page-content {
+        padding-top: 3em;
+    }
 }
 
 .list-page-content h4 {

@@ -31,6 +31,9 @@
                             {{ end }}
                         </article>
                     </div>
+                    {{ block "sidebar-bottom" . }}
+                        {{ partial "pages/sidebar-bottom.html" . }}
+                    {{ end }}
                 </div>
             </main>
         {{ end }}
