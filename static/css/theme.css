@@ -1075,9 +1075,17 @@ padding: 20px 10px;
     border-radius: var(--services-box-border-radius);
     box-shadow: var(--services-box-shadow);
 
-/* TODO: Horrible hack to avoid misalignment of boxes - IMPLEMENT BETTER WAY! */
-/*height: 300px;*/
-height: var(--services-box-height);
+    height: auto;
+}
+@media(min-width: 768px) {
+    .service-box {
+        /* TODO: Horrible hack to avoid misalignment of boxes - IMPLEMENT BETTER WAY! */
+        height: var(--services-box-height);
+    }
+}
+
+.service-box h3 {
+    margin-top: 10px;
 }
 
 .service-box i {
@@ -1091,6 +1099,7 @@ height: var(--services-box-height);
 .service-box p {
     text-align: left;
     margin-left: 20px;
+    margin-bottom: 5px;
 }
 
 /* TODO: keep? */
