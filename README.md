@@ -245,31 +245,52 @@ The files can also be in JSON format, but need to have the same names.
 The "Projects" section(s) are optional, but it is advised to have at least one (it is a "Portfolio" theme after all :) ).
 However, in case there are no projects sections, the "projects" entry of the "[params.navigation.links]" can be removed.
 
+Resource files (images, videos, etc.) that are specified in the data files must be located in the "_static_" directory of the site.
 The following paragraphs detail the required data for each of the sections.
 
 
-### HOME: Set the homepage header
+### HOME - Set the homepage header
 
 The content of the top section of the homepage is fetched from the "home" data file.
 
 The different parameters that can be used are:
+* `title_logo`: A small image displayed above the title.<br>
+* `title`: The title for the website.<br>
+    Typically your name or company name.
+* `subtitle`: A subtitle.<br>
+    Typically the role or types of provided services.
+* `background`: The image used for the background.
+* `background_opacity`: The opacity of the background, given in %.<br>
+    The background colour will appear through the image. This colour is defined by the "`--home-bkg-image-opacity`" CSS variable (see [custom CSS](#custom-css)).
+* `background_hidden`: The image used for the second background, shown when scrolling down.
+* `background_hidden_speed`: Speed at which the hidden background appears when scrolling.<br>
+    * `1`: after full screen scroll
+    * `2`: after 1/2 (50%) screen scroll
+    * etc.
+* `background_video`: An MP4 video used for the background.<br>
+    This is ignored if a `background` is defined.
+* `text`: A short phrase to catch the eye and invite visitors to explore further.
 
-* "title": The title for the website. Typically your name or company name.
-* "subtitle": A subtitle. Typically the kind of services or specialty you provide.
-* "background": The image used for the background.
-* "background_hidden": The image used for the second background, shown when scrolling down.
-* "background_hidden_speed": Speed qt zhich the hidden background appears (1: after full scroll, 2: after 1/2 (50%) scroll, etc.).
-* "text": A short phrase to draw attention and make the visitor to see more.
+Additionally, the following parameters can be used to customize the scrolling button:
+* `button_image`: The image used for the button.
+* `button_text`: The text displayed on the button.
+* `button_icon`: The icon used for the button.<br>
+    Additional sub-fields must be defined for the icon:<br>
+    * `icon`: The name of the icon
+    * `pack`: The pack/library of the icon
 
-Additionally, the following parameters can be used to customize the scrolling button.
-* "button_image": The image used as the button.
-* "button_text": The text on the button.
-* "button_icon": The icon used as the button.
-These parameters are mutually exclusive, so only one can be used (the others will be ignored).
+    E.g.:
+    ```
+    button_icon:
+      icon: "fa-arrow-down"
+      pack: "fas"
+    ```
+
+> **__NOTE:__** The 3 button parameters are mutually exclusive, so only one can be used (the others will be ignored).
 They are presented in their order of priority.
 
 
-All the parameters are optional: if not defined, their corresponding element will not be added to the page content.
+All the parameters in the home section are optional: if not defined, their corresponding element will not be added to the page content.
 
 
 ### ABOUT: Introduce yourself
@@ -419,14 +440,22 @@ The address can be entered in browsers to reach the website.
 
 ## Going further
 
-### Customise the appearance - CSS Override
+### Customise the appearance - CSS Override {#custom-css}
 
-A set of CSS rules are used to define the appearance of the website.
+CSS rules are used to define the appearance of the website.
+
 To make the website look more personal or to make it fit with the colour schemes of your company/brand, some CSS variables can be directly overridden using extra custom files (and thus not requiring to change anything in the code or main CSS file).
 
-In order to use custom files, simply add the files in the "static/css" directory, and specify their name (with extension) in the "custom_css" array variable in the "config.toml" file.
+In order to use custom CSS files to override the variables, add the files in the "_static/css_" directory, and specify their name (with extension) in the "`custom_css_vars`" array variable of the "_config.toml_" file of the site.
 
-The CSS variables that can be overridden are listed in the "custom.css" file (in "static/css"). The file indicates for each variable the default value that will be used. These values are defined either in the "default.css" file, or directly hardcoded in the website's main CSS file ("theme.css") in case they're not defined elsewhere. The provided "custom.css" file can be used as template file, by uncommenting the desired variables.
+The CSS variables that can be overridden are listed in the "_default.css_" file (in the theme's "_static/css_" directory). The file also defines for each variable its default value.
+
+The provided "_custom_vars.css_" (in the theme's "_static/css_" directory) file can be used as template file, by uncommenting the desired variables and setting their new values (the file should ideally first be copied in the site's "_static/css_" directory).
+
+
+In addition, if bigger changes are desired, CSS rules can be modified or added by using custom CSS files. These files need to be located in the site's "_static/css_" directory, and their names (with extension) need to be added in the "`custom_css`" array variable of the "_config.toml_" file.
+
+> **__NOTE__**: Custom CSS rules should be defined in files specified in "`custom_css`", and Custom CSS variables should be defined in files specified in "`custom_css_vars`". Not respecting this might result in unexpected behaviour.
 
 
 ### Galleries
