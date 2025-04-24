@@ -277,7 +277,7 @@ Additionally, the following parameters can be used to customize the scrolling bu
 * `button_image`: The image used for the button.
 * `button_text`: The text displayed on the button.
 * `button_icon`: The icon used for the button.<br>
-    Additional sub-fields must be defined for the icon:<br>
+    Additional subfields must be defined for the icon:<br>
     * `icon`: The name of the icon
     * `pack`: The pack/library of the icon
 
@@ -313,24 +313,39 @@ The different parameters that can be used are:
 All the parameters are optional: if not defined, their corresponding element will not be added to the page content.
 
 
-### SERVICES: Add your services
+### SERVICES - Add your services
 
 The content of the "SERVICES" section of the homepage is fetched from the "services" data file.
 
 The different parameters that can be used are:
-
-* "title": The title of the section. Typically "SERVICES" would be used.
-* "background_image": The image used for the background.
-* "services": List of services. At least one must be provided.
+* `title`: The title of the section.<br>
+    Typically "SERVICES" would be used.
+* `background_image`: The image used for the background.
+* `services`: The list of services. At least one must be provided.<br>
     Each service has a set of subfields:
-    - "name": The name of the service.
-    - "icon": The icon used for the service.
-    - "icon_pack": The icon package/family (look at icons documentation).
-    - "text": A text describing the service.
-    - "list": A list of sub-services displayed as bullet points.
+    * `name`: The name of the service.
+    * `icon`: The icon used for the service.
+    * `icon_pack`: The icon package/family (look at icons documentation).
+    * `text`: A short text describing the service.
+    * `list`: A list of sub-services displayed as bullet points.
+
+    `text`, `icon_pack` & `list` are optional.
+
+    E.g.:
+    ```
+    services:
+    - name: "Service 1"
+      icon: "fa-chalkboard-teacher"
+      icon_pack: "fas"
+      list: [ "One thing", "Another thing", "And some more ..." ]
+    - name: "Service 2"
+      icon: "fa-window-restore"
+      icon_pack: "fas"
+      text: "I am also able to do this."
+    ```
 
 
-All the parameters except "services" are optional - if not defined, it will not be added to the page content.
+All the parameters except "services" are optional: if not defined, their corresponding element will not be added to the page content.
 The "services" list parameter must exist and contain at least one element.
 
 
