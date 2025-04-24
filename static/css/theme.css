@@ -311,9 +311,6 @@ fieldset[disabled] .btn-primary.active {
 
 .btn-icon {
     border: 0;
-    border-radius: 300px;
-    font-weight: 500;
-
     padding: 0;
 }
 .btn-icon:hover {
