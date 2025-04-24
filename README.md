@@ -349,24 +349,34 @@ All the parameters except "services" are optional: if not defined, their corresp
 The "services" list parameter must exist and contain at least one element.
 
 
-### SKILLS: Show your skills
+### SKILLS - Show your skills
 
 The content of the "SKILLS" section of the homepage is fetched from the "skills" data file.
 
 The different parameters that can be used are:
+* `title`: The title of the section.<br>
+    Typically "SKILLS" would be used.
+* `background_image`: The image used for the background.
+* `tags_label`: Label used for the tags found in the content sections.
+* `categories_label`: Label used for the categories found in the content sections.
+* `text`: Text describing the content of the page.
+* `download`: Parameters about the (optional) download button.
+    * `button_text`: Text used for the button.
+    * `filename`: Name of the file to download. The file must be in "_static/files_".
+    * `icon`: The icon used for the button.
+    * `icon_pack`: The icon package/family (look at icons documentation).
 
-* "title": The title of the section. Typically "SKILLS" would be used.
-* "tags_label": Label used for the tags found in the content sections.
-* "categories_label": Label used for the categories found in the content sections.
-* "text": Text describing the content of the page.
-* "download":
-    * "button_text": Text used for the button.
-    * "filename": Name of the file to download. The file must be in "static/files".
-    * "icon": The icon used for the button.
-    * "icon_pack": The icon package/family (look at icons documentation).
+    E.g.:
+    ```
+    download:
+      button_text: "RESUME"
+      filename: "resume.pdf"
+      icon: "fa-download"
+      icon-pack: "fas"
+    ```
 
 
-All the parameters except "text" are optional - if not defined, it will not be added to the page content.
+All the parameters except "text" are optional: if not defined, their corresponding element will not be added to the page content.
 
 
 ### PROJECTS: Create a portfolio (or more)
