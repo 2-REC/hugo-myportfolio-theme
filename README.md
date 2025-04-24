@@ -46,7 +46,10 @@ Noteworthy features of this Hugo theme are:
 
 As in the "Creative" theme, the theme's homepage holds the different sections. Its layout is a typical vertical single page, with a floating navigation bar on top.
 
-The structure and layout of the each section is described hereafter.
+Each section has a specific layout and contains specific data, some of which is customisable.
+These custom values for layout and data are defined respectively in the common ["config"](#config-file) file, and in the section's corresponding ["data"](#data-files) file.
+
+The different sections are described hereafter.
 
 
 ### HOME
@@ -217,15 +220,14 @@ After installing the "MyPortfolio" Theme, a few more steps are required to get t
 
 ### The config file {#config-file}
 
-In the [`exampleSite`](//github.com/2-REC/hugo-myportfolio-theme/tree/master/exampleSite) folder of this theme there is a [`config.toml`](
-//github.com/2-REC/hugo-myportfolio-theme/blob/master/exampleSite/config.toml) file.
+Settings about the different sections in the homepage as well as the navigation bar and menu are defined in the config file, named "_config.toml_".
 
-Copy this file in the root folder of the Hugo site.
-
-Strings and values can be changed in order to customize the website.
-
-Settings about the different sections in the homepage as well as the navigation menu are defined in this file.
+Each section has a set of parameters that can be modified to customise the site. Most of these are related to the layout.
 Details about each parameter and their role can be found in the file itself.
+
+In the [`exampleSite`](//github.com/2-REC/hugo-myportfolio-theme/tree/master/exampleSite) folder of this theme there is an example [`config.toml`](
+//github.com/2-REC/hugo-myportfolio-theme/blob/master/exampleSite/config.toml) file.
+The file should be copied in the root folder of the site, and modified as desired.
 
 
 ### Data Files {#data-files}
@@ -293,21 +295,22 @@ They are presented in their order of priority.
 All the parameters in the home section are optional: if not defined, their corresponding element will not be added to the page content.
 
 
-### ABOUT: Introduce yourself
+### ABOUT - Introduce yourself
 
 The content of the "ABOUT" section of the homepage is fetched from the "about" data file.
 
 The different parameters that can be used are:
+* `title`: The title of the section.<br>
+    Typically "ABOUT" would be used.
+* `avatar`: The image used for the avatar.
+    * (_optional_) `avatar2`: Extra image displayed when hovering the profile image.
+* `profile_text`: A short text briefly describing the company or person.
+* `main_text`: A longer text providing more detailled information.<br>
+    Typically, the text will contain links to the other sections.
+* `background_image`: Background image.
 
-* "title": The title of the section. Typically "ABOUT" would be used.
-* "avatar": The image used for the avatar.
-    * "avatar2": Special second image displayed when hovering the profile image.
-* "profile_text": A short text briefly describing the company or person.
-* "main_text": A longer text providing more detailled information, and potentially links to the other sections.
-* "background_image": Background image.
 
-
-All the parameters are optional - if not defined, it will not be added to the page content.
+All the parameters are optional: if not defined, their corresponding element will not be added to the page content.
 
 
 ### SERVICES: Add your services

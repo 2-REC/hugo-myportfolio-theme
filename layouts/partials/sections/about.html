@@ -26,10 +26,10 @@
     {{ $offset_left = add $offset_left $remaining }}
     {{ $remaining = 0 }}
   {{ end }}
-{{- $sum := add (add (add $main_side $extra_side) $offset_left) $offset_right -}}
-{{- if gt $sum 12 -}}
-ERROR: Sum of columns width bigger than 12! - Check "params.about" in "config.toml"
-{{- end -}}
+  {{- $sum := add (add (add $main_side $extra_side) $offset_left) $offset_right -}}
+  {{- if gt $sum 12 -}}
+  ERROR: Sum of columns width bigger than 12! - Check "params.about" in "config.toml"
+  {{- end -}}
   {{ $offset_center := $remaining }}
   <section class="section" id="about"
     style="
