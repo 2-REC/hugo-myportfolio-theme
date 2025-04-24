@@ -93,7 +93,7 @@ If desired, custom sections can be added to the homepage.
 
 Steps to add a new custom section:
 * HTML<br>
-    Create an HTML file in the site's "_layouts/partials/sections_" (NOT in the theme's directory under "_themes_").<br>
+    Create an HTML file in the site's "layouts/partials/sections" (NOT in the theme's directory under "themes").<br>
     E.g.: `layouts/partials/sections/custom_section.html`<br>
     The file must define a "`section`" element with the "`id`" matching the file name. The file can be based on an existing section file, or created from scratch.<br>
     Parameters specific to the page can be defined in the ["config"](#config-file) file.
@@ -107,7 +107,7 @@ Steps to add a new custom section:
     ```
 
 * DATA<br>
-    (_optional_) Create a YAML data file in the site's "_data_" directory (not in "_themes_"). <br>
+    (_optional_) Create a YAML data file in the site's "data" directory (not in "themes"). <br>
     E.g.: `data/custom_section.yaml`<br>
     The content of the file can be accessed in the HTML file with:
     ```
@@ -115,7 +115,7 @@ Steps to add a new custom section:
     ```
 
 * CONFIG<br>
-    In the site's config file ("_config.toml_"):
+    In the site's config file ("config.toml"):
     * Add an entry for the custom section in the sections list (it has to match the section's HTML file name).<br>
         E.g.:
         ```
@@ -142,7 +142,7 @@ Steps to add a new custom section:
         ```
 
 * CSS<br>
-    Create a CSS file in the "_static/css_" directory of the site, and import it in the HTML file.<br>
+    Create a CSS file in the "static/css" directory of the site, and import it in the HTML file.<br>
     E.g.:
     ```
     <link rel="stylesheet" href="css/custom_section.css">
@@ -156,7 +156,7 @@ Custom components can also be added to the homepage.
 As an example, the following steps describe how to add a fixed overlay image covering the homepage (not scrolling).
 
 * HTML
-    * Create a new HTML file "_homepage-custom.html_" in "_layouts/partials_".
+    * Create a new HTML file "homepage-custom.html" in "layouts/partials".
     * Content:
         ```
         <div id="home_overlay"
@@ -166,10 +166,10 @@ As an example, the following steps describe how to add a fixed overlay image cov
             <script src="{{ "js/homepage-custom.js" | relURL }}"></script>
         </div>
         ```
-        > **__NOTE:__** An image named "_overlay_image.png_" must be present in "_static/images_".
+        > **__NOTE:__** An image named "overlay_image.png" must be present in "static/images".
 
 * CSS
-    * Create a new CSS file "_homepage-custom.css_" in "_static/css_".
+    * Create a new CSS file "homepage-custom.css" in "static/css".
     * Content:
         ```
         #home_overlay {
@@ -186,7 +186,7 @@ As an example, the following steps describe how to add a fixed overlay image cov
         }
         ```
 * JS
-    * Create a new JS file "_homepage-custom.js_" in "_static/js_".
+    * Create a new JS file "homepage-custom.js" in "static/js".
     * Content:
         ```
         var body = document.body;
@@ -220,7 +220,7 @@ After installing the "MyPortfolio" Theme, a few more steps are required to get t
 
 ### The config file {#config-file}
 
-Settings about the different sections in the homepage as well as the navigation bar and menu are defined in the config file, named "_config.toml_".
+Settings about the different sections in the homepage as well as the navigation bar and menu are defined in the config file, named "config.toml".
 
 Each section has a set of parameters that can be modified to customise the site. Most of these are related to the layout.
 Details about each parameter and their role can be found in the file itself.
@@ -232,7 +232,7 @@ The file should be copied in the root folder of the site, and modified as desire
 
 ### Data Files {#data-files}
 
-Additionally to the configuration file, data files (located in the "_data_" folder) are required for the different sections of the homepage.
+Additionally to the configuration file, data files (located in the "data" folder) are required for the different sections of the homepage.
 
 The required data files are the folowing:
 
@@ -247,7 +247,7 @@ The files can also be in JSON format, but need to have the same names.
 The "Projects" section(s) are optional, but it is advised to have at least one (it is a "Portfolio" theme after all :) ).
 However, in case there are no projects sections, the "projects" entry of the "[params.navigation.links]" can be removed.
 
-Resource files (images, videos, etc.) that are specified in the data files must be located in the "_static_" directory of the site.
+Resource files (images, videos, etc.) that are specified in the data files must be located in the "static" directory of the site.
 The following paragraphs detail the required data for each of the sections.
 
 
@@ -362,7 +362,7 @@ The different parameters that can be used are:
 * `text`: Text describing the content of the page.
 * `download`: Parameters about the (optional) download button.
     * `button_text`: Text used for the button.
-    * `filename`: Name of the file to download. The file must be in "_static/files_".
+    * `filename`: Name of the file to download. The file must be in "static/files".
     * `icon`: The icon used for the button.
     * `icon_pack`: The icon package/family (look at icons documentation).
 
@@ -387,7 +387,7 @@ It is composed of a grid representing a set of subsections, each grouping "Proje
 
 > **__NOTE:__** It is based on the "Portfolio" section of the "Creative" theme, but with an additional level of categories above the projects level. Also, instead of opening a pop-up window when selecting an element in the grid, it opens a new page displaying the contained projects.
 
-A portfolio section "Projects" is defined in the Homepage via the "_config.toml_" configuration file. Additionally to the entry specified in the file, a directory with the same name must exist at the top level of the website file structure, containing its associated "__index.md_" file.
+A portfolio section "Projects" is defined in the Homepage via the "config.toml" configuration file. Additionally to the entry specified in the file, a directory with the same name must exist at the top level of the website file structure, containing its associated "_index.md" file.
 
 As an example, to have two sections for a professional portfolio and a personal portfolio, the following entry could be added to the "[params.projects]" group in the "config.toml" file:
 ```
@@ -478,14 +478,14 @@ CSS rules are used to define the appearance of the website.
 
 To make the website look more personal or to make it fit with the colour schemes of your company/brand, some CSS variables can be directly overridden using extra custom files (and thus not requiring to change anything in the code or main CSS file).
 
-In order to use custom CSS files to override the variables, add the files in the "_static/css_" directory, and specify their name (with extension) in the "`custom_css_vars`" array variable of the "_config.toml_" file of the site.
+In order to use custom CSS files to override the variables, add the files in the "static/css" directory, and specify their name (with extension) in the "`custom_css_vars`" array variable of the "config.toml" file of the site.
 
-The CSS variables that can be overridden are listed in the "_default.css_" file (in the theme's "_static/css_" directory). The file also defines for each variable its default value.
+The CSS variables that can be overridden are listed in the "default.css" file (in the theme's "static/css" directory). The file also defines for each variable its default value.
 
-The provided "_custom_vars.css_" (in the theme's "_static/css_" directory) file can be used as template file, by uncommenting the desired variables and setting their new values (the file should ideally first be copied in the site's "_static/css_" directory).
+The provided "custom_vars.css" (in the theme's "static/css" directory) file can be used as template file, by uncommenting the desired variables and setting their new values (the file should ideally first be copied in the site's "static/css" directory).
 
 
-In addition, if bigger changes are desired, CSS rules can be modified or added by using custom CSS files. These files need to be located in the site's "_static/css_" directory, and their names (with extension) need to be added in the "`custom_css`" array variable of the "_config.toml_" file.
+In addition, if bigger changes are desired, CSS rules can be modified or added by using custom CSS files. These files need to be located in the site's "static/css" directory, and their names (with extension) need to be added in the "`custom_css`" array variable of the "config.toml" file.
 
 > **__NOTE__**: Custom CSS rules should be defined in files specified in "`custom_css`", and Custom CSS variables should be defined in files specified in "`custom_css_vars`". Not respecting this might result in unexpected behaviour.
 
