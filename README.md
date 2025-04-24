@@ -292,7 +292,7 @@ Additionally, the following parameters can be used to customize the scrolling bu
 They are presented in their order of priority.
 
 
-All the parameters in the home section are optional: if not defined, their corresponding element will not be added to the page content.
+All the parameters in the home section are optional: if not defined, their corresponding element will not be added to the section.
 
 
 ### ABOUT - Introduce yourself
@@ -310,7 +310,7 @@ The different parameters that can be used are:
 * `background_image`: Background image.
 
 
-All the parameters are optional: if not defined, their corresponding element will not be added to the page content.
+All the parameters are optional: if not defined, their corresponding element will not be added to the section.
 
 
 ### SERVICES - Add your services
@@ -345,7 +345,7 @@ The different parameters that can be used are:
     ```
 
 
-All the parameters except "services" are optional: if not defined, their corresponding element will not be added to the page content.
+All the parameters except "services" are optional: if not defined, their corresponding element will not be added to the section.
 The "services" list parameter must exist and contain at least one element.
 
 
@@ -376,42 +376,46 @@ The different parameters that can be used are:
     ```
 
 
-All the parameters except "text" are optional: if not defined, their corresponding element will not be added to the page content.
+All the parameters except "text" are optional: if not defined, their corresponding element will not be added to the section.
 
 
-### PROJECTS: Create a portfolio (or more)
+### PROJECTS - Create a portfolio (or more)
 
 This section serves as a showcase for a "Portfolio" of projects.
+
 It is composed of a grid representing a set of subsections, each grouping "Projects" into "Categories".
 
-It is based on the "Portfolio" section of the "Creative" theme, but with an additional level of categories above the projects level. Also, instead of opening a pop-up window when selecting an element in the grid, it opens a new page displaying the contained projects.
+> **__NOTE:__** It is based on the "Portfolio" section of the "Creative" theme, but with an additional level of categories above the projects level. Also, instead of opening a pop-up window when selecting an element in the grid, it opens a new page displaying the contained projects.
 
-A portfolio section "Projects" is defined in the Homepage via the "config.toml" configuration file. Additionally to the entry specified in the file, a directory with the same name must exist at the top level of the website file structure, containing its associated "_index.md" file.
+A portfolio section "Projects" is defined in the Homepage via the "_config.toml_" configuration file. Additionally to the entry specified in the file, a directory with the same name must exist at the top level of the website file structure, containing its associated "__index.md_" file.
 
-As an example, to have two sections for a professional portfolio and a personal porfolio, the following entry could be added to the "[params.projects]" group in "config.toml" file:
-
-    categories = [ "pro", "perso" ]
+As an example, to have two sections for a professional portfolio and a personal portfolio, the following entry could be added to the "[params.projects]" group in the "config.toml" file:
+```
+categories = [ "pro", "perso" ]
+```
 
 It will create 2 projects sections identified by "pro" and "perso" respectively.
-The values specified have to correspond to directories existing in the "content" directory of the website ("content/pro" and "content/perso").
+The values specified have to correspond to directories in the "content" directory of the website (respectively "content/pro" and "content/perso").
 
-In order to have the two sections accessible via the main navigation bar (at the top of the screen), entries also need to be added to the "[params.navigation.links]" group in "config.toml" file:
+In order to have the two sections accessible via the main navigation bar (at the top of the screen), entries also need to be added to the "[params.navigation.links]" group in the "config.toml" file:
+```
+projects = [
+    { section = "pro", label = "PROFESSIONAL" },
+    { section = "perso", label = "PERSONAL" }
+]
+```
 
-    projects = [
-        { section = "pro", label = "PROFESSIONAL" },
-        { section = "perso", label = "PERSONAL" }
-    ]
-
-It will create 2 projects sections links labelled "PROFESSIONAL" and "PERSONAL", pointing to the "pro" and "perso" sections respectively (the values specified for the "section" keys need to correspond to the sections identification values).
+This will create 2 projects sections links labelled "PROFESSIONAL" and "PERSONAL", pointing to the "pro" and "perso" sections respectively (the values specified for the "section" keys need to correspond to the sections identification values).
 
 ![Section Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/section.png)
 
+
 A section is composed of "subsections" (typically categories, companies, technologies, etc.) grouping projects together. A subsection is defined by a subdirectory in a section directory also containing its associated "_index.md" file. Each subsection will be automatically added in the section menu.
-Sectikns and subsections correspond to list pages in the Hugo jargon.
+Sections and subsections correspond to list pages in the Hugo jargon.
 
 ![List Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/list.png)
 
-Subsections are in turn composed of "projects", each one defined by a post file or by a directory in case it is a bundle - containing more than a file, and generally images (the directiry must contain a "index.md" file in order to be considered as a post entry).
+Subsections are in turn composed of "projects", each one defined by a post file or by a directory in case it is a bundle (containing more than 1 file), and generally images (the directory must contain a "index.md" file in order to be considered as a post entry).
 
 ![Project Screenshot](https://github.com/2-REC/hugo-myportfolio-theme/blob/master/images/project.png)
 
