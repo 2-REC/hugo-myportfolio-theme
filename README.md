@@ -424,28 +424,44 @@ For each post ("project"), "tags" and "categories" should be specified, in order
 There can be more than one main projects sections. Different categories could for example be "Development", "Design", "Music", etc. Another set of categories could be "Professional", "Personal", "Freelance", etc.
 
 
-### CONTACT: Add contact information
+### CONTACT - Add contact information
 
 The content of the "CONTACT" section of the homepage is fetched from the "contact" data file.
 
 The different parameters that can be used are:
+* `title`: The title of the section.<br>
+    Typically "CONTACT" would be used.
+* `background_image`: The image used for the background.
+* `description`: A short text typically with a call to action.
+* `email`: Email information.
+    * `address`: Email address.
+    * `link`: Whereas the address can be used as a link.
+    * `icon`: The icon used next to the address.
+    * `icon_pack`: The icon package/family (look at icons documentation).
+* `social`: List of social network icons/links.
+    * `icon`: The icon used for the button.
+    * `icon_pack`: The icon package/family (look at icons documentation).
+    * `link`: The link to the social network profile page.
 
-* "title": The title of the section. Typically "CONTACT" would be used.
-* "background_image": The image used for the background.
-* "photo": The image used for the avatar.
-* "description": A short text typically with a call to action.
-* "email": Email information.
-    * "address: Email address.
-    * "link": Whereas the address can be used as a link.
-    * "icon": The icon used next to the address.
-    * "icon_pack": The icon package/family (look at icons documentation).
-* "social": List of social network icons/links.
-    * "icon": The icon used for the button.
-    * "icon_pack": The icon package/family (look at icons documentation).
-    * "link": The link to the social network profile page.
+    E.g.:
+    ```
+    email:
+      address: "your.email@somewhere.com"
+      link: false
+      icon: "fa-envelope"
+      icon-pack: "fas"
+
+    social:
+    - icon: "fa-linkedin"
+      icon_pack: "fab"
+      link: "//linkedin.com"
+    - icon: "fa-github"
+      icon_pack: "fab"
+      link: "//github.com"
+    ```
 
 
-All the parameters are optional - if not defined, it will not be added to the page content.
+All the parameters are optional: if not defined, their corresponding element will not be added to the section.
 
 
 ## Run the website
