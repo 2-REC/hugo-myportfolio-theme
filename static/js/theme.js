@@ -7,6 +7,16 @@
 (function($) {
     "use strict"; // Start of use strict
 
+    $(window).on('load', function() {
+        if (window.location.hash) {
+            var $target = $(window.location.hash);
+            if ($target.length) {
+                var $offset = $('.navbar-header').height();
+                $('html, body').scrollTop($target.offset().top - $offset);
+            }
+        }
+    });
+
     // jQuery for page scrolling feature - requires jQuery Easing plugin
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
