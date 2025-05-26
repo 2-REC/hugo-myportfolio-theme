@@ -15,5 +15,5 @@ posts_title: "<POSTS_TYPE>"
 #showbrothers: <BOOL>            #default: true
 ---
 
-<b>DESCRIPTION</b><br>
+<h3>DESCRIPTION</h3>
 ...<br>
