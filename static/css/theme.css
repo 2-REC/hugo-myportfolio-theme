@@ -40,6 +40,9 @@ p {
     margin-bottom: 20px;
     line-height: 1.5;
 }
+article p {
+    margin: 0;
+}
 
 hr {
     border-width: 3px;
@@ -1645,7 +1648,7 @@ margin-bottom: 2em;
 
 .list-page-content h4 {
     font-size: 1em;
-    margin-bottom: 0;
+    margin-bottom: 0.5em;
 }
 
 
