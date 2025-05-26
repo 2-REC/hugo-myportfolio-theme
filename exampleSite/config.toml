@@ -218,9 +218,9 @@ unsafe= true
         posts_order_reverse = true
 
         # Format of the "period" field.
-        date_format = "01 2006"
-        period_format = "{start} -> {end}"
-        period_format_startonly = "{start} -> Present"
+        date_format = "01/2006"
+        period_format = "{start} - {end}"
+        period_format_startonly = "{start} - Present"
 
         # Number of columns in projects grid,
         # respectively on 'home' page and in projects 'list' page (OPTIONAL)
