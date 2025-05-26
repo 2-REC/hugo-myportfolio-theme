@@ -13,6 +13,7 @@
         {{ end }}
 
         {{ block "body" . }}
+            {{/* TODO: 'main' tag should not contain sidebars! */}}
             <main id="list-content">
                 {{ block "sidebar" . }}
                     {{ partial "pages/sidebar.html" . }}
@@ -35,6 +36,7 @@
                         {{ partial "pages/sidebar-bottom.html" . }}
                     {{ end }}
                 </div>
+                {{ partial "list-custom" . }}
             </main>
         {{ end }}
 
