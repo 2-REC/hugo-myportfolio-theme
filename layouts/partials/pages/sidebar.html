@@ -49,11 +49,15 @@
 
             {{ if (or (not (isset .Params "showbrothers")) (.Params.showbrothers)) }}
                 {{ if $parent }}
+{{/*
                     {{ if eq .Kind "section" }}
                         {{ partial "utils/ordered-list.html" (dict "list" $parent.Sections "params" $parent.Params "scratch" .Scratch) }}
                     {{ else }}
                         {{ partial "utils/ordered-list.html" (dict "list" $parent.Pages "params" $parent.Params "scratch" .Scratch) }}
                     {{ end }}
+*/}}
+{{/* TODO: want to keep possibility to have only 'sections'? could add param in config... */}}
+{{ partial "utils/ordered-list.html" (dict "list" (union $parent.Sections $parent.Pages) "params" $parent.Params "scratch" .Scratch) }}
 
                     {{ $current := . }}
                     <ul>
