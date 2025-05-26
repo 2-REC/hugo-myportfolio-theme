@@ -1553,9 +1553,15 @@ margin-bottom: 2em;
     display: inline-block;
     font-size: .9em;
     margin-left: -1.5em;
-    margin-right: 2em;
+    margin-right: 1.5em;
+
+    padding-left: 1.5em;
+    text-indent:-1.5em;
 
     font-family: var(--SIDEBAR-FONT, var(--GENERAL-FONT-2));
+}
+.sidebar-bottom .sidebar-tree li:not(:last-of-type)::after {
+    content: "\2022";
 }
 
 @media (min-width: 992px) {
@@ -1568,6 +1574,7 @@ margin-bottom: 2em;
 .sidebar-tree li.active > a,
 .sidebar-tree li.active > a:focus {
     font-weight: bold;
+    text-decoration: underline;
 }
 
 /******************************************************************************/
