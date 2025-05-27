@@ -2,7 +2,7 @@
 <section class="section projects" id="projects_{{ trim .File.Dir "/\\" }}">
     {{ $path := replace .File.Dir "\\" "/" }}
     {{ with .Title }}
-    <a href="/{{ $path }}" class="container-fluid projects-link">
+    <a href="{{ relURL $path }}" class="container-fluid projects-link">
         {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
     </a>
     {{ end }}
@@ -25,7 +25,7 @@
         </div>
         {{/* TODO: move style to CSS */}}
         <div class="row no-gutter" style="text-align: center; padding-top: 1em;">
-            <a href="/{{ $path }}" >Expand ...</a>
+            <a href="{{ relURL $path }}" >Expand ...</a>
         </div>
     </div>
 </section>

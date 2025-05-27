@@ -1,8 +1,8 @@
-@font-face { font-family: "Inter"; font-style: normal; src: url("/fonts/Inter-Regular.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-style: normal; src: url("/fonts/Montserrat-Regular.ttf"); }
-@font-face { font-family: "Montserrat Bold"; font-style: normal; src: url("/fonts/Montserrat-Bold.ttf"); }
-@font-face { font-family: "Roboto"; font-style: normal; src: url("/fonts/Roboto-Regular.ttf"); }
-@font-face { font-family: "Roboto Bold"; font-style: normal; src: url("/fonts/Roboto-Bold.ttf"); }
+@font-face { font-family: "Inter"; font-style: normal; src: url("../fonts/Inter-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-style: normal; src: url("../fonts/Montserrat-Regular.ttf"); }
+@font-face { font-family: "Montserrat Bold"; font-style: normal; src: url("../fonts/Montserrat-Bold.ttf"); }
+@font-face { font-family: "Roboto"; font-style: normal; src: url("../fonts/Roboto-Regular.ttf"); }
+@font-face { font-family: "Roboto Bold"; font-style: normal; src: url("../fonts/Roboto-Bold.ttf"); }
 
 /* TODO: check all caps lock variables (reorganise + check use) */
 :root{
