@@ -3,9 +3,9 @@
 title: "<PROJECT_NAME>"
 subtitle: "<CATCH_PHRASE>"
 ##
-# Only if direct from home (no subsection)
-#cover_image: "<IMAGE_FILE>"
+# Only if direct from home (not a subsection)
 #subtitle2: "<SMALL_CATCH_PHRASE>"
+#cover_image: "<IMAGE_FILE>"
 #startDate: "2016-12-01"
 #endDate: "2017-09-01"
 #show_title: false
@@ -14,6 +14,7 @@ subtitle: "<CATCH_PHRASE>"
 #show_date: false
 ##
 #image: "<IMAGE_FILE>"
+#image_copyright: "<COPYRIGHT>"
 #small_image: "<IMAGE_FILE>"
 #small_url: "<URL>"
 categories: [ "<CATEGORY>" ]
