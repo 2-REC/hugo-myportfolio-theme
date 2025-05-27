@@ -8,7 +8,7 @@
                     {{ $image := .Fit "64x64"  }}
                     <li>
                         <figure class="no-photoswipe">
-                            <img class="logo" src="{{ $image.RelPermalink }}" alt="" title="{{ $image.Title }}">
+                            <img class="logo" src="{{ $image.RelPermalink }}" alt="" title="{{ .Title }}">
                         </figure>
                     </li>
                 {{ end }}
