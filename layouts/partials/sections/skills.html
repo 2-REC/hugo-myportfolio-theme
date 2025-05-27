@@ -18,7 +18,7 @@
             {{ with $data.download }}
             <div class="col-lg-4 col-lg-offset-8 text-center anim-wrapper">
                 {{/* TODO: keep "download" keyword? */}}
-                <a id="download-button" href="/files/{{ .filename }}" download class="btn btn-primary btn-xl anim zoomIn">
+                <a id="download-button" href="files/{{ .filename }}" download class="btn btn-primary btn-xl anim zoomIn">
                     {{ with .button_text }}
                         {{ . }}
                     {{ end }}
