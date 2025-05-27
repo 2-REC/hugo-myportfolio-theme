@@ -10,8 +10,6 @@
 {{ partial "utils/get-keywords.html" (dict "type" .type "context" .context "scratch" .scratch "removeDuplicates" .removeDuplicates) }}
 {{ range (.scratch.Get .type) }}
     {{/* HACK: (replace . "#" "%23/") is a special case for "#" character */}}
-    <a href="{{ (print "/" $.type "/") | relLangURL }}{{ replace . "#" "%23/" | urlize }}" title="{{ . }}">
-        {{ . }}
-    </a>
+    <a href="{{ (print "/" $.type "/") | relLangURL }}{{ replace . "#" "%23/" | urlize }}" title="{{ . }}">{{ . }}</a>
 {{ end }}
 {{ .scratch.Delete .type }}

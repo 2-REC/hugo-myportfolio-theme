@@ -1,30 +1,83 @@
-{{ "<!-- SERVICES -->" | safeHTML }}
+{{ $params := .Site.Params.services }}
 {{ with .Site.Data.services }}
+    {{/* Get the number of columns from config */}}
+    {{/* TODO: clean... */}}
+    {{ $nb_cols_lg := 4 }}
+    {{ $nb_cols_sm := 2 }}
+    {{ $nb_cols_xs := 1 }}
+
+    {{ with $params.nb_columns }}
+        {{ $nb_cols_lg = . }}
+    {{ end }}
+    {{ with $params.nb_columns_small }}
+        {{ $nb_cols_sm = . }}
+    {{ end }}
+    {{ with $params.nb_columns_xsmall }}
+        {{ $nb_cols_xs = . }}
+    {{ end }}
+
+    {{ $nb_left := len .services }}
+
+    {{ $size_lg := div 12 (int $nb_cols_lg) }}
+    {{ $size_sm := div 12 (int $nb_cols_sm) }}
+    {{ $size_xs := div 12 (int $nb_cols_xs) }}
+
+    {{ $mod_lg := mod $nb_left $nb_cols_lg }}
+    {{ if lt $nb_left $nb_cols_lg }}
+    {{ $mod_lg = $nb_left }}
+    {{ end }}
+    {{ $mod_sm := mod $nb_left $nb_cols_sm }}
+    {{ if lt $nb_left $nb_cols_sm }}
+    {{ $mod_sm = $nb_left }}
+    {{ end }}
+    {{ $mod_xs := mod $nb_left $nb_cols_xs }}
+    {{ if lt $nb_left $nb_cols_xs }}
+    {{ $mod_xs = $nb_left }}
+    {{ end }}
     <section class="section" id="services"
             {{ with .background_image }}
-                style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
+                style="--services-bkg-image: url('{{ (printf "images/%s" .) | absURL }}');"
             {{ end }}
         >
         {{ with .title }}
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="text-center">
-                        <h2 class="section-heading text-tertiary">{{ . }}</h2>
-                        <hr class="primary">
-                    </div>
-                </div>
-            </div>
+        <div class="container-fluid">
+            {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
+        </div>
         {{ end }}
-
         <div class="container services-container">
             <div class="row">
-                {{ partial "utils/get-number-columns.html" (dict "length" (len .services) "scratch" $.Scratch) }}
-                {{ $col_layout := $.Scratch.Get "col_layout" }}
                 {{ range .services }}
+                    {{/* TODO: clean... */}}
+                    {{ $offset_lg := "col-lg-offset-0" }}
+                    {{- if eq $nb_left $mod_lg -}}
+                        {{ $double_offset := sub $nb_cols_lg $mod_lg }}
+                        {{ $off_lg := div (mul $double_offset $size_lg) 2 }}
+                        {{ $offset_lg = print "col-lg-offset-" $off_lg }}
+                        {{/* $nb_cols_lg = 3 */}}
+                    {{ end }}
+                    {{ $offset_sm := "col-sm-offset-0" }}
+                    {{- if eq $nb_left $mod_sm -}}
+                        {{ $double_offset := sub $nb_cols_sm $mod_sm }}
+                        {{ $off_sm := div (mul $double_offset $size_sm) 2 }}
+                        {{ $offset_sm = print "col-sm-offset-" $off_sm }}
+                    {{ end }}
+                    {{ $offset_xs := "col-xs-offset-0" }}
+                    {{- if eq $nb_left $mod_xs -}}
+                        {{ $double_offset := sub $nb_cols_xs $mod_xs }}
+                        {{ $off_xs := div (mul $double_offset $size_xs) 2 }}
+                        {{ $offset_xs = print "col-xs-offset-" $off_xs }}
+                    {{ end }}
+                    {{/* TODO: use "size_" variables, when sure "nb_cols_" does not change  */}}
+                    {{ $col_lg := print "col-lg-" (div 12 (int $nb_cols_lg)) }}
+                    {{ $col_sm := print "col-sm-" (div 12 (int $nb_cols_sm)) }}
+                    {{ $col_xs := print "col-xs-" (div 12 (int $nb_cols_xs)) }}
+                    {{ $col_layout := print $col_lg " " $col_sm " " $col_xs " " $offset_lg " " $offset_sm " " $offset_xs }}
+                    {{ $nb_left = sub $nb_left 1 }}
+
                     <div class="{{ $col_layout }} text-center">
-                        <div class="service-box">
+                        <div class="service-box anim-wrapper">
                             {{ $pack := or .icon_pack "fa" }}
-                            <i class="{{ $pack }} {{ .icon }} wow bounceIn icon-x6"></i>
+                            <i class="{{ $pack }} {{ .icon }} anim zoomIn icon-x6"></i>
                             <h3>{{ .name }}</h3>
                             {{ with .text }}
                                 <p>{{ . }}</p>
@@ -41,7 +94,6 @@
                         </div>
                     </div>
                 {{ end }}
-                {{ $.Scratch.Delete "col_layout" }}
             </div>
         </div>
     </section>

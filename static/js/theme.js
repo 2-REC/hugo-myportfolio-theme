@@ -7,13 +7,37 @@
 (function($) {
     "use strict"; // Start of use strict
 
+    $(window).on('load', function() {
+        if (window.location.hash) {
+            var $target = $(window.location.hash);
+            if ($target.length) {
+                var $offset = $('.navbar-header').height();
+                $('html, body').scrollTop($target.offset().top - $offset);
+            }
+        }
+    });
+
     // jQuery for page scrolling feature - requires jQuery Easing plugin
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: ($($anchor.attr('href')).offset().top - $('.navbar-header').height())
-        }, 1250, 'easeInOutExpo');
-        event.preventDefault();
+        var $offset = $($anchor.attr('href')).offset();
+        if ($offset) {
+            $('html, body').stop().animate({
+                scrollTop: $offset.top - $('.navbar-header').height()
+            }, 1250, 'easeInOutExpo');
+            event.preventDefault();
+        }
+    });
+    /* 2-REC - TODO: don't use 'animate' */
+    $('a.page-jump').bind('click', function(event) {
+        var $anchor = $(this);
+        var $offset = $($anchor.attr('href')).offset();
+        if ($offset) {
+            $('html, body').stop().animate({
+                scrollTop: $offset.top - $('.navbar-header').height()
+            }, 0, 'easeInOutExpo');
+            event.preventDefault();
+        }
     });
 
     // Highlight the top nav as scrolling occurs
@@ -41,8 +65,5 @@
             top: ($('.navbar-header').height() * 2)
         }
     })
-
-    // Initialize WOW.js Scrolling Animations
-    new WOW().init();
 
 })(jQuery); // End of use strict

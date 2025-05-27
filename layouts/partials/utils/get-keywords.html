@@ -14,6 +14,15 @@
     {{ range .context.Pages }}
         {{ partial "utils/get-keywords.html" (dict "type" $.type "context" . "scratch" $.scratch) }}
     {{ end }}
+{{ else if or (eq .context.Kind "taxonomy") (eq .context.Kind "term") }}
+    {{/* TODO: check if ok on published site! */}}
+    {{ $context := site.GetPage "/" }}
+    {{ range $context.Sections }}
+        {{ partial "utils/get-keywords.html" (dict "type" $.type "context" . "scratch" $.scratch) }}
+    {{ end }}
+    {{ range $context.Pages }}
+        {{ partial "utils/get-keywords.html" (dict "type" $.type "context" . "scratch" $.scratch) }}
+    {{ end }}
 {{ else }}
     {{ if eq .type "tags" }}
         {{ range .context.Params.tags }}

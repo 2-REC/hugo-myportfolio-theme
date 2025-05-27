@@ -1,26 +1,31 @@
-{{ "<!-- PROJECTS -->" | safeHTML }}
+{{ $params := .Site.Params.projects }}
 <section class="section projects" id="projects_{{ trim .File.Dir "/\\" }}">
     {{ $path := replace .File.Dir "\\" "/" }}
     {{ with .Title }}
-        <a href="/{{ $path }}" class="container-fluid padding-title">
-            <div class="row">
-                <div class="col-md-8 text-right">
-                    <h2 class="section-heading">{{ . }}</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </a>
+    <a href="/{{ $path }}" class="container-fluid projects-link">
+        {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
+    </a>
     {{ end }}
     <div class="container-fluid">
         <div class="row no-gutter">
-            {{ if .Sections }}
-                {{/* Sort the list */}}
-                {{ partial "utils/ordered-list.html" (dict "list" .Sections "params" .Params "scratch" .Scratch) }}
-                {{ range (.Scratch.Get "list") }}
-                    {{ .Render "limage" }}
+{{/* TODO: Could add param "sections_only" and get ".Sections" instead of ".Pages" */}}
+            {{ if .Pages }}
+                {{ partial "utils/ordered-list.html" (dict "list" .Pages "params" .Params "scratch" .Scratch) }}
+                {{ $projects := .Scratch.Get "list" }}
+                {{ $max := len $projects }}
+                {{ if and $params.max_projects (lt $params.max_projects $max) }}
+                    {{ $max = $params.max_projects }}
+                {{ end }}
+                {{ range seq $max }}
+                    {{ $project := index $projects (sub . 1) }}
+                    {{ partial "project-image.html" (dict "context" $project "data" $params.home "fit" $params.fit_rows "nb" $max "index" .) }}
                 {{ end }}
                 {{ .Scratch.Delete "list" }}
             {{ end }}
+        </div>
+        {{/* TODO: move style to CSS */}}
+        <div class="row no-gutter" style="text-align: center; padding-top: 1em;">
+            <a href="/{{ $path }}" >Expand ...</a>
         </div>
     </div>
 </section>

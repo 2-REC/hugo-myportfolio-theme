@@ -1,31 +1,23 @@
-{{ "<!-- HOMEPAGE.HTML -->" | safeHTML }}
-
-{{ $sections := .Site.Params.homepage.sections }}
-
-{{ if in $sections "home" }}
-    {{ partial "sections/home.html" . }}
-{{ end }}
-
-{{ if in $sections "about" }}
-    {{ partial "sections/about.html" . }}
-{{ end }}
-
-{{ if in $sections "services" }}
-    {{ partial "sections/services.html" . }}
-{{ end }}
-
-{{ if in $sections "skills" }}
-    {{ partial "sections/skills.html" . }}
-{{ end }}
-
-{{ if in $sections "projects" }}
-    {{ range .Site.Params.projects.categories }}
-        {{ with $.Site.GetPage . }}
-            {{ partial "sections/projects.html" . }}
-        {{ end }}
-    {{ end }}
-{{ end }}
-
-{{ if in $sections "contact" }}
-    {{ partial "sections/contact.html" . }}
-{{ end }}
+{{ "<!-- HOMEPAGE.HTML -->" | safeHTML -}}
+{{- $page := . -}}
+{{- $sections := .Site.Params.homepage.sections -}}
+{{- if in $sections "home" -}}
+    {{- partial "sections/home.html" . -}}
+{{- end -}}
+{{- range .Site.Params.homepage.sections -}}
+    {{- if eq . "projects" -}}
+        {{- range $.Site.Params.projects.categories -}}
+            {{- with $.Site.GetPage . -}}
+                {{- partial "sections/projects.html" . -}}
+            {{- end -}}
+        {{- end -}}
+    {{- else if ne . "home" -}}
+        {{- $section := printf "sections/%s.html" . -}}
+        {{- if templates.Exists (printf "partials/%s" $section) -}}
+            {{- partial $section $page -}}
+        {{- else -}}
+            {{- printf "ERROR: section '%s' not defined!" . -}}
+        {{- end -}}
+    {{- end -}}
+{{- end }}
+{{- partial "homepage-custom" . -}}

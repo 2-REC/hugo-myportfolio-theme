@@ -1,0 +1,124 @@
+/* TODO: replace with content of my website's custom (with all variables commented) */
+/* Custom CSS variables overrides.
+  This file is included after "default.css" and before "theme.css".
+  Hence only variables overrides should be defined here,
+  as rules could be overriden in "themes.css".
+
+  Rule overrides should be defined in "custom.css".
+*/
+:root{
+    /*
+        Override desired values for the custom variables.
+        This file must be copied to the "static/css" directory of the site.
+    */
+
+    /* GENERAL */
+/*
+    --GENERAL-FONT: var(--GENERAL-FONT-1);
+    --TITLE-FONT: var(--GENERAL-FONT-2);
+
+    --BUTTON-FONT: var(--GENERAL-FONT-2);
+*/
+
+    /* HORIZONTAL RULE (HR) */
+/*
+    --HR-BORDER-COLOR: var(--GENERAL-COLOR-1);
+    --HR-BORDER-LIGHT-COLOR: var(--GENERAL-COLOR-2);
+*/
+
+
+    /* NAVBAR */
+/*
+    --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
+    --NAVBAR-FONT: var(--GENERAL-FONT-2);
+    --NAVBAR-BRAND-FONT: var(--GENERAL-FONT-4);
+    --NAVBAR-BRAND-COLOR: var(--GENERAL-FONT-COLOR-1);
+    --NAVBAR-BRAND-HOVER-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-COLOR: var(--GENERAL-FONT-COLOR-1);
+    --NAVBAR-BUTTON-HOVER-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-ACTIVE-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-BUTTON-ACTIVE-BACKGROUND-COLOR: transparent;
+    --NAVBAR-FIXED-BACKGROUND-COLOR: var(--GENERAL-COLOR-2);
+    --NAVBAR-FIXED-BRAND-COLOR: var(--GENERAL-FONT-COLOR-2);
+    --NAVBAR-FIXED-BRAND-HOVER-COLOR: var(--GENERAL-LINK-ACTIVE-COLOR-1);
+    --NAVBAR-FIXED-BUTTON-COLOR: var(--GENERAL-LINK-COLOR-2);
+    --NAVBAR-FIXED-BUTTON-HOVER-COLOR: var(--GENERAL-LINK-ACTIVE-COLOR-2);
+*/
+
+    /* HOME */
+/*
+    --HOME-BACKGROUND-COLOR: black;
+    --HOME-TITLE-FONT: var(--GENERAL-FONT-4);
+    --HOME-TITLE-COLOR: var(--GENERAL-FONT-COLOR-1);
+    --HOME-TEXT-FONT: var(--GENERAL-FONT-2);
+    --HOME-TEXT-COLOR: var(--GENERAL-FONT-COLOR-1);
+*/
+
+    /* SIDEBAR */
+/*
+    --SIDEBAR-IMAGE-BORDER-RADIUS: var(--GENERAL-IMAGE-BORDER-RADIUS);
+    --SIDEBAR-TITLE-FONT: var(--GENERAL-FONT-1);
+    --SIDEBAR-FONT: var(--GENERAL-FONT-2);
+    --SIDEBAR-LINK-FONT: var(--GENERAL-FONT-1);
+*/
+
+
+    /* HERO */
+/*
+    --HERO-IMAGE-HEIGHT: 500px;
+    --HERO-IMAGE-HEIGHT-SMALL: 250px;
+    --HERO-IMAGE-MARGIN-BOTTOM: 0px;
+    --HERO-IMAGE-MARGIN-BOTTOM-SMALL: 0px;
+*/
+
+
+    /* ABOUT */
+/*
+    --ABOUT-IMAGE-BORDER-RADIUS: var(--GENERAL-IMAGE-BORDER-RADIUS);
+    --ABOUT-LINK-COLOR: var(--GENERAL-LINK-COLOR-2);
+    --ABOUT-LINK-COLOR-ACTIVE: var(--GENERAL-LINK-ACTIVE-COLOR-2);
+*/
+
+
+    /* SERVICES */
+/*
+    --SERVICES-CONTAINER-COLOR: transparent;
+    --SERVICES-CONTAINER-BORDER-RADIUS: 0px;
+    --SERVICES-CONTAINER-BOX-SHADOW: var(--GENERAL-BOX-SHADOW);
+    --SERVICES-BOX-COLOR: var(--GENERAL-COLOR-2);
+    --SERVICES-BOX-BORDER-RADIUS: 0px;
+    --SERVICES-BOX-BOX-SHADOW: var(--GENERAL-BOX-SHADOW);
+    --SERVICES-ICON-COLOR: var(--GENERAL-COLOR-1);
+*/
+
+
+    /* SKILLS */
+/*
+    --SKILLS-CONTAINER-COLOR: var(--GENERAL-COLOR-2);
+*/
+
+
+    /* PROJECTS */
+/*
+    --PROJECTBOX-NAME-FONT: var(--GENERAL-FONT-2);
+    --PROJECTBOX-CATEGORY-FONT: var(--GENERAL-FONT-2);
+    --PROJECTBOX-DATE-FONT: var(--GENERAL-FONT-2);
+    --PROJECTBOX-CAPTION-BACKGROUND-COLOR: rgba(240, 95, 64, .9);
+*/
+
+
+    /* CONTACT */
+/*
+    --CONTACT-PROFILE-COLOR: var(--GENERAL-COLOR-2);
+    --CONTACT-PROFILE-BORDER-RADIUS: 0px;
+    --CONTACT-PROFILE-BOX-SHADOW: var(--GENERAL-BOX-SHADOW);
+    --CONTACT-IMAGE-BORDER-RADIUS: var(--GENERAL-IMAGE-BORDER-RADIUS);
+*/
+
+
+    /* 404 */
+/*
+    --404-IMAGE-BORDER-RADIUS: var(--GENERAL-IMAGE-BORDER-RADIUS);
+*/
+
+}

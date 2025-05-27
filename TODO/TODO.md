@@ -1,9 +1,27 @@
 # TODO
 
+
+!!!!
+- FIX bug with offset when going from page to homepage using navbar
+- ADAPT EXAMPLE SITE! +config.toml!!
+- add CSS+layout variables changes in README + exampleSite config.toml!
+- make animations "one shot"? (or keep repeat as-is now?)
+- too much animation on home section?
+- skills: keep "resume" button animation?
+!!!!
+
+- [x] Remove use of "wow" (animate stuff) and use own js/css definitions (as in "anim.js")
+- [ ] Fix error when clicking "home" button
+    "Uncaught TypeError: Cannot read properties of undefined (reading 'top')"
+
+- [ ] DOC
+    - [ ] make example site as complete as possible, showcasing everything + explaining/detailing how it works (in page content itself, or comments in md files...).
+    - [ ] Mention use of "cover_image" and "small_image" for sections ("cover_image" can override "small_image")
+    - [ ] GALLERY PARTIAL + SHORTCODE!
+
 - [ ] Complete README.md file
     => What to add?
     - [ ] Reference "Minimal Academic" theme for the sidebar stuff? (if not done)
-    - [ ] Mention use of "cover_image" and "small_image" for sections ("cover_image" can override "small_image")
 
 
 ## BUG FIXES
@@ -42,7 +60,6 @@
 
 
 ### GENERAL
-- [ ] Look at "figure" opcode and do same thing as for gallery
 - [ ] Update to latest HUGO.
 - [ ] Update to BOOTSTRAP 4+.
 
@@ -74,23 +91,18 @@
     - [ ] Add a page view counter?
     - [ ] Add Google Analytics<br>
         => googleAnalytics = "..."
-
-
-### HEADER
-- [ ] CDN: use font awesome (& jquery, Bootstrap,  etc) from online resource AND from local files (fallback).<br>
-    => BOTH - look at:<br>
-    https://forum.freecodecamp.org/t/using-a-fallback-code-in-case-bootstraps-cdn-is-down/160753/11
-    https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server
+    - [ ] See about donation stuff (Patreon?) - in "contact" section?
+    - [ ] For external "libs" (Bootstrap, FontAwesome, jQuery, Photoswipe)<br>
+        => Use CDN & fallback on local files. Links:<br>
+            https://forum.freecodecamp.org/t/using-a-fallback-code-in-case-bootstraps-cdn-is-down/160753/11
+            https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server
+            <br>BUT: not really usefull, as small site+traffic, and heavy data is local anyway... (images, etc.)
 
 
 ### FOOTER
 - [ ] Add copyright stuff (for my stuff, but also images, themes, etc I "took")
 - [ ] Allow to not have the footer
 - [ ] Make better footer
-
-
-- LATER:
-    - [ ] See about donation stuff (Patreon?) - in "contact" section?
 
 
 ### HOMEPAGE
@@ -200,13 +212,6 @@
     - [ ] li.html
         - [ ] Change layout of links, and put everything in the "a" tag.
             => Do something similar to "project-box".
-    - [ ] limage.html
-        - [ ] Determine number of columns and offsets based on content.<br>
-            For
-            ```html
-            <div class="col-lg-4 col-sm-6">
-            ```
-            => Could use "get-number-columns.html".
     - [ ] single.html
         - [ ] Keep aria-hidden?<br>
             => And check if needed anywhere else.
@@ -249,11 +254,11 @@
                     ```html
                     <meta itemprop="image" content="{{ (printf "images/%s" .) | absURL }}">
                     ```
-                    - For "short_text"
+                    - For "profile_text"
                     ```html
                     <h2 itemprop="name">{{ . | markdownify }}</h2>
                     ```
-                    - For "long_text"
+                    - For "main_text"
                     ```html
                     <div class="col-xs-12 col-md-8" itemprop="description">
                     ```
@@ -277,7 +282,7 @@
             - [ ] Add "all_projects" at end of list!
                 => set front matter, etc.
                 ```html
-                {{ .Render "limage" }}
+                {{ .Render "project-image" }}
                 ```
         - [ ] services.html
             - [ ] For "services-container"<br>
@@ -299,33 +304,13 @@
         - [ ] get-keywords.html
             - [ ] Add a parameter to specify order (based on wieght, title, occurrences, ...)
             (now hardcoded on alphanumerical value - at end of file)
-        - [ ] get-number-columns.html
-            - [ ] Enhance by adding "offsets" & "xl" (& "xs", "sm"?)<br>
-                => Output should be such as:
-                ```html
-                .Scratch.Set "col-sizes" "col-md-6 col-lg-4 col-xl-5"
-                .Scratch.Set "col-offsets" "col-xl-offset-1"
-                & in loop: class="{{ .Scratch.Get "col-sizes" }} {{ .Scratch.Get "col-offsets" }} text-center"
-                ! - delete Scratch variables after, & delete "offsets" after first iteration (end of first)!
-                ```
     - [ ] footer.html
         - [ ] Fix problem that not at bottom of page.<br>
             => Need changes in CSS for main tags (html, body, sections, etc?)
         - [ ] Set content...
-    - [ ] gallery.html
-        - [ ] Check JQUERY loading.<br>
-            => OK to load both files in tail.html? (should only load one)
-        - LATER:
-            - [ ] Fix ".Inner" stuff (with "figure")
-            - [ ] Add "figure.html" file & make changes.<br>
-                => Do the same as for gallery (paths, change to partial instead of shortcode, etc).
     - [ ] head.html<br>
         (Look at backuped file)
         - [ ] Use some "blocks" to allow overriding parts..
-        - [ ] See about the custom fonts (if keep same, change, or remove)<br>
-            => And see if "safe"/stable to use URLs...
-        - [ ] Check end of file (Shim & Respond.js stuff)<br>
-            => Needed? keep?
         - [ ] Look at other header files (in other themes)<br>
             => "header.html" in Osprey (lots of other stuff!)
         - [ ] Add meta params in config:<br>
@@ -359,14 +344,7 @@
             ```html
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             ```
-        - [ ] Fonts: see what fonts we use, & what's needed.<br>
-            In
-            ```html
-            {{ "<!-- Custom Fonts -->" | safeHTML }}
-            ```
-            => Depends on custom CSS!
         - [ ] Check publish meta stuff.
-        - [ ] Check about "shiv" & "respond" stuff.
     - [ ] homepage.html
         - [ ] When updating to HUGO version 0.45, replace:
           ```html
@@ -381,8 +359,14 @@
         {{ template "_internal/google_analytics.html" . }
         ```
     - [ ] tail.html
-        - [ ] For external "libs" (Bootstrap, FontAwesome, JQuery?)<br>
-            => Use CDN & fallback on local files. (see links)
+        - [x] Check if OK to load 2 jQuery versions in "tail.html" (should only load one)
+            - OK: Loading only 1, more recent (v1.12.4 instead of v1.11.1).
+
+- [x] shortcodes
+    - [x] gallery.html
+        - [x] handle parameters in "figure" case (global for all figures).
+    - [x] figure.html
+        - [x] add new parameters (make ~same changes as in "gallery" shortcode).
 
 
 ### STATIC

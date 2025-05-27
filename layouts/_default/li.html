@@ -1,13 +1,14 @@
 <li class="project-item">
 
     <a href="{{.Permalink}}" class="project-item-box">
-        {{ $logos := .Resources.Match "logos/*" }}
-        {{ if gt (len $logos) 0 }}
-            {{ $image := index $logos 0 }}
-            <figure class="no-photoswipe">
-                <img class="project-item-logo" src="{{ $image.RelPermalink }}" alt="" title="{{ $image.Title }}">
-            </figure>
-        {{ end }}
+        <figure class="no-photoswipe">
+            {{ $image := .Resources.GetMatch .Params.small_image }}
+            {{ if $image }}
+            <img class="project-item-logo" src="{{ $image.Permalink }}" alt="">
+            {{ else }}
+            <div class="project-item-logo" />
+            {{ end }}
+        </figure>
 
         <div>
             {{ with .Title }}
@@ -22,9 +23,5 @@
                 </div>
             {{ end }}
         </div>
-
-        <div class="project-item-box-highlight">
-        </div>
     </a>
-
 </li>

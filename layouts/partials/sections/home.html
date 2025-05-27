@@ -1,30 +1,91 @@
-{{ "<!-- HOME -->" | safeHTML }}
-{{ with .Site.Data.home }}
+{{ $params := .Site.Params.home }}
+{{ "<!-- Get the first section name -->" | safeHTML }}
+{{- $first_section := "" -}}
+{{- range .Site.Params.homepage.sections -}}
+    {{- if eq . "projects" -}}
+        {{- $first_section = index $.Site.Params.projects.categories 0 -}}
+        {{- break -}}
+    {{- else if ne . "home" -}}
+        {{- $first_section = . -}}
+        {{- break -}}
+    {{- end -}}
+{{- end -}}
+{{- with .Site.Data.home -}}
     <section id="home"
-            {{ with .background }}
-                style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"
-            {{ end }}
+        {{- if .background -}}
+        style="overflow: hidden; --home-bkg-image: url('{{ (printf "images/%s" .background) | absURL }}');
+               {{ with .background_opacity }}--home-bkg-image-opacity: {{ . }}{{ end }}"
+        {{- end -}}
         >
-        <div class="header-content">
-            <div class="header-content-inner">
+        {{- if .background_hidden -}}
+        <div id="background_hidden"
+             style="--home-bkg-image-hidden: url('{{ (printf "images/%s" .background_hidden) | absURL }}');
+                    {{- if .background_hidden_speed -}}
+                    --home-bkg-image-hidden-speed: {{ .background_hidden_speed }};
+                    {{- else -}}
+                    --home-bkg-image-hidden-speed: 1;
+                    {{- end -}}
+                    "
+            >
+        </div>
+        {{- end -}}
+        <div class="header-content"
+            style="
+            {{- with $params.width -}}
+                --home-width: {{ . }}%;
+            {{- end -}}
+            {{- if isset $params "offset_h" -}}
+                --home-offset-h: {{ $params.offset_h }}%;
+            {{- end -}}
+            {{- if isset $params "offset_v" -}}
+                --home-offset-v: {{ $params.offset_v }}%;
+            {{- end -}}
+            {{- with $params.text_align -}}
+                --home-text-align: {{ . }};
+            {{- end -}}
+            "
+            >
+            <div class="header-content-inner anim-wrapper">
+                {{ with .title_logo }}
+                    <img id="home_logo" src="{{ . }}" class="img-responsive">
+                {{ end }}
                 {{ with .title }}
-                    <h1>{{ . | markdownify  }}</h1>
+                    {{/* TODO: use specific class for title? */}}
+                    <h1 class="anim zoomIn">{{ . | markdownify  }}</h1>
                 {{ end }}
                 {{ with .subtitle }}
                     <h2>{{ . | markdownify }}</h2>
                 {{ end }}
-                {{ if .title }}
-                    <hr class="primary">
+                {{ if or .title .subtitle }}
+                    <hr class="primary anim zoomIn">
                 {{ end }}
                 {{ with .text }}
                     <p>{{ . | markdownify }}</p>
                 {{ end }}
-                {{ with .button_text }}
-                    <a href="#about" class="btn btn-primary page-scroll">
-                        {{ . }}<br>
-                    </a>
-                {{ end }}
+                <div class="anim zoomIn">
+                    {{ if .button_image }}
+                        <a id="home_button" href={{ printf "#%s" $first_section }} class="btn-image page-scroll">
+                            <img src={{ .button_image }} />
+                        </a>
+                    {{ else if .button_text }}
+                        <a id="home_button" href={{ printf "#%s" $first_section }} class="btn btn-primary page-scroll">
+                            {{ .button_text }}<br>
+                        </a>
+                    {{ else if .button_icon }}
+                        {{ with .button_icon }}
+                            <a id="home_button" href={{ printf "#%s" $first_section }} class="btn-icon page-scroll {{ .pack }} {{ .icon }} icon-x6">
+                            </a>
+                        {{ end }}
+                    {{ end }}
+                </div>
             </div>
         </div>
+        {{/* Background video (if no 'background' image) */}}
+        {{- if and .background_video (not .background)  -}}
+        <video autoplay muted loop id="home_video">
+            <source src="{{ printf "images/%s" .background_video }}" type="video/mp4">
+        </video>
+        {{- end -}}
+        {{- partial "home-custom" . -}}
     </section>
 {{ end }}

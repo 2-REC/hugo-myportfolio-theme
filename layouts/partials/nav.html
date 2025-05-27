@@ -16,8 +16,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    {{ with .Site.Params.navigation.brand }}
-                        <a class="navbar-brand page-scroll" href="#">{{ . | markdownify }}</a>
+                    {{ if .Site.Params.navigation.brand_logo }}
+                        <a class="navbar-brand page-scroll" href="#">
+                            <img id="brand_logo" src="{{ .Site.Params.navigation.brand_logo }}" class="img-responsive">
+                        </a>
+                    {{ else if .Site.Params.navigation.brand }}
+                        <a class="navbar-brand page-scroll" href="#">{{ .Site.Params.navigation.brand | markdownify }}</a>
                     {{ end }}
                 </div>
                 {{ "<!-- Get the navigation menu entries and create the links -->" | safeHTML }}
@@ -25,30 +29,21 @@
                     <ul class="nav navbar-nav navbar-right">
                         {{ $links := .Site.Params.navigation.links }}
                         {{ range .Site.Params.homepage.sections }}
-                            {{ if and (eq . "about") $links.about }}
-                                <li>
-                                    <a class="page-scroll" href="#about">{{ $links.about }}</a>
-                                </li>
-                            {{ else if and (eq . "services") $links.services }}
-                                <li>
-                                    <a class="page-scroll" href="#services">{{ $links.services }}</a>
-                                </li>
-                            {{ else if and (eq . "skills") $links.skills }}
-                                <li>
-                                    <a class="page-scroll" href="#skills">{{ $links.skills }}</a>
-                                </li>
-                            {{ else if and (eq . "projects") $links.projects }}
+                            {{ if and (eq . "projects") $links.projects }}
                                 {{ $categories := $.context.Site.Params.projects.categories }}
-                                {{ range $links.projects }}
-                                    {{ if in $categories .section }}
-                                        <li>
-                                            <a class="page-scroll" href="#projects_{{ .section }}">{{ .label }}</a>
-                                        </li>
+                                {{ range $categories }}
+                                    {{ $category := . }}
+                                    {{ range $links.projects }}
+                                        {{ if in $category .section }}
+                                            <li>
+                                                <a class="page-scroll" href="#projects_{{ .section }}">{{ .label }}</a>
+                                            </li>
+                                        {{ end }}
                                     {{ end }}
                                 {{ end }}
-                            {{ else if and (eq . "contact") $links.contact }}
+                            {{ else if isset $links . }}
                                 <li>
-                                    <a class="page-scroll" href="#contact">{{ $links.contact }}</a>
+                                    <a class="page-scroll" id={{ printf "nav_%s" . }} href={{ printf "#%s" . }}>{{ index $links . }}</a>
                                 </li>
                             {{ end }}
                         {{ end }}

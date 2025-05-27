@@ -2,7 +2,19 @@
 # Template for projects.
 title: "<PROJECT_NAME>"
 subtitle: "<CATCH_PHRASE>"
+##
+# Only if direct from home (not a subsection)
+#subtitle2: "<SMALL_CATCH_PHRASE>"
+#cover_image: "<IMAGE_FILE>"
+#startDate: "2016-12-01"
+#endDate: "2017-09-01"
+#show_title: false
+#show_subtitle: false
+#show_subtitle2: false
+#show_date: false
+##
 #image: "<IMAGE_FILE>"
+#image_copyright: "<COPYRIGHT>"
 #small_image: "<IMAGE_FILE>"
 #small_url: "<URL>"
 categories: [ "<CATEGORY>" ]
@@ -24,8 +36,10 @@ tags: [ "<TAG>" ]
 
 <b>CLIENT:</b> ...<br>
 
-<b>DESCRIPTION:</b><br>
-...<br>
+<h3>DESCRIPTION</h3>
+...
+<br>
 
-<b>ROLE:</b><br>
-...<br>
+<h3>ROLE</h3>
+...
+<br>

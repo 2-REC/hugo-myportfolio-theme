@@ -1,0 +1,103 @@
+<!--
+Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
+-->
+<!--
+Modified version (see README for details).
+This overrides Hugo's built-in "figure" shortcode, but is backwards compatible.
+-->
+{{- /* count how many times we've called this shortcode; load the css if it's the first time */ -}}
+{{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href={{ "css/hugo-easy-gallery.css" | relURL }} />{{ end -}}
+{{- $.Page.Scratch.Add "figurecount" 1 -}}
+
+{{- /* get input parameters */ -}}
+{{- $static := .Get "static" -}}
+{{- $src := .Get "src" -}}
+{{- $thumbSuffix := .Get "thumb" | default "-thumb" -}}
+{{- $caption := .Get "caption" -}}
+{{- $caption_position := .Get "caption-position" | default "bottom" -}}
+{{- $title := .Get "title" -}}
+{{- $attr := .Get "attr" -}}
+{{- $copyright := .Get "copyright" -}}
+
+{{- /* hack to check if inside a gallery */ -}}
+{{- $inGallery := false -}}
+{{- with .Parent -}}
+  {{- if eq .Name "gallery" -}}
+    {{- $inGallery = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* if static not specified, check in parent */ -}}
+{{- if not $static -}}
+  {{- if and $inGallery (.Parent.Get "static") -}}
+    {{- $static = .Parent.Get "static" -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* check in post's directory first, unless forced to 'static' */ -}}
+{{- $srcPath := (print "/static/" $src) -}}
+{{- if ne $static "true" -}}
+  {{- /* TODO: check if path is absolute! */ -}}
+  {{- $tmpPath := print (replace $.Page.File.Dir  "\\" "/") "/" $src -}}
+  {{- /* if file exists, update the path */ -}}
+  {{- if fileExists $tmpPath -}}
+    {{- $srcPath = $tmpPath -}}
+    {{- $src = $tmpPath -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* TODO: handle 'link' */ -}}
+{{- /* get the thumbnail if exists */ -}}
+{{- $srcFile := path.Base $src }}
+{{- $srcDir := path.Dir $srcPath -}}
+{{- $srcURLDir := path.Dir $src }}
+{{- $thumbFile := $srcFile | replaceRE "(\\.)" ($thumbSuffix | printf "%s.") -}}
+{{- $thumbURL := print $srcURLDir "/" $thumbFile -}}
+{{- $thumbPath := print $srcDir "/" $thumbFile -}}
+{{- $thumb := $src -}}
+{{- if fileExists $thumbPath -}}
+  {{- $thumb = $thumbURL -}}
+{{- end -}}
+
+{{- /* if no copyright, get parent one, or global one */ -}}
+{{- if not $copyright -}}
+  {{- if and $inGallery (.Parent.Get "copyright") -}}
+    {{- $copyright = .Parent.Get "copyright" -}}
+  {{- else -}}
+    {{- with $.Page.Params.images_copyright -}}
+      {{- $copyright = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $captionThumb := $caption -}}
+{{- with $copyright -}}
+  {{- if $caption -}}
+    {{- $caption = print $caption " - &copy; " . -}}
+  {{- else -}}
+    {{- $caption = print "&copy; " . -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="box
+    {{- if ne $caption_position "none" }} fancy-figure caption-position-{{$caption_position}} caption-effect-{{ with .Get "caption-effect" | default "slide" }}{{.}}{{end}}{{ end -}}"
+    {{ if not $inGallery }}style="width:{{ with .Get "width" }}{{.}}{{else}}fit-content{{end}};"{{ end }}>
+  <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img"{{ if .Parent }} style="background-image: url('{{ $thumb | relURL }}');"{{ end }}{{ with .Get "size" }} data-size="{{.}}"{{ end }}>
+      <img itemprop="thumbnail" src="{{ $thumb | relURL }}" {{ with .Get "alt" | default $caption }}alt="{{.}}"{{ end }} style="width: 100%;"/><!-- <img> hidden if in .gallery -->
+    </div>
+    {{ with .Get "link" | default $src }}<a href="{{ . | relURL }}" itemprop="contentUrl"></a>{{ end }}
+    {{- if or (or $title $captionThumb) $attr}}
+      <figcaption>
+        {{- /* TODO: change title style... */ -}}
+        {{- with $title }}<h4>{{.}}</h4>{{ end }}
+        {{- if or $captionThumb $attr}}
+          <p>
+            {{- $captionThumb -}}
+            {{- with .Get "attrlink"}}<a href="{{.}}">{{ $attr }}</a>{{ else }}{{ $attr }}{{ end -}}
+          </p>
+        {{- end }}
+      </figcaption>
+    {{- end }}
+  </figure>
+</div>

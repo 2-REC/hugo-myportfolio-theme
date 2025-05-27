@@ -1,37 +1,139 @@
-{{ "<!-- ABOUT -->" | safeHTML }}
+{{ $params := .Site.Params.about }}
 {{ with .Site.Data.about }}
-    <section class="section bg-primary" id="about">
-        <div class="container-fluid">
+  {{/* TODO: CHECK IF VALUES ARE VALID! (sum of all = 12) */}}
+  {{ $main_side := 7 }}
+  {{ with $params.main_side -}}
+    {{ $main_side = . }}
+  {{ end }}
+  {{ $extra_side := 3 }}
+  {{ with $params.extra_side -}}
+    {{ $extra_side = . }}
+  {{ end }}
+  {{ $remaining := sub (sub 12 $main_side) $extra_side }}
+  {{ $set_left := 0 }}
+  {{ $offset_left := div $remaining 2 }}
+  {{ with $params.offset_left -}}
+    {{ $set_left = 1 }}
+    {{ $offset_left = . }}
+  {{ end }}
+  {{ $remaining = sub $remaining $offset_left }}
+  {{ $offset_right := $remaining }}
+  {{ with $params.offset_right -}}
+    {{ $offset_right = . }}
+  {{ end }}
+  {{ $remaining = sub $remaining $offset_right }}
+  {{ if and (eq $set_left 0) (ne $remaining 0) }}
+    {{ $offset_left = add $offset_left $remaining }}
+    {{ $remaining = 0 }}
+  {{ end }}
+  {{- $sum := add (add (add $main_side $extra_side) $offset_left) $offset_right -}}
+  {{- if gt $sum 12 -}}
+  ERROR: Sum of columns width bigger than 12! - Check "params.about" in "config.toml"
+  {{- end -}}
+  {{ $offset_center := $remaining }}
+  <section class="section" id="about"
+    style="
+      {{- with .background_image -}}
+        --about-bkg-image: url('{{ (printf "images/%s" .) | absURL }}');
+      {{- end -}}
+      {{- if ne $params.background "full" -}}
+        {{- if eq $params.layout "left" -}}
+          --about-bkg-width: {{ mul (div $extra_side 12.0) 100 }}%;
+          --about-bkg-margin-left: {{ mul (div (add $main_side $offset_left) 12.0) 100 }}%;
+          --about-bkg-margin-right: {{ mul (div $offset_right 12.0) 100 }}%;
+        {{- else if eq $params.layout "right" -}}
+          --about-bkg-width: {{ mul (div $extra_side 12.0) 100 }}%;
+          --about-bkg-margin-left: {{ mul (div $offset_left 12.0) 100 }}%;
+          --about-bkg-margin-right: {{ mul (div (add $main_side $offset_right) 12.0) 100 }}%;
+        {{- end -}}
+      {{- end -}}
+    "
+  >
+    {{ with .title }}
+    <div class="container-fluid">
+      {{ partial "title-bar.html" (dict "title" . "align" $params.title_align "length" $params.title_length) }}
+    </div>
+    {{ end }}
+    <div class="container-fluid">
+      <div class="row">
+        {{- if eq $params.layout "right" -}}
+          <div class="col-xs-12 col-md-{{ add $extra_side $offset_left }}"></div>
+        {{- else if eq $params.layout "left" -}}
+          {{- if gt $offset_left 0 -}}
+          <div class="col-xs-12 col-md-{{ $offset_left }}"></div>
+          {{- end -}}
+        {{- end -}}
+        {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
+          {{/* ~Hack to add space outside (offset left) */}}
+          <div class="col-xs-12 col-md-offset-{{ $offset_left }} col-md-{{ $extra_side }} no-padding">
+        {{ else }}
+          <div class="col-xs-12 col-md-{{ $main_side }} no-padding">
+        {{ end }}
+        <div class="profile"
+          style="--about-profile-image-width: {{ $params.portrait_percentage }}%;"
+          >
+          <div class="container-fluid">
             <div class="row">
-                <div class="col-md-10 col-md-offset-2">
-                    {{ with .title }}
-                        <h2 class="section-heading">{{ . }}</h2>
-                        <hr class="primary light">
+              {{- $width_portrait := 12 -}}
+              {{- $width_text := 12 -}}
+              {{- if or (eq $params.layout "left") (eq $params.layout "right") -}}
+                {{- $width_portrait = 4 -}}
+                {{- with $params.portrait_width -}}
+                  {{- $width_portrait = . -}}
+                {{- end -}}
+                {{- $width_text = sub 12 $width_portrait -}}
+              {{- end -}}
+              {{- if .avatar -}}
+                <div class="col-xs-12 col-md-{{ $width_portrait }} no-padding">
+                  {{/* Special "hover easter egg" */}}
+                  {{- if .avatar2 -}}
+                    <div class="portrait">
+                      <img id="avatar1" src="{{ printf "images/%s" .avatar }}">
+                      <img id="avatar2" src="{{ printf "images/%s" .avatar2 }}" oncontextmenu="return false;">
+                    </div>
+                  {{- else -}}
+                    <img class="portrait" src="{{ printf "/images/%s" .avatar}}">
+                  {{- end -}}
+                </div>
+              {{- end -}}
+              {{- with .profile_text -}}
+                <div class="col-xs-12 col-md-{{ $width_text }} no-padding">
+                  {{/* optional hack to remove margin below profile image */}}
+                  {{ if eq $params.portrait_cancel_bottom_margin 1 }}
+                    {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
+                      <div id="about-separator-classic"></div>
+                    {{ else }}
+                      <div id="about-separator"></div>
                     {{ end }}
+                  {{ end }}
+                  <div class="text-primary profile-text">
+                    {{ . | markdownify }}
+                  </div>
                 </div>
+              {{- end -}}
             </div>
+          </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-4">
-                    <div class="profile">
-                        {{ with .avatar }}
-                            <div class="portrait" title="avatar: {{ . }}" style="background-image: url('{{ (printf "images/%s" .) | absURL }}');"></div>
-                        {{ end }}
-                        {{ with .short_text }}
-                            <div class="text-primary">
-                                <p>{{ . | markdownify }}</p>
-                            </div>
-                        {{ end }}
-                    </div>
-                </div>
-
-                {{ with .long_text }}
-                    <div class="col-xs-12 col-md-8 text-tertiary">
-                        <p>{{ . | markdownify }}</p>
-                    </div>
-                {{ end }}
+        {{ if .main_text }}
+          {{ if and (ne $params.layout "left") (ne $params.layout "right") }}
+          </div>
+          {{/* ~Hack to add space outside (shorter right) */}}
+          <div class="col-xs-12 col-md-offset-{{ $offset_center }} col-md-{{ $main_side }} no-padding">
+            <div class="text-tertiary main-text">
+              {{ .main_text | markdownify }}
             </div>
-        </div>
-    </section>
+          </div>
+          {{ else }}
+            <div class="text-tertiary main-text">
+              {{ .main_text | markdownify }}
+            </div>
+          </div>
+          {{ end }}
+        {{ end }}
+        {{ if eq $params.layout "left" }}
+          <div class="col-xs-12 col-md-{{ $extra_side }}"></div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
 {{ end }}

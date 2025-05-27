@@ -20,29 +20,18 @@
 {{ "<!-- Favicon -->" | safeHTML }}
 <link rel="shortcut icon" href="{{ .Site.Params.meta.favicon | absURL }}" type="image/x-icon" />
 <link rel="icon" href="{{ .Site.Params.meta.favicon | absURL }}" type="image/x-icon" />
-
 {{ "<!-- Bootstrap -->" | safeHTML }}
 <link rel="stylesheet" href="{{ "plugins/bootstrap/css/bootstrap.min.css" | absURL }}" type="text/css">
-
-{{ "<!-- Custom Fonts -->" | safeHTML }}
-<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' type='text/css'>
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Anton">
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fjalla+One">
+{{ "<!-- Font Awesome -->" | safeHTML }}
 <link rel="stylesheet" href="{{ "plugins/font-awesome/css/all.css" | absURL }}" type="text/css">
-
 {{ "<!-- CSS Plugins -->" | safeHTML }}
 <link rel="stylesheet" href="{{ "plugins/animate/animate.min.css" | absURL }}" type="text/css">
-
-{{ "<!-- Custom CSS -->" | safeHTML }}
+{{ "<!-- Theme CSS -->" | safeHTML }}
 <link rel="stylesheet" href="{{ "css/default.css" | absURL }}" type="text/css">
-{{ range .Site.Params.custom_css }}
+{{ range .Site.Params.custom_css_vars }}
     <link rel="stylesheet" href="{{ (printf "%s%s" "css/" .) | absURL }}" type="text/css">
 {{ end }}
 <link rel="stylesheet" href="{{ "css/theme.css" | absURL }}" type="text/css">
-
-{{ "<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->" | safeHTML }}
-{{ "<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->" | safeHTML }}
-{{ "<!--[if lt IE 9]>" | safeHTML }}
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-{{ "<![endif]-->" | safeHTML }}
+{{ range .Site.Params.custom_css }}
+    <link rel="stylesheet" href="{{ (printf "%s%s" "css/" .) | absURL }}" type="text/css">
+{{ end }}

@@ -4,39 +4,36 @@
     - params: (Params)
     - scratch: (Scratch)
 */}}
-
 {{/* Determine "order" & "reverse" */}}
+{{ $order := "" }}
+{{ $reverse := false }}
 {{ if eq (index .list 0).Kind "section" }}
-    {{ .scratch.Set "order" .Site.Params.projects.sections_order }}
-    {{ .scratch.Set "reverse" .Site.Params.projects.sections_order_reverse }}
+    {{ $order = .Site.Params.projects.sections_order }}
+    {{ $reverse = .Site.Params.projects.sections_order_reverse }}
     {{ with .params.sections_order }}
-        {{ $.scratch.Set "order" . }}
+        {{ $order = . }}
         {{ if $.params.sections_order_reverse }}
-            {{ $.scratch.Set "reverse" true }}
+            {{ $reverse = true }}
         {{ else }}
-            {{ $.scratch.Set "reverse" false }}
+            {{ $reverse = false }}
         {{ end }}
     {{ end }}
 {{ else }}
-    {{ .scratch.Set "order" .Site.Params.projects.posts_order }}
-    {{ .scratch.Set "reverse" .Site.Params.projects.posts_order_reverse }}
+    {{ $order = .Site.Params.projects.posts_order }}
+    {{ $reverse = .Site.Params.projects.posts_order_reverse }}
     {{ with .params.posts_order }}
-        {{ $.scratch.Set "order" . }}
+        {{ $order = . }}
         {{ if $.params.posts_order_reverse }}
-            {{ $.scratch.Set "reverse" true }}
+            {{ $reverse = true }}
         {{ else }}
-            {{ $.scratch.Set "reverse" false }}
+            {{ $reverse = false }}
         {{ end }}
     {{ end }}
 {{ end }}
 
-{{/* Sort the list depneding on order */}}
-{{ $order := .scratch.Get "order" }}
-{{ if .scratch.Get "reverse" }}
+{{/* Sort the list depending on order */}}
+{{ if $reverse }}
     {{ .scratch.Set "list" (.list.ByParam $order).Reverse }}
 {{ else }}
     {{ .scratch.Set "list" (.list.ByParam $order) }}
 {{ end }}
-
-{{ .scratch.Delete "order" }}
-{{ .scratch.Delete "reverse" }}
