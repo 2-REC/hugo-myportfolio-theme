@@ -10,7 +10,7 @@ Modified version (see README for details):
 -->
 {{- $page := .page -}}
 <!-- count how many times we've called this shortcode; load the css if it's the first time -->
-{{- if not ($page.Scratch.Get "figurecount") }}<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />{{ end }}
+{{- if not ($page.Scratch.Get "figurecount") }}<link rel="stylesheet" href={{ relURL "css/hugo-easy-gallery.css" }} />{{ end }}
 {{- $page.Scratch.Add "figurecount" 1 }}
 {{ $baseURL := $page.Site.BaseURL }}
 {{- $images_copyright := $page.Params.images_copyright -}}
