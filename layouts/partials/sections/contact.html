@@ -35,11 +35,11 @@
                                     {{ if .icon }}
                                         {{ $pack := or .icon_pack "fa" }}
                                         <i class="{{ $pack }} {{ .icon }}" aria-hidden="true">
-                                    {{ else }}
-                                        <i class="fa" aria-hidden="true">
-                                    {{ end }}
-                                        {{ .address }}
+                                            <div>{{ .address }}</div>
                                         </i>
+                                    {{ else }}
+                                        <i class="fa" aria-hidden="true">{{ .address }}</i>
+                                    {{ end }}
                                     {{ if .link }}
                                     </a>
                                     {{ end }}
