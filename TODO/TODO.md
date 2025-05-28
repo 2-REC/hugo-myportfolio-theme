@@ -1,38 +1,28 @@
 # TODO
 
-
-!!!!
-- FIX bug with offset when going from page to homepage using navbar
-- ADAPT EXAMPLE SITE! +config.toml!!
-- add CSS+layout variables changes in README + exampleSite config.toml!
-- make animations "one shot"? (or keep repeat as-is now?)
-- too much animation on home section?
-- skills: keep "resume" button animation?
-!!!!
-
-- [x] Remove use of "wow" (animate stuff) and use own js/css definitions (as in "anim.js")
-- [ ] Fix error when clicking "home" button
-    "Uncaught TypeError: Cannot read properties of undefined (reading 'top')"
-
 - [ ] DOC
-    - [ ] make example site as complete as possible, showcasing everything + explaining/detailing how it works (in page content itself, or comments in md files...).
+    - [ ] Adapt example site to new changes + make as complete as possible, showcasing everything + explaining/detailing how it works (in page content itself, or comments in md files...).
     - [ ] Mention use of "cover_image" and "small_image" for sections ("cover_image" can override "small_image")
     - [ ] GALLERY PARTIAL + SHORTCODE!
 
-- [ ] Complete README.md file
-    => What to add?
+- [ ] README.md
+    - [ ] Add CSS+layout variables changes in README + exampleSite config.toml!
     - [ ] Reference "Minimal Academic" theme for the sidebar stuff? (if not done)
+    - [ ] Update to every change + check complete
+
+- [ ] config
+    - [ ] switch to 'config' directory instead of single file? (look at other themes - eg 'myblog-theme')
 
 
 ## BUG FIXES
 
 ### GENERAL
-- [ ] Solve bug of page a bit larger than window (width of vertical scrollbar?)
-- [ ] Check for CSS urls (Have to hardcode absolute to work... check others)
+- [x] Solve bug of page a bit larger than window (width of vertical scrollbar?)
+- [x] Check for CSS urls (Have to hardcode absolute to work... check others)
 
 
 ### NAV BAR
-- [ ] Solve bug of NAVBAR offset when getting back from project page
+- [x] Solve bug of NAVBAR offset when getting back from project page
 
 
 ### HOME
@@ -60,10 +50,9 @@
 
 
 ### GENERAL
-- [ ] Update to latest HUGO.
-- [ ] Update to BOOTSTRAP 4+.
+- [x] Update to latest HUGO.
 
-- [ ] Use responsove images?
+- [ ] Use responsive images?
     LOOK AT:
     ```html
     <picture class="photo-wide orientation-landscape loaded">
@@ -73,14 +62,13 @@
     </picture>
     ```
 
+- [ ] Create and set icons
+    - [ ] For tags/technologies
+    - [ ] For skills: gears, retropad, windows, book?,
+    - [ ] Nav bar, etc.: DSP, etc.
 
 - LATER:
-    - [ ] Create and set icons
-        - [ ] For tags/technologies
-        - [ ] For skills: gears, retropad, windows, book?,
-        - [ ] Nav bar, etc.: DSP, etc.
-    - [ ] Add a "path" on top, to show where we are, and easy navigate (or in sidebar?!)
-    - [ ] Add "content table" on right side (EVEN theme, in a post page)
+    - [ ] (?) Add a "path" on top, to show where we are, and easy navigate (or in sidebar?!)
     - [ ] TAGS: Allow to specify weight parameter to sort list (eg on number of occurrences).
     - [ ] Write script to convert CSS.<br>
         => Replace variables by their value (better perf)<br>
@@ -92,11 +80,7 @@
     - [ ] Add Google Analytics<br>
         => googleAnalytics = "..."
     - [ ] See about donation stuff (Patreon?) - in "contact" section?
-    - [ ] For external "libs" (Bootstrap, FontAwesome, jQuery, Photoswipe)<br>
-        => Use CDN & fallback on local files. Links:<br>
-            https://forum.freecodecamp.org/t/using-a-fallback-code-in-case-bootstraps-cdn-is-down/160753/11
-            https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server
-            <br>BUT: not really usefull, as small site+traffic, and heavy data is local anyway... (images, etc.)
+    - [ ] Update to BOOTSTRAP 4+.
 
 
 ### FOOTER
@@ -106,12 +90,12 @@
 
 
 ### HOMEPAGE
-- [ ] Set order of sections from order in navigation bar.<br>
+- [x] Set order of sections from order in navigation bar.<br>
     => Parse menu and add each section in that order (in same order as defined in config.toml).
 
 
 ### NAV BAR
-- [ ] When not on homepage, have the current section button highlighted (for "projects" sections).
+- [x] When not on homepage, have the current section button highlighted (for "projects" sections).
 
 
 - LATER:
@@ -124,15 +108,6 @@
 
 ### SKILLS
 - [ ] "text" parameter should be optional.
-
-
-- LATER:
-    - [ ] Replace the tags and categories blocks by the 2 skills table, with each keyword being a link to a taxonomy page.
-        - [ ] Add the 2 HTML tables
-        - [ ] Set tags and categories in tables (with links for taxonomies)
-        - [ ] Generate tables dynamically from data files (instead of static html tables)
-            - skills.json => Should have all skills data defined here, and used to fill tables (so that can have dynamic number of tables)
-            (! - and it should be matched with tags and categories from each project!)
 
 
 ### PROJECTS
@@ -168,12 +143,9 @@
 
 ### CONTACT
 - [ ] Add microdata in HTML (as in sidebar of MINIMAL ACADEMIC theme).
-- [ ] See how to have image on right side and fading to the left...
-
 
 - LATER:
-    - [ ] Allow to have background on full screen or only right half side (look at homepage of "SPLIT" theme).
-    - [ ] Add Contact form (use NETLIFY or "method with ZAPIER").
+    - [ ] (?) Add Contact form (use NETLIFY or "method with ZAPIER").
       => Look at:
         - Pierre Morsa Hugo Form
             => Free, but need "Zapier" and "Slack" accounts (free?)
@@ -200,7 +172,7 @@
             => ?
 
 ### SIDEBAR
-- [ ] On small screens (when sidebar fixed) put sidebar UNDER page, not on top
+- [x] On small screens (when sidebar fixed) put sidebar UNDER page, not on top
 
 
 ## CODE - FILES
@@ -209,6 +181,11 @@
 - \_default
     - [ ] baseof.html
         - [ ] Check/adapt CSS for "list-content" & "list-page".
+    - [ ] 'main' tag should not contain sidebars - DESIGN ERROR!
+        In:
+        themes\myportfolio\layouts\_default\baseof.html
+        From:
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main
     - [ ] li.html
         - [ ] Change layout of links, and put everything in the "a" tag.
             => Do something similar to "project-box".
@@ -372,9 +349,8 @@
 ### STATIC
 
 - css
-    - [ ] custom.css
+    - [ ] custom_vars.css
         - [ ] Check that all variables are listed.
-        - [ ] File should be removed from theme (as it is optional, and name specified in "config.toml").
     - [ ] theme.css
         - [ ] Check/adapt everything.
         - [ ] See licensing stuff at beginning.
@@ -385,7 +361,6 @@
             => Update to BOOTSTRAP 4 should solve problem (then can remove "min-height: 300px;").
         - [ ] For "main" "min-height", need to consider header and footer heights as well.<br>
             => Write JS code to get the values.
-
 
 - js
     - [ ] Check/adapt license etc.

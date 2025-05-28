@@ -4,7 +4,7 @@
 
 > **__NOTE:__** Due to the theme specific structure (allowing more than 1 section for the posts, and the homepage sections defined in "data" directory instead of content), the "exampleSite" doesn't respect the classic Hugo structure, and is thus not working correctly.<br>
 The "Professional" and "Personal" links and sections are not available and don't allow to see the demo site properly.<br>
-To visualise a working example of the theme, you are invited to take a look at [my portfolio website](TODO: FIX ADDRESS).
+To visualise a working example of the theme, you are invited to take a look at [my portfolio website](https://2-rec.github.io/it-portfolio).
 
 <br>
 
