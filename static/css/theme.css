@@ -1756,17 +1756,18 @@ ul.project-item-list {
     position: relative;
     clear: both;
 
-    width: 250px;
-    height: 250px;
+    width: auto;
+    height: 50vh;
     margin: 0px auto;
+
     border-radius: var(--404-IMAGE-BORDER-RADIUS, var(--GENERAL-IMAGE-BORDER-RADIUS));
 
     background-repeat: no-repeat;
-    background-position: top;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+    background-position: center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    -o-background-size: contain;
 }
 
 .page404-title {
@@ -1779,13 +1780,6 @@ ul.project-item-list {
     position: relative;
     width: 100%;
     font-weight: 700;
-}
-
-@media(min-width: 768px) {
-    .page404-image {
-        width: 500px;
-        height: 500px;
-    }
 }
 
 /******************************************************************************/
