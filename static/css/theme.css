@@ -1561,7 +1561,8 @@ margin-bottom: 2em;
     font-family: var(--SIDEBAR-FONT, var(--GENERAL-FONT-2));
 }
 .sidebar-bottom .sidebar-tree li:not(:last-of-type)::after {
-    content: "\2022";
+    white-space: pre;
+    content: "\20\2022\20";
 }
 
 @media (min-width: 992px) {
