@@ -107,11 +107,13 @@ a {
     transition: all .35s;
 
     color: var(--GENERAL-LINK-COLOR-1);
+    text-decoration: underline;
 }
 
 a:hover,
 a:focus {
     color: var(--GENERAL-LINK-ACTIVE-COLOR-1);
+    text-decoration: none;
 }
 
 /******************************************************************************/
@@ -310,6 +312,9 @@ fieldset[disabled] .btn-primary.active {
     font-family: var(--BUTTON-FONT, var(--GENERAL-FONT-2));
 
     padding: .5em;
+
+    text-decoration: none;
+    text-shadow: none;
 }
 
 .btn-icon {
@@ -564,6 +569,9 @@ margin: 30px 10px;
     color: var(--NAVBAR-FIXED-BRAND-HOVER-COLOR, var(--GENERAL-LINK-ACTIVE-COLOR-1));
 }
 
+.navbar-default a {
+    text-decoration: none;
+}
 .navbar-default .nav > li > a,
 .navbar-default .nav > li > a:focus {
     font-weight: 700;
@@ -992,7 +1000,6 @@ TODO: move as much as possible to common (for all background images)
 }
 #about a:hover,
 #about a:focus {
-    /* TODO: move this globally (for all links) */
     text-decoration: none;
     color: var(--about-link-color-active);
 }
@@ -1572,9 +1579,15 @@ margin-bottom: 2em;
     }
 }
 
+.sidebar-tree li > a {
+    font-weight: bold;
+    text-decoration: none;
+}
+.sidebar-tree li > a:hover {
+    text-decoration: underline;
+}
 .sidebar-tree li.active > a,
 .sidebar-tree li.active > a:focus {
-    font-weight: bold;
     text-decoration: underline;
 }
 
@@ -1743,17 +1756,18 @@ ul.project-item-list {
     position: relative;
     clear: both;
 
-    width: 250px;
-    height: 250px;
+    width: auto;
+    height: 50vh;
     margin: 0px auto;
+
     border-radius: var(--404-IMAGE-BORDER-RADIUS, var(--GENERAL-IMAGE-BORDER-RADIUS));
 
     background-repeat: no-repeat;
-    background-position: top;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+    background-position: center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    -o-background-size: contain;
 }
 
 .page404-title {
@@ -1766,13 +1780,6 @@ ul.project-item-list {
     position: relative;
     width: 100%;
     font-weight: 700;
-}
-
-@media(min-width: 768px) {
-    .page404-image {
-        width: 500px;
-        height: 500px;
-    }
 }
 
 /******************************************************************************/
