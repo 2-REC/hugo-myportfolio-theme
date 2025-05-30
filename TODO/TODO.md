@@ -16,15 +16,6 @@
 
 ## BUG FIXES
 
-### GENERAL
-- [x] Solve bug of page a bit larger than window (width of vertical scrollbar?)
-- [x] Check for CSS urls (Have to hardcode absolute to work... check others)
-
-
-### NAV BAR
-- [x] Solve bug of NAVBAR offset when getting back from project page
-
-
 ### HOME
 - [ ] Seems to have a bug with the background in CREATIVE theme: image sometimes not covering the entire screen.<br>
     => Set size to minimum between width and height, keeping ratio (=> image cropped)<br>
@@ -50,8 +41,6 @@
 
 
 ### GENERAL
-- [x] Update to latest HUGO.
-
 - [ ] Use responsive images?
     LOOK AT:
     ```html
@@ -61,11 +50,6 @@
         ...
     </picture>
     ```
-
-- [ ] Create and set icons
-    - [ ] For tags/technologies
-    - [ ] For skills: gears, retropad, windows, book?,
-    - [ ] Nav bar, etc.: DSP, etc.
 
 - LATER:
     - [ ] (?) Add a "path" on top, to show where we are, and easy navigate (or in sidebar?!)
@@ -87,19 +71,6 @@
 - [ ] Add copyright stuff (for my stuff, but also images, themes, etc I "took")
 - [ ] Allow to not have the footer
 - [ ] Make better footer
-
-
-### HOMEPAGE
-- [x] Set order of sections from order in navigation bar.<br>
-    => Parse menu and add each section in that order (in same order as defined in config.toml).
-
-
-### NAV BAR
-- [x] When not on homepage, have the current section button highlighted (for "projects" sections).
-
-
-- LATER:
-    - [ ] See about image for brand (and possibility to swap with text - or both).
 
 
 ### SERVICES
@@ -171,9 +142,6 @@
         - PageClick
             => ?
 
-### SIDEBAR
-- [x] On small screens (when sidebar fixed) put sidebar UNDER page, not on top
-
 
 ## CODE - FILES
 
@@ -197,20 +165,12 @@
 
 - partials
     - pages
-        - [ ] lists.html
-            - [ ] For posts listing, descend recursively instead of only handling first level.
-        - [ ] sidebar.html
+        - [ ] sidebar.html + sidebar-bottom.html
             - [ ] Make "categories" & "tags" optional?<br>
                 => Find way to remove them from taxonomy pages (or make them different)
-            - [ ] Get texts from data instead of hardcoded ("HOME", "CATEGORIES", "TAGS")
-            - [ ] Determine if want "combobox"/collapsable in sidebar<br>
-                => Look at:
-                - DOCBOOK theme
-                - FAQ theme
-                    https://themes.gohugo.io/theme/hugo-faq-theme/
-                - simple "more" shortcode<br>
-                    https://github.com/jiridj/hugo-collapsible-code <br>
-                    https://github.com/jiridj/hugo-collapsible-code-jquery/blob/master/static/js/more.js
+            - [ ] Get texts from data instead of hardcoded
+                - [ ] "HOME": from config
+                - [x] "CATEGORIES", "TAGS": from 'skills' data
         - [ ] title.html
             - [ ] Add a "path" element at beginning for easy navigation.<br>
                 eg: "HOME > WORK_PRO > VRCONTEXT > post"
@@ -244,39 +204,11 @@
             ```html
             itemprop="description"?
             ```
-            - [ ] Add form at end (& see how to handle with static site)
-            ```html
-            <div class="col-md-4 col-md-offset-2 text-center">
-                ... (form)
-            </div>
-            ```
         - [ ] home.html
             - [ ] LATER: BACKGROUND.
                 => Set size to minimum between width and height, keeping ratio (=> image cropped)
                 - Doesn't seem perfect in CREATIVE theme, image sometimes not covering entire screen.<br>
                 => OK or should fix problem?
-        - [ ] projects.html
-            - [ ] Add "all_projects" at end of list!
-                => set front matter, etc.
-                ```html
-                {{ .Render "project-image" }}
-                ```
-        - [ ] services.html
-            - [ ] For "services-container"<br>
-                => When updating to BOOTSTRAP 4, use "justify-content-around"
-
-        - [ ] skills.html
-            - [ ] For "$data.download"
-                => When updating to BOOTSTRAP 4, use "float-{sm,md,lg,xl}-{left,right,none}" to allow the button to the right (with offset)
-            - [ ] For tags & categories:<br>
-                => When updating to HUGO 0.45, replace:
-                ```html
-                {{ with $.Site.GetPage "section" . }}
-                ```
-                With
-                ```html
-                {{ with $.Site.GetPage . }}
-                ```
     - utils
         - [ ] get-keywords.html
             - [ ] Add a parameter to specify order (based on wieght, title, occurrences, ...)
@@ -285,8 +217,7 @@
         - [ ] Fix problem that not at bottom of page.<br>
             => Need changes in CSS for main tags (html, body, sections, etc?)
         - [ ] Set content...
-    - [ ] head.html<br>
-        (Look at backuped file)
+    - [ ] head.html (Look at backuped file)
         - [ ] Use some "blocks" to allow overriding parts..
         - [ ] Look at other header files (in other themes)<br>
             => "header.html" in Osprey (lots of other stuff!)
@@ -323,28 +254,10 @@
             ```
         - [ ] Check publish meta stuff.
     - [ ] homepage.html
-        - [ ] When updating to HUGO version 0.45, replace:
-          ```html
-          {{ with $.Site.GetPage "section" . }}
-          ```
-          with:
-          ```html
-          {{ with $.Site.GetPage . }}
-          ```
         - [ ] use google analytics? (or "google_analytics_async" in header?), or none?
         ```html
         {{ template "_internal/google_analytics.html" . }
         ```
-    - [ ] tail.html
-        - [x] Check if OK to load 2 jQuery versions in "tail.html" (should only load one)
-            - OK: Loading only 1, more recent (v1.12.4 instead of v1.11.1).
-
-- [x] shortcodes
-    - [x] gallery.html
-        - [x] handle parameters in "figure" case (global for all figures).
-    - [x] figure.html
-        - [x] add new parameters (make ~same changes as in "gallery" shortcode).
-
 
 ### STATIC
 
