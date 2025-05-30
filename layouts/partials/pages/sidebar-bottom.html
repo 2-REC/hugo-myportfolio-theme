@@ -65,7 +65,8 @@
              <br>
             {{ "<!-- Categories -->" | safeHTML }}
             <div>
-                <div class="tag-title">CATEGORIES</div>
+                {{ $label := or $.Site.Data.skills.categories_label "CATEGORIES" }}
+                <div class="tag-title">{{ $label }}</div>
                 <div class="tags">
                     {{/* List categories without duplicates */}}
                     {{ partial "utils/list-keywords.html" (dict "type" "categories" "context" . "scratch" .Scratch "removeDuplicates" true) }}
@@ -77,7 +78,8 @@
             <br>
             {{ "<!-- Tags -->" | safeHTML }}
             <div>
-                <div class="tag-title">TAGS</div>
+                {{ $label := or $.Site.Data.skills.tags_label "TAGS" }}
+                <div class="tag-title">{{ $label }}</div>
                 <div class="tags">
                     {{/* List tags without duplicates */}}
                     {{ partial "utils/list-keywords.html" (dict "type" "tags" "context" . "scratch" .Scratch "removeDuplicates" true) }}
