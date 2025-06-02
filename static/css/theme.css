@@ -556,12 +556,8 @@ margin: 30px 10px;
     margin-right: auto;
 */
     margin: 0;
-    top: 50%;
 
     height: 1em;
-
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
