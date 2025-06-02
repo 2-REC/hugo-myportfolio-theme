@@ -1341,11 +1341,13 @@ padding: 20px 10px;
 .contact-container .row {
     margin: 10vh auto;
 }
-.centered-element {
-    margin: 0;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+@media(max-width: 768px) {
+    .contact-container .row {
+        margin: auto;
+    }
+    .contact-container .text-center {
+        text-align: left;
+    }
 }
 
 #contact .profile {
