@@ -556,12 +556,8 @@ margin: 30px 10px;
     margin-right: auto;
 */
     margin: 0;
-    top: 50%;
 
     height: 1em;
-
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -993,7 +989,12 @@ TODO: move as much as possible to common (for all background images)
     background-color: var(--about-main-bkg-color);
     border: var(--about-main-border);
 }
-
+@media(max-width: 768px) {
+    #about .main-text {
+        text-align: left;
+        text-justify: none;
+    }
+}
 
 #about a {
     color: var(--about-link-color);
@@ -1135,6 +1136,11 @@ padding: 20px 10px;
     /* TODO: add a 'skills' specific color variable */
     color: var(--GENERAL-FONT-COLOR-1);
     background-color: var(--GENERAL-COLOR-2);
+}
+@media(max-width: 768px) {
+    #skills {
+        text-align: left;
+    }
 }
 
 #skills .section-hr {
@@ -1335,11 +1341,13 @@ padding: 20px 10px;
 .contact-container .row {
     margin: 10vh auto;
 }
-.centered-element {
-    margin: 0;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+@media(max-width: 768px) {
+    .contact-container .row {
+        margin: auto;
+    }
+    .contact-container .text-center {
+        text-align: left;
+    }
 }
 
 #contact .profile {
