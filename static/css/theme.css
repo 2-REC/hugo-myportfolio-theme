@@ -556,7 +556,6 @@ margin: 30px 10px;
     margin-right: auto;
 */
     margin: 0;
-
     height: 1em;
 }
 
@@ -649,6 +648,12 @@ margin: 30px 10px;
     .navbar-default.affix .nav > li.active > a:focus {
         color: var(--NAVBAR-BUTTON-ACTIVE-COLOR, var(--GENERAL-FONT-COLOR-2));
         background-color: var(--NAVBAR-BUTTON-ACTIVE-BACKGROUND-COLOR, transparent);
+    }
+
+    #brand_logo {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
     }
 }
 
