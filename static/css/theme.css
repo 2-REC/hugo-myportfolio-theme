@@ -989,7 +989,12 @@ TODO: move as much as possible to common (for all background images)
     background-color: var(--about-main-bkg-color);
     border: var(--about-main-border);
 }
-
+@media(max-width: 768px) {
+    #about .main-text {
+        text-align: left;
+        text-justify: none;
+    }
+}
 
 #about a {
     color: var(--about-link-color);
@@ -1131,6 +1136,11 @@ padding: 20px 10px;
     /* TODO: add a 'skills' specific color variable */
     color: var(--GENERAL-FONT-COLOR-1);
     background-color: var(--GENERAL-COLOR-2);
+}
+@media(max-width: 768px) {
+    #skills {
+        text-align: left;
+    }
 }
 
 #skills .section-hr {
