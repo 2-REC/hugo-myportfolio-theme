@@ -365,6 +365,42 @@ fieldset[disabled] .btn-primary.active {
 
 /* ICONS, LOGOS, EMAIL */
 
+.inline-icon {
+    display: inline-block;
+
+    font-size: 100%;
+    font-weight: 900;
+    line-height: 1;
+
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+
+    background-color: currentColor;
+}
+
+
+.icon {
+    display: inline-block;
+
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1;
+
+    width: 1em;
+    height: 5.5vh;
+    vertical-align: -0.125em;
+
+    mask-repeat: no-repeat;
+/*    mask-size: auto;*/
+    /* if 'center', small 'jump' at end of zoom anim */
+    mask-position: center;
+}
+
 .icon-x2 {
     font-size: 2rem;
 }
@@ -1101,8 +1137,8 @@ padding: 20px 10px;
     margin-top: 10px;
 }
 
-.service-box i {
-    color: var(--services-icon-color);
+.service-box .icon {
+    background-color: var(--services-icon-color);
 }
 
 .service-box ul {

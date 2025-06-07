@@ -246,7 +246,7 @@
         - [ ] check Favicon stuff (what they are & if needed)<br>
             (From "minimal-academic" theme)<br>
             => Could have a "favicon.html"...
-        - [ ] For external "libs" (Bootstrap, FontAwesome, JQuery?)<br>
+        - [ ] For external "libs" (Bootstrap, JQuery?)<br>
             => Use CDN & fallback on local files. (see links)<br>
             E.g.: for FontAwesome:
             ```html

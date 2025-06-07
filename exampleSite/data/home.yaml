@@ -8,6 +8,5 @@ text: "A short catchy phrase ..."
 #button_text: "SEE MORE"
 button_image: "images/arrow_down.png"
 #button_icon:
-#  icon: "fa-arrow-alt-circle-down"
-#  pack: "fas"
+#  icon: "arrow-alt-circle-down-solid"
 ---

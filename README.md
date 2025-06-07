@@ -33,6 +33,7 @@ Noteworthy features of this Hugo theme are:
 * Possibility to display siblings, children posts and children lists independently for each page, with associated orders
 * Customisable CSS to override default values (such as main theme colours, fonts, etc.)
 * Easy copyright image labelling per image, per gallery or per project
+* Use of SVG icons
 * 404 page
 
 
@@ -278,14 +279,12 @@ Additionally, the following parameters can be used to customize the scrolling bu
 * `button_text`: The text displayed on the button.
 * `button_icon`: The icon used for the button.<br>
     Additional subfields must be defined for the icon:<br>
-    * `icon`: The name of the icon
-    * `pack`: The pack/library of the icon
+    * `icon`: The name of the icon SVG file (without extension)
 
     E.g.:
     ```
     button_icon:
-      icon: "fa-arrow-down"
-      pack: "fas"
+      icon: "arrow-alt-circle-down-solid"
     ```
 
 > **__NOTE:__** The 3 button parameters are mutually exclusive, so only one can be used (the others will be ignored).
@@ -324,23 +323,20 @@ The different parameters that can be used are:
 * `services`: The list of services. At least one must be provided.<br>
     Each service has a set of subfields:
     * `name`: The name of the service.
-    * `icon`: The icon used for the service.
-    * `icon_pack`: The icon package/family (look at icons documentation).
+    * `icon`: The icon used for the service (SVG filename, without extension).
     * `text`: A short text describing the service.
     * `list`: A list of sub-services displayed as bullet points.
 
-    `text`, `icon_pack` & `list` are optional.
+    `text` & `list` are optional.
 
     E.g.:
     ```
     services:
     - name: "Service 1"
-      icon: "fa-chalkboard-teacher"
-      icon_pack: "fas"
+      icon: "chalkboard-teacher-solid"
       list: [ "One thing", "Another thing", "And some more ..." ]
     - name: "Service 2"
-      icon: "fa-window-restore"
-      icon_pack: "fas"
+      icon: "window-restore-solid"
       text: "I am also able to do this."
     ```
 
@@ -363,16 +359,14 @@ The different parameters that can be used are:
 * `download`: Parameters about the (optional) download button.
     * `button_text`: Text used for the button.
     * `filename`: Name of the file to download. The file must be in "static/files".
-    * `icon`: The icon used for the button.
-    * `icon_pack`: The icon package/family (look at icons documentation).
+    * `icon`: The icon used for the button (SVG filename, without extension).
 
     E.g.:
     ```
     download:
       button_text: "RESUME"
       filename: "resume.pdf"
-      icon: "fa-download"
-      icon-pack: "fas"
+      icon: "download-solid"
     ```
 
 
@@ -439,8 +433,7 @@ The different parameters that can be used are:
     * `icon`: The icon used next to the address.
     * `icon_pack`: The icon package/family (look at icons documentation).
 * `social`: List of social network icons/links.
-    * `icon`: The icon used for the button.
-    * `icon_pack`: The icon package/family (look at icons documentation).
+    * `icon`: The icon used for the button (SVG filename, without extension).
     * `link`: The link to the social network profile page.
 
     E.g.:
@@ -448,15 +441,12 @@ The different parameters that can be used are:
     email:
       address: "your.email@somewhere.com"
       link: false
-      icon: "fa-envelope"
-      icon-pack: "fas"
+      icon: "envelope-solid"
 
     social:
-    - icon: "fa-linkedin"
-      icon_pack: "fab"
+    - icon: "linkedin-brands-solid"
       link: "//linkedin.com"
-    - icon: "fa-github"
-      icon_pack: "fab"
+    - icon: "github-brands-solid"
       link: "//github.com"
     ```
 
@@ -504,6 +494,15 @@ The provided "custom_vars.css" (in the theme's "static/css" directory) file can 
 In addition, if bigger changes are desired, CSS rules can be modified or added by using custom CSS files. These files need to be located in the site's "static/css" directory, and their names (with extension) need to be added in the "`custom_css`" array variable of the "config.toml" file.
 
 > **__NOTE__**: Custom CSS rules should be defined in files specified in "`custom_css`", and Custom CSS variables should be defined in files specified in "`custom_css_vars`". Not respecting this might result in unexpected behaviour.
+
+
+### Icons
+
+Use of SVG icons.
+
+SVG files must be located in "static/icons".
+
+Files can be downloaded directly from Font Awesome for example.
 
 
 ### Galleries
@@ -589,3 +588,4 @@ Thanks to:
 * [David Miller](//github.com/davidtmiller) for creating the original theme
 * [Li-Wen Yip](//github.com/liwenyip) for the PhotoSwipe gallery integration in Hugo
 * [PhotoSwipe](https://photoswipe.com) for the gallery functionality
+* [Font Awesome](https://fontawesome.com/) for the SVG icons

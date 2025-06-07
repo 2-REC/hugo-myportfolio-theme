@@ -73,7 +73,8 @@
                         </a>
                     {{ else if .button_icon }}
                         {{ with .button_icon }}
-                            <a id="home_button" href={{ printf "#%s" $first_section }} class="btn-icon page-scroll {{ .pack }} {{ .icon }} icon-x6">
+                            <a id="home_button" href={{ printf "#%s" $first_section }} class="btn-icon page-scroll">
+                                <span class="inline-icon icon-x6" aria-hidden="true" style="mask-image: url({{ printf "/icons/%s.svg" .icon }});"></span>
                             </a>
                         {{ end }}
                     {{ end }}
