@@ -29,6 +29,7 @@ h4,
 h5,
 h6 {
     font-family: var(--TITLE-FONT, var(--GENERAL-FONT-2));
+    font-weight: 700;
 }
 
 hgroup {
@@ -533,8 +534,10 @@ margin: 30px 10px;
 /* TAGS */
 
 .tag-title {
-    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-3));
     padding-bottom: 0.5rem;
+
+    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-2));
+    font-weight: 700;
 }
 
 .tags a {
@@ -1602,7 +1605,8 @@ margin-bottom: 2em;
 }
 
 .sidebar-tree .parent-link {
-    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-3));
+    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-2));
+    font-weight: 700;
 }
 
 .sidebar-tree li {
@@ -1753,9 +1757,11 @@ margin-bottom: 2em;
 
 .project-item-box .project-title {
     margin-left: 0.5em;
-    font-size: 20px;
 
+    font-size: 20px;
     font-family: var(--PROJECTBOX-NAME-FONT, var(--GENERAL-FONT-2));
+    font-weight: 700;
+
     color: var(--GENERAL-LINK-COLOR-1);
 }
 .project-item-box:hover .project-title {

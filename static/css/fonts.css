@@ -1,0 +1,12 @@
+/*
+Default fonts used by the theme.
+
+To override them, copy this file to the site's 'static/css' directory and redefine the variables.
+Any '@font-face' should also be defined in that file.
+*/
+
+:root{
+    --FONT-1: "Arial", sans-serif;
+    --FONT-2: "Arial", sans-serif;
+    --FONT-3: "Arial", sans-serif;
+}

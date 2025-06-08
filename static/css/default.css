@@ -1,21 +1,11 @@
-@font-face { font-family: "Inter"; font-style: normal; src: url("../fonts/Inter-Regular.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-style: normal; src: url("../fonts/Montserrat-Regular.ttf"); }
-@font-face { font-family: "Montserrat Bold"; font-style: normal; src: url("../fonts/Montserrat-Bold.ttf"); }
-@font-face { font-family: "Roboto"; font-style: normal; src: url("../fonts/Roboto-Regular.ttf"); }
-@font-face { font-family: "Roboto Bold"; font-style: normal; src: url("../fonts/Roboto-Bold.ttf"); }
-
 /* TODO: check all caps lock variables (reorganise + check use) */
 :root{
     /* Default values for most CSS fields.
         Can be modified, but DO NOT DELETE ANY FIELD!
     */
-
-    --GENERAL-FONT-1: "Inter", sans-serif;
-    /* TODO: "Roboto Bold", "Montserrat Bold" ? */
-    --GENERAL-FONT-2: "Montserrat Bold", sans-serif;
-    --GENERAL-FONT-3: "Roboto Bold", sans-serif;
-    /* TODO: "Roboto", "Montserrat", "Inter" ? */
-    --GENERAL-FONT-4: "Roboto", sans-serif;
+    --GENERAL-FONT-1: var(--FONT-1);
+    --GENERAL-FONT-2: var(--FONT-2);
+    --GENERAL-FONT-3: var(--FONT-3);
 
     --GENERAL-COLOR-1: rgb(64, 95, 240);
     --GENERAL-COLOR-2: white;
@@ -34,7 +24,7 @@
 
     --NAVBAR-BACKGROUND-COLOR: rgba(255, 255, 255, .3);
     --NAVBAR-FONT: var(--GENERAL-FONT-2);
-    --NAVBAR-BRAND-FONT: var(--GENERAL-FONT-4);
+    --NAVBAR-BRAND-FONT: var(--GENERAL-FONT-3);
     --NAVBAR-BRAND-COLOR: var(--GENERAL-FONT-COLOR-1);
     --NAVBAR-BRAND-HOVER-COLOR: var(--GENERAL-FONT-COLOR-2);
     --NAVBAR-BUTTON-COLOR: var(--GENERAL-FONT-COLOR-1);
