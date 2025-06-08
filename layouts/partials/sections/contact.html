@@ -33,13 +33,9 @@
                                     <a href="mailto:{{ .address }}">
                                     {{ end }}
                                     {{ if .icon }}
-                                        {{ $pack := or .icon_pack "fa" }}
-                                        <i class="{{ $pack }} {{ .icon }}" aria-hidden="true">
-                                            <div>{{ .address }}</div>
-                                        </i>
-                                    {{ else }}
-                                        <i class="fa" aria-hidden="true">{{ .address }}</i>
+                                        <span class="inline-icon" aria-hidden="true" style="mask-image: url({{ printf "/icons/%s.svg" .icon }});"></span>
                                     {{ end }}
+                                    {{ .address }}
                                     {{ if .link }}
                                     </a>
                                     {{ end }}
@@ -48,10 +44,9 @@
                             </div>
                             <ul class="icons-list anim-wrapper" aria-hidden="true">
                                 {{ range .social }}
-                                    {{ $pack := or .icon_pack "fa" }}
                                     <li>
                                         <a itemprop="sameAs" href="{{ .link | safeURL }}" target="_blank" rel="noopener">
-                                            <i class="{{ $pack }} {{ .icon }} icon-x2 anim zoomIn"></i>
+                                            <span class="inline-icon icon-x2 anim zoomIn" style="mask-image: url({{ printf "/icons/%s.svg" .icon }});"></span>
                                         </a>
                                     </li>
                                 {{ end }}

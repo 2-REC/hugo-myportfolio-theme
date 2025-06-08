@@ -13,10 +13,10 @@
                 {{ with $parent }}
                     <a class="parent-link" href="{{ .Permalink }}">
                         {{ if not .IsHome }}
-                            <i class="fas fa-chevron-circle-left"></i>
+                            <span class="inline-icon" style="mask-image: url(/icons/chevron-circle-left-solid.svg);"></span>
                             {{ .Title }}
                         {{ else }}
-                            <i class="fas fa-home"></i>
+                            <span class="inline-icon" style="mask-image: url(/icons/house-solid.svg);"></span>
                             HOME
                         {{ end }}
                     </a>
@@ -24,7 +24,7 @@
             {{ else }}
                 {{/* JavaScript should be moved to common/external JS file */}}
                 <a href="javascript:void(0)" class="parent-link" onclick="javascript:window.history.back()">
-                    <i class="fas fa-chevron-circle-left"></i>
+                    <span class="inline-icon" style="mask-image: url(/icons/chevron-circle-left-solid.svg);"></span>
                     BACK
                 </a>
             {{ end }}

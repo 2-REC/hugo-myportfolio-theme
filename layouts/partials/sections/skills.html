@@ -23,8 +23,7 @@
                         {{ . }}
                     {{ end }}
                     {{ if .icon }}
-                        {{ $pack := or .icon_pack "fa" }}
-                        <i class="{{ $pack }} {{ .icon }}"></i>
+                        <span class="inline-icon" style="mask-image: url({{ printf "/icons/%s.svg" .icon }});"></span>
                     {{ end }}
                 </a>
             </div>

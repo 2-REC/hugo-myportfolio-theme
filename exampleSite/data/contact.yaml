@@ -7,14 +7,11 @@ description: "Very short text with a call to action."
 email:
   address: "your.email@somewhere.com"
   link: false
-  icon: "fa-envelope"
-  icon-pack: "fas"
+  icon: "envelope-solid"
 
 social:
-- icon: "fa-linkedin"
-  icon_pack: "fab"
+- icon: "linkedin-brands-solid"
   link: "//linkedin.com"
-- icon: "fa-github"
-  icon_pack: "fab"
+- icon: "github-brands-solid"
   link: "//github.com"
 ---

@@ -29,6 +29,7 @@ h4,
 h5,
 h6 {
     font-family: var(--TITLE-FONT, var(--GENERAL-FONT-2));
+    font-weight: 700;
 }
 
 hgroup {
@@ -365,6 +366,42 @@ fieldset[disabled] .btn-primary.active {
 
 /* ICONS, LOGOS, EMAIL */
 
+.inline-icon {
+    display: inline-block;
+
+    font-size: 100%;
+    font-weight: 900;
+    line-height: 1;
+
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+
+    background-color: currentColor;
+}
+
+
+.icon {
+    display: inline-block;
+
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1;
+
+    width: 1em;
+    height: 5.5vh;
+    vertical-align: -0.125em;
+
+    mask-repeat: no-repeat;
+/*    mask-size: auto;*/
+    /* if 'center', small 'jump' at end of zoom anim */
+    mask-position: center;
+}
+
 .icon-x2 {
     font-size: 2rem;
 }
@@ -497,8 +534,10 @@ margin: 30px 10px;
 /* TAGS */
 
 .tag-title {
-    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-3));
     padding-bottom: 0.5rem;
+
+    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-2));
+    font-weight: 700;
 }
 
 .tags a {
@@ -1101,8 +1140,8 @@ padding: 20px 10px;
     margin-top: 10px;
 }
 
-.service-box i {
-    color: var(--services-icon-color);
+.service-box .icon {
+    background-color: var(--services-icon-color);
 }
 
 .service-box ul {
@@ -1566,7 +1605,8 @@ margin-bottom: 2em;
 }
 
 .sidebar-tree .parent-link {
-    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-3));
+    font-family: var(--SIDEBAR-LINK-FONT, var(--GENERAL-FONT-2));
+    font-weight: 700;
 }
 
 .sidebar-tree li {
@@ -1717,9 +1757,11 @@ margin-bottom: 2em;
 
 .project-item-box .project-title {
     margin-left: 0.5em;
-    font-size: 20px;
 
+    font-size: 20px;
     font-family: var(--PROJECTBOX-NAME-FONT, var(--GENERAL-FONT-2));
+    font-weight: 700;
+
     color: var(--GENERAL-LINK-COLOR-1);
 }
 .project-item-box:hover .project-title {
