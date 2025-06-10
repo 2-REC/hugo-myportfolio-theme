@@ -38,6 +38,36 @@ unsafe= true
 
     # ----------
 
+    # SITE FONTS
+
+    # Fonts definition.
+
+    [params.fonts]
+
+        # List of fonts used in the site's CSS.
+        # Defined fonts are available through CSS variables named "--GENERAL-FONT-X" where "X" is the font's index in the list (starting from 1).
+        # By default, the theme uses 3 fonts, accessible via "--GENERAL-FONT-1", "--GENERAL-FONT-2" and "--GENERAL-FONT-3".
+        # - If no fonts are defined, all three variables default to: "Arial", sans-serif.
+        # - If at least 1 font is defined, the first one in the list will be used as the fallback for any undefined font.
+        # More than 3 fonts can be defined, and used in CSS through the custom files (defined by "custom_css_vars" and "custom_css").
+
+        # Params:
+        # => See "font-face" documentation for more details:
+        #    https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face
+        # - family: Equivalent to "font-family" (eg: "Inter").
+        # - style: Equivalent to "font-style" (optional, default: "normal")
+        # - src: "system", "local" or "url".
+        # - file: If using "url", file name in "static/fonts" (e.g.: "Inter-Regular.woff2").
+        # - format: If using "url", font format (e.g.: "woff2").
+        # - name: If using "local", name of the installed font (optional, default: value of "family").
+        # - serif: = "serif" or "sans-serif" (optional, default: "sans-serif").
+
+        #definitions = [
+        #    { family = "Arial", src = "system" }
+        #]
+
+    # ----------
+
     # HOMEPAGE
     # Define the sections and the order in which they appear (MANDATORY)
     # "home" will always be first, regardless of its position (if in the list).

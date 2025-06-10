@@ -24,8 +24,8 @@
 <link rel="stylesheet" href="{{ "plugins/bootstrap/css/bootstrap.min.css" | absURL }}" type="text/css">
 {{ "<!-- CSS Plugins -->" | safeHTML }}
 <link rel="stylesheet" href="{{ "plugins/animate/animate.min.css" | absURL }}" type="text/css">
+{{ partial "fonts.html" . }}
 {{ "<!-- Theme CSS -->" | safeHTML }}
-<link rel="stylesheet" href="{{ "css/fonts.css" | absURL }}" type="text/css">
 <link rel="stylesheet" href="{{ "css/default.css" | absURL }}" type="text/css">
 {{ range .Site.Params.custom_css_vars }}
     <link rel="stylesheet" href="{{ (printf "%s%s" "css/" .) | absURL }}" type="text/css">
