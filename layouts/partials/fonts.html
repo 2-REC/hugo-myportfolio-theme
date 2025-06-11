@@ -1,0 +1,41 @@
+{{ "<!-- Fonts -->" | safeHTML }}
+{{ range .Site.Params.fonts.definitions -}}
+    {{- $src := "" -}}
+    {{- if eq .src "url" -}}
+    {{- $link := printf "<link rel=\"preload\" href=\"fonts/%s\" as=\"font\" type=\"font/%s\" crossorigin>\n" .file .format -}}
+    {{- $link | safeHTML -}}
+    {{- end }}
+{{- end -}}
+<style>
+{{- $extra_fonts := 0 -}}
+{{- range .Site.Params.fonts.definitions -}}
+    {{- if ne .src "system" -}}
+        {{- $font_family := printf "font-family: \"%s\";" .family -}}
+        {{- $font_style := printf "font-style: %s;" (cond .style .style "normal") -}}
+        {{- $src := "" -}}
+        {{- if eq .src "url" -}}
+            {{- $src = printf "src: url(\"fonts/%s\") format(\"%s\");" .file .format -}}
+        {{- else -}}
+            {{- $src = printf "src: local(\"%s\");" (cond .name .name .family) -}}
+        {{- end -}}
+        {{- $font_face := printf "\n@font-face { %s %s %s }" $font_family $font_style $src -}}
+        {{- $font_face | safeCSS -}}
+    {{- end -}}
+{{- end -}}
+{{- $index := 1 -}}
+{{- "\n:root {\n" | safeCSS -}}
+{{- range .Site.Params.fonts.definitions -}}
+    {{- $rule := printf "\t--FONT-%d: \"%s\", %s;\n" $index .family (cond .serif .serif "sans-serif") -}}
+    {{- $rule | safeCSS -}}
+    {{- $index = add $index 1 -}}
+{{- end -}}
+{{- $extra_fonts = sub $index 4 -}}
+{{- print "\t--GENERAL-FONT-1: var(--FONT-1, \"Arial\", sans-serif);\n" | safeCSS -}}
+{{- print "\t--GENERAL-FONT-2: var(--FONT-2, var(--GENERAL-FONT-1));\n" | safeCSS -}}
+{{- print "\t--GENERAL-FONT-3: var(--FONT-3, var(--GENERAL-FONT-1));\n" | safeCSS -}}
+{{- range $extra_fonts -}}
+    {{- $i := add . 4 -}}
+    {{- printf "\t--GENERAL-FONT-%d: var(--FONT-%d, var(--GENERAL-FONT-1));\n" $i $i | safeCSS -}}
+{{- end -}}
+{{- "}\n" | safeCSS -}}
+</style>

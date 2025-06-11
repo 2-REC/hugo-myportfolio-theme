@@ -3,9 +3,14 @@
     /* Default values for most CSS fields.
         Can be modified, but DO NOT DELETE ANY FIELD!
     */
-    --GENERAL-FONT-1: var(--FONT-1);
-    --GENERAL-FONT-2: var(--FONT-2);
-    --GENERAL-FONT-3: var(--FONT-3);
+
+    /* Fonts defined in config ("params.fonts.definitions") are available through
+        CSS variables named "--GENERAL-FONT-X" where "X" is the index in the list (starting from 1).
+        By default, 3 fonts are defined anyway:
+        --GENERAL-FONT-1
+        --GENERAL-FONT-2
+        --GENERAL-FONT-3
+    */
 
     --GENERAL-COLOR-1: rgb(64, 95, 240);
     --GENERAL-COLOR-2: white;
