@@ -2,7 +2,7 @@
 {{ range .Site.Params.fonts.definitions -}}
     {{- $src := "" -}}
     {{- if eq .src "url" -}}
-    {{- $link := printf "<link rel=\"preload\" href=\"../fonts/%s\" as=\"font\" type=\"font/%s\" crossorigin=\"anonymous\">\n" .file .format -}}
+    {{- $link := printf "<link rel=\"preload\" href=\"fonts/%s\" as=\"font\" type=\"font/%s\" crossorigin>\n" .file .format -}}
     {{- $link | safeHTML -}}
     {{- end }}
 {{- end -}}
@@ -10,16 +10,16 @@
 {{- $extra_fonts := 0 -}}
 {{- range .Site.Params.fonts.definitions -}}
     {{- if ne .src "system" -}}
-		{{- $font_family := printf "font-family: \"%s\";" .family -}}
-		{{- $font_style := printf "font-style: %s;" (cond .style .style "normal") -}}
-		{{- $src := "" -}}
-		{{- if eq .src "url" -}}
-			{{- $src = printf "src: url(\"../fonts/%s\") format(\"%s\");" .file .format -}}
-		{{- else -}}
-			{{- $src = printf "src: local(\"%s\");" (cond .name .name .family) -}}
-		{{- end -}}
-		{{- $font_face := printf "\n@font-face { %s %s %s }" $font_family $font_style $src -}}
-		{{- $font_face | safeCSS -}}
+        {{- $font_family := printf "font-family: \"%s\";" .family -}}
+        {{- $font_style := printf "font-style: %s;" (cond .style .style "normal") -}}
+        {{- $src := "" -}}
+        {{- if eq .src "url" -}}
+            {{- $src = printf "src: url(\"fonts/%s\") format(\"%s\");" .file .format -}}
+        {{- else -}}
+            {{- $src = printf "src: local(\"%s\");" (cond .name .name .family) -}}
+        {{- end -}}
+        {{- $font_face := printf "\n@font-face { %s %s %s }" $font_family $font_style $src -}}
+        {{- $font_face | safeCSS -}}
     {{- end -}}
 {{- end -}}
 {{- $index := 1 -}}
